@@ -4,12 +4,15 @@
  *
  */
 
-std::vector<std::pair<shipSize_t&,std::vector<squareStatus_t>> deployedShips {};
-bool isShipSunk();
 
 #include "board.hpp"
 
+using shipStatus_t std::vector<squareStatus_t>;
+using deployedSyps_t std::vector<std::pair<shipSize_t&,shipStatus_t>
 class matchMaster
 {
-    
+    private:
+    deployedSyps_t deployedShips {};
+    bool isShipSunk();
+
 }
