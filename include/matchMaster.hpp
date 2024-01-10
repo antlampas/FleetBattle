@@ -7,13 +7,13 @@
 
 #include "board.hpp"
 
-using shipStatus_t std::vector<squareStatus_t>;
-using deployedShips_t std::vector<std::pair<shipSize_t&,shipStatus_t>
-
 class matchMaster
 {
     private:
-    deployedShips_t deployedShips {};
+    std::unique_ptr<board> boardA {new board};
+    std::unique_ptr<board> boardB {new board};
+    std::vector<shipSize_t> ships {};
+
     bool isShipSunk();
 
 }

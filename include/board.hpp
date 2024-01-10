@@ -14,6 +14,8 @@ using decodedCoordinatePair_t   std::pair<decodedCoordinateSingle_t,decodedCoord
 using squareStatus_t            char;
 using board_t                   std::vector<std::vector<squareStatus_t>>;
 using shipSize_t                short short;
+using shipStatus_t              std::vector<squareStatus_t>;
+using deployedShips_t           std::vector<std::pair<shipSize_t&,shipStatus_t>
 
 /*
  * O = square occupied
@@ -22,13 +24,11 @@ using shipSize_t                short short;
  * w = water square hit
  */
 
-
-
 class board
 {
     private:
     std::vector<std::vector<squareStatus_t>> board {};
-    std::vector<shipSize_t> ships {};
+    deployedShips_t deployedShips {};
 
     bool isCoordinateValid(coordinates_t);
     decodedCoordinatePair_t decodedCoordinates(coordinates_t);
