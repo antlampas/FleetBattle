@@ -45,6 +45,6 @@ class board
 class playerBoard : public board
 {
     private:
-    deployedShips_t  deployedShips {};
+    deployedShips_t  deployedShips  {};
     destroyedShips_t destroyedShips {};
 }
