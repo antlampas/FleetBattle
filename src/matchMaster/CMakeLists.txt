@@ -2,8 +2,4 @@
 
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
-add_subdirectory(board board)
-
-add_executable(fleetBattle main.cpp)
-
-target_link_libraries(fleetBattle PUBLIC board matchMaster)
+add_library(matchMaster SHARED )

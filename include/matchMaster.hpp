@@ -16,4 +16,4 @@ class matchMaster
 
     bool isShipSunk();
 
-}
+};
