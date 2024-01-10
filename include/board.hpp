@@ -16,6 +16,7 @@ using board_t                   = std::vector<std::vector<squareStatus_t>>;
 using shipSize_t                = char;
 using shipStatus_t              = std::vector<squareStatus_t>;
 using deployedShips_t           = std::vector<std::pair<shipSize_t&,shipStatus_t>>;
+using destroyedShips_t          = std::vector<shipSize_t&>;
 
 /*
  * O = square occupied
@@ -28,14 +29,22 @@ class board
 {
     private:
     std::vector<std::vector<squareStatus_t>> board {};
-    deployedShips_t deployedShips {};
-
+    
     bool isCoordinateValid(coordinates_t);
     decodedCoordinatePair_t decodedCoordinates(coordinates_t);
     bool hit(decodedCoordinatePair_t);
 
     public:
+    board();
+    ~board();
     bool isSquareAlreadyHit(coordinates_t);
     bool shoot(coordinates_t);
     char squareStatus(coordinates_t);
 };
+
+class playerBoard : public board
+{
+    private:
+    deployedShips_t  deployedShips {};
+    destroyedShips_t destroyedShips {};
+}

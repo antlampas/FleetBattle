@@ -4,7 +4,6 @@
  *
  */
 
-
 #include "board.hpp"
 
 class matchMaster
