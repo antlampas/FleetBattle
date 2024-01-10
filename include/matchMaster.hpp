@@ -9,6 +9,7 @@
 
 using shipStatus_t std::vector<squareStatus_t>;
 using deployedSyps_t std::vector<std::pair<shipSize_t&,shipStatus_t>
+
 class matchMaster
 {
     private:
