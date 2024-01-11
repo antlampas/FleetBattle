@@ -19,6 +19,7 @@ using deployedShips_t           = std::vector<std::pair<shipSize_t&,shipStatus_t
 using destroyedShips_t          = std::vector<shipSize_t&>;
 
 /*
+ * U = unknown
  * O = square occupied
  * W = water
  * o = ship square hit
@@ -36,6 +37,8 @@ class board
     bool hit(decodedCoordinatePair_t);
 
     public:
+    board();
+    ~board();
     bool isSquareAlreadyHit(coordinates_t);
     bool shoot(coordinates_t);
     char squareStatus(coordinates_t);
