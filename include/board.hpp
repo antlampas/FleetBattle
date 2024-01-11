@@ -28,7 +28,7 @@ using destroyedShips_t          = std::vector<shipSize_t&>;
 
 class board
 {
-    private:
+    protected:
     board_t board {};
     
     private:
