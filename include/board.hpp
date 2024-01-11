@@ -39,6 +39,8 @@ class board
     public:
     board();
     ~board();
+    board_t getBoardStatus();
+    squareStatus_t getSquareStatus(coordinates_t);
     bool isSquareAlreadyHit(coordinates_t);
     bool shoot(coordinates_t);
     char squareStatus(coordinates_t);
