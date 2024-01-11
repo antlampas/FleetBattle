@@ -9,8 +9,8 @@
 class player
 {
     private:
-    unique_ptr adversairBoard {new board};
-    unique_ptr ownBoard {};
+    shared_ptr adversairBoard {};
+    shared_ptr ownBoard       {};
 
     public:
     player();
