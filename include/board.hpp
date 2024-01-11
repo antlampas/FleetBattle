@@ -43,15 +43,3 @@ class board
     bool shoot(coordinates_t);
     char squareStatus(coordinates_t);
 };
-
-class playerBoard : public board
-{
-    private:
-    deployedShips_t  deployedShips  {};
-    destroyedShips_t destroyedShips {};
-
-    public:
-    board();
-    ~board();
-    
-}

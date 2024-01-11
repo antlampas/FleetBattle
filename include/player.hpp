@@ -16,4 +16,4 @@ class player
     player();
     player(std::shared_ptr<playerBoard>);
     ~player();
-}
+};

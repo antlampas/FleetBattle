@@ -5,17 +5,15 @@
  */
 
 #include "board.hpp"
-#include "matchMaster.hpp"
-#include "player.hpp"
 
-class game
+class playerBoard : public board
 {
     private:
-    std::shared_ptr playerA     {};
-    std::shared_ptr playerB     {};
-    std::shared_ptr matchMaster {};
+    deployedShips_t  deployedShips  {};
+    destroyedShips_t destroyedShips {};
 
     public:
-    game();
-    ~game();
+    board();
+    ~board();
+    
 };
