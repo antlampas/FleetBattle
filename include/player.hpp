@@ -9,8 +9,8 @@
 class player
 {
     private:
-    std::shared_ptr<board>       adversairBoard {};
-    std::shared_ptr<playerBoard> ownBoard       {};
+    std::shared_ptr<opponentBoard> adversairBoard {};
+    std::shared_ptr<playerBoard>   ownBoard       {};
 
     public:
     player();

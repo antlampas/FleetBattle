@@ -29,7 +29,7 @@ using destroyedShips_t          = std::vector<shipSize_t&>;
 class board
 {
     private:
-    std::vector<std::vector<squareStatus_t>> board {};
+    board_t board {};
     
     private:
     bool isCoordinateValid(coordinates_t);

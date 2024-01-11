@@ -9,10 +9,9 @@
 class matchMaster
 {
     private:
-    std::unique_ptr<board> boardA {new board};
-    std::unique_ptr<board> boardB {new board};
+    std::unique_ptr<board>  boardA {new board};
+    std::unique_ptr<board>  boardB {new board};
     std::vector<shipSize_t> ships {};
 
     bool isShipSunk();
-
 };

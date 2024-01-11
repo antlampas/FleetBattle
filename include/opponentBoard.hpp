@@ -6,13 +6,9 @@
 
 #include "board.hpp"
 
-class playerBoard : public board
+class opponentBoard
 {
     private:
-    deployedShips_t  deployedShips  {};
-    destroyedShips_t destroyedShips {};
-
+    
     public:
-    board();
-    ~board();
 };
