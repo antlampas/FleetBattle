@@ -5,15 +5,17 @@
  */
 
 #include "board.hpp"
+#include "matchMaster.hpp"
+#include "player.hpp"
 
-class player
+class game
 {
     private:
-    std::shared_ptr<board>       adversairBoard {};
-    std::shared_ptr<playerBoard> ownBoard       {};
+    std::shared_ptr playerA     {};
+    std::shared_ptr playerB     {};
+    std::shared_ptr matchMaster {};
 
     public:
-    player();
-    player(std::shared_ptr<playerBoard>);
-    ~player();
+    game();
+    ~game();
 }
