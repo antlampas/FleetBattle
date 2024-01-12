@@ -30,18 +30,16 @@ class board
 {
     protected:
     board_t board {};
-    virtual bool hit(decodedCoordinatePair_t); 
+    virtual bool hit(decodedCoordinatePair_t)             = 0; 
     
     private:
     bool isCoordinateValid(coordinates_t);
     decodedCoordinatePair_t decodedCoordinates(coordinates_t);
 
     public:
-    board();
-    ~board();
-    board_t getBoardStatus();
-    squareStatus_t getSquareStatus(coordinates_t);
-    bool isSquareAlreadyHit(coordinates_t);
-    bool shoot(coordinates_t);
-    char squareStatus(coordinates_t);
+    virtual board_t getBoardStatus()                      = 0;
+    virtual squareStatus_t getSquareStatus(coordinates_t) = 0;
+    virtual bool isSquareAlreadyHit(coordinates_t)        = 0;
+    virtual bool shoot(coordinates_t)                     = 0;
+    virtual char squareStatus(coordinates_t)              = 0;
 };
