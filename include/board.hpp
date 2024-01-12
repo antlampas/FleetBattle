@@ -30,11 +30,11 @@ class board
 {
     protected:
     board_t board {};
+    virtual bool hit(decodedCoordinatePair_t); 
     
     private:
     bool isCoordinateValid(coordinates_t);
     decodedCoordinatePair_t decodedCoordinates(coordinates_t);
-    bool hit(decodedCoordinatePair_t);
 
     public:
     board();
