@@ -4,11 +4,16 @@
  *
  */
 
+#ifndef OPPONENTBOARD_HPP
+#define OPPONENTBOARD_HPP
+
 #include "board.hpp"
 
-class opponentBoard
+class opponentBoard : public board
 {
     private:
     
     public:
 };
+
+#endif

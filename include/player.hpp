@@ -4,6 +4,11 @@
  *
  */
 
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
+#include <memory>
+
 #include "board.hpp"
 
 class player
@@ -17,3 +22,5 @@ class player
     player(std::shared_ptr<playerBoard>);
     ~player();
 };
+
+#endif

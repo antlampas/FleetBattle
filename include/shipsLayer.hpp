@@ -4,7 +4,12 @@
  *
  */
 
-#include "matchMaster.hpp"
+#include <map>
 
-matchMaster::matchMaster() : boardA(std::make_unique<playerBoard>()),boardB(std::make_unique<playerBoard>())
-{}
+ #include "board.hpp"
+
+ class shipsLayer
+ {
+    private:
+    public:
+ }

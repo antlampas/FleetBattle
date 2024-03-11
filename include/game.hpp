@@ -11,9 +11,9 @@
 class game
 {
     private:
-    std::shared_ptr<player>     playerA     {};
-    std::shared_ptr<player>     playerB     {};
-    std::shared_ptr<matchMaster matchMaster {};
+    std::shared_ptr<player>     playerA {};
+    std::shared_ptr<player>     playerB {};
+    std::shared_ptr<matchMaster> mm     {};
 
     public:
     game();

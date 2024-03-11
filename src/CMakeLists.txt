@@ -3,8 +3,10 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_subdirectory(board board)
+add_subdirectory(playerBoard playerBoard)
+add_subdirectory(ships ships)
 add_subdirectory(matchMaster matchMaster)
 
 add_executable(fleetBattle main.cpp)
 
-target_link_libraries(fleetBattle PUBLIC board matchMaster)
+target_link_libraries(fleetBattle PUBLIC ships board playerBoard matchMaster)
