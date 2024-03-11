@@ -12,7 +12,6 @@
 class opponentBoard : public board
 {
     private:
-    
     public:
 };
 
