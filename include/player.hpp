@@ -20,7 +20,7 @@ class player
     public:
     player();
     player(std::shared_ptr<playerBoard>);
-    ~player();
+    void shoot(coordinates_t coordinates);
 };
 
 #endif

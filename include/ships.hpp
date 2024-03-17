@@ -8,9 +8,11 @@
 #define SHIPS_HPP
 
 #include <string>
+#include <vector>
 #include <map>
+#include <utility>
 
-using shipSize_t  = char;
+using shipSize_t  = int;
 using shipsList_t = std::map<std::string,int>;
 
 class ships
@@ -19,8 +21,11 @@ class ships
     shipsList_t shipsList;
     
     public:
+    const shipsList_t& publicShipsList;
     ships();
     ships(shipsList_t);
+    void addShip(std::pair<std::string,int>);
+    void removeShip(std::string);
 };
 
 #endif

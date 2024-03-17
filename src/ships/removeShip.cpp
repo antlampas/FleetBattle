@@ -4,12 +4,9 @@
  *
  */
 
-#include <map>
+#include "ships.hpp"
 
- #include "board.hpp"
-
- class shipsLayer
- {
-    private:
-    public:
- }
+void ships::removeShip(std::string ship)
+{
+    this->shipsList.erase(ship);
+}

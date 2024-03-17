@@ -6,7 +6,7 @@
 
 #include "ships.hpp"
 
-ships::ships()
+ships::ships()  : publicShipsList(this->shipsList)
 {
     this->shipsList.insert({"Carrier",6});
     this->shipsList.insert({"Cruiser",5});
@@ -15,7 +15,7 @@ ships::ships()
     this->shipsList.insert({"Corvette",2});
 }
 
-ships::ships(std::map<std::string,int> s)
+ships::ships(shipsList_t ships) : publicShipsList(this->shipsList)
 {
-    for(const auto& sh: s) this->shipsList.insert({sh.first,sh.second});
+    for(const auto& sh: ships) this->shipsList.insert({sh.first,sh.second});
 }

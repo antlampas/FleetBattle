@@ -2,8 +2,4 @@
 
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
-add_library(ships SHARED
-            ships.cpp
-            addShip.cpp
-            removeShip.cpp
-           )
+add_library(opponentBoard SHARED opponentBoard.cpp)

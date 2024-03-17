@@ -4,6 +4,9 @@
  *
  */
 
-#include "matchMaster.hpp"
+#include "ships.hpp"
 
-matchMaster::matchMaster(){}
+void ships::addShip(std::pair<std::string,int> ship)
+{
+    this->shipsList.insert(ship);
+}

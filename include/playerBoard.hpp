@@ -8,22 +8,22 @@
 #define PLAYERBOARD_HPP
 
 #include "board.hpp"
+#include "ships.hpp"
 
 class playerBoard : public board
 {
     private:
-    deployedShips_t  deployedShips  {};
-    destroyedShips_t destroyedShips {};
-    
+    deployedShips_t        deployedShips  {};
     private:
-    virtual bool hit(decodedCoordinatePair_t)             override final;
-
+    virtual bool           hit(decodedCoordinatePair_t)      override final;
     public:
-    virtual board_t getBoardStatus()                      override final;
-    virtual squareStatus_t getSquareStatus(coordinates_t) override final;
-    virtual bool isSquareAlreadyHit(coordinates_t)        override final;
-    virtual bool shoot(coordinates_t)                     override final;
-    virtual char squareStatus(coordinates_t)              override final;
+    playerBoard(deployedShips_t);
+    playerBoard()                                            = delete;
+    virtual board_t        getBoardStatus()                  override final;
+    virtual squareStatus_t getSquareStatus(coordinates_t)    override final;
+    virtual bool           isSquareAlreadyHit(coordinates_t) override final;
+    virtual bool           shoot(coordinates_t)              override final;
+    virtual char           squareStatus(coordinates_t)       override final;
 };
 
 #endif

@@ -10,14 +10,15 @@
 #include <vector>
 #include <utility>
 #include <string>
-
-#include "ships.hpp"
+#include <map>
 
 using coordinates_t             = std::string;
-using decodedCoordinateSingle_t = char;
+using decodedCoordinateSingle_t = int;
 using decodedCoordinatePair_t   = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
-using squareStatus_t            = char;
+using squareStatus_t            = int;
 using board_t                   = std::vector<std::vector<squareStatus_t>>;
+using shipSize_t                = int;
+using shipsList_t               = std::map<std::string,int>;
 using shipStatus_t              = std::vector<squareStatus_t>;
 using deployedShips_t           = std::vector<std::pair<shipSize_t,shipStatus_t>>;
 using destroyedShips_t          = std::vector<shipSize_t>;
@@ -32,14 +33,12 @@ using destroyedShips_t          = std::vector<shipSize_t>;
 
 class board
 {
-    private:
-    bool isCoordinateValid(coordinates_t);
-    decodedCoordinatePair_t decodedCoordinates(coordinates_t);
-
     protected:
     board_t Board {};
+    protected:
+    bool isCoordinatesValid(coordinates_t);
+    decodedCoordinatePair_t decodedCoordinates(coordinates_t);
     virtual bool hit(decodedCoordinatePair_t)             = 0; 
-
     public:
     virtual board_t getBoardStatus()                      = 0;
     virtual squareStatus_t getSquareStatus(coordinates_t) = 0;
