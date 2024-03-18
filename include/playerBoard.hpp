@@ -10,6 +10,10 @@
 #include "board.hpp"
 #include "ships.hpp"
 
+#ifdef TESTPLAYERBOARD
+#define private public
+#endif
+
 class playerBoard : public board
 {
     private:

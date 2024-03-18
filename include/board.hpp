@@ -12,6 +12,10 @@
 #include <string>
 #include <map>
 
+#ifdef TESTBOARD
+#define private public
+#endif
+
 using coordinates_t             = std::string;
 using decodedCoordinateSingle_t = int;
 using decodedCoordinatePair_t   = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;

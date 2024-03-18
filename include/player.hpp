@@ -11,6 +11,10 @@
 
 #include "board.hpp"
 
+#ifdef TESTPLAYER
+#define private public
+#endif
+
 class player
 {
     private:

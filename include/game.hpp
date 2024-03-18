@@ -8,6 +8,10 @@
 #include "matchMaster.hpp"
 #include "player.hpp"
 
+#ifdef TESTGAME
+#define private public
+#endif
+
 class game
 {
     private:

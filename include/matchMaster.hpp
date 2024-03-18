@@ -10,6 +10,10 @@
 
 #include "playerBoard.hpp"
 
+#ifdef TESTMATCHMASTER
+#define private public
+#endif
+
 class matchMaster
 {
     private:

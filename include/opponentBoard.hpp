@@ -9,6 +9,10 @@
 
 #include "board.hpp"
 
+#ifdef TESTOPPONENTBOARD
+#define private public
+#endif
+
 class opponentBoard : public board
 {
     private:

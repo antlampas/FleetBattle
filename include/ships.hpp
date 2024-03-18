@@ -12,6 +12,10 @@
 #include <map>
 #include <utility>
 
+#ifdef TESTSHIPS
+#define private public
+#endif
+
 using shipSize_t  = int;
 using shipsList_t = std::map<std::string,int>;
 
