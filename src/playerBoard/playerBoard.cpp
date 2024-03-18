@@ -25,3 +25,5 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
             throw shipNotValid{};
     }
 }
+
+playerBoard::playerBoard(){}
