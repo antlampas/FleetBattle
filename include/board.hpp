@@ -50,6 +50,7 @@ class board
     virtual bool hit(decodedCoordinatesPair_t)               = 0; 
     public:
     board();
+    virtual ~board();
     virtual board_t        getBoardStatus()                  = 0;
     virtual squareStatus_t getSquareStatus(coordinates_t)    = 0;
     virtual bool           isSquareAlreadyHit(coordinates_t) = 0;
