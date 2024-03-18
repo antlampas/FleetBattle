@@ -16,7 +16,7 @@
 class opponentBoard : public board
 {
     private:
-    virtual bool hit(decodedCoordinatePair_t)             = 0; 
+    virtual bool hit(decodedCoordinatesPair_t)             = 0; 
     public:
     virtual board_t getBoardStatus()                      = 0;
     virtual squareStatus_t getSquareStatus(coordinates_t) = 0;

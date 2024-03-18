@@ -22,7 +22,7 @@ class player
     std::shared_ptr<playerBoard>   ownBoard       {};
 
     public:
-    player();                              = delete;
+    player()                               = delete;
     player(std::shared_ptr<playerBoard>);
     void shoot(coordinates_t coordinates);
 };

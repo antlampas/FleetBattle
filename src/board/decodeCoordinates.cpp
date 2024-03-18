@@ -9,15 +9,15 @@
 #include <regex>
 #include <cctype>
 
-decodedCoordinatePair_t board::decodedCoordinates(coordinates_t coordinates)
+decodedCoordinatesPair_t board::decodeCoordinates(coordinates_t coordinates)
 {
-    decodedCoordinatePair_t decodedCoordinates {};
+    decodedCoordinatesPair_t decodedCoordinates {};
     std::size_t* p {};
     
     std::transform(coordinates.begin(), coordinates.end(), coordinates.begin(), [](unsigned char c){ return std::tolower(c); });
     
-    if(this->isCoordinatesValid(coordinates)) decodedCoordinates = decodedCoordinatePair_t{(int)coordinates.at(0) - 97,std::stoi(coordinates,++p)};
-    else                                      decodedCoordinates = decodedCoordinatePair_t{-1,-1};
+    if(this->isCoordinatesValid(coordinates)) decodedCoordinates = decodedCoordinatesPair_t{(int)coordinates.at(0) - 97,std::stoi(coordinates,++p)};
+    else                                      decodedCoordinates = decodedCoordinatesPair_t{-1,-1};
 
     return decodedCoordinates;
 }

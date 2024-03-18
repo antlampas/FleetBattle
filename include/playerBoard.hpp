@@ -19,11 +19,12 @@ class playerBoard : public board
     private:
     deployedShips_t        deployedShips {};
     board_t                shipsLayer    {};
-    private:
-    virtual bool           hit(decodedCoordinatePair_t)      override final;
+    protected:
+    virtual bool           hit(decodedCoordinatesPair_t)     override final;
     public:
     playerBoard(deployedShips_t);
     playerBoard()                                            = delete;
+    ~playerBoard(){};
     virtual board_t        getBoardStatus()                  override final;
     virtual squareStatus_t getSquareStatus(coordinates_t)    override final;
     virtual bool           isSquareAlreadyHit(coordinates_t) override final;

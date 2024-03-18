@@ -5,3 +5,6 @@
  */
 
 #include "board.hpp"
+
+board::board(){};
+board::~board(){};

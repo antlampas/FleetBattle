@@ -6,7 +6,7 @@
 
 #include "playerBoard.hpp"
 
-bool playerBoard::hit(decodedCoordinatePair_t c)
+bool playerBoard::hit(decodedCoordinatesPair_t c)
 {
     return false;
 }
