@@ -5,3 +5,8 @@
  */
 
 #include "playerBoard.hpp"
+
+bool playerBoard::shoot(coordinates_t c)
+{
+    return false;
+}

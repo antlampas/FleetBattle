@@ -6,24 +6,7 @@
 
 #include "playerBoard.hpp"
 
-
-board_t playerBoard::getBoardStatus()
+playerBoard(deployedShips_t deployedShips) : deployedShips(deployedShips)
 {
-    return {};
-}
-squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
-{
-    return {};
-}
-bool playerBoard::isSquareAlreadyHit(coordinates_t c)
-{
-    return false;
-}
-bool playerBoard::shoot(coordinates_t c)
-{
-    return false;
-}
-char playerBoard::squareStatus(coordinates_t c)
-{
-    return 'a';
+    
 }

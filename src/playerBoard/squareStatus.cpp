@@ -5,3 +5,8 @@
  */
 
 #include "playerBoard.hpp"
+
+char playerBoard::squareStatus(coordinates_t c)
+{
+    return 'a';
+}

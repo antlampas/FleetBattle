@@ -5,3 +5,8 @@
  */
 
 #include "playerBoard.hpp"
+
+board_t playerBoard::getBoardStatus()
+{
+    return {};
+}

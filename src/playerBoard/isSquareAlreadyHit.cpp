@@ -5,3 +5,8 @@
  */
 
 #include "playerBoard.hpp"
+
+bool playerBoard::isSquareAlreadyHit(coordinates_t c)
+{
+    return false;
+}

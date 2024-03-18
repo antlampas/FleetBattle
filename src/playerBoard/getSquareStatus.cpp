@@ -5,3 +5,8 @@
  */
 
 #include "playerBoard.hpp"
+
+squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
+{
+    return {};
+}
