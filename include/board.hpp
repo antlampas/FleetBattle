@@ -20,7 +20,7 @@
 using coordinates_t             = std::string;
 using decodedCoordinateSingle_t = int;
 using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
-using squareStatus_t            = int;
+using squareStatus_t            = char;
 using board_t                   = std::vector<std::vector<squareStatus_t>>;
 using shipSize_t                = int;
 using shipsList_t               = std::map<std::string,int>;
@@ -37,9 +37,9 @@ class board
 {
     /*
      * U = unknown
-     * O = square occupied
+     * S = ship square
      * W = water
-     * o = ship square hit
+     * s = ship square hit
      * w = water square hit
      */
     protected:

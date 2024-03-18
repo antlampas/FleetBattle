@@ -24,4 +24,46 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
         else
             throw shipNotValid{};
     }
+
+    for(auto deployedShip: this->deployedShips)
+    {
+        int min = 0,max = 0;
+        const int& startRow    = (this->decodeCoordinates(deployedShip)).first.first;
+        const int& endRow      = (this->decodeCoordinates(deployedShip)).second.first;
+        const int& startColumn = (this->decodeCoordinates(deployedShip)).first.second;
+        const int& endColumn   = (this->decodeCoordinates(deployedShip)).second.second;
+
+        if(startRow == endRow)
+        {
+            const int& row = startRow;
+
+            if(startRow < endRow)
+            {
+                min = startRow;
+                max = endRow;
+            }else{
+                min = endRow;
+                max = startRow;
+            }
+
+            for(int i=min;i<=max;i++)
+                this->Board.at(row).at(i) = 'S';
+        }
+        else if(startColumn == endColumn)
+        {
+            const int& column = startColumn;
+
+            if(startColumn < endColumn)
+            {
+                min = startColumn;
+                max = endColumn;
+            }else{
+                min = endColumn;
+                max = startColumn;
+            }
+
+            for(int i=min;i<=max;i++)
+                this->Board.at(i).at(column) = 'S';
+        }
+    }
 }
