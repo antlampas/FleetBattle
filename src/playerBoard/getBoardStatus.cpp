@@ -8,5 +8,5 @@
 
 board_t playerBoard::getBoardStatus()
 {
-    return {};
+    return board_t{};
 }

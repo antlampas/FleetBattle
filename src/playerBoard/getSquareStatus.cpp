@@ -8,5 +8,5 @@
 
 squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
 {
-    return {};
+    return squareStatus_t{};
 }
