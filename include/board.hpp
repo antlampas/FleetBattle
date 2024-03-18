@@ -45,9 +45,9 @@ class board
     protected:
     board_t Board {};
     protected:
-    bool isCoordinatesValid(coordinates_t);
+    bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
-    virtual bool hit(decodedCoordinatesPair_t)               = 0; 
+    virtual bool             hit(decodedCoordinatesPair_t)   = 0; 
     public:
     board();
     virtual ~board();
