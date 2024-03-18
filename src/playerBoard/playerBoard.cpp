@@ -5,6 +5,7 @@
  */
 
 #include "playerBoard.hpp"
+#include <iostream>
 
 playerBoard::playerBoard(deployedShips_t deployedShips)
 {
@@ -24,14 +25,13 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
         else
             throw shipNotValid{};
     }
-
     for(auto deployedShip: this->deployedShips)
     {
         int min = 0,max = 0;
-        const int& startRow    = this->decodeCoordinates(deployedShip.first.first);
-        const int& endRow      = this->decodeCoordinates(deployedShip.second.first);
-        const int& startColumn = this->decodeCoordinates(deployedShip.first.second);
-        const int& endColumn   = this->decodeCoordinates(deployedShip.second.second);
+        const int& startRow    = this->decodeCoordinates(deployedShip.second).first.first;
+        const int& endRow      = this->decodeCoordinates(deployedShip.second).second.first;
+        const int& startColumn = this->decodeCoordinates(deployedShip.second).first.second;
+        const int& endColumn   = this->decodeCoordinates(deployedShip.second).second.second;
 
         if(startRow == endRow)
         {
