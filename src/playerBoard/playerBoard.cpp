@@ -26,4 +26,4 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
     }
 }
 
-playerBoard::playerBoard(){}
+playerBoard::~playerBoard(){}
