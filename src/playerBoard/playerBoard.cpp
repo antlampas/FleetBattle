@@ -46,7 +46,7 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
             }
 
             for(int i=min;i<=max;i++)
-                this->Board.at(row).at(i) = 'S';
+                this->shipsLayer.at(row).at(i) = 'S';
         }
         else if(startColumn == endColumn)
         {
@@ -62,7 +62,7 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
             }
 
             for(int i=min;i<=max;i++)
-                this->Board.at(i).at(column) = 'S';
+                this->shipsLayer.at(i).at(column) = 'S';
         }
     }
 }
