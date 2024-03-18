@@ -5,7 +5,6 @@
  */
 
 #include "playerBoard.hpp"
-#include <iostream>
 
 playerBoard::playerBoard(deployedShips_t deployedShips)
 {
@@ -32,7 +31,7 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
         const int& endRow      = this->decodeCoordinates(deployedShip.second.second).first;
         const int& startColumn = this->decodeCoordinates(deployedShip.second.first).second;
         const int& endColumn   = this->decodeCoordinates(deployedShip.second.second).second;
-
+       
         if(startRow == endRow)
         {
             const int& row = startRow;
