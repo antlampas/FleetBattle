@@ -42,13 +42,13 @@ class board
     protected:
     bool isCoordinatesValid(coordinates_t);
     decodedCoordinatePair_t decodedCoordinates(coordinates_t);
-    virtual bool hit(decodedCoordinatePair_t)             = 0; 
+    virtual bool hit(decodedCoordinatePair_t)                  = 0; 
     public:
-    virtual board_t getBoardStatus()                      = 0;
-    virtual squareStatus_t getSquareStatus(coordinates_t) = 0;
-    virtual bool isSquareAlreadyHit(coordinates_t)        = 0;
-    virtual bool shoot(coordinates_t)                     = 0;
-    virtual char squareStatus(coordinates_t)              = 0;
+    virtual board_t getBoardStatus()                           = 0;
+    virtual squareStatus_t getSquareStatus(coordinates_t)      = 0;
+    virtual bool isSquareAlreadyHit(coordinates_t)             = 0;
+    virtual bool shoot(coordinates_t)                          = 0;
+    virtual char squareStatus(coordinates_t)                   = 0;
 };
 
 #endif

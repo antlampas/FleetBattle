@@ -21,5 +21,4 @@ class game
 
     public:
     game();
-    ~game();
 };
