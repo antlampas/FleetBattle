@@ -14,12 +14,13 @@ int main(int argc,char** argv)
     ds.push_back(std::pair<std::string,std::string>{"b3","b5"});
     ds.push_back(std::pair<std::string,std::string>{"c3","c5"});
     ds.push_back(std::pair<std::string,std::string>{"g6","i6"});
+    ds.push_back(std::pair<std::string,std::string>{"g10","j10"});
 
     try
     {
         playerBoard pb {ds};
     }
-    catch(std::exception e)
+    catch(shipNotValid e)
     {
         std::cout << e.what() << std::endl;
     }
