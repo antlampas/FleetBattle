@@ -3,11 +3,12 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(playerBoard SHARED
-            playerBoard.cpp
+            applyShipsLayer.cpp
             getBoardStatus.cpp
             getSquareStatus.cpp
             hit.cpp
             isSquareAlreadyHit.cpp
+            playerBoard.cpp
             shoot.cpp
             squareStatus.cpp
            )

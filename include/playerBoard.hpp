@@ -19,6 +19,8 @@ class playerBoard : public board
     private:
     deployedShips_t        deployedShips {};
     board_t                shipsLayer    {};
+    private:
+    board_t                applyShipsLayer();
     protected:
     virtual bool           hit(decodedCoordinatesPair_t)     override final;
     public:

@@ -25,6 +25,14 @@ int main(int argc,char** argv)
             std::cout << column << " ";
         std::cout << std::endl;
     }
-
+    for(int i=0;i<std::string{"abcdefghij"}.size();i++)
+    {
+        std::string row = std::string{"abcdefghij"}.substr(i,1);
+        for(auto column: {1,2,3,4,5,6,7,8,9,10})
+        {
+            std::string coord {row};
+            std::cout << pb.getSquareStatus(coord.append(std::to_string(column))) << std::endl;
+        }
+    }
     return -1;
 }
