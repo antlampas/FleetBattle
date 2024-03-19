@@ -14,9 +14,9 @@ int main(int argc,char** argv)
     ds.push_back(std::pair<std::string,std::string>{"b3","b5"});
 
     std::size_t pos{};
-
+    pos++;
     std::cout << pos << std::endl;
-    
+
     playerBoard pb(ds);
 
     return -1;
