@@ -11,13 +11,6 @@
 playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
 {
     for(auto row: {0,1,2,3,4,5,6,7,8,9}) this->shipsLayer.push_back(std::vector<squareStatus_t>(10,'U'));
-    
-    for(auto row: {0,1,2,3,4,5,6,7,8,9}){
-        for(auto column: {0,1,2,3,4,5,6,7,8,9})
-            std::cout << this->shipsLayer.at(row).at(column) << " ";
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
 
     for(auto ship: deployedShips)
     {
