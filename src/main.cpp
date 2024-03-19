@@ -13,7 +13,14 @@ int main(int argc,char** argv)
     ds.push_back(std::pair<std::string,std::string>{"b1","f1"});
     ds.push_back(std::pair<std::string,std::string>{"b3","b5"});
 
-    playerBoard pb {ds};
+    try
+    {
+        playerBoard pb {ds};
+    }
+    catch(std::exception e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 
     return -1;
 }
