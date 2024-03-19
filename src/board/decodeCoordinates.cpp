@@ -13,7 +13,7 @@ decodedCoordinatesPair_t board::decodeCoordinates(coordinates_t coordinates)
 {
     decodedCoordinatesPair_t decodedCoordinates {}; 
     std::size_t* pos{};
-    *pos++;
+    (*pos)++;
     
     std::transform(coordinates.begin(), coordinates.end(), coordinates.begin(), [](unsigned char c){ return std::tolower(c); });
     
