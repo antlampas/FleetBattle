@@ -17,6 +17,7 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
             std::cout << this->shipsLayer.at(row).at(column) << " ";
         std::cout << std::endl;
     }
+    std::cout << std::endl;
 
     for(auto ship: deployedShips)
     {

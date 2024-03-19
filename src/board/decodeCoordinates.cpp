@@ -9,8 +9,6 @@
 #include <regex>
 #include <cctype>
 
-#include <iostream>
-
 decodedCoordinatesPair_t board::decodeCoordinates(coordinates_t coordinates)
 {
     decodedCoordinatesPair_t decodedCoordinates {}; 
