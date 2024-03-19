@@ -11,11 +11,8 @@ squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
     decodedCoordinatesPair_t coordinates = this->decodeCoordinates(c);
     if(coordinates != std::pair<int,int>(-1,-1))
     {
-        board_t b {this->Board};
-        for(auto row: {0,1,2,3,4,5,6,7,8,9})
-            for(auto column: {0,1,2,3,4,5,6,7,8,9})
-                if(this->shipsLayer.at(row).at(column) != 'U')
-                    b.at(row).at(column) = this->shipsLayer.at(row).at(column);
+        board_t b {this->applyShipsLayer()};
+
         return b.at(coordinates.first).at(coordinates.second);
     }
     return 'U';

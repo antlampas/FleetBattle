@@ -16,7 +16,9 @@ bool playerBoard::isSquareAlreadyHit(coordinates_t c)
         std::regex alreadyHit {"[ws]"};
         board_t b {this->applyShipsLayer()};
         if(std::regex_match(b))
+            return true;
+        else
+            return false;
     }
-
     return false;
 }
