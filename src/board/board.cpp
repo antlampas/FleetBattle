@@ -18,6 +18,7 @@ board::board() : Board({})
             std::cout << this->Board.at(row).at(column) << " ";
         std::cout << std::endl;
     }
+    std::cout << std::endl;
 }
 
 board::~board(){}
