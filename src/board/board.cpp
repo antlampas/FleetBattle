@@ -11,7 +11,7 @@
 board::board() : Board({})
 {
     for(auto row: {0,1,2,3,4,5,6,7,8,9})
-        this->Board.push_back(std::vector<squareStatus_t>{10,'W'});
+        this->Board.push_back(std::vector<squareStatus_t>(10,'W'));
 
     for(auto row: {0,1,2,3,4,5,6,7,8,9}){
         for(auto column: {0,1,2,3,4,5,6,7,8,9})
