@@ -8,8 +8,7 @@
 
 board_t playerBoard::getBoardStatus()
 {
-    board_t         b  {this->Board};
-    deployedShips_t ds {this->deployedShips};
+    board_t b  {this->Board};
 
     return board_t{};
 }

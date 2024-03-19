@@ -7,6 +7,7 @@
 
 int main(int argc,char** argv)
 {
-
+    playerBoard pb;
+    
     return -1;
 }

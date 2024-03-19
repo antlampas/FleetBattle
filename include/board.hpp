@@ -25,7 +25,7 @@ using board_t                   = std::vector<std::vector<squareStatus_t>>;
 using shipSize_t                = int;
 using shipsList_t               = std::map<std::string,int>;
 using shipStatus_t              = std::vector<squareStatus_t>;
-using deployedShips_t           = std::map<std::string,std::pair<std::string,std::string>>;
+using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
 using destroyedShips_t          = std::vector<std::string>;
 
 class boardConstructionError  : public std::exception {};
@@ -43,7 +43,7 @@ class board
      * w = water square hit
      */
     protected:
-    board_t Board {};
+    board_t Board;
     protected:
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);

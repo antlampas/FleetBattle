@@ -6,31 +6,39 @@
 
 #include "playerBoard.hpp"
 
-playerBoard::playerBoard(deployedShips_t deployedShips)
+#include <iostream>
+
+playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
 {
+    for(auto i: {0,1,2,3,4,5,6,7,8,9}) this->shipsLayer.push_back(std::vector<squareStatus_t>{10,'U'});
+    
+    for(auto row: {0,1,2,3,4,5,6,7,8,9}){
+        for(auto column: {0,1,2,3,4,5,6,7,8,9})
+            std::cout << this->shipsLayer.at(row).at(column) << " ";
+        std::cout << std::endl;
+    }
+
     for(auto ship: deployedShips)
     {
-        std::string shipName = ship.first;
-        std::pair<std::string,std::string> shipCoordinates = ship.second;
         std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
-        decodedShipCoordinates.first  = this->decodeCoordinates(shipCoordinates.first);
-        decodedShipCoordinates.second = this->decodeCoordinates(shipCoordinates.second);
-        bool isOnSameRow              = (decodedShipCoordinates.first.first == decodedShipCoordinates.second.first);
+        decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
+        decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
+        bool isOnSameRow              = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
         bool isOnSameColumn           = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
         bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
 
         if(((decodedShipCoordinates.first != std::pair<int,int>(-1,-1)) || (decodedShipCoordinates.second != std::pair<int,int>(-1,-1))) && isVerticalOrHorizontal)
-            this->deployedShips.insert(std::pair<std::string,std::pair<std::string,std::string>>(shipName,shipCoordinates));
+            this->deployedShips.push_back(ship);
         else
             throw shipNotValid{};
     }
     for(auto deployedShip: this->deployedShips)
     {
         int min = 0,max = 0;
-        const int& startRow    = this->decodeCoordinates(deployedShip.second.first).first;
-        const int& endRow      = this->decodeCoordinates(deployedShip.second.second).first;
-        const int& startColumn = this->decodeCoordinates(deployedShip.second.first).second;
-        const int& endColumn   = this->decodeCoordinates(deployedShip.second.second).second;
+        const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
+        const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
+        const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
+        const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
        
         if(startRow == endRow)
         {
@@ -64,5 +72,11 @@ playerBoard::playerBoard(deployedShips_t deployedShips)
             for(int i=min;i<=max;i++)
                 this->shipsLayer.at(i).at(column) = 'S';
         }
+    }
+
+    for(auto row: {0,1,2,3,4,5,6,7,8,9}){
+        for(auto column: {0,1,2,3,4,5,6,7,8,9})
+            std::cout << this->shipsLayer.at(row).at(column) << " ";
+        std::cout << std::endl;
     }
 }
