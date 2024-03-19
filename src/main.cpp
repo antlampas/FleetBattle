@@ -9,21 +9,11 @@ int main(int argc,char** argv)
 {
     deployedShips_t ds {};
 
-    for(auto i: {0,1,2,3,4,5,6,7,8,9}) ds.push_back(std::vector<squareStatus_t>{10,'W'});
-    
-    ds.at(0).at(0) = 'S';
-    ds.at(0).at(1) = 'S';
+    ds.push_back(std::pair<std::string,std::string>{"a1","a3"});
+    ds.push_back(std::pair<std::string,std::string>{"b1","f1"});
+    ds.push_back(std::pair<std::string,std::string>{"b3","b5"});
 
-    ds.at(1).at(0) = 'S';
-    ds.at(2).at(0) = 'S';
-    ds.at(3).at(0) = 'S';
-
-    ds.at(0).at(3) = 'S';
-    ds.at(1).at(3) = 'S';
-    ds.at(2).at(3) = 'S';
-    ds.at(3).at(3) = 'S';
-
-    playerBoard pb;
+    playerBoard pb(ds);
 
     return -1;
 }
