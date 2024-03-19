@@ -54,7 +54,7 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
         {
             const int& column = startColumn;
 
-            if(startColumn < endColumn)
+            if(startRow < endRow)
             {
                 min = startRow;
                 max = endRow;
