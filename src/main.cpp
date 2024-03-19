@@ -15,14 +15,15 @@ int main(int argc,char** argv)
     ds.push_back(std::pair<std::string,std::string>{"c3","c5"});
     ds.push_back(std::pair<std::string,std::string>{"g6","i6"});
     ds.push_back(std::pair<std::string,std::string>{"g10","j10"});
+    
+    playerBoard pb {ds};
 
-    try
-    {
-        playerBoard pb {ds};
-    }
-    catch(shipNotValid e)
-    {
-        std::cout << e.what() << std::endl;
+    board_t bs = pb.getBoardStatus();
+
+    for(auto row: bs){
+        for(auto column: row)
+            std::cout << column << " ";
+        std::cout << std::endl;
     }
 
     return -1;
