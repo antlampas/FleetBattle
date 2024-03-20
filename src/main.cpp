@@ -25,10 +25,12 @@ int main(int argc,char** argv)
             std::cout << column << " ";
         std::cout << std::endl;
     }
+    std::cout << std::endl;
 
     for(auto c: {"a1","b5","h6","b2","a3"})
     {
         pb.shoot(c);
+        board_t bs = pb.getBoardStatus();
         for(auto row: bs){
             for(auto column: row)
                 std::cout << column << " ";

@@ -6,32 +6,22 @@
 
 #include "playerBoard.hpp"
 
-#include <regex>
-
 bool playerBoard::hit(coordinates_t c)
 {
     try
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
-        
-        std::regex alreadyHit {"[ws]"};
-        std::regex stillNotHit {"[WS]"};
 
-        if(std::regex_match(this->shipsLayer.at(coordinates.first).at(coordinates.second),stillNotHit))
-            if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
-            {
-                this->setSquareStatus(c,'s');
-                return true;
-            }
-            else
-            {
-                this->setSquareStatus(c,'w');
-                return false;
-            }
+        if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
+        {
+            this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
+            this->setSquareStatus(c,'s');
+            return true;
+        }
         else
-            throw squareAlreadyHit{};
+            return false;
     }
-    catch(coordinatesNotValid& e)
+    catch(coordinatesNotValid)
     {
         throw;
     }

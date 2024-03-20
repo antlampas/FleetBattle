@@ -14,23 +14,18 @@ shootStatus_t playerBoard::shoot(coordinates_t c)
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
         
-        std::regex alreadyHit {"[ws]"};
+        std::regex stillNotHit {"[WS]"};
 
-        if(!std::regex_match(std::string(1,this->getSquareStatus(c)),alreadyHit))
-            if(this->hit(c)){
-                returnCodes code = HIT;
+        if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
+            if(this->hit(c))
                 return this->HIT;
-            }
             else
             {
-                returnCodes code = MISSED;
+                this->setSquareStatus(c,'w');
                 return this->MISSED;
             }
         else
-        {
-            returnCodes code = SQUARE_ALREADY_HIT;
             return this->SQUARE_ALREADY_HIT;
-        }
     }
     catch(coordinatesNotValid& e)
     {
