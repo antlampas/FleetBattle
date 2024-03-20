@@ -23,17 +23,21 @@ using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoo
 using squareStatus_t            = char;
 using shootStatus_t             = unsigned short int;
 using board_t                   = std::vector<std::vector<squareStatus_t>>;
-using shipSize_t                = unsigned short int;
-using shipsList_t               = std::map<std::string,unsigned short int>;
 using shipStatus_t              = std::vector<squareStatus_t>;
 using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
 using destroyedShips_t          = std::vector<std::string>;
+#ifndef shipSize_t
+using shipSize_t  = unsigned short int;
+#endif
+#ifndef shipsList_t
+using shipsList_t = std::map<std::string,unsigned short int>;
+#endif
 
+class unknownError            : public std::exception {};
 class boardConstructionError  : public std::exception {};
 class shipNotValid            : public std::exception {};
 class coordinatesNotValid     : public std::exception {};
 class notHorizontalOrVertical : public std::exception {};
-class squareAlreadyHit        : public std::exception {};
 
 class board
 {
@@ -46,6 +50,8 @@ class board
      */
     protected:
     board_t Board;
+    enum codes {HIT,MISSED,SQUARE_ALREADY_HIT};
+    codes returnCodes;
     protected:
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);

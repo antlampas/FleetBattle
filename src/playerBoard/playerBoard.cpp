@@ -21,7 +21,7 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
         bool isOnSameColumn           = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
         bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
 
-        if(((decodedShipCoordinates.first != std::pair<int,int>(-1,-1)) || (decodedShipCoordinates.second != std::pair<int,int>(-1,-1))) && isVerticalOrHorizontal)
+        if(((decodedShipCoordinates.first != std::pair<unsigned short int,unsigned short int>(-1,-1)) || (decodedShipCoordinates.second != std::pair<unsigned short int,unsigned short int>(-1,-1))) && isVerticalOrHorizontal)
             this->deployedShips.push_back(ship);
         else
             throw shipNotValid{};

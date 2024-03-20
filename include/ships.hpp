@@ -16,8 +16,12 @@
 #define private public
 #endif
 
-using shipSize_t  = int;
-using shipsList_t = std::map<std::string,int>;
+#ifndef shipSize_t
+using shipSize_t  = unsigned short int;
+#endif
+#ifndef shipsList_t
+using shipsList_t = std::map<std::string,unsigned short int>;
+#endif
 
 class ships
 {

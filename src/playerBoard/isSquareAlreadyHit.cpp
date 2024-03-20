@@ -10,8 +10,20 @@
 
 bool playerBoard::isSquareAlreadyHit(coordinates_t c)
 {
-    decodedCoordinatesPair_t coordinates = this->decodeCoordinates(c);
-    if(coordinates != std::pair<int,int>(-1,-1))
+    try
+    {
+        decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+    }
+    catch(coordinatesNotValid& e)
+    {
+        throw e;
+    }
+    catch(...)
+    {
+        throw unknownError()
+    }
+    
+    if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
     {
         std::regex alreadyHit {"[ws]"};
         board_t b {this->applyShipsLayer()};

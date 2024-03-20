@@ -8,19 +8,25 @@
 
 shootStatus_t playerBoard::shoot(coordinates_t c)
 {
-    decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+    try
+    {
+        decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+    }
+    catch(coordinatesNotValid& e)
+    {
+        throw e;
+    }
+    catch(...)
+    {
+        throw unknownError()
+    }
     
     std::regex alreadyHit {"[ws]"};
-    std::regex stillNotHit {"[WS]"};
 
-    if(coordinates != std::pair<int,int>(-1,-1))
-        if(!std::regex_match(std::string(1,this->getSquareStatus(c)),alreadyHit))
-            if(std::regex_match(std::string(1,this->shipsLayer.at(coordinates.first).at(coordinates.second)),stillNotHit))
-                if(this->hit(c))
-                    return 1;
-                else
-                    return 0;
-            else throw squareAlreadyHit();
-        else throw squareAlreadyHit();
-    else throw coordinatesNotValid();
+    if(!std::regex_match(std::string(1,this->getSquareStatus(c)),alreadyHit))
+        if(this->hit(c))
+            return this->returnCodes.HIT;
+        else
+            return this->returnCodes.MISSED;
+    else return this->returnCodes.SQUARE_ALREADY_HIT;
 }

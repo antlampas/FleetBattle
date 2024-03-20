@@ -8,5 +8,18 @@
 
 char playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
 {
+    try
+    {
+        decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+    }
+    catch(coordinatesNotValid& e)
+    {
+        throw e;
+    }
+    catch(...)
+    {
+        throw unknownError()
+    }
+    
     return 'a';
 }
