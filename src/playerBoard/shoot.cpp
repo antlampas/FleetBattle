@@ -6,7 +6,21 @@
 
 #include "playerBoard.hpp"
 
-bool playerBoard::shoot(coordinates_t c)
+shootStatus_t playerBoard::shoot(coordinates_t c)
 {
-    return false;
+    decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+    
+    std::regex alreadyHit {"[ws]"};
+    std::regex stillNotHit {"[WS]"};
+
+    if(coordinates != std::pair<int,int>(-1,-1))
+        if(!std::regex_match(std::string(1,this->getSquareStatus(c)),alreadyHit))
+            if(std::regex_match(std::string(1,this->shipsLayer.at(coordinates.first).at(coordinates.second)),stillNotHit))
+                if(this->hit(c))
+                    return 1;
+                else
+                    return 0;
+            else throw squareAlreadyHit();
+        else throw squareAlreadyHit();
+    else throw coordinatesNotValid();
 }

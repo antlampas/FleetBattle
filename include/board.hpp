@@ -18,12 +18,13 @@
 #endif
 
 using coordinates_t             = std::string;
-using decodedCoordinateSingle_t = int;
+using decodedCoordinateSingle_t = unsigned short int;
 using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
 using squareStatus_t            = char;
+using shootStatus_t             = unsigned short int;
 using board_t                   = std::vector<std::vector<squareStatus_t>>;
-using shipSize_t                = int;
-using shipsList_t               = std::map<std::string,int>;
+using shipSize_t                = unsigned short int;
+using shipsList_t               = std::map<std::string,unsigned short int>;
 using shipStatus_t              = std::vector<squareStatus_t>;
 using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
 using destroyedShips_t          = std::vector<std::string>;
@@ -48,15 +49,15 @@ class board
     protected:
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
-    virtual bool             hit(coordinates_t)                          = 0; 
+    virtual bool             hit(coordinates_t)                            = 0; 
     public:
     board();
     virtual ~board();
-    virtual board_t        getBoardStatus()                              = 0;
-    virtual squareStatus_t getSquareStatus(coordinates_t)                = 0;
-    virtual bool           isSquareAlreadyHit(coordinates_t)             = 0;
-    virtual bool           shoot(coordinates_t)                          = 0;
-    virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) = 0;
+    virtual board_t          getBoardStatus()                              = 0;
+    virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
+    virtual bool             isSquareAlreadyHit(coordinates_t)             = 0;
+    virtual shootStatus_t    shoot(coordinates_t)                          = 0;
+    virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
 };
 
 #endif
