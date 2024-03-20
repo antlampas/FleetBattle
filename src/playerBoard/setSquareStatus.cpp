@@ -6,7 +6,7 @@
 
 #include "playerBoard.hpp"
 
-char playerBoard::squareStatus(coordinates_t c)
+char playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
 {
     return 'a';
 }

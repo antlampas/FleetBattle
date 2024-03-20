@@ -32,6 +32,7 @@ class boardConstructionError  : public std::exception {};
 class shipNotValid            : public std::exception {};
 class coordinatesNotValid     : public std::exception {};
 class notHorizontalOrVertical : public std::exception {};
+class squareAlreadyHit        : public std::exception {};
 
 class board
 {
@@ -47,15 +48,15 @@ class board
     protected:
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
-    virtual bool             hit(decodedCoordinatesPair_t)   = 0; 
+    virtual bool             hit(coordinates_t)                          = 0; 
     public:
     board();
     virtual ~board();
-    virtual board_t        getBoardStatus()                  = 0;
-    virtual squareStatus_t getSquareStatus(coordinates_t)    = 0;
-    virtual bool           isSquareAlreadyHit(coordinates_t) = 0;
-    virtual bool           shoot(coordinates_t)              = 0;
-    virtual squareStatus_t setSquareStatus(coordinates_t)    = 0;
+    virtual board_t        getBoardStatus()                              = 0;
+    virtual squareStatus_t getSquareStatus(coordinates_t)                = 0;
+    virtual bool           isSquareAlreadyHit(coordinates_t)             = 0;
+    virtual bool           shoot(coordinates_t)                          = 0;
+    virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) = 0;
 };
 
 #endif
