@@ -15,13 +15,24 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
     for(auto ship: deployedShips)
     {
         std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
-        decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
-        decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
+        try
+        {
+            decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
+            decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
+        }
+        catch(coordinatesNotValid)
+        {
+            throw;
+        }
+        catch(...)
+        {
+            throw unknownError{};
+        }
         bool isOnSameRow              = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
         bool isOnSameColumn           = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
         bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
 
-        if(((decodedShipCoordinates.first != std::pair<unsigned short int,unsigned short int>(-1,-1)) || (decodedShipCoordinates.second != std::pair<unsigned short int,unsigned short int>(-1,-1))) && isVerticalOrHorizontal)
+        if(isVerticalOrHorizontal)
             this->deployedShips.push_back(ship);
         else
             throw shipNotValid{};
@@ -29,10 +40,21 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
     for(auto deployedShip: this->deployedShips)
     {
         int min = 0,max = 0;
-        const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
-        const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
-        const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
-        const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
+        try
+        {
+            const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
+            const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
+            const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
+            const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
+        }
+        catch(coordinatesNotValid)
+        {
+            throw;
+        }
+        catch(...)
+        {
+            throw unknownError{};
+        }
        
         if(startRow == endRow)
         {

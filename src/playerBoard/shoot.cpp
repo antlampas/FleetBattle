@@ -14,13 +14,13 @@ shootStatus_t playerBoard::shoot(coordinates_t c)
     }
     catch(coordinatesNotValid& e)
     {
-        throw e;
+        throw;
     }
     catch(...)
     {
-        throw unknownError()
+        throw unknownError{};
     }
-    
+
     std::regex alreadyHit {"[ws]"};
 
     if(!std::regex_match(std::string(1,this->getSquareStatus(c)),alreadyHit))

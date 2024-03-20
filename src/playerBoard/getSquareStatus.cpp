@@ -14,13 +14,13 @@ squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
     }
     catch(coordinatesNotValid& e)
     {
-        throw e;
+        throw;
     }
     catch(...)
     {
-        throw unknownError()
+        throw unknownError{};
     }
-    
+
     if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
     {
         board_t b {this->applyShipsLayer()};

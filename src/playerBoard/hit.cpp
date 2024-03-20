@@ -16,11 +16,11 @@ bool playerBoard::hit(coordinates_t c)
     }
     catch(coordinatesNotValid& e)
     {
-        throw e;
+        throw;
     }
     catch(...)
     {
-        throw unknownError()
+        throw unknownError{};
     }
     
     std::regex alreadyHit {"[ws]"};

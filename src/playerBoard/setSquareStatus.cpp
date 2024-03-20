@@ -12,14 +12,14 @@ char playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
     }
-    catch(coordinatesNotValid& e)
+    catch(coordinatesNotValid)
     {
-        throw e;
+        throw;
     }
     catch(...)
     {
-        throw unknownError()
+        throw unknownError{};
     }
-    
+
     return 'a';
 }
