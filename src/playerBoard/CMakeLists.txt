@@ -10,5 +10,5 @@ add_library(playerBoard SHARED
             isSquareAlreadyHit.cpp
             playerBoard.cpp
             shoot.cpp
-            squareStatus.cpp
+            setSquareStatus.cpp
            )

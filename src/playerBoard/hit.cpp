@@ -8,5 +8,9 @@
 
 bool playerBoard::hit(decodedCoordinatesPair_t c)
 {
+    decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+
+    if(coordinates != std::pair<int,int>(-1,-1))
+        if(this->squareStatus(c))
     return false;
 }

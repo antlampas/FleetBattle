@@ -30,7 +30,7 @@ class playerBoard : public board
     virtual squareStatus_t getSquareStatus(coordinates_t)    override final;
     virtual bool           isSquareAlreadyHit(coordinates_t) override final;
     virtual bool           shoot(coordinates_t)              override final;
-    virtual char           squareStatus(coordinates_t)       override final;
+    virtual squareStatus_t setSquareStatus(coordinates_t)    override final;
 };
 
 #endif

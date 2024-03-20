@@ -55,7 +55,7 @@ class board
     virtual squareStatus_t getSquareStatus(coordinates_t)    = 0;
     virtual bool           isSquareAlreadyHit(coordinates_t) = 0;
     virtual bool           shoot(coordinates_t)              = 0;
-    virtual char           squareStatus(coordinates_t)       = 0;
+    virtual squareStatus_t setSquareStatus(coordinates_t)    = 0;
 };
 
 #endif
