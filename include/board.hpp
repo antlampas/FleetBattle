@@ -50,8 +50,7 @@ class board
      */
     protected:
     board_t Board;
-    enum codes {HIT,MISSED,SQUARE_ALREADY_HIT};
-    codes returnCodes;
+    enum returnCodes {HIT,MISSED,SQUARE_ALREADY_HIT};
     protected:
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);

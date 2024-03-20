@@ -46,6 +46,38 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
             const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
             const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
             const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
+            if(startRow == endRow)
+            {
+                const int& row = startRow;
+
+                if(startColumn < endColumn)
+                {
+                    min = startColumn;
+                    max = endColumn;
+                }else{
+                    min = endColumn;
+                    max = startColumn;
+                }
+
+                for(int i=min;i<=max;i++)
+                    this->shipsLayer.at(row).at(i) = 'S';
+            }
+            else if(startColumn == endColumn)
+            {
+                const int& column = startColumn;
+
+                if(startRow < endRow)
+                {
+                    min = startRow;
+                    max = endRow;
+                }else{
+                    min = endRow;
+                    max = startRow;
+                }
+
+                for(int i=min;i<=max;i++)
+                    this->shipsLayer.at(i).at(column) = 'S';
+            }
         }
         catch(coordinatesNotValid)
         {
@@ -54,39 +86,6 @@ playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({})
         catch(...)
         {
             throw unknownError{};
-        }
-       
-        if(startRow == endRow)
-        {
-            const int& row = startRow;
-
-            if(startColumn < endColumn)
-            {
-                min = startColumn;
-                max = endColumn;
-            }else{
-                min = endColumn;
-                max = startColumn;
-            }
-
-            for(int i=min;i<=max;i++)
-                this->shipsLayer.at(row).at(i) = 'S';
-        }
-        else if(startColumn == endColumn)
-        {
-            const int& column = startColumn;
-
-            if(startRow < endRow)
-            {
-                min = startRow;
-                max = endRow;
-            }else{
-                min = endRow;
-                max = startRow;
-            }
-
-            for(int i=min;i<=max;i++)
-                this->shipsLayer.at(i).at(column) = 'S';
         }
     }
 }

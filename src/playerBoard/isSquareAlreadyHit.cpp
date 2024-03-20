@@ -13,6 +13,16 @@ bool playerBoard::isSquareAlreadyHit(coordinates_t c)
     try
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+        if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
+        {
+            std::regex alreadyHit {"[ws]"};
+            board_t b {this->applyShipsLayer()};
+            if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
+                return true;
+            else
+                return false;
+        }
+        return false;
     }
     catch(coordinatesNotValid& e)
     {
@@ -20,17 +30,7 @@ bool playerBoard::isSquareAlreadyHit(coordinates_t c)
     }
     catch(...)
     {
-        throw unknownError()
+        throw unknownError{};
     }
     
-    if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
-    {
-        std::regex alreadyHit {"[ws]"};
-        board_t b {this->applyShipsLayer()};
-        if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
-            return true;
-        else
-            return false;
-    }
-    return false;
 }

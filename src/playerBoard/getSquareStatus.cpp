@@ -11,6 +11,12 @@ squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
     try
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+        if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
+        {
+            board_t b {this->applyShipsLayer()};
+
+            return b.at(coordinates.first).at(coordinates.second);
+        }
     }
     catch(coordinatesNotValid& e)
     {
@@ -21,11 +27,6 @@ squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
         throw unknownError{};
     }
 
-    if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
-    {
-        board_t b {this->applyShipsLayer()};
 
-        return b.at(coordinates.first).at(coordinates.second);
-    }
     return 'U';
 }
