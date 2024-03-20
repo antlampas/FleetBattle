@@ -22,7 +22,7 @@ class opponentBoard : public board
     virtual squareStatus_t getSquareStatus(coordinates_t) = 0;
     virtual bool isSquareAlreadyHit(coordinates_t)        = 0;
     virtual shootStatus_t shoot(coordinates_t)            = 0;
-    virtual char squareStatus(coordinates_t)              = 0;
+    virtual squareStatus_t squareStatus(coordinates_t)    = 0;
 };
 
 #endif

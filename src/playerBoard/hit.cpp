@@ -13,19 +13,23 @@ bool playerBoard::hit(coordinates_t c)
     try
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+        
         std::regex alreadyHit {"[ws]"};
         std::regex stillNotHit {"[WS]"};
 
-        if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
-        {
-            this->setSquareStatus(c,'s');
-            return true;
-        }
+        if(std::regex_match(this->shipsLayer.at(coordinates.first).at(coordinates.second),stillNotHit))
+            if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
+            {
+                this->setSquareStatus(c,'s');
+                return true;
+            }
+            else
+            {
+                this->setSquareStatus(c,'w');
+                return false;
+            }
         else
-        {
-            this->setSquareStatus(c,'w');
-            return false;
-        }
+            throw squareAlreadyHit{};
     }
     catch(coordinatesNotValid& e)
     {

@@ -11,6 +11,10 @@ char playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
     try
     {
         decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+
+        this->Board.at(coordinates.first).at(coordinates.second) = s;
+        
+        return s;
     }
     catch(coordinatesNotValid)
     {
@@ -21,5 +25,4 @@ char playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
         throw unknownError{};
     }
 
-    return 'a';
 }
