@@ -24,12 +24,12 @@ shootStatus_t playerBoard::shoot(coordinates_t c)
             else
             {
                 returnCodes code = MISSED;
-                return MISSED;
+                return this->MISSED;
             }
         else
         {
             returnCodes code = SQUARE_ALREADY_HIT;
-            return SQUARE_ALREADY_HIT;
+            return this->SQUARE_ALREADY_HIT;
         }
     }
     catch(coordinatesNotValid& e)
