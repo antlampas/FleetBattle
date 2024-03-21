@@ -14,17 +14,22 @@
 #define private public
 #endif
 
+using playerInTurn_t = char;
+
 class matchMaster
 {
     private:
-    std::vector<shipSize_t> ships {};
-    std::unique_ptr<board>  boardA;
-    std::unique_ptr<board>  boardB;
-
+    std::pair<playerInTurn_t,std::vector<std::vector<squareStatus_T>>> ships;
+    std::unique_ptr<board>       boardA;
+    std::unique_ptr<board>       boardB;
+    std::unique_ptr<std::string> command;
+    playerInTurn_t playerInTurn;
+    private:
     bool isShipSunk();
 
     public:
-    matchMaster();
+    matchMaster() = delete;
+    matchMaster(board bA,board bB,std::string cA,std::string cB);
 };
 
 #endif
