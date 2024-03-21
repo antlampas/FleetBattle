@@ -56,7 +56,7 @@ class board
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
     virtual bool             hit(coordinates_t)                            = 0; 
     public:
-    enum returnCodes {HIT,MISSED,SQUARE_ALREADY_HIT};
+    enum shootReturnCodes {HIT,MISSED,SQUARE_ALREADY_HIT};
     public:
     board();
     virtual ~board();
