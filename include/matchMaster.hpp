@@ -14,12 +14,13 @@
 #define private public
 #endif
 
-using playerInTurn_t = char;
+using playerInTurn_t     = char;
+using shipsSquaresList_t = std::vector<std::vector<squareStatus_T>>;
 
 class matchMaster
 {
     private:
-    std::pair<playerInTurn_t,std::vector<std::vector<squareStatus_T>>> ships;
+    std::pair<playerInTurn_t,shipsSquaresList_t> ships;
     std::unique_ptr<board>       boardA;
     std::unique_ptr<board>       boardB;
     std::unique_ptr<std::string> command;
