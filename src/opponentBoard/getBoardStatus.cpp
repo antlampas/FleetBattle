@@ -8,5 +8,5 @@
 
 board_t opponentBoard::getBoardStatus(coordinates_t c)
 {
-    return board_t{}
+    return board_t{};
 }

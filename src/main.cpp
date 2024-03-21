@@ -17,6 +17,7 @@ int main(int argc,char** argv)
     ds.push_back(std::pair<std::string,std::string>{"g10","j10"});
     
     playerBoard pb {ds};
+    opponentBoard ob;
 
     board_t bs = pb.getBoardStatus();
 
