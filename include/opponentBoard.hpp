@@ -15,14 +15,15 @@
 
 class opponentBoard : public board
 {
-    private:
-    virtual bool hit(decodedCoordinatesPair_t)            = 0; 
+    protected:
+    virtual bool hit(decodedCoordinatesPair_t)            = delete;
     public:
-    virtual board_t getBoardStatus()                      = 0;
-    virtual squareStatus_t getSquareStatus(coordinates_t) = 0;
-    virtual bool isSquareAlreadyHit(coordinates_t)        = 0;
-    virtual shootStatus_t shoot(coordinates_t)            = 0;
-    virtual squareStatus_t squareStatus(coordinates_t)    = 0;
+    opponentBoard();
+    virtual board_t getBoardStatus()                      override final;
+    virtual squareStatus_t getSquareStatus(coordinates_t) override final;
+    virtual bool isSquareAlreadyHit(coordinates_t)        = delete;
+    virtual shootStatus_t shoot(coordinates_t)            = delete;
+    virtual squareStatus_t setSquareStatus(coordinates_t) override final;
 };
 
 #endif

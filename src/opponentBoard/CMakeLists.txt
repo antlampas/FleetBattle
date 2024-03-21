@@ -2,4 +2,9 @@
 
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
-add_library(opponentBoard SHARED opponentBoard.cpp)
+add_library(opponentBoard SHARED
+            opponentBoard.cpp
+            getBoardStatus.cpp
+            getSquareStatus.cpp
+            getSquareStatus.cpp
+            )

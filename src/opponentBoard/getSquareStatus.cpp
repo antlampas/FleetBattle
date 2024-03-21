@@ -6,5 +6,5 @@
 
 #include "opponentBoard.hpp"
 
-opponentBoard::opponentBoard()
+squareStatus_t opponentBoard::getSquareStatus()
 {}
