@@ -10,4 +10,4 @@ add_subdirectory(ships ships)
 
 add_executable(fleetBattle main.cpp)
 
-target_link_libraries(fleetBattle PUBLIC ships board playerBoard matchMaster)
+target_link_libraries(fleetBattle PUBLIC ships board playerBoard opponentBoard matchMaster)
