@@ -39,6 +39,7 @@ class shipNotValid            : public std::exception {};
 class coordinatesNotValid     : public std::exception {};
 class notHorizontalOrVertical : public std::exception {};
 class squareAlreadyHit        : public std::exception {};
+class notImplemented          : public std::exception {};
 
 class board
 {

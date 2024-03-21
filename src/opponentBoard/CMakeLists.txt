@@ -7,4 +7,7 @@ add_library(opponentBoard SHARED
             getBoardStatus.cpp
             getSquareStatus.cpp
             setSquareStatus.cpp
+            hit.cpp
+            isSquareAlreadyHit.cpp
+            shoot.cpp
            )
