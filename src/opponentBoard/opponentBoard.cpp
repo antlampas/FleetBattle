@@ -8,14 +8,4 @@
 
 #include <iostream>
 
-opponentBoard::opponentBoard() : Board(std::vector<std::vector<squareStatus_t>>(10,std::vector<squareStatus_t>(10,'W')))
-{
-    std::cout << "OPPONENTBOARD" << std::endl;
-    for(auto row: this->Board)
-    {
-        for(auto column: row)
-            std::cout << column << " ";
-        std::cout << std::endl;
-    }
-    std::cout << "END OPPONENTBOARD" << std::endl;
-}
+opponentBoard::opponentBoard(){}

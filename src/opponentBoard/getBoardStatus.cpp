@@ -6,7 +6,7 @@
 
 #include "opponentBoard.hpp"
 
-board_t opponentBoard::getBoardStatus(coordinates_t c)
+board_t opponentBoard::getBoardStatus()
 {
     return board_t{};
 }
