@@ -6,5 +6,4 @@
 
 #include "opponentBoard.hpp"
 
-opponentBoard::opponentBoard()
-{}
+opponentBoard::opponentBoard(){}

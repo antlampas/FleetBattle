@@ -16,13 +16,13 @@
 class opponentBoard : public board
 {
     protected:
-    virtual bool hit(decodedCoordinatesPair_t)            = delete;
+    //virtual bool hit(decodedCoordinatesPair_t)            override final;
     public:
     opponentBoard();
     virtual board_t getBoardStatus()                      override final;
     virtual squareStatus_t getSquareStatus(coordinates_t) override final;
-    virtual bool isSquareAlreadyHit(coordinates_t)        = delete;
-    virtual shootStatus_t shoot(coordinates_t)            = delete;
+    //virtual bool isSquareAlreadyHit(coordinates_t)        override final;
+    //virtual shootStatus_t shoot(coordinates_t)            override final;
     virtual squareStatus_t setSquareStatus(coordinates_t) override final;
 };
 

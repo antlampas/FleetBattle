@@ -7,4 +7,6 @@
 #include "opponentBoard.hpp"
 
 squareStatus_t opponentBoard::getSquareStatus()
-{}
+{
+    return squareStatus_t{};
+}
