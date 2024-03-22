@@ -9,28 +9,31 @@
 #include <memory>
 
 #include "playerBoard.hpp"
+#include "opponentBoard.hpp"
 
 #ifdef TESTMATCHMASTER
 #define private public
 #endif
 
 using playerInTurn_t     = char;
-using shipsSquaresList_t = std::vector<std::vector<squareStatus_T>>;
+using shipsSquaresList_t = std::vector<std::vector<squareStatus_t>>;
 
-class matchMaster
+class matchMaster final
 {
     private:
     std::pair<playerInTurn_t,shipsSquaresList_t> ships;
-    std::unique_ptr<board>       boardA;
-    std::unique_ptr<board>       boardB;
-    std::unique_ptr<std::string> command;
-    playerInTurn_t playerInTurn;
+    std::unique_ptr<playerBoard>   playerBoardA;
+    std::unique_ptr<opponentBoard> opponentBoardA;
+    std::unique_ptr<playerBoard>   playerBoardB;
+    std::unique_ptr<opponentBoard> opponentBoardB;
+    std::unique_ptr<std::string>   command;
+    playerInTurn_t                 playerInTurn;
     private:
     bool isShipSunk();
 
     public:
     matchMaster() = delete;
-    matchMaster(board bA,board bB,std::string cA,std::string cB);
+    matchMaster(playerBoard,playerBoard,std::string,std::string);
 };
 
 #endif

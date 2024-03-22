@@ -15,11 +15,11 @@
 #define private public
 #endif
 
-class player
+class player final
 {
     private:
-    std::shared_ptr<opponentBoard> adversairBoard {};
-    std::shared_ptr<playerBoard>   ownBoard       {};
+    std::shared_ptr<opponentBoard> otherBoard {};
+    std::shared_ptr<playerBoard>   ownBoard   {};
 
     public:
     player()                               = delete;

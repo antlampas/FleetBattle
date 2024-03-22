@@ -14,7 +14,7 @@
 #define private public
 #endif
 
-class playerBoard : public board
+class playerBoard final : public board
 {
     private:
     deployedShips_t        deployedShips {};

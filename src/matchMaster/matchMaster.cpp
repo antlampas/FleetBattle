@@ -6,4 +6,4 @@
 
 #include "matchMaster.hpp"
 
-matchMaster::matchMaster(){}
+matchMaster::matchMaster(playerBoard bA,playerBoard bB,std::string cA,std::string cB){}

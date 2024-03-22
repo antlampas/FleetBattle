@@ -13,7 +13,7 @@
 #define private public
 #endif
 
-class opponentBoard : public board
+class opponentBoard final : public board
 {
     protected:
     virtual bool           hit(coordinates_t)                            override final;

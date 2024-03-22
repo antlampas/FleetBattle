@@ -23,7 +23,7 @@ using shipSize_t  = unsigned short int;
 using shipsList_t = std::map<std::string,unsigned short int>;
 #endif
 
-class ships
+class ships final
 {
     private:
     shipsList_t shipsList;

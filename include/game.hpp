@@ -12,7 +12,7 @@
 #define private public
 #endif
 
-class game
+class game final
 {
     private:
     std::shared_ptr<player>     playerA {};
