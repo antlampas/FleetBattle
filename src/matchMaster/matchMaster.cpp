@@ -15,5 +15,5 @@ matchMaster::matchMaster(   std::shared_ptr<playerBoard> bA,
                             playerBoardB(bB),
                             opponentBoardB(board()),
                             command(std::string()),
-                            playerInTurn('A'),
+                            playerInTurn('A')
 {}

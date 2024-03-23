@@ -12,6 +12,4 @@ player::player( std::shared_ptr<playerBoard> pb,
               ) :   ownBoard(pb),
                     otherBoard(ob),
                     command(c)
-{
-
-}
+{}
