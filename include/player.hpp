@@ -18,15 +18,17 @@
 class player final
 {
     private:
-    std::shared_ptr<opponentBoard> otherBoard {};
-    std::shared_ptr<playerBoard>   ownBoard   {};
+    std::shared_ptr<opponentBoard> otherBoard;
+    std::shared_ptr<playerBoard>   ownBoard;
+    std::shared_ptr<std::pair<std::string,std::string>> command;
 
     public:
     player()                               = delete;
-    player(std::shared_ptr<playerBoard>);
-    void shoot(coordinates_t coordinates);
-    board_t checkOwnBoard();
-    board_t checkOpponentBoard();
+    player(std::shared_ptr<playerBoard>,std::shared_ptr<playerBoard>,std::shared_ptr<std::pair<std::string,std::string>>);
+    void          shoot(coordinates_t coordinates);
+    board_t       checkOwnBoard();
+    board_t       checkOpponentBoard();
+    shootStatus_t shoot(std::string);
 };
 
 #endif
