@@ -22,12 +22,11 @@ class matchMaster final
 {
     private:
     std::pair<playerInTurn_t,shipsSquaresList_t> ships;
-    std::unique_ptr<playerBoard>   playerBoardA;
-    std::unique_ptr<opponentBoard> opponentBoardA;
-    std::string                    command;
-    std::shared_ptr<std::string>   commandA;
-    std::shared_ptr<std::string>   commandB;
-    playerInTurn_t                 playerInTurn;
+    std::unique_ptr<playerBoard> playerBoardA;
+    std::unique_ptr<playerBoard> playerBoardB;
+    std::shared_ptr<std::string> command;
+    playerInTurn_t               playerInTurn;
+    std::mutex                   mtx;
     private:
     bool isShipSunk();
 
