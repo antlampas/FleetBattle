@@ -25,6 +25,8 @@ class player final
     player()                               = delete;
     player(std::shared_ptr<playerBoard>);
     void shoot(coordinates_t coordinates);
+    board_t checkOwnBoard();
+    board_t checkOpponentBoard();
 };
 
 #endif
