@@ -22,7 +22,7 @@ class player final
     private:
     std::shared_ptr<playerBoard>   ownBoard;
     std::shared_ptr<opponentBoard> otherBoard;
-    std::shared_ptr<command_t> command;
+    std::shared_ptr<command_t>     command;
 
     public:
     player()                                                                                        = delete;
