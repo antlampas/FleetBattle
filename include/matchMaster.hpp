@@ -26,7 +26,9 @@ class matchMaster final
     std::shared_ptr<opponentBoard> opponentBoardA;
     std::shared_ptr<playerBoard>   playerBoardB;
     std::shared_ptr<opponentBoard> opponentBoardB;
-    std::shared_ptr<std::string>   command;
+    std::string                    command;
+    std::shared_ptr<std::string>   commandA;
+    std::shared_ptr<std::string>   commandB;
     playerInTurn_t                 playerInTurn;
     private:
     bool isShipSunk();
@@ -34,6 +36,7 @@ class matchMaster final
     public:
     matchMaster() = delete;
     matchMaster(std::shared_ptr<playerBoard>,std::shared_ptr<playerBoard>,std::shared_ptr<std::string>,std::shared_ptr<std::string>);
+    void match();
 };
 
 #endif

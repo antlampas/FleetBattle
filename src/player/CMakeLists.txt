@@ -4,4 +4,5 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(player SHARED
             player.cpp
+            shoot.cpp
            )

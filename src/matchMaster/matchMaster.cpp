@@ -6,4 +6,16 @@
 
 #include "matchMaster.hpp"
 
-matchMaster::matchMaster(playerBoard bA,playerBoard bB,std::string cA,std::string cB){}
+matchMaster::matchMaster(   std::shared_ptr<playerBoard> bA,
+                            std::shared_ptr<playerBoard> bB,
+                            std::shared_ptr<std::string> cA,
+                            std::shared_ptr<std::string> cB
+                        ) : playerBoardA(bA),
+                            opponentBoardA(board()),
+                            playerBoardB(bB),
+                            opponentBoardB(board()),
+                            command(std::string()),
+                            playerInTurn('A'),
+{
+
+}
