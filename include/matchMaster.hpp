@@ -32,7 +32,7 @@ class matchMaster final
 
     public:
     matchMaster() = delete;
-    matchMaster(std::shared_ptr<playerBoard>,std::shared_ptr<playerBoard>,std::shared_ptr<std::string>,std::shared_ptr<std::string>);
+    matchMaster(std::shared_ptr<playerBoard>,std::shared_ptr<playerBoard>,std::shared_ptr<std::string>,std::shared_ptr<std::string>,playerInTurn_t);
     void match();
 };
 
