@@ -5,3 +5,8 @@
  */
 
 #include "player.hpp"
+
+player::player(std::shared_ptr<playerBoard> pb,std::shared_ptr<opponentBoard> ob,std::shared_ptr<std::pair<std::string,std::string>> c) : ownBoard(pb),otherBoard(ob),command(c)
+{
+
+}
