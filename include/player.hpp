@@ -15,16 +15,18 @@
 #define private public
 #endif
 
+using command_t = std::pair<std::string,std::string>;
+
 class player final
 {
     private:
     std::shared_ptr<playerBoard>   ownBoard;
     std::shared_ptr<opponentBoard> otherBoard;
-    std::shared_ptr<std::pair<std::string,std::string>> command;
+    std::shared_ptr<command_t> command;
 
     public:
-    player()                                                                                                                 = delete;
-    player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>,std::shared_ptr<std::pair<std::string,std::string>>);
+    player()                                                                                        = delete;
+    player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>,std::shared_ptr<command_t>);
     void          shoot(coordinates_t coordinates);
     board_t       checkOwnBoard();
     board_t       checkOpponentBoard();
