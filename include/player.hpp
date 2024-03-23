@@ -23,7 +23,7 @@ class player final
     std::shared_ptr<std::pair<std::string,std::string>> command;
 
     public:
-    player()                               = delete;
+    player()                                                                                                                 = delete;
     player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>,std::shared_ptr<std::pair<std::string,std::string>>);
     void          shoot(coordinates_t coordinates);
     board_t       checkOwnBoard();
