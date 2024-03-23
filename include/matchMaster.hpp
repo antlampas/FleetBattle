@@ -22,10 +22,8 @@ class matchMaster final
 {
     private:
     std::pair<playerInTurn_t,shipsSquaresList_t> ships;
-    std::shared_ptr<playerBoard>   playerBoardA;
-    std::shared_ptr<opponentBoard> opponentBoardA;
-    std::shared_ptr<playerBoard>   playerBoardB;
-    std::shared_ptr<opponentBoard> opponentBoardB;
+    std::unique_ptr<playerBoard>   playerBoardA;
+    std::unique_ptr<opponentBoard> opponentBoardA;
     std::string                    command;
     std::shared_ptr<std::string>   commandA;
     std::shared_ptr<std::string>   commandB;

@@ -16,6 +16,4 @@ matchMaster::matchMaster(   std::shared_ptr<playerBoard> bA,
                             opponentBoardB(board()),
                             command(std::string()),
                             playerInTurn('A'),
-{
-
-}
+{}
