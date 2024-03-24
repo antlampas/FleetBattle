@@ -17,6 +17,7 @@
 
 using playerInTurn_t     = char;
 using shipsSquaresList_t = std::vector<std::vector<squareStatus_t>>;
+using command_t          = std::pair<std::string,std::string>;
 
 class matchMaster final
 {
@@ -24,9 +25,12 @@ class matchMaster final
     std::pair<playerInTurn_t,shipsSquaresList_t> ships;
     std::unique_ptr<playerBoard> playerBoardA;
     std::unique_ptr<playerBoard> playerBoardB;
-    std::shared_ptr<std::string> command;
+    std::shared_ptr<command_t>   command;
     playerInTurn_t               playerInTurn;
     std::mutex                   mtx;
+    std::shared_ptr<std::lock>   lockA;
+    std::shared_ptr<std::lock>   lockB;
+
     private:
     bool isShipSunk();
 

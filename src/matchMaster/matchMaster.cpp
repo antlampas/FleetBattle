@@ -8,11 +8,13 @@
 
 matchMaster::matchMaster(   std::shared_ptr<playerBoard> bA,
                             std::shared_ptr<playerBoard> bB,
-                            std::shared_ptr<std::string> cA,
-                            std::shared_ptr<std::string> cB,
+                            std::shared_ptr<command_t> cA,
                             playerInTurn_t p
-                        ) : playerBoardA(bA),
-                            playerBoardB(bB),
+                        ) : playerBoardA(std::move(bA)),
+                            playerBoardB(std::move(bB)),
                             command(std::shared_ptr<std::string>(std::string())),
-                            playerInTurn(p)
+                            playerInTurn(p),
+                            mtx({}),
+                            lockA(mtx),
+                            lockB(mtx)
 {}
