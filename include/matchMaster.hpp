@@ -7,6 +7,7 @@
 #define MATCHMASTER_HPP
 
 #include <memory>
+#include <mutex>
 
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
@@ -28,15 +29,13 @@ class matchMaster final
     std::shared_ptr<command_t>   command;
     playerInTurn_t               playerInTurn;
     std::mutex                   mtx;
-    std::shared_ptr<std::lock>   lockA;
-    std::shared_ptr<std::lock>   lockB;
 
     private:
     bool isShipSunk();
 
     public:
     matchMaster() = delete;
-    matchMaster(std::shared_ptr<playerBoard>,std::shared_ptr<playerBoard>,std::shared_ptr<std::string>,std::shared_ptr<std::string>,playerInTurn_t);
+    matchMaster(playerBoard*,playerBoard*,command_t*,playerInTurn_t);
     void match();
 };
 

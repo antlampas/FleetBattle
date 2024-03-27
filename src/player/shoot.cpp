@@ -6,7 +6,7 @@
 
 #include "player.hpp"
 
-shootStatus_t player::shoot(std::string coordinates)
+shootStatus_t player::shoot(coordinates_t coordinates)
 {
     return shootStatus_t();
 }
