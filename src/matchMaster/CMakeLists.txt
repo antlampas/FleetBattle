@@ -2,4 +2,7 @@
 
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
-add_library(matchMaster SHARED matchMaster.cpp)
+add_library(matchMaster SHARED
+            functor.cpp
+            matchMaster.cpp
+           )

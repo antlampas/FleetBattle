@@ -10,7 +10,7 @@ int matchMaster::operator()()
 {
     while(true)
     {
-
+        std::lock_guard(*this->mutex);
     }
     
     return 0;
