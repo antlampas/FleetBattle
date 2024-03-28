@@ -17,7 +17,7 @@
 #endif
 
 using playerInTurn_t     = char;
-using shipsSquaresList_t = std::vector<std::vector<squareStatus_t>>;
+using shipsSquaresList_t = std::array<std::array<squareStatus_t>>;
 using command_t          = std::pair<std::string,std::string>;
 
 class matchMaster final

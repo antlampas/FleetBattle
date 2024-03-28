@@ -8,5 +8,5 @@
 
 #include <iostream>
 
-board::board() : Board({board_t(10,std::vector<squareStatus_t>(10,'W'))}){}
+board::board() : Board({board_t(10,std::array<squareStatus_t>(10,'W'))}){}
 board::~board(){}
