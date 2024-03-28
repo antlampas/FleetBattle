@@ -7,6 +7,7 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <array>
 #include <vector>
 #include <utility>
 #include <string>
@@ -22,10 +23,10 @@ using decodedCoordinateSingle_t = unsigned short int;
 using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
 using squareStatus_t            = char;
 using shootStatus_t             = unsigned short int;
-using board_t                   = std::array<std::array<squareStatus_t>>;
-using shipStatus_t              = std::array<squareStatus_t>;
-using deployedShips_t           = std::array<std::pair<std::string,std::string>>;
-using destroyedShips_t          = std::array<std::string>;
+using board_t                   = std::array<std::array<squareStatus_t,10>,10>;
+using shipStatus_t              = std::array<squareStatus_t,10>;
+using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
+using destroyedShips_t          = std::vector<std::string>;
 #ifndef shipSize_t
 using shipSize_t  = unsigned short int;
 #endif

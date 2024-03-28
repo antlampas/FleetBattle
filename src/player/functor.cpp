@@ -11,7 +11,7 @@ int player::operator()()
     std::lock<std::mutex> 
     while(true)
     {
-        std::lock_guard(*this->mutex);
+        std::lock_guard<std::mutex>(*this->mutex);
     }
     
     return 0;
