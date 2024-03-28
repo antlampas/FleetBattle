@@ -6,7 +6,7 @@
 
 #include "player.hpp"
 
-squareStatus_t player::setSquareStatus(coordinates_t c,squareStatus_t s)
+squareStatus_t player::getSquareStatus(coordinates_t c)
 {
-
+    return squareStatus_t(this->ownBoard(c));
 }
