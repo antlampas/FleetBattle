@@ -28,7 +28,7 @@ class matchMaster final
     std::unique_ptr<playerBoard> playerBoardB;
     std::shared_ptr<command_t>   command;
     playerInTurn_t               playerInTurn;
-    std::mutex                   mtx;
+    std::shared_ptr<std::mutex>  mtx;
 
     private:
     bool isShipSunk();

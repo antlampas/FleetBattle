@@ -8,8 +8,10 @@
 
 player::player( std::shared_ptr<playerBoard> pb,
                 std::shared_ptr<opponentBoard> ob,
-                std::shared_ptr<std::pair<std::string,std::string>> c
+                std::shared_ptr<command_t> c,
+                std::shared_ptr<std::mutex> m
               ) :   ownBoard(pb),
                     otherBoard(ob),
-                    command(c)
+                    command(c),
+                    mutex(m)
 {}

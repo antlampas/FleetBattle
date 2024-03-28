@@ -8,6 +8,7 @@
 
 int player::operator()()
 {
+    std::lock<std::mutex> 
     while(true)
     {
 

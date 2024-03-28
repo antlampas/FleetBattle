@@ -8,6 +8,7 @@
 #define PLAYER_HPP
 
 #include <memory>
+#include <mutex>
 
 #include "board.hpp"
 
@@ -23,15 +24,18 @@ class player final
     std::shared_ptr<playerBoard>   ownBoard;
     std::shared_ptr<opponentBoard> otherBoard;
     std::shared_ptr<command_t>     command;
-
-    public:
-    player()                                                                                        = delete;
-    player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>,std::shared_ptr<command_t>);
+    std::shared_ptr<std::mutex>    mutex;
+    
+    private:
     board_t        checkOwnBoard();
     board_t        checkOpponentBoard();
     shootStatus_t  shoot(coordinates_t);
     squareStatus_t setSquareStatus(coordinates_t,squareStatus_t);
     squareStatus_t getSquareStatus(coordinates_t);
+    
+    public:
+    player()                                                                                                                    = delete;
+    player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>,std::shared_ptr<command_t>,std::shared_ptr<std::mutex>);
     int operator()();
 };
 
