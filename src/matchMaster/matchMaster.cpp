@@ -14,5 +14,5 @@ matchMaster::matchMaster(   std::unique_ptr<playerBoard> bA,
                             playerBoardB(std::move(bB)),
                             command(std::make_shared<command_t>(std::make_pair("",""))),
                             playerInTurn(p),
-                            mtx(new std::mutex())
+                            mutex(new std::mutex())
 {}
