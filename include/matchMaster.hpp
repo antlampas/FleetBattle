@@ -36,7 +36,7 @@ class matchMaster final
     public:
     matchMaster() = delete;
     matchMaster(std::unique_ptr<playerBoard>,std::unique_ptr<playerBoard>,std::shared_ptr<command_t>,playerInTurn_t);
-    void match();
+    int operator()();
 };
 
 #endif

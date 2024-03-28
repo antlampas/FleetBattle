@@ -32,6 +32,7 @@ class player final
     shootStatus_t  shoot(coordinates_t);
     squareStatus_t setSquareStatus(coordinates_t,squareStatus_t);
     squareStatus_t getSquareStatus(coordinates_t);
+    int operator()();
 };
 
 #endif
