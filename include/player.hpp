@@ -8,7 +8,9 @@
 #define PLAYER_HPP
 
 #include <memory>
+#include <thread>
 #include <mutex>
+#include <chrono>
 
 #include "types.hpp"
 #include "exceptions.hpp"
