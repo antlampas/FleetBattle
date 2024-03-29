@@ -15,6 +15,7 @@
 #ifdef TESTGAME
 #define private public
 #endif
+
 namespace fleetBattle
 {
     namespace game

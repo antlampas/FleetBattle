@@ -12,7 +12,6 @@
 #include <utility>
 #include <string>
 #include <map>
-#include <exception>
 
 #include "types.hpp"
 
@@ -24,14 +23,6 @@ namespace fleetBattle
 {
     namespace board
     {
-        class unknownError            : public std::exception {};
-        class boardConstructionError  : public std::exception {};
-        class shipNotValid            : public std::exception {};
-        class coordinatesNotValid     : public std::exception {};
-        class notHorizontalOrVertical : public std::exception {};
-        class squareAlreadyHit        : public std::exception {};
-        class notImplemented          : public std::exception {};
-
         class board
         {
             /*
