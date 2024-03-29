@@ -37,7 +37,6 @@ namespace fleetBattle
                         this->playerInTurn = 'A';
                 }
             }
-            
             return 0;
         }
     }
