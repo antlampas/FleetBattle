@@ -4,16 +4,16 @@
  *
  */
 
-#include <string>
-#include <array>
-#include <map>
-#include <utility>
-#include <vector>
-
 namespace fleetBattle
 {
     #ifndef TYPES_HPP
     #define TYPES_HPP
+
+    #include <string>
+    #include <array>
+    #include <map>
+    #include <utility>
+    #include <vector>
 
     using decodedCoordinateSingle_t = unsigned short int;
     using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;

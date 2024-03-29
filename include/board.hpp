@@ -4,13 +4,6 @@
  *
  */
 
-#include <array>
-#include <vector>
-#include <utility>
-#include <string>
-#include <map>
-#include <exception>
-
 namespace fleetBattle
 {
     namespace board
@@ -18,6 +11,12 @@ namespace fleetBattle
         #ifndef BOARD_HPP
         #define BOARD_HPP
 
+        #include <array>
+        #include <vector>
+        #include <utility>
+        #include <string>
+        #include <map>
+        #include <exception>
 
         #include "types.hpp"
 

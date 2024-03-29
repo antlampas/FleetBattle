@@ -4,15 +4,15 @@
  *
  */
 
-#include <string>
-#include <vector>
-#include <map>
-#include <utility>
-
 namespace fleetBattle
 {
     #ifndef SHIPS_HPP
     #define SHIPS_HPP
+
+    #include <string>
+    #include <vector>
+    #include <map>
+    #include <utility>
 
     #include "types.hpp"
 

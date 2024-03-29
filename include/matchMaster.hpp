@@ -4,9 +4,6 @@
  *
  */
 
-#include <memory>
-#include <mutex>
-
 namespace fleetBattle
 {
     namespace matchMaster
@@ -14,6 +11,8 @@ namespace fleetBattle
         #ifndef MATCHMASTER_HPP
         #define MATCHMASTER_HPP
 
+        #include <memory>
+        #include <mutex>
 
         #include "types.hpp"
         #include "playerBoard.hpp"

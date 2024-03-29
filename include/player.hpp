@@ -4,15 +4,15 @@
  *
  */
 
-#include <memory>
-#include <mutex>
-
 namespace fleetBattle
 {
     namespace player
     {
         #ifndef PLAYER_HPP
         #define PLAYER_HPP
+
+        #include <memory>
+        #include <mutex>
 
         #include "types.hpp"
         #include "board.hpp"
