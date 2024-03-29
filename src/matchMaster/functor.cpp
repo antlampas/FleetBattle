@@ -24,13 +24,13 @@ namespace fleetBattle
                     case 'A':
                         lockA.unlock();
                         std::this_thread::sleep_for(1ms);
-                        std::lock(lockA);
+                        lockA.lock();
                         this->playerInTurn = 'B';
                         break;
                     case 'B':
                         lockB.unlock();
                         std::this_thread::sleep_for(1ms);
-                        std::lock(lockB);
+                        lockB.lock();
                         this->playerInTurn = 'A';
                         break;
                     default:
