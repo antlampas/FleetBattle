@@ -5,13 +5,14 @@
  */
 
 #include "opponentBoard.hpp"
+
 namespace fleetBattle
 {
     namespace opponentBoard
     {
         bool opponentBoard::hit(coordinates_t c)
         {
-            throw fleetBattle::notImplemented();
+            throw notImplemented();
         }
     }
 }

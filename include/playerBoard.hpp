@@ -8,6 +8,7 @@
 #define PLAYERBOARD_HPP
 
 #include "types.hpp"
+#include "exceptions.hpp"
 #include "board.hpp"
 #include "ships.hpp"
 

@@ -8,6 +8,7 @@
 #define GAME_HPP
 
 #include "types.hpp"
+#include "exceptions.hpp"
 #include "board.hpp"
 #include "matchMaster.hpp"
 #include "player.hpp"

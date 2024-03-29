@@ -11,6 +11,7 @@
 #include <mutex>
 
 #include "types.hpp"
+#include "exceptions.hpp"
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
 

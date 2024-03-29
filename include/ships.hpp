@@ -13,6 +13,7 @@
 #include <utility>
 
 #include "types.hpp"
+#include "exceptions.hpp"
 
 #ifdef TESTSHIPS
 #define private public

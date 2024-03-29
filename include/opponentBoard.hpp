@@ -8,6 +8,7 @@
 #define OPPONENTBOARD_HPP
 
 #include "types.hpp"
+#include "exceptions.hpp"
 #include "board.hpp"
 
 #ifdef TESTOPPONENTBOARD

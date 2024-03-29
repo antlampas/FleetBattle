@@ -14,6 +14,7 @@
 #include <map>
 
 #include "types.hpp"
+#include "exceptions.hpp"
 
 #ifdef TESTBOARD
 #define private public
