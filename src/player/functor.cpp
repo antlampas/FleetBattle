@@ -15,7 +15,11 @@ namespace fleetBattle
             std::lock<std::mutex> 
             while(true)
             {
-                std::lock_guard<std::mutex>(*this->mutex);
+                std::lock_guard<std::mutex>(*(this->mutex));
+                if(*(this->command).first.compare("shoot"))
+                {
+                    shootStatus_t status = this->ownBoard->shoot((*this->command).second);
+                }
             }
             
             return 0;

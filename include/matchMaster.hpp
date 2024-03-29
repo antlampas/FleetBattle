@@ -31,7 +31,8 @@ namespace fleetBattle
             std::unique_ptr<playerBoard::playerBoard>    playerBoardB;
             std::shared_ptr<command_t>                   command;
             playerInTurn_t                               playerInTurn;
-            std::shared_ptr<std::mutex>                  mutex;
+            std::shared_ptr<std::mutex>                  mutexA;
+            std::shared_ptr<std::mutex>                  mutexB;
 
             private:
             bool isShipSunk();

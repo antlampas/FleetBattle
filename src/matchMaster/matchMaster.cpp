@@ -18,7 +18,8 @@ namespace fleetBattle
                                     playerBoardB(std::move(bB)),
                                     command(std::make_shared<command_t>(std::make_pair("",""))),
                                     playerInTurn(p),
-                                    mutex(new std::mutex())
+                                    mutexA(new std::mutex()),
+                                    mutexB(new std::mutex())
         {}
     }
 }

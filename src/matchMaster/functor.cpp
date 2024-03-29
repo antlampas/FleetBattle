@@ -14,7 +14,8 @@ namespace fleetBattle
         {
             while(true)
             {
-                std::lock_guard<std::mutex>(*this->mutex);
+                std::lock_guard<std::mutex>(*this->mutexA);
+                std::lock_guard<std::mutex>(*this->mutexB);
             }
             
             return 0;
