@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project("Fleet Battle" VERSION "${VERSION}" DESCRIPTION "Yet another chess implementation for excercise purposes" HOMEPAGE_URL "https://github.com/antlampas/Chess" LANGUAGES "CXX")
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 
 include_directories(include)
 
