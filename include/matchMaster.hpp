@@ -26,12 +26,12 @@ namespace fleetBattle
         class matchMaster final
         {
             private:
-            std::pair<board::playerInTurn_t,board::shipsSquaresList_t> ships;
-            std::unique_ptr<playerBoard::playerBoard>                  playerBoardA;
-            std::unique_ptr<playerBoard::playerBoard>                  playerBoardB;
-            std::shared_ptr<command_t>                                 command;
-            playerInTurn_t                                             playerInTurn;
-            std::shared_ptr<std::mutex>                                mutex;
+            std::pair<playerInTurn_t,shipsSquaresList_t> ships;
+            std::unique_ptr<playerBoard::playerBoard>    playerBoardA;
+            std::unique_ptr<playerBoard::playerBoard>    playerBoardB;
+            std::shared_ptr<command_t>                   command;
+            playerInTurn_t                               playerInTurn;
+            std::shared_ptr<std::mutex>                  mutex;
 
             private:
             bool isShipSunk();
