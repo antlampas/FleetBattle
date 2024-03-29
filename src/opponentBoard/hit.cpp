@@ -11,7 +11,7 @@ namespace fleetBattle
     {
         bool opponentBoard::hit(coordinates_t c)
         {
-            throw notImplemented();
+            throw fleetBattle::notImplemented();
         }
     }
 }
