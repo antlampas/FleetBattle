@@ -39,8 +39,11 @@ namespace fleetBattle
             squareStatus_t getSquareStatus(coordinates_t);
             
             public:
-            player()                                                                                                                    = delete;
-            player(std::shared_ptr<playerBoard::playerBoard>,std::shared_ptr<opponentBoard::opponentBoard>,std::shared_ptr<command_t>,std::shared_ptr<std::mutex>);
+            player()                                               = delete;
+            player( std::shared_ptr<playerBoard::playerBoard>,
+                    std::shared_ptr<opponentBoard::opponentBoard>,
+                    std::shared_ptr<command_t>,
+                    std::shared_ptr<std::mutex>);
             bool getCommand(std::string);
             int operator()();
         };
