@@ -20,7 +20,7 @@ namespace fleetBattle
     namespace playerBoard
     {
 
-        class playerBoard final : public board
+        class playerBoard final : public board::board
         {
             private:
             deployedShips_t        deployedShips {};
