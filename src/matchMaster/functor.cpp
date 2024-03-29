@@ -18,19 +18,18 @@ namespace fleetBattle
 
             while(true)
             {
-                std::lock(lockA,lockB);
                 switch(this->playerInTurn)
                 {
                     case 'A':
                         lockA.unlock();
                         std::this_thread::sleep_for(1ms);
-                        std::lock(lockA);
+                        lockA.try_lock();
                         this->playerInTurn = 'B';
                         break;
                     case 'B':
                         lockB.unlock();
                         std::this_thread::sleep_for(1ms);
-                        std::lock(lockB);
+                        lockB.try_lock();
                         this->playerInTurn = 'A';
                         break;
                     default:
