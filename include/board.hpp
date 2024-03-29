@@ -4,21 +4,22 @@
  *
  */
 
+#ifndef BOARD_HPP
+#define BOARD_HPP
+
+#include <array>
+#include <vector>
+#include <utility>
+#include <string>
+#include <map>
+#include <exception>
+
+#include "types.hpp"
+
 namespace fleetBattle
 {
     namespace board
     {
-        #ifndef BOARD_HPP
-        #define BOARD_HPP
-
-        #include <array>
-        #include <vector>
-        #include <utility>
-        #include <string>
-        #include <map>
-        #include <exception>
-
-        #include "types.hpp"
 
         #ifdef TESTBOARD
         #define private public
@@ -58,7 +59,6 @@ namespace fleetBattle
             virtual shootStatus_t    shoot(coordinates_t)                          = 0;
             virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
         };
-
-        #endif
     }
 }
+#endif

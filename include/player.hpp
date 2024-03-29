@@ -4,22 +4,23 @@
  *
  */
 
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
+#include <memory>
+#include <mutex>
+
+#include "types.hpp"
+#include "board.hpp"
+
+#ifdef TESTPLAYER
+#define private public
+#endif
+
 namespace fleetBattle
 {
     namespace player
     {
-        #ifndef PLAYER_HPP
-        #define PLAYER_HPP
-
-        #include <memory>
-        #include <mutex>
-
-        #include "types.hpp"
-        #include "board.hpp"
-
-        #ifdef TESTPLAYER
-        #define private public
-        #endif
 
         class player final
         {
@@ -42,7 +43,6 @@ namespace fleetBattle
             bool getCommand(std::string);
             int operator()();
         };
-
-        #endif
     }
 }
+#endif

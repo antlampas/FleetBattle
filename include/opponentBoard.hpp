@@ -4,19 +4,20 @@
  *
  */
 
+#ifndef OPPONENTBOARD_HPP
+#define OPPONENTBOARD_HPP
+
+#include "types.hpp"
+#include "board.hpp"
+
+#ifdef TESTOPPONENTBOARD
+#define private public
+#endif
+
 namespace fleetBattle
 {
     namespace opponentBoard
     {
-        #ifndef OPPONENTBOARD_HPP
-        #define OPPONENTBOARD_HPP
-        
-        #include "types.hpp"
-        #include "board.hpp"
-
-        #ifdef TESTOPPONENTBOARD
-        #define private public
-        #endif
 
         class opponentBoard final : public board
         {
@@ -31,7 +32,6 @@ namespace fleetBattle
             virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
             virtual shootStatus_t  shoot(coordinates_t)                          override final;
         };
-
-        #endif
     }
 }
+#endif

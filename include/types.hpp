@@ -4,16 +4,17 @@
  *
  */
 
+#ifndef TYPES_HPP
+#define TYPES_HPP
+
+#include <string>
+#include <array>
+#include <map>
+#include <utility>
+#include <vector>
+
 namespace fleetBattle
 {
-    #ifndef TYPES_HPP
-    #define TYPES_HPP
-
-    #include <string>
-    #include <array>
-    #include <map>
-    #include <utility>
-    #include <vector>
 
     using decodedCoordinateSingle_t = unsigned short int;
     using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
@@ -29,6 +30,5 @@ namespace fleetBattle
     using shipStatus_t              = std::array<squareStatus_t,10>;
     using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
     using destroyedShips_t          = std::vector<std::string>;
-    
-    #endif
 }
+#endif

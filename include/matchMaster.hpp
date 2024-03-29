@@ -4,23 +4,24 @@
  *
  */
 
+#ifndef MATCHMASTER_HPP
+#define MATCHMASTER_HPP
+
+#include <memory>
+#include <mutex>
+
+#include "types.hpp"
+#include "playerBoard.hpp"
+#include "opponentBoard.hpp"
+
+#ifdef TESTMATCHMASTER
+#define private public
+#endif
+
 namespace fleetBattle
 {
     namespace matchMaster
     {
-        #ifndef MATCHMASTER_HPP
-        #define MATCHMASTER_HPP
-
-        #include <memory>
-        #include <mutex>
-
-        #include "types.hpp"
-        #include "playerBoard.hpp"
-        #include "opponentBoard.hpp"
-
-        #ifdef TESTMATCHMASTER
-        #define private public
-        #endif
 
         class matchMaster final
         {
@@ -40,7 +41,6 @@ namespace fleetBattle
             matchMaster(std::unique_ptr<playerBoard>,std::unique_ptr<playerBoard>,std::shared_ptr<command_t>,playerInTurn_t);
             int operator()();
         };
-
-        #endif
     }
 }
+#endif
