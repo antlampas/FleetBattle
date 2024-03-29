@@ -4,11 +4,12 @@
  *
  */
 
+#include "playerBoard.hpp"
+
 namespace fleetBattle
 {
     namespace playerBoard
     {
-        #include "playerBoard.hpp"
 
         bool playerBoard::hit(coordinates_t c)
         {

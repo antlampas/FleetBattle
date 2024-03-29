@@ -19,13 +19,12 @@ namespace fleetBattle
 {
     namespace game
     {
-
         class game final
         {
             private:
-            std::shared_ptr<player::player>           playerA {};
-            std::shared_ptr<player::player>           playerB {};
-            std::shared_ptr<matchMaster::matchMaster> mm      {};
+            ::std::shared_ptr<player::player>           playerA {};
+            ::std::shared_ptr<player::player>           playerB {};
+            ::std::shared_ptr<matchMaster::matchMaster> mm      {};
 
             public:
             game();

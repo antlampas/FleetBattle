@@ -4,11 +4,11 @@
  *
  */
 
+#include "ships.hpp"
+
 namespace fleetBattle
 {
-    #include "ships.hpp"
-
-    void ships::removeShip(std::string ship)
+    void ships::removeShip(::std::string ship)
     {
         this->shipsList.erase(ship);
     }

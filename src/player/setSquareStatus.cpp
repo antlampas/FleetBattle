@@ -4,12 +4,12 @@
  *
  */
 
+#include "player.hpp"
+
 namespace fleetBattle
 {
     namespace player
     {
-        #include "player.hpp"
-
         squareStatus_t player::setSquareStatus(coordinates_t c,squareStatus_t s)
         {
             this->ownBoard(c,s);

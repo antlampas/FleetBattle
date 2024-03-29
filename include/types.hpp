@@ -17,18 +17,18 @@ namespace fleetBattle
 {
 
     using decodedCoordinateSingle_t = unsigned short int;
-    using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
+    using decodedCoordinatesPair_t  = ::std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
     using shipSize_t                = unsigned short int;
-    using shipsList_t               = std::map<std::string,unsigned short int>;
+    using shipsList_t               = ::std::map<::std::string,unsigned short int>;
     using squareStatus_t            = char;
     using playerInTurn_t            = char;
-    using shipsSquaresList_t        = std::array<std::array<squareStatus_t,10>,10>;
-    using command_t                 = std::pair<std::string,std::string>;
-    using coordinates_t             = std::string;
+    using shipsSquaresList_t        = ::std::array<::std::array<squareStatus_t,10>,10>;
+    using command_t                 = ::std::pair<::std::string,::std::string>;
+    using coordinates_t             = ::std::string;
     using shootStatus_t             = unsigned short int;
-    using board_t                   = std::array<std::array<squareStatus_t,10>,10>;
-    using shipStatus_t              = std::array<squareStatus_t,10>;
-    using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
-    using destroyedShips_t          = std::vector<std::string>;
+    using board_t                   = ::std::array<::std::array<squareStatus_t,10>,10>;
+    using shipStatus_t              = ::std::array<squareStatus_t,10>;
+    using deployedShips_t           = ::std::vector<::std::pair<::std::string,::std::string>>;
+    using destroyedShips_t          = ::std::vector<::std::string>;
 }
 #endif

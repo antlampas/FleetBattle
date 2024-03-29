@@ -4,12 +4,12 @@
  *
  */
 
+#include "playerBoard.hpp"
+
 namespace fleetBattle
 {
     namespace playerBoard
     {
-        #include "playerBoard.hpp"
-
         board_t playerBoard::applyShipsLayer()
         {
             board_t b {this->Board};

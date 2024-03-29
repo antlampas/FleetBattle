@@ -22,23 +22,22 @@ namespace fleetBattle
 {
     namespace matchMaster
     {
-
         class matchMaster final
         {
             private:
-            std::pair<board::playerInTurn_t,board::shipsSquaresList_t> ships;
-            std::unique_ptr<board::playerBoard>                        playerBoardA;
-            std::unique_ptr<board::playerBoard>                        playerBoardB;
-            std::shared_ptr<board::command_t>                          command;
+            ::std::pair<board::playerInTurn_t,board::shipsSquaresList_t> ships;
+            ::std::unique_ptr<board::playerBoard>                        playerBoardA;
+            ::std::unique_ptr<board::playerBoard>                        playerBoardB;
+            ::std::shared_ptr<board::command_t>                          command;
             board::playerInTurn_t                                      playerInTurn;
-            std::shared_ptr<std::mutex>                                mutex;
+            ::std::shared_ptr<::std::mutex>                                mutex;
 
             private:
             bool isShipSunk();
 
             public:
             matchMaster() = delete;
-            matchMaster(std::unique_ptr<playerBoard>,std::unique_ptr<playerBoard>,std::shared_ptr<command_t>,playerInTurn_t);
+            matchMaster(::std::unique_ptr<playerBoard>,::std::unique_ptr<playerBoard>,::std::shared_ptr<command_t>,playerInTurn_t);
             int operator()();
         };
     }

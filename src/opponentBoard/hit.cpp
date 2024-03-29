@@ -4,12 +4,11 @@
  *
  */
 
+#include "opponentBoard.hpp"
 namespace fleetBattle
 {
     namespace opponentBoard
     {
-        #include "opponentBoard.hpp"
-
         bool opponentBoard::hit(coordinates_t c)
         {
             throw notImplemented();

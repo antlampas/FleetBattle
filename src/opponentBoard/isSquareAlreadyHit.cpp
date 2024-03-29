@@ -4,12 +4,12 @@
  *
  */
 
+#include "opponentBoard.hpp"
+
 namespace fleetBattle
 {
     namespace opponentBoard
     {
-        #include "opponentBoard.hpp"
-
         bool opponentBoard::isSquareAlreadyHit(coordinates_t c)
         {
             throw notImplemented();

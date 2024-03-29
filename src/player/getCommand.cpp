@@ -4,13 +4,13 @@
  *
  */
 
+#include "player.hpp"
+
 namespace fleetBattle
 {
     namespace player
     {
-        #include "player.hpp"
-
-        bool player::getCommand(std::string command)
+        bool player::getCommand(::std::string command)
         {
 
         }

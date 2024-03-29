@@ -4,10 +4,12 @@
  *
  */
 
+#include "game.hpp"
+
 namespace fleetBattle
 {
     namespace game
     {
-        #include "game.hpp"
+
     }
 }

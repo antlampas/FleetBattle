@@ -4,18 +4,18 @@
  *
  */
 
+#include "player.hpp"
+
 namespace fleetBattle
 {
     namespace player
     {
-        #include "player.hpp"
-
         int player::operator()()
         {
-            std::lock<std::mutex> 
+            ::std::lock<::std::mutex> 
             while(true)
             {
-                std::lock_guard<std::mutex>(*this->mutex);
+                ::std::lock_guard<::std::mutex>(*this->mutex);
             }
             
             return 0;

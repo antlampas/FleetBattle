@@ -4,14 +4,14 @@
  *
  */
 
+#include "board.hpp"
+
+#include <iostream>
+
 namespace fleetBattle
 {
     namespace board
     {
-        #include "board.hpp"
-
-        #include <iostream>
-
         board::board() : Board({{'W'}}){}
         board::~board(){}
     }

@@ -4,12 +4,12 @@
  *
  */
 
+#include "player.hpp"
+
 namespace fleetBattle
 {
     namespace player
     {
-        #include "player.hpp"
-
         board_t player::checkOwnBoard()
         {
             return board_t();

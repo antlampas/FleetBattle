@@ -4,10 +4,10 @@
  *
  */
 
+#include "ships.hpp"
+
 namespace fleetBattle
 {
-    #include "ships.hpp"
-
     ships::ships()  : publicShipsList(this->shipsList)
     {
         this->shipsList.insert({"Carrier",6});

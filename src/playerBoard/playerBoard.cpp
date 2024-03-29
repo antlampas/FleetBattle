@@ -4,20 +4,21 @@
  *
  */
 
+#include "playerBoard.hpp"
+
+#include <iostream>
+
 namespace fleetBattle
 {
     namespace playerBoard
     {
-        #include "playerBoard.hpp"
-
-        #include <iostream>
 
         playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({{'U'}})
         {
 
             for(auto ship: deployedShips)
             {
-                std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
+                ::std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
                 try
                 {
                     decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);

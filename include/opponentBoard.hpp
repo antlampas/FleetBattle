@@ -18,7 +18,6 @@ namespace fleetBattle
 {
     namespace opponentBoard
     {
-
         class opponentBoard final : public board
         {
             protected:

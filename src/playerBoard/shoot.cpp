@@ -4,23 +4,23 @@
  *
  */
 
+#include "playerBoard.hpp"
+
+#include <regex>
+
 namespace fleetBattle
 {
     namespace playerBoard
     {
-        #include "playerBoard.hpp"
-
-        #include <regex>
-
         shootStatus_t playerBoard::shoot(coordinates_t c)
         {
             try
             {
                 decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
                 
-                std::regex stillNotHit {"[WS]"};
+                ::std::regex stillNotHit {"[WS]"};
 
-                if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
+                if(::std::regex_match(::std::string(1,this->getSquareStatus(c)),stillNotHit))
                     if(this->hit(c))
                         return this->HIT;
                     else
