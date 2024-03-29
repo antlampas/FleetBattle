@@ -4,9 +4,15 @@
  *
  */
 
-#include "opponentBoard.hpp"
-
-bool opponentBoard::hit(coordinates_t c)
+namespace fleetBattle
 {
-    throw notImplemented();
+    namespace opponentBoard
+    {
+        #include "opponentBoard.hpp"
+
+        bool opponentBoard::hit(coordinates_t c)
+        {
+            throw notImplemented();
+        }
+    }
 }

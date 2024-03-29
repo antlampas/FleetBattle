@@ -4,9 +4,15 @@
  *
  */
 
-#include "opponentBoard.hpp"
-
-squareStatus_t opponentBoard::getSquareStatus(coordinates_t c)
+namespace fleetBattle
 {
-    return squareStatus_t{};
+    namespace opponentBoard
+    {
+        #include "opponentBoard.hpp"
+
+        squareStatus_t opponentBoard::getSquareStatus(coordinates_t c)
+        {
+            return squareStatus_t{};
+        }
+    }
 }

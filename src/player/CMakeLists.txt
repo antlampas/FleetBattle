@@ -6,6 +6,7 @@ add_library(player SHARED
             checkOpponentBoard.cpp
             checkOwnBoard.cpp
             functor.cpp
+            getCommand.cpp
             getSquareStatus.cpp
             player.cpp
             setSquareStatus.cpp

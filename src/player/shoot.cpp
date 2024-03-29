@@ -4,9 +4,15 @@
  *
  */
 
-#include "player.hpp"
-
-shootStatus_t player::shoot(coordinates_t coordinates)
+namespace fleetBattle
 {
-    return shootStatus_t();
+    namespace player
+    {
+        #include "player.hpp"
+
+        shootStatus_t player::shoot(coordinates_t coordinates)
+        {
+            return shootStatus_t();
+        }
+    }
 }

@@ -4,36 +4,41 @@
  *
  */
 
-#include "playerBoard.hpp"
-
-#include <regex>
-
-shootStatus_t playerBoard::shoot(coordinates_t c)
+namespace fleetBattle
 {
-    try
+    namespace playerBoard
     {
-        decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
-        
-        std::regex stillNotHit {"[WS]"};
+        #include "playerBoard.hpp"
 
-        if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
-            if(this->hit(c))
-                return this->HIT;
-            else
+        #include <regex>
+
+        shootStatus_t playerBoard::shoot(coordinates_t c)
+        {
+            try
             {
-                this->setSquareStatus(c,'w');
-                return this->MISSED;
-            }
-        else
-            return this->SQUARE_ALREADY_HIT;
-    }
-    catch(coordinatesNotValid& e)
-    {
-        throw;
-    }
-    catch(...)
-    {
-        throw unknownError{};
-    }
+                decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+                
+                std::regex stillNotHit {"[WS]"};
 
+                if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
+                    if(this->hit(c))
+                        return this->HIT;
+                    else
+                    {
+                        this->setSquareStatus(c,'w');
+                        return this->MISSED;
+                    }
+                else
+                    return this->SQUARE_ALREADY_HIT;
+            }
+            catch(coordinatesNotValid& e)
+            {
+                throw;
+            }
+            catch(...)
+            {
+                throw unknownError{};
+            }
+        }
+    }
 }

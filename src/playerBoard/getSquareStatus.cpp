@@ -4,29 +4,35 @@
  *
  */
 
-#include "playerBoard.hpp"
-
-squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
+namespace fleetBattle
 {
-    try
+    namespace playerBoard
     {
-        decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
-        if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
-        {
-            board_t b {this->applyShipsLayer()};
+        #include "playerBoard.hpp"
 
-            return b.at(coordinates.first).at(coordinates.second);
+        squareStatus_t playerBoard::getSquareStatus(coordinates_t c)
+        {
+            try
+            {
+                decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+                if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
+                {
+                    board_t b {this->applyShipsLayer()};
+
+                    return b.at(coordinates.first).at(coordinates.second);
+                }
+            }
+            catch(coordinatesNotValid& e)
+            {
+                throw;
+            }
+            catch(...)
+            {
+                throw unknownError{};
+            }
+
+
+            return 'U';
         }
     }
-    catch(coordinatesNotValid& e)
-    {
-        throw;
-    }
-    catch(...)
-    {
-        throw unknownError{};
-    }
-
-
-    return 'U';
 }

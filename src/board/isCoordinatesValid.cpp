@@ -4,13 +4,19 @@
  *
  */
 
-#include "board.hpp"
-
-#include <regex>
-
-bool board::isCoordinatesValid(coordinates_t coordinates)
+namespace fleetBattle
 {
-    std::regex validCoordinates {"^[a-jA-J][0-9]$|^[a-jA-J]10$"};
+    namespace board
+    {
+        #include "board.hpp"
 
-    return std::regex_match(coordinates,validCoordinates);
+        #include <regex>
+
+        bool board::isCoordinatesValid(coordinates_t coordinates)
+        {
+            std::regex validCoordinates {"^[a-jA-J][0-9]$|^[a-jA-J]10$"};
+
+            return std::regex_match(coordinates,validCoordinates);
+        }
+    }
 }

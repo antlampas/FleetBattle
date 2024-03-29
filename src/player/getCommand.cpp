@@ -10,15 +10,9 @@ namespace fleetBattle
     {
         #include "player.hpp"
 
-        int player::operator()()
+        bool player::getCommand(std::string command)
         {
-            std::lock<std::mutex> 
-            while(true)
-            {
-                std::lock_guard<std::mutex>(*this->mutex);
-            }
-            
-            return 0;
+
         }
     }
 }

@@ -4,11 +4,17 @@
  *
  */
 
-#include "playerBoard.hpp"
-
-board_t playerBoard::getBoardStatus()
+namespace fleetBattle
 {
-    board_t b {this->applyShipsLayer()};
-    
-    return b;
+    namespace playerBoard
+    {
+        #include "playerBoard.hpp"
+
+        board_t playerBoard::getBoardStatus()
+        {
+            board_t b {this->applyShipsLayer()};
+            
+            return b;
+        }
+    }
 }

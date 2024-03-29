@@ -4,36 +4,39 @@
  *
  */
 
-#ifndef SHIPS_HPP
-#define SHIPS_HPP
-
-#include <string>
-#include <vector>
-#include <map>
-#include <utility>
-
-#ifdef TESTSHIPS
-#define private public
-#endif
-
-#ifndef shipSize_t
-using shipSize_t  = unsigned short int;
-#endif
-#ifndef shipsList_t
-using shipsList_t = std::map<std::string,unsigned short int>;
-#endif
-
-class ships final
+namespace fleetBattle
 {
-    private:
-    shipsList_t shipsList;
-    
-    public:
-    const shipsList_t& publicShipsList;
-    ships();
-    ships(shipsList_t);
-    void addShip(std::pair<std::string,int>);
-    void removeShip(std::string);
-};
+    #ifndef SHIPS_HPP
+    #define SHIPS_HPP
 
-#endif
+    #include <string>
+    #include <vector>
+    #include <map>
+    #include <utility>
+
+    #ifdef TESTSHIPS
+    #define private public
+    #endif
+
+    #ifndef shipSize_t
+    using shipSize_t  = unsigned short int;
+    #endif
+    #ifndef shipsList_t
+    using shipsList_t = std::map<std::string,unsigned short int>;
+    #endif
+
+    class ships final
+    {
+        private:
+        shipsList_t shipsList;
+        
+        public:
+        const shipsList_t& publicShipsList;
+        ships();
+        ships(shipsList_t);
+        void addShip(std::pair<std::string,int>);
+        void removeShip(std::string);
+    };
+
+    #endif
+}

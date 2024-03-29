@@ -4,14 +4,20 @@
  *
  */
 
-#include "matchMaster.hpp"
-
-int matchMaster::operator()()
+namespace fleetBattle
 {
-    while(true)
+    namespace matchMaster
     {
-        std::lock_guard<std::mutex>(*this->mutex);
+        #include "matchMaster.hpp"
+
+        int matchMaster::operator()()
+        {
+            while(true)
+            {
+                std::lock_guard<std::mutex>(*this->mutex);
+            }
+            
+            return 0;
+        }
     }
-    
-    return 0;
 }

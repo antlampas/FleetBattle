@@ -4,9 +4,12 @@
  *
  */
 
-#include "ships.hpp"
-
-void ships::addShip(std::pair<std::string,int> ship)
+namespace fleetBattle
 {
-    this->shipsList.insert(ship);
+    #include "ships.hpp"
+
+    void ships::addShip(std::pair<std::string,int> ship)
+    {
+        this->shipsList.insert(ship);
+    }
 }

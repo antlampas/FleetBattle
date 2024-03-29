@@ -4,8 +4,14 @@
  *
  */
 
-#include "opponentBoard.hpp"
+namespace fleetBattle
+{
+    namespace opponentBoard
+    {
+        #include "opponentBoard.hpp"
 
-#include <iostream>
+        #include <iostream>
 
-opponentBoard::opponentBoard(){}
+        opponentBoard::opponentBoard(){}
+    }
+}

@@ -4,30 +4,35 @@
  *
  */
 
-#include "playerBoard.hpp"
-
-bool playerBoard::hit(coordinates_t c)
+namespace fleetBattle
 {
-    try
+    namespace playerBoard
     {
-        decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+        #include "playerBoard.hpp"
 
-        if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
+        bool playerBoard::hit(coordinates_t c)
         {
-            this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
-            this->setSquareStatus(c,'s');
-            return true;
+            try
+            {
+                decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+
+                if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
+                {
+                    this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
+                    this->setSquareStatus(c,'s');
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch(coordinatesNotValid)
+            {
+                throw;
+            }
+            catch(...)
+            {
+                throw unknownError{};
+            }
         }
-        else
-            return false;
     }
-    catch(coordinatesNotValid)
-    {
-        throw;
-    }
-    catch(...)
-    {
-        throw unknownError{};
-    }
-    
 }

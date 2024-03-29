@@ -4,9 +4,15 @@
  *
  */
 
-#include "opponentBoard.hpp"
-
-shootStatus_t opponentBoard::shoot(coordinates_t c)
+namespace fleetBattle
 {
-    throw notImplemented();
+    namespace opponentBoard
+    {
+        #include "opponentBoard.hpp"
+
+        shootStatus_t opponentBoard::shoot(coordinates_t c)
+        {
+            throw notImplemented();
+        }
+    }
 }

@@ -4,20 +4,26 @@
  *
  */
 
-#include "board.hpp"
-
-#include <regex>
-#include <cctype>
-
-decodedCoordinatesPair_t board::decodeCoordinates(coordinates_t coordinates)
+namespace fleetBattle
 {
-    decodedCoordinatesPair_t decodedCoordinates {}; 
-    std::size_t pos{};
-    
-    std::transform(coordinates.begin(), coordinates.end(), coordinates.begin(), [](unsigned char c){ return std::tolower(c); });
+    namespace board
+    {
+        #include "board.hpp"
 
-    if(this->isCoordinatesValid(coordinates)) decodedCoordinates = decodedCoordinatesPair_t((int)coordinates.at(0)-97,std::stoi(coordinates.substr(1),&pos)-1);
-    else                                      decodedCoordinates = decodedCoordinatesPair_t(-1,-1);
+        #include <regex>
+        #include <cctype>
 
-    return decodedCoordinates;
+        decodedCoordinatesPair_t board::decodeCoordinates(coordinates_t coordinates)
+        {
+            decodedCoordinatesPair_t decodedCoordinates {}; 
+            std::size_t pos{};
+            
+            std::transform(coordinates.begin(), coordinates.end(), coordinates.begin(), [](unsigned char c){ return std::tolower(c); });
+
+            if(this->isCoordinatesValid(coordinates)) decodedCoordinates = decodedCoordinatesPair_t((int)coordinates.at(0)-97,std::stoi(coordinates.substr(1),&pos)-1);
+            else                                      decodedCoordinates = decodedCoordinatesPair_t(-1,-1);
+
+            return decodedCoordinates;
+        }
+    }
 }

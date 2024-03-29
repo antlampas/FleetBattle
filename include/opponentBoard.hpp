@@ -4,27 +4,33 @@
  *
  */
 
-#ifndef OPPONENTBOARD_HPP
-#define OPPONENTBOARD_HPP
-
-#include "board.hpp"
-
-#ifdef TESTOPPONENTBOARD
-#define private public
-#endif
-
-class opponentBoard final : public board
+namespace fleetBattle
 {
-    protected:
-    virtual bool           hit(coordinates_t)                            override final;
-    public:
-    opponentBoard();
-    virtual board_t        getBoardStatus()                              override final;
-    virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
-    virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
-    /* Not Implemented */
-    virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
-    virtual shootStatus_t  shoot(coordinates_t)                          override final;
-};
+    namespace opponentBoard
+    {
+        #ifndef OPPONENTBOARD_HPP
+        #define OPPONENTBOARD_HPP
 
-#endif
+        #include "board.hpp"
+
+        #ifdef TESTOPPONENTBOARD
+        #define private public
+        #endif
+
+        class opponentBoard final : public board
+        {
+            protected:
+            virtual bool           hit(coordinates_t)                            override final;
+            public:
+            opponentBoard();
+            virtual board_t        getBoardStatus()                              override final;
+            virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
+            virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+            /* Not Implemented */
+            virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
+            virtual shootStatus_t  shoot(coordinates_t)                          override final;
+        };
+
+        #endif
+    }
+}

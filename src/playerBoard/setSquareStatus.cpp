@@ -4,25 +4,30 @@
  *
  */
 
-#include "playerBoard.hpp"
-
-squareStatus_t playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
+namespace fleetBattle
 {
-    try
+    namespace playerBoard
     {
-        decodedCoordinatesPair_t coordinates { this->decodeCoordinates(c) };
+        #include "playerBoard.hpp"
 
-        this->Board.at(coordinates.first).at(coordinates.second) = s;
+        squareStatus_t playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
+        {
+            try
+            {
+                decodedCoordinatesPair_t coordinates { this->decodeCoordinates(c) };
 
-        return s;
-    }
-    catch(coordinatesNotValid)
-    {
-        throw;
-    }
-    catch(...)
-    {
-        throw unknownError{};
-    }
+                this->Board.at(coordinates.first).at(coordinates.second) = s;
 
+                return s;
+            }
+            catch(coordinatesNotValid)
+            {
+                throw;
+            }
+            catch(...)
+            {
+                throw unknownError{};
+            }
+        }
+    }
 }
