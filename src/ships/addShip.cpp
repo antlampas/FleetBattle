@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    void ships::addShip(::std::pair<::std::string,int> ship)
+    void ships::addShip(std::pair<std::string,int> ship)
     {
         this->shipsList.insert(ship);
     }

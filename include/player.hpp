@@ -25,10 +25,10 @@ namespace fleetBattle
         class player final
         {
             private:
-            ::std::shared_ptr<playerBoard::playerBoard>   ownBoard;
-            ::std::shared_ptr<playerBoard::opponentBoard> otherBoard;
-            ::std::shared_ptr<command_t>                  command;
-            ::std::shared_ptr<::std::mutex>                 mutex;
+            std::shared_ptr<playerBoard::playerBoard>   ownBoard;
+            std::shared_ptr<playerBoard::opponentBoard> otherBoard;
+            std::shared_ptr<command_t>                  command;
+            std::shared_ptr<std::mutex>                 mutex;
             
             private:
             board_t        checkOwnBoard();
@@ -39,8 +39,8 @@ namespace fleetBattle
             
             public:
             player()                                                                                                                    = delete;
-            player(::std::shared_ptr<playerBoard>,::std::shared_ptr<opponentBoard>,::std::shared_ptr<command_t>,::std::shared_ptr<::std::mutex>);
-            bool getCommand(::std::string);
+            player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>,std::shared_ptr<command_t>,std::shared_ptr<std::mutex>);
+            bool getCommand(std::string);
             int operator()();
         };
     }

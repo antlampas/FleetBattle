@@ -18,7 +18,7 @@ namespace fleetBattle
 
             for(auto ship: deployedShips)
             {
-                ::std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
+                std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
                 try
                 {
                     decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);

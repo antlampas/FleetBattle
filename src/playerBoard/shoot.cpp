@@ -18,9 +18,9 @@ namespace fleetBattle
             {
                 decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
                 
-                ::std::regex stillNotHit {"[WS]"};
+                std::regex stillNotHit {"[WS]"};
 
-                if(::std::regex_match(::std::string(1,this->getSquareStatus(c)),stillNotHit))
+                if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
                     if(this->hit(c))
                         return this->HIT;
                     else

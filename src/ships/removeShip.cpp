@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    void ships::removeShip(::std::string ship)
+    void ships::removeShip(std::string ship)
     {
         this->shipsList.erase(ship);
     }

@@ -10,7 +10,7 @@ namespace fleetBattle
 {
     namespace player
     {
-        bool player::getCommand(::std::string command)
+        bool player::getCommand(std::string command)
         {
 
         }
