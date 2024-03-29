@@ -38,7 +38,11 @@ namespace fleetBattle
 
             public:
             matchMaster() = delete;
-            matchMaster(std::unique_ptr<playerBoard::playerBoard>,std::unique_ptr<playerBoard::playerBoard>,std::shared_ptr<command_t>,playerInTurn_t);
+            matchMaster(std::unique_ptr<playerBoard::playerBoard>,
+                        std::unique_ptr<playerBoard::playerBoard>,
+                        std::shared_ptr<command_t>,
+                        playerInTurn_t
+                       );
             int operator()();
         };
     }
