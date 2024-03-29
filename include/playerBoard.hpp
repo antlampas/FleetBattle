@@ -10,6 +10,7 @@ namespace fleetBattle
         #ifndef PLAYERBOARD_HPP
         #define PLAYERBOARD_HPP
 
+        #include "types.hpp"
         #include "board.hpp"
         #include "ships.hpp"
 

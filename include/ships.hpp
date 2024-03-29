@@ -14,15 +14,10 @@ namespace fleetBattle
     #include <map>
     #include <utility>
 
+    #include "types.hpp"
+    
     #ifdef TESTSHIPS
     #define private public
-    #endif
-
-    #ifndef shipSize_t
-    using shipSize_t  = unsigned short int;
-    #endif
-    #ifndef shipsList_t
-    using shipsList_t = std::map<std::string,unsigned short int>;
     #endif
 
     class ships final

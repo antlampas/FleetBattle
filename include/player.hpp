@@ -13,21 +13,20 @@ namespace fleetBattle
         #include <memory>
         #include <mutex>
 
+        #include "types.hpp"
         #include "board.hpp"
 
         #ifdef TESTPLAYER
         #define private public
         #endif
 
-        using command_t = std::pair<std::string,std::string>;
-
         class player final
         {
             private:
-            std::shared_ptr<playerBoard>   ownBoard;
-            std::shared_ptr<opponentBoard> otherBoard;
-            std::shared_ptr<command_t>     command;
-            std::shared_ptr<std::mutex>    mutex;
+            std::shared_ptr<playerBoard::playerBoard>   ownBoard;
+            std::shared_ptr<playerBoard::opponentBoard> otherBoard;
+            std::shared_ptr<command_t>                  command;
+            std::shared_ptr<std::mutex>                 mutex;
             
             private:
             board_t        checkOwnBoard();

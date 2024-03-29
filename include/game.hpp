@@ -7,6 +7,7 @@ namespace fleetBattle
 {
     namespace game
     {
+        #include "types.hpp"
         #include "board.hpp"
         #include "matchMaster.hpp"
         #include "player.hpp"
@@ -18,9 +19,9 @@ namespace fleetBattle
         class game final
         {
             private:
-            std::shared_ptr<player>     playerA {};
-            std::shared_ptr<player>     playerB {};
-            std::shared_ptr<matchMaster> mm     {};
+            std::shared_ptr<player::player>           playerA {};
+            std::shared_ptr<player::player>           playerB {};
+            std::shared_ptr<matchMaster::matchMaster> mm      {};
 
             public:
             game();

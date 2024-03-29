@@ -18,25 +18,10 @@ namespace fleetBattle
         #include <map>
         #include <exception>
 
+        #include "types.hpp"
+        
         #ifdef TESTBOARD
         #define private public
-        #endif
-
-        using coordinates_t             = std::string;
-        using decodedCoordinateSingle_t = unsigned short int;
-        using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
-        using squareStatus_t            = char;
-        using shootStatus_t             = unsigned short int;
-        using board_t                   = std::array<std::array<squareStatus_t,10>,10>;
-        using shipStatus_t              = std::array<squareStatus_t,10>;
-        using deployedShips_t           = std::vector<std::pair<std::string,std::string>>;
-        using destroyedShips_t          = std::vector<std::string>;
-
-        #ifndef shipSize_t
-        using shipSize_t  = unsigned short int;
-        #endif
-        #ifndef shipsList_t
-        using shipsList_t = std::map<std::string,unsigned short int>;
         #endif
 
         class unknownError            : public std::exception {};

@@ -10,7 +10,8 @@ namespace fleetBattle
     {
         #ifndef OPPONENTBOARD_HPP
         #define OPPONENTBOARD_HPP
-
+        
+        #include "types.hpp"
         #include "board.hpp"
 
         #ifdef TESTOPPONENTBOARD

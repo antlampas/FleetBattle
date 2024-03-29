@@ -14,6 +14,7 @@ namespace fleetBattle
         #include <memory>
         #include <mutex>
 
+        #include "types.hpp"
         #include "playerBoard.hpp"
         #include "opponentBoard.hpp"
 
@@ -21,19 +22,15 @@ namespace fleetBattle
         #define private public
         #endif
 
-        using playerInTurn_t     = char;
-        using shipsSquaresList_t = std::array<std::array<squareStatus_t,10>,10>;
-        using command_t          = std::pair<std::string,std::string>;
-
         class matchMaster final
         {
             private:
-            std::pair<playerInTurn_t,shipsSquaresList_t> ships;
-            std::unique_ptr<playerBoard> playerBoardA;
-            std::unique_ptr<playerBoard> playerBoardB;
-            std::shared_ptr<command_t>   command;
-            playerInTurn_t               playerInTurn;
-            std::shared_ptr<std::mutex>  mutex;
+            std::pair<board::playerInTurn_t,board::shipsSquaresList_t> ships;
+            std::unique_ptr<board::playerBoard>                        playerBoardA;
+            std::unique_ptr<board::playerBoard>                        playerBoardB;
+            std::shared_ptr<board::command_t>                          command;
+            board::playerInTurn_t                                      playerInTurn;
+            std::shared_ptr<std::mutex>                                mutex;
 
             private:
             bool isShipSunk();
