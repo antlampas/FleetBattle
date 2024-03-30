@@ -10,33 +10,29 @@
 
 namespace fleetBattle
 {
-    namespace playerBoard
+    bool playerBoard::isSquareAlreadyHit(coordinates_t c)
     {
-
-        bool playerBoard::isSquareAlreadyHit(coordinates_t c)
+        try
         {
-            try
+            decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+            if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
             {
-                decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
-                if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
-                {
-                    std::regex alreadyHit {"[ws]"};
-                    board_t b {this->applyShipsLayer()};
-                    if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
-                        return true;
-                    else
-                        return false;
-                }
-                return false;
+                std::regex alreadyHit {"[ws]"};
+                board_t b {this->applyShipsLayer()};
+                if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
+                    return true;
+                else
+                    return false;
             }
-            catch(coordinatesNotValid& e)
-            {
-                throw e;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
+            return false;
+        }
+        catch(coordinatesNotValid& e)
+        {
+            throw e;
+        }
+        catch(...)
+        {
+            throw unknownError{};
         }
     }
 }

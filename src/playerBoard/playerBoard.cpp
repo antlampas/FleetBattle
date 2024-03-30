@@ -10,87 +10,82 @@
 
 namespace fleetBattle
 {
-    namespace playerBoard
+    playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({{'U'}})
     {
-
-        playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({{'U'}})
+        for(auto ship: deployedShips)
         {
-
-            for(auto ship: deployedShips)
+            std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
+            try
             {
-                std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
-                try
-                {
-                    decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
-                    decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
-                }
-                catch(coordinatesNotValid)
-                {
-                    throw;
-                }
-                catch(...)
-                {
-                    throw unknownError{};
-                }
-                bool isOnSameRow              = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
-                bool isOnSameColumn           = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
-                bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
-
-                if(isVerticalOrHorizontal)
-                    this->deployedShips.push_back(ship);
-                else
-                    throw shipNotValid{};
+                decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
+                decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
             }
-            for(auto deployedShip: this->deployedShips)
+            catch(coordinatesNotValid)
             {
-                int min = 0,max = 0;
-                try
+                throw;
+            }
+            catch(...)
+            {
+                throw unknownError{};
+            }
+            bool isOnSameRow              = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
+            bool isOnSameColumn           = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
+            bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
+
+            if(isVerticalOrHorizontal)
+                this->deployedShips.push_back(ship);
+            else
+                throw shipNotValid{};
+        }
+        for(auto deployedShip: this->deployedShips)
+        {
+            int min = 0,max = 0;
+            try
+            {
+                const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
+                const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
+                const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
+                const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
+                if(startRow == endRow)
                 {
-                    const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
-                    const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
-                    const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
-                    const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
-                    if(startRow == endRow)
+                    const int& row = startRow;
+
+                    if(startColumn < endColumn)
                     {
-                        const int& row = startRow;
-
-                        if(startColumn < endColumn)
-                        {
-                            min = startColumn;
-                            max = endColumn;
-                        }else{
-                            min = endColumn;
-                            max = startColumn;
-                        }
-
-                        for(int i=min;i<=max;i++)
-                            this->shipsLayer.at(row).at(i) = 'S';
+                        min = startColumn;
+                        max = endColumn;
+                    }else{
+                        min = endColumn;
+                        max = startColumn;
                     }
-                    else if(startColumn == endColumn)
+
+                    for(int i=min;i<=max;i++)
+                        this->shipsLayer.at(row).at(i) = 'S';
+                }
+                else if(startColumn == endColumn)
+                {
+                    const int& column = startColumn;
+
+                    if(startRow < endRow)
                     {
-                        const int& column = startColumn;
-
-                        if(startRow < endRow)
-                        {
-                            min = startRow;
-                            max = endRow;
-                        }else{
-                            min = endRow;
-                            max = startRow;
-                        }
-
-                        for(int i=min;i<=max;i++)
-                            this->shipsLayer.at(i).at(column) = 'S';
+                        min = startRow;
+                        max = endRow;
+                    }else{
+                        min = endRow;
+                        max = startRow;
                     }
+
+                    for(int i=min;i<=max;i++)
+                        this->shipsLayer.at(i).at(column) = 'S';
                 }
-                catch(coordinatesNotValid)
-                {
-                    throw;
-                }
-                catch(...)
-                {
-                    throw unknownError{};
-                }
+            }
+            catch(coordinatesNotValid)
+            {
+                throw;
+            }
+            catch(...)
+            {
+                throw unknownError{};
             }
         }
     }

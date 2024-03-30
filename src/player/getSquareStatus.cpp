@@ -8,11 +8,8 @@
 
 namespace fleetBattle
 {
-    namespace player
+    squareStatus_t player::getSquareStatus(coordinates_t c)
     {
-        squareStatus_t player::getSquareStatus(coordinates_t c)
-        {
-            return squareStatus_t(this->ownBoard(c));
-        }
+        return squareStatus_t(this->ownBoard(c));
     }
 }

@@ -24,33 +24,30 @@ using namespace std::chrono_literals;
 
 namespace fleetBattle
 {
-    namespace player
+    class player final
     {
-
-        class player final
-        {
-            private:
-            std::shared_ptr<playerBoard::playerBoard>     ownBoard;
-            std::shared_ptr<opponentBoard::opponentBoard> otherBoard;
-            std::shared_ptr<command_t>                    command;
-            std::shared_ptr<std::mutex>                   mutex;
-            
-            private:
-            board_t        checkOwnBoard();
-            board_t        checkOpponentBoard();
-            shootStatus_t  shoot(coordinates_t);
-            squareStatus_t setSquareStatus(coordinates_t,squareStatus_t);
-            squareStatus_t getSquareStatus(coordinates_t);
-            
-            public:
-            player()                                               = delete;
-            player( std::shared_ptr<playerBoard::playerBoard>,
-                    std::shared_ptr<opponentBoard::opponentBoard>,
-                    std::shared_ptr<command_t>,
-                    std::shared_ptr<std::mutex>);
-            bool getCommand(std::string);
-            int operator()();
-        };
-    }
+        private:
+        std::shared_ptr<playerBoard>   ownBoard;
+        std::shared_ptr<opponentBoard> otherBoard;
+        std::shared_ptr<command_t>     command;
+        std::shared_ptr<std::mutex>    mutex;
+        friend matchMaster;
+        
+        private:
+        board_t        checkOwnBoard();
+        board_t        checkOpponentBoard();
+        shootStatus_t  shoot(coordinates_t);
+        squareStatus_t setSquareStatus(coordinates_t,squareStatus_t);
+        squareStatus_t getSquareStatus(coordinates_t);
+        
+        public:
+        player()                                               = delete;
+        player( std::shared_ptr<playerBoard>,
+                std::shared_ptr<opponentBoard>,
+                std::shared_ptr<command_t>,
+                std::shared_ptr<std::mutex>);
+        bool getCommand(std::string);
+        int operator()();
+    };
 }
 #endif

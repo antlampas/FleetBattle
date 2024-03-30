@@ -7,26 +7,23 @@
 #include "playerBoard.hpp"
 namespace fleetBattle
 {
-    namespace playerBoard
+    squareStatus_t playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
     {
-        squareStatus_t playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
+        try
         {
-            try
-            {
-                decodedCoordinatesPair_t coordinates { this->decodeCoordinates(c) };
+            decodedCoordinatesPair_t coordinates { this->decodeCoordinates(c) };
 
-                this->Board.at(coordinates.first).at(coordinates.second) = s;
+            this->Board.at(coordinates.first).at(coordinates.second) = s;
 
-                return s;
-            }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
+            return s;
+        }
+        catch(coordinatesNotValid)
+        {
+            throw;
+        }
+        catch(...)
+        {
+            throw unknownError{};
         }
     }
 }

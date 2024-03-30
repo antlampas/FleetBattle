@@ -8,11 +8,8 @@
 
 namespace fleetBattle
 {
-    namespace opponentBoard
+    squareStatus_t opponentBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
     {
-        squareStatus_t opponentBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
-        {
-            return squareStatus_t{};
-        }
+        return squareStatus_t{};
     }
 }

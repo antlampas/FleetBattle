@@ -21,8 +21,6 @@
 
 namespace fleetBattle
 {
-
-
     class ships final
     {
         private:

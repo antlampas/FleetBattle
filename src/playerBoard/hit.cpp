@@ -8,32 +8,28 @@
 
 namespace fleetBattle
 {
-    namespace playerBoard
+    bool playerBoard::hit(coordinates_t c)
     {
-
-        bool playerBoard::hit(coordinates_t c)
+        try
         {
-            try
-            {
-                decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+            decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
 
-                if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
-                {
-                    this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
-                    this->setSquareStatus(c,'s');
-                    return true;
-                }
-                else
-                    return false;
-            }
-            catch(coordinatesNotValid)
+            if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
             {
-                throw;
+                this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
+                this->setSquareStatus(c,'s');
+                return true;
             }
-            catch(...)
-            {
-                throw unknownError{};
-            }
+            else
+                return false;
+        }
+        catch(coordinatesNotValid)
+        {
+            throw;
+        }
+        catch(...)
+        {
+            throw unknownError{};
         }
     }
 }

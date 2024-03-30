@@ -8,8 +8,14 @@
 
 namespace fleetBattle
 {
-    namespace game
-    {
-
-    }
+    game::game()    :   playerA(new player()),
+                        playerB(new player()),
+                        mm( new matchMaster(
+                                            std::unique_ptr<playerBoard>(playerA->board),
+                                            std::unique_ptr<playerBoard>(playerB->board),
+                                            std::shared_ptr<command_t>(std::make_pair<std::string,std::string>("","")),
+                                            'A'
+                                            )
+                            )
+    {}
 }

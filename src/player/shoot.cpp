@@ -8,11 +8,8 @@
 
 namespace fleetBattle
 {
-    namespace player
+    shootStatus_t player::shoot(coordinates_t coordinates)
     {
-        shootStatus_t player::shoot(coordinates_t coordinates)
-        {
-            return shootStatus_t();
-        }
+        return shootStatus_t();
     }
 }

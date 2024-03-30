@@ -8,11 +8,8 @@
 
 namespace fleetBattle
 {
-    namespace player
+    board_t player::checkOwnBoard()
     {
-        board_t player::checkOwnBoard()
-        {
-            return board_t();
-        }
+        return board_t();
     }
 }

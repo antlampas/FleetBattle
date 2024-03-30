@@ -22,34 +22,31 @@
 
 namespace fleetBattle
 {
-    namespace board
+    class board
     {
-        class board
-        {
-            /*
-            * U = unknown
-            * S = ship square
-            * W = water
-            * s = ship square hit
-            * w = water square hit
-            */
-            protected:
-            board_t Board;
-            protected:
-            bool                     isCoordinatesValid(coordinates_t);
-            decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
-            virtual bool             hit(coordinates_t)                            = 0; 
-            public:
-            enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
-            public:
-            board();
-            virtual ~board();
-            virtual board_t          getBoardStatus()                              = 0;
-            virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
-            virtual bool             isSquareAlreadyHit(coordinates_t)             = 0;
-            virtual shootStatus_t    shoot(coordinates_t)                          = 0;
-            virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
-        };
-    }
+        /*
+        * U = unknown
+        * S = ship square
+        * W = water
+        * s = ship square hit
+        * w = water square hit
+        */
+        protected:
+        board_t Board;
+        protected:
+        bool                     isCoordinatesValid(coordinates_t);
+        decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
+        virtual bool             hit(coordinates_t)                            = 0; 
+        public:
+        enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
+        public:
+        board();
+        virtual ~board();
+        virtual board_t          getBoardStatus()                              = 0;
+        virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
+        virtual bool             isSquareAlreadyHit(coordinates_t)             = 0;
+        virtual shootStatus_t    shoot(coordinates_t)                          = 0;
+        virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
+    };
 }
 #endif

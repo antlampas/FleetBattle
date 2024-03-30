@@ -8,11 +8,8 @@
 
 namespace fleetBattle
 {
-    namespace opponentBoard
+    shootStatus_t opponentBoard::shoot(coordinates_t c)
     {
-        shootStatus_t opponentBoard::shoot(coordinates_t c)
-        {
-            throw notImplemented();
-        }
+        throw notImplemented();
     }
 }

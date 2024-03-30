@@ -10,9 +10,6 @@
 
 namespace fleetBattle
 {
-    namespace board
-    {
-        board::board() : Board({{'W'}}){}
-        board::~board(){}
-    }
+    board::board() : Board({{'W'}}){}
+    board::~board(){}
 }

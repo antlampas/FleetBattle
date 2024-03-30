@@ -10,8 +10,5 @@
 
 namespace fleetBattle
 {
-    namespace opponentBoard
-    {
-        opponentBoard::opponentBoard(){}
-    }
+    opponentBoard::opponentBoard(){}
 }

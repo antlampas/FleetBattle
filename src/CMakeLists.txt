@@ -3,6 +3,7 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_subdirectory(board board)
+add_subdirectory(game game)
 add_subdirectory(opponentBoard opponentBoard)
 add_subdirectory(matchMaster matchMaster)
 add_subdirectory(playerBoard playerBoard)

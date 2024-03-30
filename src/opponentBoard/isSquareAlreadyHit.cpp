@@ -8,11 +8,8 @@
 
 namespace fleetBattle
 {
-    namespace opponentBoard
+    bool opponentBoard::isSquareAlreadyHit(coordinates_t c)
     {
-        bool opponentBoard::isSquareAlreadyHit(coordinates_t c)
-        {
-            throw notImplemented();
-        }
+        throw notImplemented();
     }
 }

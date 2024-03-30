@@ -4,6 +4,6 @@
 
 int main(int argc,char** argv)
 {
-    std::shared_ptr<fleetBattle::game> fb {new fleetBattle::game};
+    std::shared_ptr<fleetBattle::game::game> fb(new fleetBattle::game::game());
     return -1;
 }

@@ -18,27 +18,23 @@
 
 namespace fleetBattle
 {
-    namespace playerBoard
+    class playerBoard final : public board::board
     {
-
-        class playerBoard final : public board::board
-        {
-            private:
-            deployedShips_t        deployedShips {};
-            board_t                shipsLayer    {};
-            private:
-            board_t                applyShipsLayer();
-            protected:
-            virtual bool           hit(coordinates_t)                            override final;
-            public:
-            playerBoard(deployedShips_t);
-            playerBoard()                                                        = delete;
-            virtual board_t        getBoardStatus()                              override final;
-            virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
-            virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
-            virtual shootStatus_t  shoot(coordinates_t)                          override final;
-            virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
-        };
-    }
+        private:
+        deployedShips_t        deployedShips {};
+        board_t                shipsLayer    {};
+        private:
+        board_t                applyShipsLayer();
+        protected:
+        virtual bool           hit(coordinates_t)                            override final;
+        public:
+        playerBoard(deployedShips_t);
+        playerBoard()                                                        = delete;
+        virtual board_t        getBoardStatus()                              override final;
+        virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
+        virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
+        virtual shootStatus_t  shoot(coordinates_t)                          override final;
+        virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+    };
 }
 #endif
