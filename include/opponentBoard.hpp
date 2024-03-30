@@ -17,7 +17,7 @@
 
 namespace fleetBattle
 {
-    class opponentBoard final : public board::board
+    class opponentBoard final : public board
     {
         protected:
         virtual bool           hit(coordinates_t)                            override final;
