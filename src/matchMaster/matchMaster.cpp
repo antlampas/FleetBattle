@@ -8,9 +8,9 @@
 
 namespace fleetBattle
 {
-    matchMaster::matchMaster(   std::unique_ptr<playerBoard::playerBoard> bA,
-                                std::unique_ptr<playerBoard::playerBoard> bB,
-                                std::shared_ptr<command_t>                cA,
+    matchMaster::matchMaster(   std::unique_ptr<playerBoard> bA,
+                                std::unique_ptr<playerBoard> bB,
+                                std::shared_ptr<command_t>   cA,
                                 playerInTurn_t                            p
                             ) : playerBoardA(std::move(bA)),
                                 playerBoardB(std::move(bB)),
