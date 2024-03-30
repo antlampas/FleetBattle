@@ -37,6 +37,7 @@ namespace fleetBattle
             playerInTurn_t                               playerInTurn;
             std::shared_ptr<std::mutex>                  mutexA;
             std::shared_ptr<std::mutex>                  mutexB;
+            std::shared__ptr<std::mutex>                 mutexCommand;
 
             private:
             bool isShipSunk();
