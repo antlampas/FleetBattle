@@ -32,6 +32,7 @@ namespace fleetBattle
         std::shared_ptr<command_t>     command;
         std::shared_ptr<std::mutex>    mutex;
         friend matchMaster;
+        friend game;
         
         private:
         board_t        checkOwnBoard();

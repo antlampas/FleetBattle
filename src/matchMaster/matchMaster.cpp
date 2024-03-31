@@ -10,14 +10,16 @@ namespace fleetBattle
 {
     matchMaster::matchMaster(   std::unique_ptr<playerBoard> bA,
                                 std::unique_ptr<playerBoard> bB,
+                                std::shared_ptr<std::mutex>  mA,
+                                std::shared_ptr<std::mutex>  mB,
                                 std::shared_ptr<command_t>   cA,
-                                playerInTurn_t                            p
+                                playerInTurn_t               p
                             ) : playerBoardA(std::move(bA)),
                                 playerBoardB(std::move(bB)),
                                 command(cA),
                                 playerInTurn(p),
-                                mutexA(new std::mutex()),
-                                mutexB(new std::mutex()),
+                                mutexA(mA),
+                                mutexB(mB),
                                 mutexCommand(new std::mutex())
     {}
 }

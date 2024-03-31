@@ -29,8 +29,8 @@ namespace fleetBattle
     {
         private:
         std::pair<playerInTurn_t,shipsSquaresList_t> ships;
-        std::unique_ptr<playerBoard>                 playerBoardA;
-        std::unique_ptr<playerBoard>                 playerBoardB;
+        std::shared_ptr<playerBoard>                 playerBoardA;
+        std::shared_ptr<playerBoard>                 playerBoardB;
         std::shared_ptr<command_t>                   command;
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
@@ -42,8 +42,10 @@ namespace fleetBattle
 
         public:
         matchMaster() = delete;
-        matchMaster(std::unique_ptr<playerBoard>,
-                    std::unique_ptr<playerBoard>,
+        matchMaster(std::shared_ptr<playerBoard>,
+                    std::shared_ptr<playerBoard>,
+                    std::shared_ptr<std::mutex>,
+                    std::shared_ptr<std::mutex>,
                     std::shared_ptr<command_t>,
                     playerInTurn_t
                     );

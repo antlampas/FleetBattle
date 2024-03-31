@@ -8,14 +8,23 @@
 
 namespace fleetBattle
 {
-    game::game()    :   playerA(new player()),
-                        playerB(new player()),
-                        mm(new matchMaster(
-                                            std::unique_ptr<playerBoard>(playerA->board),
-                                            std::unique_ptr<playerBoard>(playerB->board),
-                                            std::shared_ptr<command_t>(std::make_pair<std::string,std::string>("","")),
-                                            'A'
-                                            )
-                            )
-    {}
+  game::game( std::shared_ptr<command_t> commandPtr,
+              deployedShips_t boardA,
+              deployedShips_t boardB)                 :   playerA(new player( std::make_shared<fleetBattle::playerBoard>(new fleetBattle::playerBoard(boardA)),
+                                                                              std::make_shared<fleetBattle::opponentBoard>(new fleetBattle::opponentBoard()),
+                                                                              commandPtr,
+                                                                              std::make_shared<std::mutex>(new std::mutex())
+                                                                            )),
+                                                          playerB(new player( std::make_shared<fleetBattle::playerBoard>(new fleetBattle::playerBoard(boardB)),
+                                                                              std::make_shared<fleetBattle::opponentBoard>(new fleetBattle::opponentBoard()),
+                                                                              commandPtr,
+                                                                              std::make_shared<std::mutex>(new std::mutex())
+                                                                            )),
+                                                          mm( new matchMaster(std::shared_ptr<playerBoard>(playerA->ownBoard),
+                                                                              std::shared_ptr<playerBoard>(playerB->ownBoard),
+                                                                              std::shared_ptr<command_t>(std::make_pair<std::string,std::string>("","")),
+                                                                              'A'
+                                                                              )
+                                                            )
+  {}
 }

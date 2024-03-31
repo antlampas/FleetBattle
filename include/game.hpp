@@ -25,9 +25,9 @@ namespace fleetBattle
         std::shared_ptr<player>      playerA;
         std::shared_ptr<player>      playerB;
         std::shared_ptr<matchMaster> mm;
-
+        
         public:
-        game();
+        game(std::shared_ptr<command_t>,deployedShips_t,deployedShips_t);
     };
 }
 #endif
