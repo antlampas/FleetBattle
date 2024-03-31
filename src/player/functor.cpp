@@ -17,6 +17,10 @@ namespace fleetBattle
             {
                 shootStatus_t status = this->ownBoard->shoot(this->command->second);
             }
+            else if(this->command->first.compare("exit"))
+            {
+                return 1;
+            }
         }
         
         return 0;
