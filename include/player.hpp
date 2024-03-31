@@ -16,7 +16,8 @@ using namespace std::chrono_literals;
 
 #include "types.hpp"
 #include "exceptions.hpp"
-#include "board.hpp"
+#include "playerBoard.hpp"
+#include "opponentBoard.hpp"
 
 #ifdef TESTPLAYER
 #define private public
