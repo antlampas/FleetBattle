@@ -27,6 +27,7 @@ namespace fleetBattle
         std::shared_ptr<matchMaster> mm;
         
         public:
+        game() = delete;
         game(std::shared_ptr<command_t>,deployedShips_t,deployedShips_t);
     };
 }
