@@ -10,7 +10,8 @@ namespace fleetBattle
 {
     int player::operator()()
     {
-        std::lock<std::mutex> 
+        std::lock<std::mutex> lock(this->mutex);
+        
         while(true)
         {
             std::lock_guard<std::mutex>(*(this->mutex));
