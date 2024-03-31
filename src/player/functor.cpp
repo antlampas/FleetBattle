@@ -10,14 +10,12 @@ namespace fleetBattle
 {
     int player::operator()()
     {
-        std::lock<std::mutex> lock(this->mutex);
-        
         while(true)
         {
             std::lock_guard<std::mutex>(*(this->mutex));
-            if(*(this->command).first.compare("shoot"))
+            if(this->command->first.compare("shoot"))
             {
-                shootStatus_t status = this->ownBoard->shoot((*this->command).second);
+                shootStatus_t status = this->ownBoard->shoot(this->command->second);
             }
         }
         

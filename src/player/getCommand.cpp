@@ -10,6 +10,6 @@ namespace fleetBattle
 {
     bool player::getCommand(std::string command)
     {
-
+        return false;
     }
 }

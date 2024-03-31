@@ -10,7 +10,7 @@ namespace fleetBattle
 {
     squareStatus_t player::setSquareStatus(coordinates_t c,squareStatus_t s)
     {
-        this->ownBoard(c,s);
+        this->ownBoard->setSquareStatus(c,s);
 
         return this->getSquareStatus(c);
     }
