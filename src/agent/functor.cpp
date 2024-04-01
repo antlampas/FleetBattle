@@ -4,6 +4,8 @@
  *
  */
 
+#include "agent.hpp"
+
  namespace fleetBattle
  {
     void agent::operator()()
@@ -12,21 +14,27 @@
 
         while(true)
         {
-            std::cin >> command;
-            std::lock_guard(*this->mutex);
-            auto pos = command.find(" ");
+            
+            std::cout << "Command: ";
+            std::getline(std::cin,command);
+
+            std::lock_guard<std::mutex>(*this->mutex);
+            auto pos = command.find(' ');
             if(pos != command.npos)
             {
-                this->command->first  = command.substr(0,pos-1);
-                this->command->second = command.substr(0,pos+1);
+                this->command->first  = command.substr(0,pos);
+                this->command->second = command.substr(++pos,command.npos);
             }
-            
-            std::cout << command << std::endl << this->command->first << std::endl << this->command->second;
+            else
+            {
+                this->command->first  = command;
+            }
 
-            if(this->command->first == "exit" || this->command->first == "quit")
+            if((this->command->first == "exit") || (this->command->first == "quit"))
             {
                 break;
             }
+            this->command->first = this->command->second = "";
         }
     }
  }

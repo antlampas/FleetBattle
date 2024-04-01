@@ -20,5 +20,5 @@
         public:
         agent(std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
         void operator()();
-    }
+    };
  }

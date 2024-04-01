@@ -1,9 +1,11 @@
 #include <iostream>
 #include <memory>
+#include <thread>
 
 #include "types.hpp"
 #include "exceptions.hpp"
 #include "game.hpp"
+#include "agent.hpp"
 
 int main(int argc,char** argv)
 {
@@ -16,6 +18,12 @@ int main(int argc,char** argv)
     fleetBattle::deployedShips_t deployedShipsB {std::make_pair("a1","a2"),std::make_pair("b1","b2"),std::make_pair("c1","c3"),std::make_pair("d1","d4"),std::make_pair("e1","e5")};
 
     std::unique_ptr<fleetBattle::game> fb(new fleetBattle::game(cmd,mutexA,mutexB,mutexCmd,deployedShipsA,deployedShipsB));
+
+    fleetBattle::agent a(mutexCmd,cmd);
+
+    std::thread agentLoop(a);
+
+    agentLoop.join();
 
     return -1;
 }

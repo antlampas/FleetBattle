@@ -28,7 +28,7 @@ namespace fleetBattle
         
         public:
         game() = delete;
-        game(std::shared_ptr<command_t>,std::shared_ptr<std::mutex>,std::shared_ptr<std::mutex>,deployedShips_t,deployedShips_t);
+        game(std::shared_ptr<command_t>,std::shared_ptr<std::mutex>,std::shared_ptr<std::mutex>,std::shared_ptr<std::mutex>,deployedShips_t,deployedShips_t);
     };
 }
 #endif
