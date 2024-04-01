@@ -18,6 +18,8 @@ namespace fleetBattle
 
         while(true)
         {
+            lockCmd.unlock();
+            
             switch(this->playerInTurn)
             {
                 case 'A':
