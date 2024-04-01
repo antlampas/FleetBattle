@@ -46,6 +46,7 @@ namespace fleetBattle
                     std::shared_ptr<playerBoard>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<std::mutex>,
+                    std::shared_ptr<std::mutex>,
                     std::shared_ptr<command_t>,
                     playerInTurn_t
                     );

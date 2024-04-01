@@ -12,8 +12,9 @@ namespace fleetBattle
     {
         std::unique_lock<std::mutex> lockA(*this->mutexA,std::defer_lock);
         std::unique_lock<std::mutex> lockB(*this->mutexB,std::defer_lock);
+        std::unique_lock<std::mutex> lockCmd(*this->mutexB,std::defer_lock);
 
-        std::lock(lockA,lockB);
+        std::lock(lockA,lockB,lockCmd);
 
         while(true)
         {

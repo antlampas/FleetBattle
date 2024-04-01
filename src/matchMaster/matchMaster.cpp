@@ -12,6 +12,7 @@ namespace fleetBattle
                                 std::shared_ptr<playerBoard> bB,
                                 std::shared_ptr<std::mutex>  mA,
                                 std::shared_ptr<std::mutex>  mB,
+                                std::shared_ptr<std::mutex>  mC,
                                 std::shared_ptr<command_t>   cA,
                                 playerInTurn_t               p
                             ) : playerBoardA(std::move(bA)),
@@ -20,6 +21,6 @@ namespace fleetBattle
                                 playerInTurn(p),
                                 mutexA(mA),
                                 mutexB(mB),
-                                mutexCommand(new std::mutex())
+                                mutexCommand(mC)
     {}
 }
