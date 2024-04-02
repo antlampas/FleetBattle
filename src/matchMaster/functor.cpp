@@ -24,7 +24,9 @@ namespace fleetBattle
                     (*this->playerA)();
                     lockA.lock();
                     if(this->command->first == "shoot")
-                    {}
+                    {
+                        this->playerBoardB->shoot(this->command->first,this->command->second)
+                    }
                     this->playerInTurn = 'B';
                     break;
                 case 'B':
@@ -32,7 +34,9 @@ namespace fleetBattle
                     (*this->playerB)();
                     lockB.lock();
                     if(this->command->first == "shoot")
-                    {}
+                    {
+                        this->playerBoardB->shoot(this->command->first,this->command->second)
+                    }
                     this->playerInTurn = 'A';
                     break;
                 default:

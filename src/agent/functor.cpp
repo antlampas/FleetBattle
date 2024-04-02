@@ -13,7 +13,6 @@
         std::string command;
 
         std::lock_guard<std::mutex>(*this->mutex);
-        
         this->command->first = this->command->second = "";
         
         std::cout << "Command: ";

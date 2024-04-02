@@ -10,9 +10,7 @@ namespace fleetBattle
 {
     bool player::operator()()
     {
-        std::lock_guard<std::mutex>(*(this->mutex));
-        
-        std::packaged_task<void()> agent(std::bind(&player::agentInput,this));
+        std::packaged_task<void()> agent(std::bind(&player::user,this));
 
         agent();
         
