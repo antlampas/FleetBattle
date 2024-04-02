@@ -8,13 +8,14 @@
 
 namespace fleetBattle
 {
-    player::player( std::shared_ptr<playerBoard> pb,
+    player::player( std::shared_ptr<playerBoard>   pb,
                     std::shared_ptr<opponentBoard> ob,
-                    std::shared_ptr<command_t> c,
-                    std::shared_ptr<std::mutex> m
+                    std::shared_ptr<command_t>     c,
+                    std::shared_ptr<std::mutex>    m
                 ) : ownBoard(pb),
                     otherBoard(ob),
                     command(c),
-                    mutex(m)
+                    mutex(m),
+                    user(new agent(this->mutex,this->command))
     {}
 }

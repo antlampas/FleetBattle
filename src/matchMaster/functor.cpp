@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    int matchMaster::operator()()
+    bool matchMaster::operator()()
     {
         std::unique_lock<std::mutex> lockA(*this->mutexA,std::defer_lock);
         std::unique_lock<std::mutex> lockB(*this->mutexB,std::defer_lock);
@@ -18,19 +18,17 @@ namespace fleetBattle
 
         while(true)
         {
-            lockCmd.unlock();
-            std::this_thread::sleep_for(1ms);
             switch(this->playerInTurn)
             {
                 case 'A':
                     lockA.unlock();
-                    std::this_thread::sleep_for(1ms);
+                    *this->playerA();
                     lockA.lock();
                     this->playerInTurn = 'B';
                     break;
                 case 'B':
                     lockB.unlock();
-                    std::this_thread::sleep_for(1ms);
+                    *this->playerB();
                     lockB.lock();
                     this->playerInTurn = 'A';
                     break;
@@ -40,6 +38,7 @@ namespace fleetBattle
             std::this_thread::sleep_for(1ms);
             lockCmd.lock()
         }
-        return 0;
+        
+        return true;
     }
 }

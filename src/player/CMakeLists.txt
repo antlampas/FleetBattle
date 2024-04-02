@@ -3,6 +3,7 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(player SHARED
+            agentInput.cpp
             checkOpponentBoard.cpp
             checkOwnBoard.cpp
             functor.cpp

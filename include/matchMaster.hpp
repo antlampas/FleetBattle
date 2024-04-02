@@ -29,28 +29,30 @@ namespace fleetBattle
     {
         private:
         std::pair<playerInTurn_t,shipsSquaresList_t> ships;
+        std::shared_ptr<player>                      playerA;
+        std::shared_ptr<player>                      playerB;
         std::shared_ptr<playerBoard>                 playerBoardA;
         std::shared_ptr<playerBoard>                 playerBoardB;
         std::shared_ptr<command_t>                   command;
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
         std::shared_ptr<std::mutex>                  mutexB;
-        std::shared_ptr<std::mutex>                  mutexCommand;
 
         private:
         bool isShipSunk();
 
         public:
         matchMaster() = delete;
-        matchMaster(std::shared_ptr<playerBoard>,
+        matchMaster(std::shared_ptr<player>,
+                    std::shared_ptr<player>,
                     std::shared_ptr<playerBoard>,
-                    std::shared_ptr<std::mutex>,
+                    std::shared_ptr<playerBoard>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<command_t>,
                     playerInTurn_t
                     );
-        int operator()();
+        bool operator()();
     };
 }
 #endif

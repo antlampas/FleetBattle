@@ -18,6 +18,7 @@ using namespace std::chrono_literals;
 #include "exceptions.hpp"
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
+#include "agent.hpp"
 
 #ifdef TESTPLAYER
 #define private public
@@ -32,6 +33,7 @@ namespace fleetBattle
         std::shared_ptr<opponentBoard> otherBoard;
         std::shared_ptr<command_t>     command;
         std::shared_ptr<std::mutex>    mutex;
+        std::shared_ptr<agent>         user;
         friend class matchMaster;
         friend class game;
         
@@ -47,9 +49,11 @@ namespace fleetBattle
         player( std::shared_ptr<playerBoard>,
                 std::shared_ptr<opponentBoard>,
                 std::shared_ptr<command_t>,
-                std::shared_ptr<std::mutex>);
+                std::shared_ptr<std::mutex>
+              );
         bool getCommand(std::string);
-        int operator()();
+        void agentInput();
+        bool operator()();
     };
 }
 #endif

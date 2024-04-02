@@ -8,33 +8,29 @@
 
  namespace fleetBattle
  {
-    void agent::operator()()
+    bool agent::operator()()
     {
         std::string command;
 
-        while(true)
+        std::lock_guard<std::mutex>(*this->mutex);
+        
+        this->command->first = this->command->second = "";
+        
+        std::cout << "Command: ";
+        std::getline(std::cin,command);
+        
+        auto pos = command.find(' ');
+        
+        if(pos != command.npos)
         {
-            
-            std::cout << "Command: ";
-            std::getline(std::cin,command);
-
-            std::lock_guard<std::mutex>(*this->mutex);
-            auto pos = command.find(' ');
-            if(pos != command.npos)
-            {
-                this->command->first  = command.substr(0,pos);
-                this->command->second = command.substr(++pos,command.npos);
-            }
-            else
-            {
-                this->command->first  = command;
-            }
-
-            if((this->command->first == "exit") || (this->command->first == "quit"))
-            {
-                break;
-            }
-            this->command->first = this->command->second = "";
+            this->command->first  = command.substr(0,pos);
+            this->command->second = command.substr(++pos,command.npos);
         }
+        else
+        {
+            this->command->first  = command;
+        }
+
+        return true;
     }
  }

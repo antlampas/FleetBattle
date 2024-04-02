@@ -8,10 +8,8 @@
 
 namespace fleetBattle
 {
-    bool player::operator()()
+    void player::agentInput()
     {
-        std::lock_guard<std::mutex>(*(this->mutex));
-        std::thread runAgent(*this->agentInput());
-        return true;
+        
     }
 }
