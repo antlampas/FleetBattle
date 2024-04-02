@@ -23,6 +23,6 @@ namespace fleetBattle
                                 command(cA),
                                 playerInTurn(p),
                                 mutexA(mA),
-                                mutexB(mB),
+                                mutexB(mB)
     {}
 }
