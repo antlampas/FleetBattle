@@ -10,6 +10,8 @@ namespace fleetBattle
 {
     shootStatus_t player::shoot(coordinates_t coordinates)
     {
-        return shootStatus_t();
+        shootStatus_t status = this->ownBoard->shoot(coordinates);
+        
+        return status;
     }
 }
