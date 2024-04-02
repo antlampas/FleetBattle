@@ -22,7 +22,9 @@ namespace fleetBattle
                                                                 commandPtr,
                                                                 mB
                                                               )),
-                                            mm( new matchMaster(std::shared_ptr<playerBoard>(playerA->ownBoard),
+                                            mm( new matchMaster(this->playerA,
+                                                                this->playerB,
+                                                                std::shared_ptr<playerBoard>(playerA->ownBoard),
                                                                 std::shared_ptr<playerBoard>(playerB->ownBoard),
                                                                 std::shared_ptr<std::mutex>(mA),
                                                                 std::shared_ptr<std::mutex>(mB),

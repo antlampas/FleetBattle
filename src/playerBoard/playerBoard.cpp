@@ -12,6 +12,7 @@ namespace fleetBattle
 {
     playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({{'U'}})
     {
+        int i=0;
         for(auto ship: deployedShips)
         {
             std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
@@ -33,9 +34,14 @@ namespace fleetBattle
             bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
 
             if(isVerticalOrHorizontal)
-                this->deployedShips.push_back(ship);
+            {
+                this->deployedShips.at(i) = ship;
+                i++;
+            }
             else
+            {
                 throw shipNotValid{};
+            }
         }
         for(auto deployedShip: this->deployedShips)
         {

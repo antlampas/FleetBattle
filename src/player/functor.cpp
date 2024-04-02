@@ -12,9 +12,9 @@ namespace fleetBattle
     {
         std::lock_guard<std::mutex>(*(this->mutex));
         
-        std::thread runAgent(*this->agentInput());
-        
-        runAgent.join();
+        std::packaged_task<void()> agent(std::bind(&player::agentInput,this));
+
+        agent();
         
         return true;
     }

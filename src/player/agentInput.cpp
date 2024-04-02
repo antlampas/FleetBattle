@@ -8,8 +8,5 @@
 
 namespace fleetBattle
 {
-    void player::agentInput()
-    {
-        
-    }
+    void player::agentInput(){}
 }

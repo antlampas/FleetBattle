@@ -8,7 +8,8 @@
 #define PLAYER_HPP
 
 #include <memory>
-#include <thread>
+#include <functional>
+#include <future>
 #include <mutex>
 #include <chrono>
 
