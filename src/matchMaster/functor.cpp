@@ -19,7 +19,7 @@ namespace fleetBattle
         while(true)
         {
             lockCmd.unlock();
-            
+            std::this_thread::sleep_for(1ms);
             switch(this->playerInTurn)
             {
                 case 'A':
@@ -37,6 +37,8 @@ namespace fleetBattle
                 default:
                     this->playerInTurn = 'A';
             }
+            std::this_thread::sleep_for(1ms);
+            lockCmd.lock()
         }
         return 0;
     }
