@@ -15,7 +15,7 @@ namespace fleetBattle
         try
         {
             decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
-            if(coordinates != std::pair<unsigned short int,unsigned short int>(-1,-1))
+            if(coordinates != std::pair<unsigned char,unsigned char>(-1,-1))
             {
                 std::regex alreadyHit {"[ws]"};
                 board_t b {this->applyShipsLayer()};

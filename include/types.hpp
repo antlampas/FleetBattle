@@ -28,7 +28,7 @@ namespace fleetBattle
     using shootStatus_t             = unsigned char;
     using board_t                   = std::array<std::array<squareStatus_t,10>,10>;
     using shipStatus_t              = std::array<squareStatus_t,10>;
-    using deployedShips_t           = std::array<std::pair<std::string,std::string>>;
-    using destroyedShips_t          = std::array<unsigned char>;
+    using deployedShips_t           = std::array<std::pair<std::string,std::string>,5>;
+    using destroyedShips_t          = std::array<unsigned char,5>;
 }
 #endif
