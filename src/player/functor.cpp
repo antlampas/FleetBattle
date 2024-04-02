@@ -11,7 +11,11 @@ namespace fleetBattle
     bool player::operator()()
     {
         std::lock_guard<std::mutex>(*(this->mutex));
+        
         std::thread runAgent(*this->agentInput());
+        
+        runAgent.join();
+        
         return true;
     }
 }

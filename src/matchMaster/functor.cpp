@@ -12,7 +12,6 @@ namespace fleetBattle
     {
         std::unique_lock<std::mutex> lockA(*this->mutexA,std::defer_lock);
         std::unique_lock<std::mutex> lockB(*this->mutexB,std::defer_lock);
-        std::unique_lock<std::mutex> lockCmd(*this->mutexB,std::defer_lock);
 
         std::lock(lockA,lockB,lockCmd);
 
@@ -24,12 +23,16 @@ namespace fleetBattle
                     lockA.unlock();
                     *this->playerA();
                     lockA.lock();
+                    if(this->command->first == "shoot")
+                    {}
                     this->playerInTurn = 'B';
                     break;
                 case 'B':
                     lockB.unlock();
                     *this->playerB();
                     lockB.lock();
+                    if(this->command->first == "shoot")
+                    {}
                     this->playerInTurn = 'A';
                     break;
                 default:
@@ -38,7 +41,7 @@ namespace fleetBattle
             std::this_thread::sleep_for(1ms);
             lockCmd.lock()
         }
-        
+
         return true;
     }
 }
