@@ -52,7 +52,6 @@ namespace fleetBattle
                 std::shared_ptr<command_t>,
                 std::shared_ptr<std::mutex>
               );
-        bool getCommand(std::string);
         bool operator()();
     };
 }
