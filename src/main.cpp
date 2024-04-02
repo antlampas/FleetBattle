@@ -17,7 +17,7 @@ int main(int argc,char** argv)
     fleetBattle::deployedShips_t deployedShipsA {std::make_pair("a1","a2"),std::make_pair("b1","b2"),std::make_pair("c1","c3"),std::make_pair("d1","d4"),std::make_pair("e1","e5")};
     fleetBattle::deployedShips_t deployedShipsB {std::make_pair("a1","a2"),std::make_pair("b1","b2"),std::make_pair("c1","c3"),std::make_pair("d1","d4"),std::make_pair("e1","e5")};
 
-    std::unique_ptr<fleetBattle::game> game(new fleetBattle::game(cmd,mutexA,mutexB,mutexCmd,deployedShipsA,deployedShipsB));
+    std::unique_ptr<fleetBattle::game> game(new fleetBattle::game(cmd,mutexA,mutexB,deployedShipsA,deployedShipsB));
 
     fleetBattle::agent a(mutexCmd,cmd);
 
