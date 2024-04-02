@@ -21,7 +21,7 @@ namespace fleetBattle
             {
                 case 'A':
                     lockA.unlock();
-                    this->playerA();
+                    (*this->playerA)();
                     lockA.lock();
                     if(this->command->first == "shoot")
                     {}
@@ -29,7 +29,7 @@ namespace fleetBattle
                     break;
                 case 'B':
                     lockB.unlock();
-                    this->playerB();
+                    (*this->playerB)();
                     lockB.lock();
                     if(this->command->first == "shoot")
                     {}
