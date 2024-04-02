@@ -35,7 +35,7 @@ namespace fleetBattle
                     lockB.lock();
                     if(this->command->first == "shoot")
                     {
-                        this->playerBoardB->shoot(this->command->first,this->command->second)
+                        this->playerBoardA->shoot(this->command->first,this->command->second)
                     }
                     this->playerInTurn = 'A';
                     break;
