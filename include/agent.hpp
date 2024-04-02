@@ -4,6 +4,9 @@
  *
  */
 
+#ifndef AGENT_HPP
+#define AGENT_HPP
+
 #include <memory>
 #include <iostream>
 #include <mutex>
@@ -22,3 +25,5 @@
         bool operator()();
     };
  }
+
+ #endif
