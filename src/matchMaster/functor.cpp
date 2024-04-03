@@ -20,7 +20,7 @@ namespace fleetBattle
             if(this->playerInTurn == 'A')
             {
                     lockA.unlock();
-                    (*this->playerA)();
+                    *(this->playerA)();
                     lockA.lock();
                     if(this->command->first == "shoot")
                     {
@@ -32,7 +32,7 @@ namespace fleetBattle
             else if(this->playerInTurn == 'B')
             {
                     lockB.unlock();
-                    (*this->playerB)();
+                    *(this->playerB)();
                     lockB.lock();
                     if(this->command->first == "shoot")
                     {
