@@ -21,8 +21,9 @@ namespace fleetBattle
     class playerBoard final : public board
     {
         private:
-        deployedShips_t        deployedShips {};
-        board_t                shipsLayer    {};
+        deployedShips_t        deployedShips;
+        destroyedShips_t       destroyedShips;
+        board_t                shipsLayer;
         private:
         board_t                applyShipsLayer();
         protected:

@@ -4,5 +4,6 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(matchMaster SHARED
             functor.cpp
+            isShipSunk.cpp
             matchMaster.cpp
            )
