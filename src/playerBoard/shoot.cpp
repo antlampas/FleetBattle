@@ -20,14 +20,14 @@ namespace fleetBattle
 
             if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
                 if(this->hit(c))
-                    return this->HIT;
+                    return this->getSquareStatus(c);
                 else
                 {
                     this->setSquareStatus(c,'w');
-                    return this->MISSED;
+                    return this->getSquareStatus(c);
                 }
             else
-                return this->SQUARE_ALREADY_HIT;
+                return this->getSquareStatus(c);
         }
         catch(coordinatesNotValid& e)
         {
