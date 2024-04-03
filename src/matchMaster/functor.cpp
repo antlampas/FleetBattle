@@ -21,7 +21,7 @@ namespace fleetBattle
             {
                     lockA.unlock();
                     std::packaged_task<void()> playerA(*(this->playerA));
-                    std::thread playerAThread(playerA);
+                    std::thread playerAThread(std::move(playerA));
                     playerAThread.join();
                     lockA.lock();
                     if(this->command->first == "shoot")
@@ -35,7 +35,7 @@ namespace fleetBattle
             {
                     lockB.unlock();
                     std::packaged_task<void()> playerB(*(this->playerB));
-                    std::thread playerBThread(playerB);
+                    std::thread playerBThread(std::move(playerB));
                     playerBThread.join();
                     lockB.lock();
                     if(this->command->first == "shoot")
