@@ -10,9 +10,13 @@
 
 namespace fleetBattle
 {
-    playerBoard::playerBoard(deployedShips_t deployedShips) : shipsLayer({{'U'}})
+    playerBoard::playerBoard(deployedShips_t deployedShips)
     {
-        int i=0;
+        for(auto row: {0,1,2,3,4,5,6,7,8,9})
+            for(auto column: {0,1,2,3,4,5,6,7,8,9})
+                shipsLayer.at(row).at(column) = 'U';
+        
+        int i = 0;
         for(auto ship: deployedShips)
         {
             std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
@@ -29,9 +33,9 @@ namespace fleetBattle
             {
                 throw unknownError{};
             }
-            bool isOnSameRow              = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
-            bool isOnSameColumn           = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
-            bool isVerticalOrHorizontal   = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
+            bool isOnSameRow            = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
+            bool isOnSameColumn         = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
+            bool isVerticalOrHorizontal = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
 
             if(isVerticalOrHorizontal)
             {
@@ -52,6 +56,7 @@ namespace fleetBattle
                 const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
                 const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
                 const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
+                
                 if(startRow == endRow)
                 {
                     const int& row = startRow;

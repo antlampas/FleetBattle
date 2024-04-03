@@ -25,12 +25,12 @@ namespace fleetBattle
                 std::thread playerAThread(std::move(playerA));
                 playerAThread.join();
                 lockA.lock();
-                if(this->command->first == "shoot")
+                if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerBoardB->shoot(this->command->second);
                     this->playerA->otherBoard->setSquareStatus(this->command->second,status);
                     
-                    for(auto row: this->playerBoardB->getBoardStatus())
+                    for(auto row: this->playerA->otherBoard->getBoardStatus())
                     {
                         for(auto column: row)
                         {
@@ -57,12 +57,12 @@ namespace fleetBattle
                 std::thread playerBThread(std::move(playerB));
                 playerBThread.join();
                 lockB.lock();
-                if(this->command->first == "shoot")
+                if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerBoardA->shoot(this->command->second);
                     this->playerB->otherBoard->setSquareStatus(this->command->second,status);
 
-                    for(auto row: this->playerBoardA->getBoardStatus())
+                    for(auto row: this->playerB->otherBoard->getBoardStatus())
                     {
                         for(auto column: row)
                         {
