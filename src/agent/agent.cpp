@@ -8,5 +8,9 @@
 
  namespace fleetBattle
  {
-    agent::agent(std::shared_ptr<std::mutex> mutex,std::shared_ptr<command_t> command) : mutex(mutex),command(command){}
+   agent::agent(std::shared_ptr<std::mutex> mutex,std::shared_ptr<command_t> command) : mutex(mutex),command(command),standalone(false){}
+   agent::~agent()
+   {
+      this->standalone = false;
+   }
  }

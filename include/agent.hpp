@@ -20,9 +20,13 @@
         private:
         std::shared_ptr<std::mutex> mutex;
         std::shared_ptr<command_t> command;
+        bool standalone;
 
         public:
         agent(std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
+        ~agent();
+        void getOwnBoard(board_t);
+        void getOpponentBoard(board_t);
         bool operator()();
     };
  }

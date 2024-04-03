@@ -10,6 +10,8 @@
  {
     bool agent::operator()()
     {
+        this->standalone = true;
+
         std::string command;
 
         std::lock_guard<std::mutex>(*this->mutex);
@@ -29,7 +31,7 @@
         {
             this->command->first  = command;
         }
-
+        
         return true;
     }
  }

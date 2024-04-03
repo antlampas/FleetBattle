@@ -29,17 +29,8 @@ namespace fleetBattle
                 {
                     squareStatus_t status = this->playerBoardB->shoot(this->command->second);
                     this->playerA->otherBoard->setSquareStatus(this->command->second,status);
-                    
-                    for(auto row: this->playerA->otherBoard->getBoardStatus())
-                    {
-                        for(auto column: row)
-                        {
-                            std::cout << column << " ";
-                        }
-                        std::cout << std::endl;
-                    }
                 }
-                else if(this->command->first == "exit")
+                else if(this->command->first == "exit" || this->command->first == "quit")
                 {
                     break;
                 }
@@ -47,6 +38,9 @@ namespace fleetBattle
                 {
                     continue;
                 }
+                this->playerA->user->getOpponentBoard(this->playerA->checkOpponentBoard());
+                std::cout << std::endl;
+                this->playerA->user->getOwnBoard(this->playerA->checkOwnBoard());
                 this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
@@ -61,17 +55,8 @@ namespace fleetBattle
                 {
                     squareStatus_t status = this->playerBoardA->shoot(this->command->second);
                     this->playerB->otherBoard->setSquareStatus(this->command->second,status);
-
-                    for(auto row: this->playerB->otherBoard->getBoardStatus())
-                    {
-                        for(auto column: row)
-                        {
-                            std::cout << column << " ";
-                        }
-                        std::cout << std::endl;
-                    }
                 }
-                else if(this->command->first == "exit")
+                else if(this->command->first == "exit" || this->command->first == "quit")
                 {
                     break;
                 }
@@ -79,6 +64,9 @@ namespace fleetBattle
                 {
                     continue;
                 }
+                this->playerA->user->getOpponentBoard(this->playerA->checkOpponentBoard());
+                std::cout << std::endl;
+                this->playerA->user->getOwnBoard(this->playerA->checkOwnBoard());
                 this->playerInTurn = 'A';
             }
             else
