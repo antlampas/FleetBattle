@@ -10,7 +10,7 @@ namespace fleetBattle
 {
     bool player::operator()()
     {
-        std::packaged_task<void()> agent(std::bind(&player::user,this));
+        std::packaged_task<void()> agent(*(this->user));
         std::thread agentThread(std::move(agent));
         
         agentThread.join();

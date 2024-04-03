@@ -8,7 +8,6 @@
 #define PLAYER_HPP
 
 #include <memory>
-#include <functional>
 #include <future>
 #include <thread>
 #include <mutex>
