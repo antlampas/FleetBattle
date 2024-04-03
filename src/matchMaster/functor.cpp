@@ -30,6 +30,14 @@ namespace fleetBattle
                     squareStatus_t status = this->playerBoardB->shoot(this->command->second);
                     this->playerA->otherBoard->setSquareStatus(this->command->second,status);
                 }
+                else if(this->command->first == "exit")
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
                 this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
@@ -44,6 +52,14 @@ namespace fleetBattle
                 {
                     squareStatus_t status = this->playerBoardA->shoot(this->command->second);
                     this->playerB->otherBoard->setSquareStatus(this->command->second,status);
+                }
+                else if(this->command->first == "exit")
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
                 }
                 this->playerInTurn = 'A';
             }
