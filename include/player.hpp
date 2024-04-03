@@ -19,6 +19,8 @@ using namespace std::chrono_literals;
 #include "exceptions.hpp"
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
+#include "matchMaster.hpp"
+#include "game.hpp"
 #include "agent.hpp"
 
 #ifdef TESTPLAYER
@@ -35,8 +37,21 @@ namespace fleetBattle
         std::shared_ptr<command_t>     command;
         std::shared_ptr<std::mutex>    mutex;
         std::shared_ptr<agent>         user;
-        friend class matchMaster;
-        friend class game;
+        friend  matchMaster::matchMaster(   std::shared_ptr<player>,
+                                            std::shared_ptr<player>,
+                                            std::shared_ptr<playerBoard>,
+                                            std::shared_ptr<playerBoard>,
+                                            std::shared_ptr<std::mutex>,
+                                            std::shared_ptr<std::mutex>,
+                                            std::shared_ptr<command_t>,
+                                            playerInTurn_t
+                                        );
+        friend game::game(  std::shared_ptr<command_t>,
+                            std::shared_ptr<std::mutex>,
+                            std::shared_ptr<std::mutex>,
+                            deployedShips_t,
+                            deployedShips_t
+                         );
         
         private:
         board_t        checkOwnBoard();
