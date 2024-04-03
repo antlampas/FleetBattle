@@ -19,31 +19,33 @@ namespace fleetBattle
         {
             if(this->playerInTurn == 'A')
             {
-                    lockA.unlock();
-                    std::packaged_task<void()> playerA(*(this->playerA));
-                    std::thread playerAThread(std::move(playerA));
-                    playerAThread.join();
-                    lockA.lock();
-                    if(this->command->first == "shoot")
-                    {
-                        squareStatus_t status = this->playerBoardB->shoot(this->command->second);
-                        this->playerA->otherBoard->setSquareStatus(this->command->second,status);
-                    }
-                    this->playerInTurn = 'B';
+                std::cout << "Player A" << std::endl;
+                lockA.unlock();
+                std::packaged_task<void()> playerA(*(this->playerA));
+                std::thread playerAThread(std::move(playerA));
+                playerAThread.join();
+                lockA.lock();
+                if(this->command->first == "shoot")
+                {
+                    squareStatus_t status = this->playerBoardB->shoot(this->command->second);
+                    this->playerA->otherBoard->setSquareStatus(this->command->second,status);
+                }
+                this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
             {
-                    lockB.unlock();
-                    std::packaged_task<void()> playerB(*(this->playerB));
-                    std::thread playerBThread(std::move(playerB));
-                    playerBThread.join();
-                    lockB.lock();
-                    if(this->command->first == "shoot")
-                    {
-                        squareStatus_t status = this->playerBoardA->shoot(this->command->second);
-                        this->playerB->otherBoard->setSquareStatus(this->command->second,status);
-                    }
-                    this->playerInTurn = 'A';
+                std::cout << "Player B" << std::endl;
+                lockB.unlock();
+                std::packaged_task<void()> playerB(*(this->playerB));
+                std::thread playerBThread(std::move(playerB));
+                playerBThread.join();
+                lockB.lock();
+                if(this->command->first == "shoot")
+                {
+                    squareStatus_t status = this->playerBoardA->shoot(this->command->second);
+                    this->playerB->otherBoard->setSquareStatus(this->command->second,status);
+                }
+                this->playerInTurn = 'A';
             }
             else
             {
