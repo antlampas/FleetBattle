@@ -10,6 +10,21 @@ namespace fleetBattle
 {
     squareStatus_t opponentBoard::setSquareStatus(coordinates_t c,squareStatus_t s)
     {
-        return squareStatus_t{};
+        try
+        {
+            decodedCoordinatesPair_t coordinates { this->decodeCoordinates(c) };
+
+            this->Board.at(coordinates.first).at(coordinates.second) = s;
+
+            return s;
+        }
+        catch(coordinatesNotValid)
+        {
+            throw;
+        }
+        catch(...)
+        {
+            throw unknownError{};
+        }
     }
 }
