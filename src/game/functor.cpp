@@ -10,9 +10,10 @@
  {
     bool game::operator()()
     {
-        std::thread match(*(this->mm));
+        std::packaged_task<void()> match(*(this->mm));
+        std::thread matchThread(std::move(match));
         
-        match.join();
+        matchThread.join();
         
         return true;
     }

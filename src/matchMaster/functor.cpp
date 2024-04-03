@@ -20,7 +20,9 @@ namespace fleetBattle
             if(this->playerInTurn == 'A')
             {
                     lockA.unlock();
-                    *(this->playerA)();
+                    std::packaged_task<void()> playerA(*(this->playerA));
+                    std::thread playerAThread(playerA);
+                    playerAThread.join();
                     lockA.lock();
                     if(this->command->first == "shoot")
                     {
@@ -32,7 +34,9 @@ namespace fleetBattle
             else if(this->playerInTurn == 'B')
             {
                     lockB.unlock();
-                    *(this->playerB)();
+                    std::packaged_task<void()> playerB(*(this->playerB));
+                    std::thread playerBThread(playerB);
+                    playerBThread.join();
                     lockB.lock();
                     if(this->command->first == "shoot")
                     {
