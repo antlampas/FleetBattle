@@ -30,7 +30,7 @@ namespace fleetBattle
                     squareStatus_t status = this->playerBoardB->shoot(this->command->second);
                     this->playerA->otherBoard->setSquareStatus(this->command->second,status);
                     
-                    for(auto row: this->playerBoardB)
+                    for(auto row: this->playerBoardB->getBoardStatus())
                     {
                         for(auto column: row)
                         {
@@ -62,7 +62,7 @@ namespace fleetBattle
                     squareStatus_t status = this->playerBoardA->shoot(this->command->second);
                     this->playerB->otherBoard->setSquareStatus(this->command->second,status);
 
-                    for(auto row: this->playerBoardB)
+                    for(auto row: this->playerBoardA->getBoardStatus())
                     {
                         for(auto column: row)
                         {
