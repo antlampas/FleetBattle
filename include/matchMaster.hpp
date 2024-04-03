@@ -8,6 +8,7 @@
 #define MATCHMASTER_HPP
 
 #include <memory>
+#include <future>
 #include <thread>
 #include <mutex>
 #include <chrono>
