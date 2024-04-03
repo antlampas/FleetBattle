@@ -19,11 +19,5 @@ int main(int argc,char** argv)
 
     std::unique_ptr<fleetBattle::game> game(new fleetBattle::game(cmd,mutexA,mutexB,deployedShipsA,deployedShipsB));
 
-    fleetBattle::agent a(mutexCmd,cmd);
-
-    std::thread agentLoop(a);
-
-    agentLoop.join();
-
     return -1;
 }

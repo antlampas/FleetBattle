@@ -10,6 +10,7 @@
 #include <memory>
 #include <functional>
 #include <future>
+#include <thread>
 #include <mutex>
 #include <chrono>
 
