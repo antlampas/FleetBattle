@@ -17,31 +17,32 @@ namespace fleetBattle
 
         while(true)
         {
-            switch(this->playerInTurn)
+            if(this->playerInTurn == 'A')
             {
-                case 'A':
                     lockA.unlock();
                     (*this->playerA)();
                     lockA.lock();
                     if(this->command->first == "shoot")
                     {
-                        squareStatus_t status = this->playerBoardB->shoot(this->command->first,this->command->second);
-                        this->playerA->otherBoard->setSquareStatus(status,this->command->second);
+                        squareStatus_t status = this->playerBoardB->shoot(this->command->second);
+                        this->playerA->otherBoard->setSquareStatus(this->command->second,status);
                     }
                     this->playerInTurn = 'B';
-                    break;
-                case 'B':
+            }
+            else if(this->playerInTurn == 'B')
+            {
                     lockB.unlock();
                     (*this->playerB)();
                     lockB.lock();
                     if(this->command->first == "shoot")
                     {
-                        squareStatus_t status = this->playerBoardA->shoot(this->command->first,this->command->second);
-                        this->playerB->otherBoard->setSquareStatus(status,this->command->second);
+                        squareStatus_t status = this->playerBoardA->shoot(this->command->second);
+                        this->playerB->otherBoard->setSquareStatus(this->command->second,status);
                     }
                     this->playerInTurn = 'A';
-                    break;
-                default:
+            }
+            else
+            {
                     this->playerInTurn = 'A';
             }
             std::this_thread::sleep_for(1ms);

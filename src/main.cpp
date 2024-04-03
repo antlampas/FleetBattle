@@ -19,5 +19,9 @@ int main(int argc,char** argv)
 
     std::unique_ptr<fleetBattle::game> game(new fleetBattle::game(cmd,mutexA,mutexB,deployedShipsA,deployedShipsB));
 
+    std::thread gameThread(*(game));
+
+    gameThread.join();
+
     return -1;
 }

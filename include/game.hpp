@@ -34,6 +34,7 @@ namespace fleetBattle
                 deployedShips_t,
                 deployedShips_t
             );
+        bool operator()();
     };
 }
 #endif

@@ -3,5 +3,6 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(game SHARED
+            functor.cpp
             game.cpp
            )
