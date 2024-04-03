@@ -8,8 +8,8 @@
 
 namespace fleetBattle
 {
-    board_t player::checkOwnBoard()
+    board_t player::checkOpponentBoard()
     {
-        return board_t();
+        return this->otherBoard->getBoardStatus();
     }
 }

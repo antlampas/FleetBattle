@@ -64,9 +64,9 @@ namespace fleetBattle
                 {
                     continue;
                 }
-                this->playerA->user->getOpponentBoard(this->playerA->checkOpponentBoard());
+                this->playerB->user->getOpponentBoard(this->playerB->checkOpponentBoard());
                 std::cout << std::endl;
-                this->playerA->user->getOwnBoard(this->playerA->checkOwnBoard());
+                this->playerB->user->getOwnBoard(this->playerB->checkOwnBoard());
                 this->playerInTurn = 'A';
             }
             else
