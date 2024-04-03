@@ -35,7 +35,8 @@ namespace fleetBattle
         std::shared_ptr<command_t>     command;
         std::shared_ptr<std::mutex>    mutex;
         std::shared_ptr<agent>         user;
-        friend matchMaster::matchMaster(std::shared_ptr<player>,std::shared_ptr<player>,std::shared_ptr<playerBoard>,std::shared_ptr<playerBoard>,std::shared_ptr<std::mutex>,std::shared_ptr<std::mutex>,std::shared_ptr<command_t>,playerInTurn_t),game::game(std::shared_ptr<command_t>,std::shared_ptr<std::mutex>,std::shared_ptr<std::mutex>,deployedShips_t,deployedShips_t),matchMaster::matchMaster(),game::~game();
+        friend class matchMaster;
+        friend class game;
         
         private:
         board_t        checkOwnBoard();
