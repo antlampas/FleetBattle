@@ -29,6 +29,15 @@ namespace fleetBattle
                 {
                     squareStatus_t status = this->playerBoardB->shoot(this->command->second);
                     this->playerA->otherBoard->setSquareStatus(this->command->second,status);
+                    
+                    for(auto row: this->playerBoardB)
+                    {
+                        for(auto column: row)
+                        {
+                            std::cout << column << " ";
+                        }
+                        std::cout << std::endl;
+                    }
                 }
                 else if(this->command->first == "exit")
                 {
@@ -52,6 +61,15 @@ namespace fleetBattle
                 {
                     squareStatus_t status = this->playerBoardA->shoot(this->command->second);
                     this->playerB->otherBoard->setSquareStatus(this->command->second,status);
+
+                    for(auto row: this->playerBoardB)
+                    {
+                        for(auto column: row)
+                        {
+                            std::cout << column << " ";
+                        }
+                        std::cout << std::endl;
+                    }
                 }
                 else if(this->command->first == "exit")
                 {
