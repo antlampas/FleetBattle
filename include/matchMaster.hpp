@@ -39,6 +39,8 @@ namespace fleetBattle
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
         std::shared_ptr<std::mutex>                  mutexB;
+        std::unique_ptr<agent>                       agentA;
+        std::unique_ptr<agent>                       agentB;
 
         private:
         bool isShipSunk();
@@ -47,6 +49,8 @@ namespace fleetBattle
         matchMaster() = delete;
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,
+                    std::unique_ptr<agent>,
+                    std::unique_ptr<agent>,
                     std::shared_ptr<playerBoard>,
                     std::shared_ptr<playerBoard>,
                     std::shared_ptr<std::mutex>,

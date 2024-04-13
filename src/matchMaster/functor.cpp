@@ -21,9 +21,15 @@ namespace fleetBattle
             {
                 std::cout << "Player A" << std::endl;
                 lockA.unlock();
-                std::packaged_task<void()> playerA(*(this->playerA));
+                
+                /* std::packaged_task<void()> playerA(*(this->playerA));
                 std::thread playerAThread(std::move(playerA));
+                playerAThread.join(); */
+                //TODO: check this
+                std::packaged_task<void()> playerA(*(this->userA));
+                std::thread userAThread(std::move(playerA));
                 playerAThread.join();
+
                 lockA.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
@@ -47,9 +53,14 @@ namespace fleetBattle
             {
                 std::cout << "Player B" << std::endl;
                 lockB.unlock();
-                std::packaged_task<void()> playerB(*(this->playerB));
+                /* std::packaged_task<void()> playerB(*(this->playerB));
                 std::thread playerBThread(std::move(playerB));
+                playerBThread.join(); */
+                //TODO: check this
+                std::packaged_task<void()> playerB(*(this->userB));
+                std::thread userBThread(std::move(playerB));
                 playerBThread.join();
+
                 lockB.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {

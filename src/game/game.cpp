@@ -22,6 +22,8 @@ namespace fleetBattle
                                                                   commandPtr,
                                                                   mB
                                                               )),
+                                              agentA(new agent(mA,commandPtr)),
+                                              agentB(new agent(mB,commandPtr)),
                                               mm( new matchMaster(this->playerA,
                                                                   this->playerB,
                                                                   std::shared_ptr<playerBoard>(playerA->ownBoard),
