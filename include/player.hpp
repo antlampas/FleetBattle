@@ -34,7 +34,6 @@ namespace fleetBattle
         std::shared_ptr<opponentBoard> otherBoard;
         std::shared_ptr<command_t>     command;
         std::shared_ptr<std::mutex>    mutex;
-        std::shared_ptr<agent>         user;
         friend class matchMaster;
         friend class game;
         
@@ -52,7 +51,6 @@ namespace fleetBattle
                 std::shared_ptr<command_t>,
                 std::shared_ptr<std::mutex>
               );
-        bool operator()();
     };
 }
 #endif

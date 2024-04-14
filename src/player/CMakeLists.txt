@@ -5,7 +5,6 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 add_library(player SHARED
             checkOpponentBoard.cpp
             checkOwnBoard.cpp
-            functor.cpp
             getSquareStatus.cpp
             player.cpp
             setSquareStatus.cpp

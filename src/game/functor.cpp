@@ -11,9 +11,16 @@
     bool game::operator()()
     {
         std::packaged_task<void()> match(*(this->mm));
+        std::packaged_task<void()> agentA(*(this->agentA));
+        std::packaged_task<void()> agentB(*(this->agentB));
+
         std::thread matchThread(std::move(match));
+        std::thread agentAThread(std::move(agentA));
+        std::thread agentBThread(std::move(agentB));
         
         matchThread.join();
+        agentAThread.join();
+        agentBThread.join();
         
         return true;
     }

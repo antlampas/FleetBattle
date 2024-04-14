@@ -10,26 +10,34 @@
  {
     bool agent::operator()()
     {
-        this->standalone = true;
-
-        std::string command;
-
-        std::lock_guard<std::mutex>(*this->mutex);
-        this->command->first = this->command->second = "";
-        
-        std::cout << "Command: ";
-        std::getline(std::cin,command);
-        
-        auto pos = command.find(' ');
-        
-        if(pos != command.npos)
+        while(true)
         {
-            this->command->first  = command.substr(0,pos);
-            this->command->second = command.substr(++pos,command.npos);
-        }
-        else
-        {
-            this->command->first  = command;
+            this->standalone = true;
+
+            std::string command;
+
+            std::cout << "Waiting for your turn...";
+            
+            std::lock_guard<std::mutex>(*this->mutex);
+            
+            this->command->first = this->command->second = "";
+            
+            std::cout << std::endl << "Command: ";
+            std::getline(std::cin,command);
+            
+            auto pos = command.find(' ');
+            
+            if(pos != command.npos)
+            {
+                this->command->first  = command.substr(0,pos);
+                this->command->second = command.substr(++pos,command.npos);
+            }
+            else
+            {
+                this->command->first  = command;
+            }
+            if((this->command->first == "exit") || (this->command->first == "quit"))
+                break;
         }
         
         return true;

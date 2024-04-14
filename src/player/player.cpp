@@ -15,7 +15,6 @@ namespace fleetBattle
                 ) : ownBoard(pb),
                     otherBoard(ob),
                     command(c),
-                    mutex(m),
-                    user(new agent(this->mutex,this->command))
+                    mutex(m)
     {}
 }

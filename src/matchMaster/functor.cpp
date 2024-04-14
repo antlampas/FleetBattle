@@ -5,6 +5,7 @@
  */
 
 #include "matchMaster.hpp"
+#include <chrono>
 
 namespace fleetBattle
 {
@@ -21,15 +22,7 @@ namespace fleetBattle
             {
                 std::cout << "Player A" << std::endl;
                 lockA.unlock();
-                
-                /* std::packaged_task<void()> playerA(*(this->playerA));
-                std::thread playerAThread(std::move(playerA));
-                playerAThread.join(); */
-                //TODO: check this
-                std::packaged_task<void()> playerA(*(this->userA));
-                std::thread userAThread(std::move(playerA));
-                playerAThread.join();
-
+                std::this_thread::sleep_for(1ms);
                 lockA.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
@@ -44,24 +37,18 @@ namespace fleetBattle
                 {
                     continue;
                 }
-                this->playerA->user->getOpponentBoard(this->playerA->checkOpponentBoard());
+                this->playerA->checkOpponentBoard();
                 std::cout << std::endl;
-                this->playerA->user->getOwnBoard(this->playerA->checkOwnBoard());
+                this->playerA->checkOwnBoard();
                 this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
             {
                 std::cout << "Player B" << std::endl;
                 lockB.unlock();
-                /* std::packaged_task<void()> playerB(*(this->playerB));
-                std::thread playerBThread(std::move(playerB));
-                playerBThread.join(); */
-                //TODO: check this
-                std::packaged_task<void()> playerB(*(this->userB));
-                std::thread userBThread(std::move(playerB));
-                playerBThread.join();
-
+                std::this_thread::sleep_for(1ms);
                 lockB.lock();
+                
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerBoardA->shoot(this->command->second);
@@ -75,9 +62,9 @@ namespace fleetBattle
                 {
                     continue;
                 }
-                this->playerB->user->getOpponentBoard(this->playerB->checkOpponentBoard());
+                this->playerB->checkOpponentBoard();
                 std::cout << std::endl;
-                this->playerB->user->getOwnBoard(this->playerB->checkOwnBoard());
+                this->playerB->checkOwnBoard();
                 this->playerInTurn = 'A';
             }
             else
