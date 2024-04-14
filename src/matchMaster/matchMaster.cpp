@@ -8,7 +8,9 @@
 
 namespace fleetBattle
 {
-    matchMaster::matchMaster(   std::shared_ptr<playerBoard> bA,
+    matchMaster::matchMaster(   std::shared_ptr<player>      pA,
+                                std::shared_ptr<player>      pB,
+                                std::shared_ptr<playerBoard> bA,
                                 std::shared_ptr<playerBoard> bB,
                                 std::shared_ptr<std::mutex>  mA,
                                 std::shared_ptr<std::mutex>  mB,
