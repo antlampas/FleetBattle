@@ -12,13 +12,15 @@
     {
         while(true)
         {
+            std::this_thread::sleep_for(1ms);
+            
             this->standalone = true;
 
             std::string command;
 
             std::cout << "Waiting for your turn...";
             
-            std::lock_guard<std::mutex>(*this->mutex);
+            std::lock_guard<std::mutex> lock(*this->mutex);
             
             this->command->first = this->command->second = "";
             
