@@ -5,7 +5,6 @@
  */
 
 #include "matchMaster.hpp"
-#include <chrono>
 
 namespace fleetBattle
 {
@@ -37,9 +36,27 @@ namespace fleetBattle
                 {
                     continue;
                 }
-                this->playerA->checkOpponentBoard();
+                
+                board_t opponentBoard = this->playerA->checkOpponentBoard();
+                for(auto row: opponentBoard)
+                {
+                    for(auto column: row)
+                    {
+                        std::cout << column << " ";
+                    }
+                    std::cout << std::endl;
+                }
                 std::cout << std::endl;
-                this->playerA->checkOwnBoard();
+                board_t ownBoard = this->playerA->checkOwnBoard();
+                for(auto row: ownBoard)
+                {
+                    for(auto column: row)
+                    {
+                        std::cout << column << " ";
+                    }
+                    std::cout << std::endl;
+                }
+
                 this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
@@ -62,9 +79,27 @@ namespace fleetBattle
                 {
                     continue;
                 }
-                this->playerB->checkOpponentBoard();
+                
+                board_t opponentBoard = this->playerB->checkOpponentBoard();
+                for(auto row: opponentBoard)
+                {
+                    for(auto column: row)
+                    {
+                        std::cout << column << " ";
+                    }
+                    std::cout << std::endl;
+                }
                 std::cout << std::endl;
-                this->playerB->checkOwnBoard();
+                board_t ownBoard = this->playerB->checkOwnBoard();
+                for(auto row: ownBoard)
+                {
+                    for(auto column: row)
+                    {
+                        std::cout << column << " ";
+                    }
+                    std::cout << std::endl;
+                }
+
                 this->playerInTurn = 'A';
             }
             else
