@@ -32,12 +32,12 @@ namespace fleetBattle
                                                                   'A')
                                               },
                                               agentA{new agent( 'A',
-                                                                this->mm->playerInTurn_public,
+                                                                *this->mm->playerInTurn_public,
                                                                 mA,
                                                                 commandPtr)
                                               },
                                               agentB{new agent( 'B',
-                                                                this->mm->playerInTurn_public,
+                                                                *this->mm->playerInTurn_public,
                                                                 mB,
                                                                 commandPtr)
                                               }
