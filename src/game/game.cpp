@@ -30,17 +30,10 @@ namespace fleetBattle
                                                                   mB,
                                                                   commandPtr,
                                                                   'A')
-                                              },
-                                              agentA(new agent( 'A',
-                                                                this->mm->playerInTurn_public,
-                                                                mA,
-                                                                commandPtr)
-                                              ),
-                                              agentB(new agent( 'B',
-                                                                this->mm->playerInTurn_public,
-                                                                mB,
-                                                                commandPtr)
-                                              )
-  {}
+                                              }
+  {
+    this->agentA = std::shared_ptr<agent>(new agent('A',this->mm->playerInTurn_public,mA,commandPtr));
+    this->agentB = std::shared_ptr<agent>(new agent('B',this->mm->playerInTurn_public,mB,commandPtr));
+  }
   game::~game(){}
 }
