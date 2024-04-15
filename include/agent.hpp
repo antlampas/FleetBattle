@@ -24,7 +24,7 @@ using namespace std::chrono_literals;
         private:
         bool                            standalone;
         playerInTurn_t                  player;
-        std::shared_ptr<playerInTurn_t> playerInTurn;
+        const playerInTurn_t&           playerInTurn;
         std::shared_ptr<std::mutex>     mutex;
         std::shared_ptr<command_t>      command;
 
