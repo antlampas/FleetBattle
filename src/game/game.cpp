@@ -31,16 +31,16 @@ namespace fleetBattle
                                                                   std::shared_ptr<command_t>(commandPtr),
                                                                   'A')
                                               },
-                                              agentA{new agent( 'A',
+                                              agentA(new agent( 'A',
                                                                 this->mm->playerInTurn_public,
                                                                 std::shared_ptr<std::mutex>(mA),
                                                                 std::shared_ptr<command_t>(commandPtr))
-                                              },
-                                              agentB{new agent( 'B',
+                                              ),
+                                              agentB(new agent( 'B',
                                                                 this->mm->playerInTurn_public,
                                                                 std::shared_ptr<std::mutex>(mB),
                                                                 std::shared_ptr<command_t>(commandPtr))
-                                              }
+                                              )
   {}
   game::~game(){}
 }
