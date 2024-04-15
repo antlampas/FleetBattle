@@ -22,7 +22,8 @@
             std::cout << "Waiting for your turn...";
             if(this->playerInTurn == this->player)
             {
-                std::lock_guard<std::mutex> lock(*this->mutex);
+                std::lock(*(this->mutex));
+                std::lock_guard<std::mutex> lock(*(this->mutex),std::adopt_lock);
                 
                 this->command->first = this->command->second = "";
                 
