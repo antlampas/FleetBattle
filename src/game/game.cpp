@@ -32,12 +32,12 @@ namespace fleetBattle
                                                                   'A')
                                               },
                                               agentA(new agent( 'A',
-                                                                this->mm->playerInTurn_public,
+                                                                std::shared_ptr<const playerInTurn_t&>(this->mm->playerInTurn_public),
                                                                 mA,
                                                                 commandPtr)
                                               ),
                                               agentB(new agent( 'B',
-                                                                this->mm->playerInTurn_public,
+                                                                std::shared_ptr<const playerInTurn_t&>(this->mm->playerInTurn_public),
                                                                 mB,
                                                                 commandPtr)
                                               )
