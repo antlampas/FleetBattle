@@ -22,8 +22,6 @@ namespace fleetBattle
                                                                   commandPtr,
                                                                   mB
                                                               )),
-                                              agentA(new agent(mA,commandPtr)),
-                                              agentB(new agent(mB,commandPtr)),
                                               mm( new matchMaster(this->playerA,
                                                                   this->playerB,
                                                                   std::shared_ptr<playerBoard>(playerA->ownBoard),
@@ -33,6 +31,8 @@ namespace fleetBattle
                                                                   std::shared_ptr<command_t>(commandPtr),
                                                                   'A'
                                                                  )
-                                              )
+                                              ),
+                                              agentA(new agent('A',std::make_unique<playerInTurn_t>(mm->playerInTurn_public),mA,commandPtr)),
+                                              agentB(new agent('B',std::make_unique<playerInTurn_t>(mm->playerInTurn_public),mB,commandPtr))
   {}
 }

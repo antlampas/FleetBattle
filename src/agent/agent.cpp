@@ -6,11 +6,19 @@
 
 #include "agent.hpp"
 
- namespace fleetBattle
- {
-   agent::agent(std::shared_ptr<std::mutex> mutex,std::shared_ptr<command_t> command) : mutex(mutex),command(command),standalone(false){}
-   agent::~agent()
-   {
-      this->standalone = false;
-   }
- }
+namespace fleetBattle
+{
+    agent::agent(   playerInTurn_t                  player,
+                    std::unique_ptr<playerInTurn_t> playerInTurn,
+                    std::shared_ptr<std::mutex>     mutex,
+                    std::shared_ptr<command_t>      command) :  playerInTurn(playerInTurn),
+                                                                player(player),
+                                                                mutex(mutex),
+                                                                command(command),
+                                                                standalone(false)
+    {}
+    agent::~agent()
+    {
+        this->standalone = false;
+    }
+}

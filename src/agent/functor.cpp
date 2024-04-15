@@ -20,27 +20,33 @@
             std::string command;
 
             std::cout << "Waiting for your turn...";
-            
-            std::lock_guard<std::mutex> lock(*this->mutex);
-            
-            this->command->first = this->command->second = "";
-            
-            std::cout << std::endl << "Command: ";
-            std::getline(std::cin,command);
-            
-            auto pos = command.find(' ');
-            
-            if(pos != command.npos)
+            if(*(this->playerInTurn) == this->player)
             {
-                this->command->first  = command.substr(0,pos);
-                this->command->second = command.substr(++pos,command.npos);
+                std::lock_guard<std::mutex> lock(*this->mutex);
+                
+                this->command->first = this->command->second = "";
+                
+                std::cout << std::endl << "Command: ";
+                std::getline(std::cin,command);
+                
+                auto pos = command.find(' ');
+                
+                if(pos != command.npos)
+                {
+                    this->command->first  = command.substr(0,pos);
+                    this->command->second = command.substr(++pos,command.npos);
+                }
+                else
+                {
+                    this->command->first  = command;
+                }
+                if((this->command->first == "exit") || (this->command->first == "quit"))
+                    break;
             }
             else
             {
-                this->command->first  = command;
+                std::this_thread::sleep_for(1ms);
             }
-            if((this->command->first == "exit") || (this->command->first == "quit"))
-                break;
         }
         
         return true;

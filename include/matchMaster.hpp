@@ -44,6 +44,9 @@ namespace fleetBattle
         bool isShipSunk();
 
         public:
+        const playerInTurn_t&                        playerInTurn_public;
+
+        public:
         matchMaster() = delete;
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,

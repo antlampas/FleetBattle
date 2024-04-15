@@ -22,12 +22,14 @@ using namespace std::chrono_literals;
     class agent final
     {
         private:
-        std::shared_ptr<std::mutex> mutex;
-        std::shared_ptr<command_t> command;
-        bool standalone;
+        bool                            standalone;
+        playerInTurn_t                  player;
+        std::unique_ptr<playerInTurn_t> playerInTurn;
+        std::shared_ptr<std::mutex>     mutex;
+        std::shared_ptr<command_t>      command;
 
         public:
-        agent(std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
+        agent(playerInTurn_t,std::unique_ptr<playerInTurn_t>,std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
         ~agent();
         void getOwnBoard(board_t);
         void getOpponentBoard(board_t);
