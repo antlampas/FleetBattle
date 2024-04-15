@@ -37,13 +37,13 @@ namespace fleetBattle
                                               agentA{new agent( 'A',
                                                                 this->mm->playerInTurn_public,
                                                                 std::shared_ptr<std::mutex>(mA),
-                                                                std::shared_ptr<command_t>(commandPtr),
+                                                                std::shared_ptr<command_t>(commandPtr)
                                                               )
                                               },
                                               agentB{new agent( 'B',
                                                                 this->mm->playerInTurn_public,
                                                                 std::shared_ptr<std::mutex>(mB),
-                                                                std::shared_ptr<command_t>(commandPtr),
+                                                                std::shared_ptr<command_t>(commandPtr)
                                                               )
                                               }
   {}
