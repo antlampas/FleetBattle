@@ -30,7 +30,7 @@ using namespace std::chrono_literals;
 
         public:
         agent(  playerInTurn_t,
-                const playerInTurn_t&,
+                playerInTurn_t&,
                 std::shared_ptr<std::mutex>,
                 std::shared_ptr<command_t>
             );
