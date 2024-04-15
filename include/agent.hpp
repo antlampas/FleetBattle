@@ -24,12 +24,12 @@ using namespace std::chrono_literals;
         private:
         bool                            standalone;
         playerInTurn_t                  player;
-        std::unique_ptr<playerInTurn_t> playerInTurn;
+        std::shared_ptr<playerInTurn_t> playerInTurn;
         std::shared_ptr<std::mutex>     mutex;
         std::shared_ptr<command_t>      command;
 
         public:
-        agent(playerInTurn_t,std::unique_ptr<playerInTurn_t>,std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
+        agent(playerInTurn_t,std::shared_ptr<playerInTurn_t>,std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
         ~agent();
         void getOwnBoard(board_t);
         void getOpponentBoard(board_t);

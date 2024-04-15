@@ -9,7 +9,7 @@
 namespace fleetBattle
 {
     agent::agent(   playerInTurn_t                  player,
-                    std::unique_ptr<playerInTurn_t> playerInTurn,
+                    std::shared_ptr<playerInTurn_t> playerInTurn,
                     std::shared_ptr<std::mutex>     mutex,
                     std::shared_ptr<command_t>      command) :  playerInTurn(std::move(playerInTurn)),
                                                                 player(player),
