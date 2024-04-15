@@ -15,14 +15,12 @@ namespace fleetBattle
               deployedShips_t deployedB)  :   playerA{new player( std::shared_ptr<fleetBattle::playerBoard>(new fleetBattle::playerBoard(deployedA)),
                                                                   std::shared_ptr<fleetBattle::opponentBoard>(new fleetBattle::opponentBoard()),
                                                                   std::shared_ptr<command_t>(commandPtr),
-                                                                  std::shared_ptr<std::mutex>(mA)
-                                                                )
+                                                                  std::shared_ptr<std::mutex>(mA))
                                               },
                                               playerB{new player( std::shared_ptr<fleetBattle::playerBoard>(new fleetBattle::playerBoard(deployedB)),
                                                                   std::shared_ptr<fleetBattle::opponentBoard>(new fleetBattle::opponentBoard()),
                                                                   std::shared_ptr<command_t>(commandPtr),
-                                                                  std::shared_ptr<std::mutex>(mB)
-                                                                )
+                                                                  std::shared_ptr<std::mutex>(mB))
                                               },
                                               mm{new matchMaster( this->playerA,
                                                                   this->playerB,
@@ -31,20 +29,17 @@ namespace fleetBattle
                                                                   std::shared_ptr<std::mutex>(mA),
                                                                   std::shared_ptr<std::mutex>(mB),
                                                                   std::shared_ptr<command_t>(commandPtr),
-                                                                  'A'
-                                                                 )
+                                                                  'A')
                                               },
                                               agentA{new agent( 'A',
                                                                 this->mm->playerInTurn_public,
                                                                 std::shared_ptr<std::mutex>(mA),
-                                                                std::shared_ptr<command_t>(commandPtr)
-                                                              )
+                                                                std::shared_ptr<command_t>(commandPtr))
                                               },
                                               agentB{new agent( 'B',
                                                                 this->mm->playerInTurn_public,
                                                                 std::shared_ptr<std::mutex>(mB),
-                                                                std::shared_ptr<command_t>(commandPtr)
-                                                              )
+                                                                std::shared_ptr<command_t>(commandPtr))
                                               }
   {}
   game::~game(){}
