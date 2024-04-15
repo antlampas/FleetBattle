@@ -32,8 +32,8 @@ namespace fleetBattle
                                                                   'A'
                                                                  )
                                               ),
-                                              agentA(new agent('A',std::make_shared<playerInTurn_t>(&(this->mm->playerInTurn_public)),mA,commandPtr)),
-                                              agentB(new agent('B',std::make_shared<playerInTurn_t>(&(this->mm->playerInTurn_public)),mB,commandPtr))
+                                              agentA(new agent('A',std::make_shared<const playerInTurn_t&>(this->mm->playerInTurn_public),mA,commandPtr)),
+                                              agentB(new agent('B',std::make_shared<const playerInTurn_t&>(this->mm->playerInTurn_public),mB,commandPtr))
   {}
   game::~game(){}
 }
