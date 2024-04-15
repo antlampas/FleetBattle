@@ -22,8 +22,7 @@
             std::cout << "Waiting for your turn...";
             if(this->playerInTurn == this->player)
             {
-                std::lock(*(this->mutex));
-                std::lock_guard<std::mutex> lock(*(this->mutex),std::adopt_lock);
+                std::unique_lock<std::mutex> lock(*(this->mutex));
                 
                 this->command->first = this->command->second = "";
                 
@@ -43,6 +42,8 @@
                 }
                 if((this->command->first == "exit") || (this->command->first == "quit"))
                     break;
+                
+                lock.unlock();
             }
             else
             {
