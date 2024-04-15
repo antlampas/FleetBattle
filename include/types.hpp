@@ -15,7 +15,6 @@
 
 namespace fleetBattle
 {
-
     using decodedCoordinateSingle_t = unsigned char;
     using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
     using shipSize_t                = unsigned char;
