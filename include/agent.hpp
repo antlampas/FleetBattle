@@ -29,7 +29,11 @@ using namespace std::chrono_literals;
         std::shared_ptr<command_t>      command;
 
         public:
-        agent(playerInTurn_t,std::shared_ptr<playerInTurn_t>,std::shared_ptr<std::mutex>,std::shared_ptr<command_t>);
+        agent(  playerInTurn_t,
+                const playerInTurn_t&,
+                std::shared_ptr<std::mutex>,
+                std::shared_ptr<command_t>
+            );
         ~agent();
         void getOwnBoard(board_t);
         void getOpponentBoard(board_t);
