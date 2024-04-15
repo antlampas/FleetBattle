@@ -22,14 +22,11 @@ namespace fleetBattle
     class game final
     {
         private:
-        std::shared_ptr<player> playerA;
-        std::shared_ptr<player> playerB;
-        std::thread             agentA;
-        std::thread             agentB;
-        std::thread             mm;
-        /* std::shared_ptr<agent>       agentA;
+        std::shared_ptr<player>      playerA;
+        std::shared_ptr<player>      playerB;
+        std::shared_ptr<agent>       agentA;
         std::shared_ptr<agent>       agentB;
-        std::shared_ptr<matchMaster> mm; */
+        std::shared_ptr<matchMaster> mm;
         
         public:
         game() = delete;
