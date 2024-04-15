@@ -17,8 +17,4 @@ namespace fleetBattle
                                                         command(cmd),
                                                         player(p)
     {}
-    agent::~agent()
-    {
-        this->standalone = false;
-    }
 }

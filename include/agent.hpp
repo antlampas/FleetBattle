@@ -34,7 +34,6 @@ using namespace std::chrono_literals;
                 std::shared_ptr<std::mutex>,
                 std::shared_ptr<command_t>
             );
-        ~agent();
         void getOwnBoard(board_t);
         void getOpponentBoard(board_t);
         bool operator()();
