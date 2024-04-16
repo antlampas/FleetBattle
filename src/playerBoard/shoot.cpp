@@ -8,8 +8,6 @@
 
 #include <regex>
 
-#include <iostream>
-
 namespace fleetBattle
 {
     shootStatus_t playerBoard::shoot(coordinates_t c)
