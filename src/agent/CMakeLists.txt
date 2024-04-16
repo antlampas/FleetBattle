@@ -5,6 +5,4 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 add_library(agent SHARED
             agent.cpp
             functor.cpp
-            getOwnBoard.cpp
-            getOpponentBoard.cpp
            )

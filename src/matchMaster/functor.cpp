@@ -6,6 +6,8 @@
 
 #include "matchMaster.hpp"
 
+#include <iostream>
+
 namespace fleetBattle
 {
     bool matchMaster::operator()()
@@ -34,29 +36,10 @@ namespace fleetBattle
                 }
                 else
                 {
+                    std::this_thread::sleep_for(1ms);
                     continue;
                 }
-                
-                board_t opponentBoard = this->playerA->checkOpponentBoard();
-                for(auto row: opponentBoard)
-                {
-                    for(auto column: row)
-                    {
-                        std::cout << column << " ";
-                    }
-                    std::cout << std::endl;
-                }
-                std::cout << std::endl;
-                board_t ownBoard = this->playerA->checkOwnBoard();
-                for(auto row: ownBoard)
-                {
-                    for(auto column: row)
-                    {
-                        std::cout << column << " ";
-                    }
-                    std::cout << std::endl;
-                }
-
+                std::this_thread::sleep_for(1ms);
                 this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
@@ -77,29 +60,10 @@ namespace fleetBattle
                 }
                 else
                 {
+                    std::this_thread::sleep_for(1ms);
                     continue;
                 }
-                
-                board_t opponentBoard = this->playerB->checkOpponentBoard();
-                for(auto row: opponentBoard)
-                {
-                    for(auto column: row)
-                    {
-                        std::cout << column << " ";
-                    }
-                    std::cout << std::endl;
-                }
-                std::cout << std::endl;
-                board_t ownBoard = this->playerB->checkOwnBoard();
-                for(auto row: ownBoard)
-                {
-                    for(auto column: row)
-                    {
-                        std::cout << column << " ";
-                    }
-                    std::cout << std::endl;
-                }
-
+                std::this_thread::sleep_for(1ms);
                 this->playerInTurn = 'A';
             }
             else
