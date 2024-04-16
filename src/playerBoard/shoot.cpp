@@ -8,6 +8,8 @@
 
 #include <regex>
 
+#include <iostream>
+
 namespace fleetBattle
 {
     shootStatus_t playerBoard::shoot(coordinates_t c)
@@ -15,7 +17,7 @@ namespace fleetBattle
         try
         {
             decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
-            
+
             std::regex stillNotHit {"[WS]"};
 
             if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))

@@ -25,7 +25,7 @@ namespace fleetBattle
                 lockA.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
-                    squareStatus_t status = this->playerB->shoot(this->command->second);
+                    squareStatus_t status = this->playerBoardB->shoot(this->command->second);
                     this->playerA->otherBoard->setSquareStatus(this->command->second,status);
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
@@ -68,7 +68,7 @@ namespace fleetBattle
                 
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
-                    squareStatus_t status = this->playerA->shoot(this->command->second);
+                    squareStatus_t status = this->playerBoardA->shoot(this->command->second);
                     this->playerB->otherBoard->setSquareStatus(this->command->second,status);
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")

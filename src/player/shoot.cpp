@@ -6,11 +6,13 @@
 
 #include "player.hpp"
 
+#include <iostream>
+
 namespace fleetBattle
 {
     shootStatus_t player::shoot(coordinates_t coordinates)
     {
-        shootStatus_t status = this->ownBoard->shoot(coordinates);
+        shootStatus_t status {this->ownBoard->shoot(coordinates)};
         
         return status;
     }
