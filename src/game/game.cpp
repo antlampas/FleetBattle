@@ -12,28 +12,32 @@ namespace fleetBattle
               std::shared_ptr<std::mutex> mA,
               std::shared_ptr<std::mutex> mB,
               deployedShips_t deployedA,
-              deployedShips_t deployedB)  :   playerA{new player{ std::shared_ptr<playerBoard>   { new playerBoard(deployedA) },
-                                                                  std::shared_ptr<opponentBoard> { new opponentBoard()        },
-                                                                  commandPtr,
-                                                                  mA}
-                                              },
-                                              playerB{new player{ std::shared_ptr<playerBoard>   { new playerBoard(deployedB) },
-                                                                  std::shared_ptr<opponentBoard> { new opponentBoard() },
-                                                                  commandPtr,
-                                                                  mB}
-                                              },
-                                              mm{new matchMaster( this->playerA,
-                                                                  this->playerB,
-                                                                  this->playerA->ownBoard,
-                                                                  this->playerB->ownBoard,
-                                                                  mA,
-                                                                  mB,
-                                                                  commandPtr,
-                                                                  'A')
-                                              }
+              deployedShips_t deployedB)
   {
-    this->agentA = std::shared_ptr<agent>(new agent('A',this->mm->playerInTurn_public,mA,commandPtr));
-    this->agentB = std::shared_ptr<agent>(new agent('B',this->mm->playerInTurn_public,mB,commandPtr));
+    this->playerA = new player      {       
+                                      std::shared_ptr<playerBoard>   { new playerBoard(deployedA) },
+                                      std::shared_ptr<opponentBoard> { new opponentBoard()        },
+                                      commandPtr,
+                                      mA
+                                    };
+    this->playerB = new player      {
+                                      std::shared_ptr<playerBoard>   { new playerBoard(deployedB) },
+                                      std::shared_ptr<opponentBoard> { new opponentBoard() },
+                                      commandPtr,
+                                      mB
+                                    };
+    this->mm      = new matchMaster {
+                                      this->playerA,
+                                      this->playerB,
+                                      this->playerA->ownBoard,
+                                      this->playerB->ownBoard,
+                                      mA,
+                                      mB,
+                                      commandPtr,
+                                      'A'
+                                    };
+    this->agentA = std::shared_ptr<agent>{ new agent('A',this->mm->playerInTurn_public,mA,commandPtr) };
+    this->agentB = std::shared_ptr<agent>{ new agent('B',this->mm->playerInTurn_public,mB,commandPtr) };
   }
   game::~game(){}
 }
