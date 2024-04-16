@@ -34,7 +34,9 @@ namespace fleetBattle
         std::shared_ptr<player>                      playerA;
         std::shared_ptr<player>                      playerB;
         std::shared_ptr<playerBoard>                 playerBoardA;
+        std::shared_ptr<opponentBoard>               opponentBoardA;
         std::shared_ptr<playerBoard>                 playerBoardB;
+        std::shared_ptr<opponentBoard>               opponentBoardB;
         std::shared_ptr<command_t>                   command;
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
@@ -51,7 +53,9 @@ namespace fleetBattle
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,
                     std::shared_ptr<playerBoard>,
+                    std::shared_ptr<opponentBoard>,
                     std::shared_ptr<playerBoard>,
+                    std::shared_ptr<opponentBoard>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<command_t>,
