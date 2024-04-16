@@ -19,11 +19,12 @@
 
             std::string command;
 
-            std::cout << "Waiting for your turn...";
+            std::cout << this->player << ": " << "waiting for your turn...";
+            
+            std::unique_lock<std::mutex> lock(*(this->mutex));
+
             if(this->playerInTurn == this->player)
-            {
-                std::unique_lock<std::mutex> lock(*(this->mutex));
-                
+            {   
                 this->command->first = this->command->second = "";
                 
                 std::cout << std::endl << "Command: ";
