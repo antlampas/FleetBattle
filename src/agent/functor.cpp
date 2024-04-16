@@ -30,10 +30,16 @@
                 std::cout << std::endl << "Command: ";
                 std::getline(std::cin,cmd);
                 
+                std::cout << "Command received!" << std::endl;
+                
                 auto pos = cmd.find(' ');
                 
+                std::cout << "1!" << std::endl;
+
                 if(pos != cmd.npos)
                 {
+                    std::cout << "2!" << std::endl;
+                    
                     this->command->first  = cmd.substr(0,pos);
                     this->command->second = cmd.substr(++pos,cmd.npos);
                 }
