@@ -6,6 +6,8 @@
 
 #include "matchMaster.hpp"
 
+#include <iostream>
+
 namespace fleetBattle
 {
     bool matchMaster::operator()()

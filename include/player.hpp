@@ -29,7 +29,7 @@ namespace fleetBattle
 {
     class player final
     {
-        private:
+        public:
         friend class matchMaster;
         friend class game;
         
