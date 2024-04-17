@@ -28,10 +28,10 @@ namespace fleetBattle
         board_t                applyShipsLayer();
         protected:
         virtual bool           hit(coordinates_t)                            override final;
+        virtual board_t        getBoardStatus()                              override final;
         public:
         playerBoard(deployedShips_t);
         playerBoard()                                                        = delete;
-        virtual board_t        getBoardStatus()                              override final;
         virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
         virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
         virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
