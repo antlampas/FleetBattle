@@ -30,8 +30,9 @@ namespace fleetBattle
         const shipsList_t& publicShipsList;
         ships();
         ships(shipsList_t);
-        void addShip(std::pair<std::string,int>);
-        void removeShip(std::string);
+        bool addShip(unsigned char,unsigned char);
+        bool editShip(unsigned char,unsigned char);
+        bool removeShip(unsigned char);
     };
 }
 #endif

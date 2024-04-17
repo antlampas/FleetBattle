@@ -8,14 +8,8 @@
 
 namespace fleetBattle
 {
-    ships::ships()  : publicShipsList(this->shipsList)
-    {
-        this->shipsList.insert({"Carrier",6});
-        this->shipsList.insert({"Cruiser",5});
-        this->shipsList.insert({"Destroyer",4});
-        this->shipsList.insert({"Frigate",3});
-        this->shipsList.insert({"Corvette",2});
-    }
+    ships::ships(shipsList_t ships)  : publicShipsList(this->shipsList),shipsList(std::move(ships))
+    {}
 
     ships::ships(shipsList_t ships) : publicShipsList(this->shipsList)
     {
