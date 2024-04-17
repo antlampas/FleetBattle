@@ -34,8 +34,6 @@ namespace fleetBattle
         protected:
         board_t Board;
         protected:
-        bool                     isCoordinatesValid(coordinates_t);
-        decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
         virtual bool             hit(coordinates_t)                            = 0; 
         public:
         enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
