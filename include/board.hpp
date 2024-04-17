@@ -42,8 +42,7 @@ namespace fleetBattle
         virtual ~board();
         virtual board_t          getBoardStatus()                              = 0;
         virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
-        virtual bool             isSquareAlreadyHit(coordinates_t)             = 0;
-        virtual shootStatus_t    shoot(coordinates_t)                          = 0;
+        virtual bool             isSquareAlreadyHit(coordinates_t)             = 0; 
         virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
     };
 }
