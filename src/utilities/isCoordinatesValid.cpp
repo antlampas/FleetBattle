@@ -10,7 +10,7 @@
 
 namespace fleetBattle
 {
-    bool board::isCoordinatesValid(coordinates_t coordinates)
+    bool isCoordinatesValid(coordinates_t coordinates)
     {
         std::regex validCoordinates {"^[a-jA-J][0-9]$|^[a-jA-J]10$"};
 

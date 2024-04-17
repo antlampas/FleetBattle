@@ -2,6 +2,7 @@
 
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
-add_library(board SHARED
-            board.cpp
+add_library(utilities SHARED
+            isCoordinatesValid.cpp
+            decodeCoordinates.cpp
            )
