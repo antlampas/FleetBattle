@@ -49,7 +49,8 @@ namespace fleetBattle
                                                         'A',
                                                         this->mm->playerInTurn_public,
                                                         mA,
-                                                        commandPtr
+                                                        commandPtr,
+                                                        "/dev/tty0"
                                                       }
                                           };
     this->agentB  = std::shared_ptr<agent>{
@@ -57,7 +58,8 @@ namespace fleetBattle
                                                         'B',
                                                         this->mm->playerInTurn_public,
                                                         mB,
-                                                        commandPtr
+                                                        commandPtr,
+                                                        "/dev/tty2"
                                                       }            
                                           };
   }

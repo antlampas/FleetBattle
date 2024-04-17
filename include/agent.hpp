@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <iostream>
+#include <fstream>
 #include <thread>
 #include <mutex>
 #include <chrono>
@@ -27,13 +28,16 @@ using namespace std::chrono_literals;
         const playerInTurn_t&           playerInTurn;
         std::shared_ptr<std::mutex>     mutex;
         std::shared_ptr<command_t>      command;
+        std::fstream                    cli;
 
         public:
         agent(  playerInTurn_t,
                 const playerInTurn_t&,
                 std::shared_ptr<std::mutex>,
-                std::shared_ptr<command_t>
+                std::shared_ptr<command_t>,
+                std::string
             );
+        ~agent();
         bool operator()();
     };
  }

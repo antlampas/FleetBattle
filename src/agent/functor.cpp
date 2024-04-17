@@ -6,11 +6,14 @@
 
 #include "agent.hpp"
 #include <chrono>
+#include <iostream>
 
- namespace fleetBattle
- {
+namespace fleetBattle
+{
     bool agent::operator()()
     {
+        this->cli << "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
+        std::this_thread::sleep_for(1ms);
         while(true)
         {
             std::this_thread::sleep_for(1ms);
@@ -19,16 +22,19 @@
 
             std::string cmd;
 
-            std::cout << this->player << ": " << "waiting for your turn...";
-            
+            {
+                std::unique_lock<std::mutex> lock(*(this->mutex));
+                this->cli << this->player << ": " << "waiting for your turn...";
+            }
+            std::this_thread::sleep_for(1ms);
             std::unique_lock<std::mutex> lock(*(this->mutex));
 
             if(this->playerInTurn == this->player)
             {   
                 this->command->first = this->command->second = "";
                 
-                std::cout << std::endl << "Command: ";
-                std::getline(std::cin,cmd);
+                this->cli << std::endl << "Player " << this->player << std::endl << "Command: ";
+                std::getline(this->cli,cmd);
                 
                 auto pos = cmd.find(' ');
 
@@ -43,14 +49,12 @@
                 }
                 if((this->command->first == "exit") || (this->command->first == "quit"))
                 {
-                    lock.unlock();
                     break;
                 }
-                lock.unlock();
             }
             std::this_thread::sleep_for(1ms);
         }
         std::this_thread::sleep_for(1ms);
         return true;
     }
- }
+}

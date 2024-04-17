@@ -6,7 +6,7 @@
 
 #include "matchMaster.hpp"
 
-#include <iostream>
+#include <cstdlib>
 
 namespace fleetBattle
 {
@@ -21,7 +21,6 @@ namespace fleetBattle
         {
             if(this->playerInTurn == 'A')
             {
-                std::cout << "Player A" << std::endl;
                 lockA.unlock();
                 std::this_thread::sleep_for(1ms);
                 lockA.lock();
@@ -44,7 +43,6 @@ namespace fleetBattle
             }
             else if(this->playerInTurn == 'B')
             {
-                std::cout << "Player B" << std::endl;
                 lockB.unlock();
                 std::this_thread::sleep_for(1ms);
                 lockB.lock();
@@ -56,7 +54,7 @@ namespace fleetBattle
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
                 {
-                    break;
+                    std::exit(0);
                 }
                 else
                 {

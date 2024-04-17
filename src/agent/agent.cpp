@@ -11,10 +11,16 @@ namespace fleetBattle
     agent::agent(   playerInTurn_t                         p,
                     const playerInTurn_t& pit,
                     std::shared_ptr<std::mutex>            mtx,
-                    std::shared_ptr<command_t>             cmd) :   standalone(false),
-                                                                    playerInTurn(pit),
-                                                                    mutex(mtx),
-                                                                    command(cmd),
-                                                                    player(p)
+                    std::shared_ptr<command_t>             cmd,
+                    std::string                            filename)    :   standalone{false},
+                                                                            playerInTurn{pit},
+                                                                            mutex{mtx},
+                                                                            command{cmd},
+                                                                            player{p},
+                                                                            cli{filename,cli.in|cli.out}
     {}
+    agent::~agent()
+    {
+        this->cli.close();
+    }
 }
