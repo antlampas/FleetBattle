@@ -25,8 +25,8 @@ namespace fleetBattle
             std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
             try
             {
-                decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
-                decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
+                decodedShipCoordinates.first  = decodeCoordinates(ship.first);
+                decodedShipCoordinates.second = decodeCoordinates(ship.second);
             }
             catch(coordinatesNotValid)
             {
@@ -55,10 +55,10 @@ namespace fleetBattle
             int min = 0,max = 0;
             try
             {
-                const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
-                const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
-                const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
-                const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
+                const int& startRow    = decodeCoordinates(deployedShip.first).first;
+                const int& endRow      = decodeCoordinates(deployedShip.second).first;
+                const int& startColumn = decodeCoordinates(deployedShip.first).second;
+                const int& endColumn   = decodeCoordinates(deployedShip.second).second;
                 
                 if(startRow == endRow)
                 {
