@@ -27,7 +27,7 @@ namespace fleetBattle
     using board_t                   = std::array<std::array<squareStatus_t,10>,10>;                   //Classic 10x10 Fleet Battle board
     using shipStatus_t              = std::array<squareStatus_t,10>;
     using shipPosition_t            = std::pair<std::string,std::string>;
-    using deployedShips_t           = std::array<std::pair<std::string,std::string>,5>;               //A maximum of 5 ships; a pair of coordinates: beginning and end of the ship
+    using deployedShips_t           = std::array<shipPosition_t,5>;                                   //A maximum of 5 ships; a pair of coordinates: beginning and end of the ship
     using destroyedShips_t          = std::array<bool,5>;
 }
 #endif
