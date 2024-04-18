@@ -11,6 +11,8 @@ namespace fleetBattle
 {
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
+    bool                     isShipHorizontal(shipPosition_t);
+    bool                     isShipHVertical(shipPosition_t);
 }
 
 #endif

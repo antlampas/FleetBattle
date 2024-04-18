@@ -3,6 +3,8 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(utilities SHARED
-            isCoordinatesValid.cpp
             decodeCoordinates.cpp
+            isCoordinatesValid.cpp
+            isShipHorizontal.cpp
+            isShipVertical.cpp
            )
