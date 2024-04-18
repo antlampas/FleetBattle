@@ -12,6 +12,7 @@
 #include <utility>
 #include <string>
 #include <map>
+#include <iterator>
 
 #include "types.hpp"
 #include "exceptions.hpp"
