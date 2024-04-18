@@ -10,10 +10,10 @@ namespace fleetBattle
 {
     bool isShipOverlapping(shipPosition_t a,shipPosition_t b)
     {
-        bool bothHorizontal   = false;
-        bool bothVertical     = false;
-        bool firstHorizontal  = false;
-        bool firstVertical    = false;
+        bool bothHorizontal  {false};
+        bool bothVertical    {false};
+        bool firstHorizontal {false};
+        bool firstVertical   {false};
 
         if(isShipHorizontal(a) && isShipHorizontal(b))
         {
