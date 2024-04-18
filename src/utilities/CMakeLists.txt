@@ -6,5 +6,6 @@ add_library(utilities SHARED
             decodeCoordinates.cpp
             isCoordinatesValid.cpp
             isShipHorizontal.cpp
+            isShipOverlapping.cpp
             isShipVertical.cpp
            )
