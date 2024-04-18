@@ -13,6 +13,9 @@ namespace fleetBattle
         for(auto firstShip = deployedShips.begin();firstShip != std::prev(deployedShips.end());std::advance(firstShip))
         {
             for(auto secondShip = std::next(deployedShips.begin());firstShip != deployedShips.end();std::advance(secondShip))
+            {
+                
+            }
         }
 
         for(auto row: {0,1,2,3,4,5,6,7,8,9})

@@ -15,6 +15,7 @@
 #include <iterator>
 
 #include "types.hpp"
+#include "utilities.hpp"
 #include "exceptions.hpp"
 
 #ifdef TESTBOARD
