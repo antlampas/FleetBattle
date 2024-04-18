@@ -14,7 +14,7 @@ namespace fleetBattle
         {
             for(auto secondShip = std::next(firstShip);firstShip != deployedShips.end();std::advance(secondShip))
             {
-                if(isShipsOverlapping(*firstShip,*secondShip)))
+                if(isShipsOverlapping(*firstShip,*secondShip))
                     throw boardConstructionError{"Ships overlapping"};
             }
         }
