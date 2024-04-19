@@ -32,8 +32,6 @@ namespace fleetBattle
         private:
         std::shared_ptr<playerBoard>   ownBoard;
         std::shared_ptr<opponentBoard> otherBoard;
-        std::shared_ptr<command_t>     command;
-        std::shared_ptr<std::mutex>    mutex;
         
         public:
         player()                                 = delete;

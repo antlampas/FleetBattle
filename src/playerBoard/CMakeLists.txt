@@ -5,6 +5,7 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 add_library(playerBoard SHARED
             applyShipsLayer.cpp
             checkOverlappingShips.cpp
+            checkShipSunk.cpp
             deployShips.cpp
             drawDeployedShipsOnBoard.cpp
             getBoardStatus.cpp

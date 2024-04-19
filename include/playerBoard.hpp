@@ -31,6 +31,7 @@ namespace fleetBattle
         bool                   initiateDestroyedShips();
         bool                   deployShips(deployedShips_t);
         bool                   drawDeployedShipsOnBoard();
+        void                   checkShipSunk(coordinates_t);
         protected:
         virtual bool           hit(coordinates_t)                            override final;
         virtual board_t        getBoardStatus()                              override final;
@@ -39,7 +40,7 @@ namespace fleetBattle
         playerBoard()                                                        = delete;
         virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
         virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
-        virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+        squareStatus_t         setSquareStatus(coordinates_t,squareStatus_t);
     };
 }
 #endif
