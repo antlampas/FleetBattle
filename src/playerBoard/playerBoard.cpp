@@ -19,59 +19,10 @@ namespace fleetBattle
         if(!this->initiateDestroyedShips())
             throw boardConstructionError{};
         
-        this->deployShips(deployedShips);
-        
-        for(auto deployedShip: this->deployedShips)
-        {
-            int min = 0,max = 0;
-            try
-            {
-                const int& startRow    = decodeCoordinates(deployedShip.first).first;
-                const int& endRow      = decodeCoordinates(deployedShip.second).first;
-                const int& startColumn = decodeCoordinates(deployedShip.first).second;
-                const int& endColumn   = decodeCoordinates(deployedShip.second).second;
-                
-                if(startRow == endRow)
-                {
-                    const int& row = startRow;
+        if(this->deployShips(deployedShips))
+            throw boardConstructionError{};
 
-                    if(startColumn < endColumn)
-                    {
-                        min = startColumn;
-                        max = endColumn;
-                    }else{
-                        min = endColumn;
-                        max = startColumn;
-                    }
-
-                    for(int i=min;i<=max;i++)
-                        this->shipsLayer.at(row).at(i) = 'S';
-                }
-                else if(startColumn == endColumn)
-                {
-                    const int& column = startColumn;
-
-                    if(startRow < endRow)
-                    {
-                        min = startRow;
-                        max = endRow;
-                    }else{
-                        min = endRow;
-                        max = startRow;
-                    }
-
-                    for(int i=min;i<=max;i++)
-                        this->shipsLayer.at(i).at(column) = 'S';
-                }
-            }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
-        }
+        if(this->drawDeployedShipsOnBoard())
+            throw boardConstructionError{};
     }
 }

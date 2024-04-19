@@ -30,6 +30,7 @@ namespace fleetBattle
         bool                   checkOverlappingShips(deployedShips_t);
         bool                   initiateDestroyedShips();
         bool                   deployShips(deployedShips_t);
+        bool                   drawDeployedShipsOnBoard();
         protected:
         virtual bool           hit(coordinates_t)                            override final;
         virtual board_t        getBoardStatus()                              override final;
