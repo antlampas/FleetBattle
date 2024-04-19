@@ -12,6 +12,6 @@ namespace fleetBattle
     {
         for(auto ship: this->destroyedShips)
             ship = false;
+        return true;
     }
-    return true;
 }
