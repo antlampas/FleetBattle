@@ -13,33 +13,37 @@ namespace fleetBattle
         int i = 0;
         for(auto ship: deployedShips)
         {
-            std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
-            try
-            {
-                decodedShipCoordinates.first  = decodeCoordinates(ship.first);
-                decodedShipCoordinates.second = decodeCoordinates(ship.second);
-            }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
-            bool isOnSameRow            = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
-            bool isOnSameColumn         = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
-            bool isVerticalOrHorizontal = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
+            bool isVertical             {isShipVertical(ship)}
+            bool isHorizontal           {isShipHorizontal(ship)}
+            bool isVerticalOrHorizontal {(isVertical || isHorizontal) && !(isVertical && isHorizontal)};
 
             if(isVerticalOrHorizontal)
             {
                 this->deployedShips.at(i) = ship;
-                i++;
             }
             else
             {
                 throw shipNotValid{};
             }
+
+            for(auto deployedShip: this->deployedShips)
+            {
+                if(isVertical)
+                {
+                    for(auto row=deployedShip.first.at(1),int j=0;row<=deployedShip.second.at(1);row++,j++)
+                    {
+                        this->deployedShipsMap.at(i).at(j) = std::string(deployedShip.first.at(0)+row);
+                    }
+                }
+                else if(isHorizontal)
+                {
+                    for(auto column=deployedShip.first.at(0),int j=0;column<=deployedShip.second.at(0);column++,j++)
+                    {
+                        this->deployedShipsMap.at(i).at(j) = std::string(column+deployedShip.first.at(1));
+                    }
+                }
+            }
+            i++;
         }
         return true;
     }
