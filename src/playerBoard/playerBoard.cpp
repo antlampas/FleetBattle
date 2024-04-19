@@ -10,53 +10,17 @@ namespace fleetBattle
 {
     playerBoard::playerBoard(deployedShips_t deployedShips)
     {
-        for(auto firstShip = deployedShips.begin();firstShip != std::prev(deployedShips.end());std::advance(firstShip))
-        {
-            for(auto secondShip = std::next(firstShip);firstShip != deployedShips.end();std::advance(secondShip))
-            {
-                if(isShipsOverlapping(*firstShip,*secondShip))
-                    throw boardConstructionError{"Ships overlapping"};
-            }
-        }
+        if(this->checkOverlappingShips(deployedShips))
+            throw boardConstructionError{};
 
-        for(auto row: {0,1,2,3,4,5,6,7,8,9})
-            for(auto column: {0,1,2,3,4,5,6,7,8,9})
-                shipsLayer.at(row).at(column) = 'U';
+        if(!this->initiateShipsLayer())
+            throw boardConstructionError{};
         
-        for(auto ship: this->destroyedShips)
-            ship = false;
+        if(!this->initiateDestroyedShips())
+            throw boardConstructionError{};
         
-        int i = 0;
-        for(auto ship: deployedShips)
-        {
-            std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
-            try
-            {
-                decodedShipCoordinates.first  = decodeCoordinates(ship.first);
-                decodedShipCoordinates.second = decodeCoordinates(ship.second);
-            }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
-            bool isOnSameRow            = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
-            bool isOnSameColumn         = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
-            bool isVerticalOrHorizontal = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
-
-            if(isVerticalOrHorizontal)
-            {
-                this->deployedShips.at(i) = ship;
-                i++;
-            }
-            else
-            {
-                throw shipNotValid{};
-            }
-        }
+        this->deployShips(deployedShips);
+        
         for(auto deployedShip: this->deployedShips)
         {
             int min = 0,max = 0;

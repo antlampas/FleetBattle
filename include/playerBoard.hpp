@@ -26,6 +26,10 @@ namespace fleetBattle
         board_t                shipsLayer;
         private:
         board_t                applyShipsLayer();
+        bool                   initiateShipsLayer();
+        bool                   checkOverlappingShips(deployedShips_t);
+        bool                   initiateDestroyedShips();
+        bool                   deployShips(deployedShips_t);
         protected:
         virtual bool           hit(coordinates_t)                            override final;
         virtual board_t        getBoardStatus()                              override final;
