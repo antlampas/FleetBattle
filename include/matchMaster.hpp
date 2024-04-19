@@ -33,10 +33,6 @@ namespace fleetBattle
         std::pair<playerInTurn_t,shipsSquaresList_t> ships;
         std::shared_ptr<player>                      playerA;
         std::shared_ptr<player>                      playerB;
-        std::shared_ptr<playerBoard>                 playerBoardA;
-        std::shared_ptr<opponentBoard>               opponentBoardA;
-        std::shared_ptr<playerBoard>                 playerBoardB;
-        std::shared_ptr<opponentBoard>               opponentBoardB;
         std::shared_ptr<command_t>                   command;
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;

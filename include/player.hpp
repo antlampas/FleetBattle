@@ -29,21 +29,11 @@ namespace fleetBattle
 {
     class player final
     {
-        public:
-        friend class matchMaster;
-        friend class game;
-        
         private:
         std::shared_ptr<playerBoard>   ownBoard;
         std::shared_ptr<opponentBoard> otherBoard;
         std::shared_ptr<command_t>     command;
         std::shared_ptr<std::mutex>    mutex;
-        
-        private:
-        board_t        checkOwnBoard();
-        board_t        checkOpponentBoard();
-        squareStatus_t setSquareStatus(coordinates_t,squareStatus_t);
-        squareStatus_t getSquareStatus(coordinates_t);
         
         public:
         player()                                 = delete;
@@ -52,6 +42,12 @@ namespace fleetBattle
                 std::shared_ptr<command_t>,
                 std::shared_ptr<std::mutex>
               );
+        board_t        getOwnBoard();
+        board_t        getOpponentBoard();
+        squareStatus_t setOwnBoardSquareStatus(coordinates_t,squareStatus_t);
+        squareStatus_t getOwnBoardSquareStatus(coordinates_t);
+        squareStatus_t setOtherBoardSquareStatus(coordinates_t,squareStatus_t);
+        squareStatus_t getOtherBoardSquareStatus(coordinates_t);
         shootStatus_t  shoot(coordinates_t);
     };
 }

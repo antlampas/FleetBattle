@@ -3,10 +3,10 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(player SHARED
-            checkOpponentBoard.cpp
-            checkOwnBoard.cpp
-            getSquareStatus.cpp
+            getOpponentBoard.cpp
+            getOwnBoard.cpp
+            getOwnBoardSquareStatus.cpp
             player.cpp
-            setSquareStatus.cpp
+            setOwnBoardSquareStatus.cpp
             shoot.cpp
            )
