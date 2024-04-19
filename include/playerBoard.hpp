@@ -22,6 +22,7 @@ namespace fleetBattle
     {
         private:
         deployedShips_t        deployedShips;
+        shipsSquaresList_t     deployedShipsMap;
         destroyedShips_t       destroyedShips;
         board_t                shipsLayer;
         private:
