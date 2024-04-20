@@ -15,11 +15,7 @@ namespace fleetBattle
             decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
 
             if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
-            {
-                this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
-                this->setSquareStatus(c,'s');
                 return true;
-            }
             else
                 return false;
         }

@@ -19,15 +19,23 @@ namespace fleetBattle
             std::regex stillNotHit {"[WS]"};
 
             if(std::regex_match(std::string(1,this->getSquareStatus(c)),stillNotHit))
+            {
                 if(this->hit(c))
-                    return this->getSquareStatus(c);
+                {
+                    this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
+                    this->setSquareStatus(c,'s');
+                    this->checkShipSunk(c);
+                }
                 else
                 {
                     this->setSquareStatus(c,'w');
-                    return this->getSquareStatus(c);
                 }
-            else
                 return this->getSquareStatus(c);
+            }
+            else
+            {
+                return this->getSquareStatus(c);
+            }
         }
         catch(coordinatesNotValid& e)
         {
