@@ -48,10 +48,6 @@ namespace fleetBattle
         matchMaster() = delete;
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,
-                    std::shared_ptr<playerBoard>,
-                    std::shared_ptr<opponentBoard>,
-                    std::shared_ptr<playerBoard>,
-                    std::shared_ptr<opponentBoard>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<command_t>,
