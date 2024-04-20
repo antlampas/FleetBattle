@@ -19,7 +19,6 @@ namespace fleetBattle
 
         int i=0;
         bool shipHit = false;
-        bool shipSunk = false;
         for(auto deployedShip: this->deployedShipsMap)
         {
             for(auto square: deployedShip)
