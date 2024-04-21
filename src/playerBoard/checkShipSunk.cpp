@@ -33,9 +33,8 @@ namespace fleetBattle
             {
                 for(auto square=deployedShip.begin();;square++)
                 {
-                    std::regex shipSquareHit("[s]");
-                    squareStatus_t shipSquare = this->getSquareStatus(square);
-                    if(!std::regex_match(shipSquare,shipSquareHit))
+                    squareStatus_t shipSquare = this->getSquareStatus(*square);
+                    if(shipSquare != 's')
                         break;
                     else
                         if(square==deployedShip.end())

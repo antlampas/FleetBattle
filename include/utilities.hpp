@@ -12,8 +12,8 @@ namespace fleetBattle
     bool                     isCoordinatesValid(coordinates_t);
     decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
     bool                     isShipHorizontal(shipPosition_t);
-    bool                     isShipHVertical(shipPosition_t);
-    bool                     isShipVoerlapping(shipPosition_t,shipPosition_t);
+    bool                     isShipVertical(shipPosition_t);
+    bool                     isShipOverlapping(shipPosition_t,shipPosition_t);
     bool                     isInlineShipsOverlapping(decodedCoordinateSingle_t,decodedCoordinateSingle_t,decodedCoordinateSingle_t,decodedCoordinateSingle_t);
     bool                     isCrossingShipsOverlapping(decodedCoordinatesPair_t,decodedCoordinatesPair_t,decodedCoordinatesPair_t,decodedCoordinatesPair_t);
 }
