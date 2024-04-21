@@ -25,16 +25,16 @@ namespace fleetBattle
                     this->shipsLayer.at(coordinates.first).at(coordinates.second) = 's';
                     this->setSquareStatus(c,'s');
                     this->checkShipSunk(c);
+                    return shootReturnStatus_t::HIT;
                 }
                 else
                 {
-                    this->setSquareStatus(c,'w');
+                    return shootReturnStatus_t::MISSED;
                 }
-                return this->getSquareStatus(c);
             }
             else
             {
-                return this->getSquareStatus(c);
+                return shootReturnStatus_t::ALREADYHIT;
             }
         }
         catch(coordinatesNotValid& e)

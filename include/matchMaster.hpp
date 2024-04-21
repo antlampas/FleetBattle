@@ -13,8 +13,6 @@
 #include <mutex>
 #include <chrono>
 
-using namespace std::chrono_literals;
-
 #include "types.hpp"
 #include "exceptions.hpp"
 #include "player.hpp"

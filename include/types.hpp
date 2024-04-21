@@ -23,11 +23,13 @@ namespace fleetBattle
     using shipsSquaresList_t        = std::array<std::array<coordinates_t,5>,5>;
     using command_t                 = std::pair<std::string,std::string>;
     using coordinates_t             = std::string;                                                    //Standard-format, i.e. RowColumn format e.g. "A1", "C5"
-    using shootStatus_t             = std::uint_fast8_t;                                              //Ship hit; ship missed; square already hit
+    using shootStatus_t             = unsigned char;                                                  //Ship hit; ship missed; square already hit
     using board_t                   = std::array<std::array<squareStatus_t,10>,10>;                   //Classic 10x10 Fleet Battle board
     using shipStatus_t              = std::array<squareStatus_t,10>;
     using shipPosition_t            = std::pair<std::string,std::string>;
     using deployedShips_t           = std::array<shipPosition_t,5>;                                   //A maximum of 5 ships; a pair of coordinates: beginning and end of the ship
     using destroyedShips_t          = std::array<bool,5>;
+
+    enum shootReturnStatus_t {HIT='s',MISSED='w',ALREADYHIT='H'};
 }
 #endif

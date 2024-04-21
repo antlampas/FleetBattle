@@ -22,12 +22,15 @@ namespace fleetBattle
             if(this->playerInTurn == 'A')
             {
                 lockA.unlock();
-                std::this_thread::sleep_for(1ms);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 lockA.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerB->shoot(this->command->second);
-                    this->playerA->setOtherBoardSquareStatus(this->command->second,status);
+                    if(status!=shootReturnStatus_t::ALREADYHIT)
+                        this->playerA->setOtherBoardSquareStatus(this->command->second,status);
+                    else
+                        continue;
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
                 {
@@ -35,22 +38,25 @@ namespace fleetBattle
                 }
                 else
                 {
-                    std::this_thread::sleep_for(1ms);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
                     continue;
                 }
-                std::this_thread::sleep_for(1ms);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 this->playerInTurn = 'B';
             }
             else if(this->playerInTurn == 'B')
             {
                 lockB.unlock();
-                std::this_thread::sleep_for(1ms);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 lockB.lock();
                 
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerA->shoot(this->command->second);
-                    this->playerB->setOtherBoardSquareStatus(this->command->second,status);
+                    if(status!=shootReturnStatus_t::ALREADYHIT)
+                        this->playerB->setOtherBoardSquareStatus(this->command->second,status);
+                    else
+                        continue;
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
                 {
@@ -58,17 +64,17 @@ namespace fleetBattle
                 }
                 else
                 {
-                    std::this_thread::sleep_for(1ms);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
                     continue;
                 }
-                std::this_thread::sleep_for(1ms);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 this->playerInTurn = 'A';
             }
             else
             {
-                    this->playerInTurn = 'A';
+                this->playerInTurn = 'A';
             }
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
 
         return true;

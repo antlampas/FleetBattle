@@ -13,10 +13,10 @@ namespace fleetBattle
     bool agent::operator()()
     {
         this->cli << "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
-        std::this_thread::sleep_for(1ms);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while(true)
         {
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
             this->standalone = true;
 
@@ -26,7 +26,7 @@ namespace fleetBattle
                 std::unique_lock<std::mutex> lock(*(this->mutex));
                 this->cli << this->player << ": " << "waiting for your turn...";
             }
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
             std::unique_lock<std::mutex> lock(*(this->mutex));
 
             if(this->playerInTurn == this->player)
@@ -52,9 +52,9 @@ namespace fleetBattle
                     break;
                 }
             }
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
-        std::this_thread::sleep_for(1ms);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         return true;
     }
 }
