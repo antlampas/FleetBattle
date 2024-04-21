@@ -10,7 +10,7 @@ namespace fleetBattle
 {
     bool ships::removeShip(unsigned char ship)
     {
-        this->shipsList.at(ship) = "";
+        this->shipsList.at(ship) = 0;
 
         return true;
     }
