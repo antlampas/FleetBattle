@@ -14,6 +14,7 @@
 
 namespace fleetBattle
 {
+    using coordinates_t             = std::string;                                                    //Standard-format, i.e. RowColumn format e.g. "A1", "C5"
     using decodedCoordinateSingle_t = std::uint_fast8_t;                                              //Row OR column
     using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>; //Decoded row AND column
     using shipSize_t                = std::uint_fast8_t;
@@ -22,7 +23,6 @@ namespace fleetBattle
     using playerInTurn_t            = std::uint_fast8_t;
     using shipsSquaresList_t        = std::array<std::array<coordinates_t,5>,5>;
     using command_t                 = std::pair<std::string,std::string>;
-    using coordinates_t             = std::string;                                                    //Standard-format, i.e. RowColumn format e.g. "A1", "C5"
     using shootStatus_t             = unsigned char;                                                  //Ship hit; ship missed; square already hit
     using board_t                   = std::array<std::array<squareStatus_t,10>,10>;                   //Classic 10x10 Fleet Battle board
     using shipStatus_t              = std::array<squareStatus_t,10>;

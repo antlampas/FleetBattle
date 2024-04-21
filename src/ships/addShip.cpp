@@ -8,8 +8,10 @@
 
 namespace fleetBattle
 {
-    void ships::addShip(unsigned char position,unsigned char size)
+    bool ships::addShip(unsigned char position,unsigned char size)
     {
         this->shipsList.at(position) = size;
+        
+        return true;
     }
 }
