@@ -31,7 +31,7 @@ namespace fleetBattle
             }
             if(shipHit)
             {
-                for(auto square=deployedShip.begin();;std::advance(square))
+                for(auto square=deployedShip.begin();;square++)
                 {
                     std::regex shipSquareHit("[s]");
                     squareStatus_t shipSquare = this->getSquareStatus(square);
@@ -39,7 +39,7 @@ namespace fleetBattle
                         break;
                     else
                         if(square==deployedShip.end())
-                            this->destroyedShip.at(i) = true;
+                            this->destroyedShips.at(i) = true;
                 }
                 return;
             }

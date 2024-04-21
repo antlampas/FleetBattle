@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    bool isShipOverlapping(shipPosition_t a,shipPosition_t b)
+    bool isShipVoerlapping(shipPosition_t a,shipPosition_t b)
     {
         bool bothHorizontal  {false};
         bool bothVertical    {false};
