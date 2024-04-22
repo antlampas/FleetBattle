@@ -12,7 +12,7 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        std::string output = "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
+        std::string output = std::string("Player ") + std::string(this->player) + std::string(" running on thread ") + std::string(std::this_thread::get_id()) + std::string(std::endl);
 
         boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
 
