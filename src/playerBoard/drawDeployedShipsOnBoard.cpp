@@ -10,11 +10,11 @@ namespace fleetBattle
 {
     bool playerBoard::drawDeployedShipsOnBoard()
     {
-        for(auto deployedShip: this->deployedShips)
+        try
         {
-            int min = 0,max = 0;
-            try
+            for(auto deployedShip: this->deployedShips)
             {
+                int min = 0,max = 0;
                 const int& startRow    = decodeCoordinates(deployedShip.first).first;
                 const int& endRow      = decodeCoordinates(deployedShip.second).first;
                 const int& startColumn = decodeCoordinates(deployedShip.first).second;
