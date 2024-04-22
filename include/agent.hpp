@@ -13,6 +13,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
+#include <boost/asio.hpp>
 
 #include "types.hpp"
 
@@ -26,7 +27,8 @@
         const playerInTurn_t&           playerInTurn;
         std::shared_ptr<std::mutex>     mutex;
         std::shared_ptr<command_t>      command;
-        std::fstream                    cli;
+        boost::asio::io_service         ioService;
+        boost::asio::serial_port        cli;
 
         public:
         agent(  playerInTurn_t,

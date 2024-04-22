@@ -18,10 +18,17 @@ namespace fleetBattle
                         mutex{mtx},
                         command{cmd},
                         player{p},
-                        cli{new std::fstream(filename,std::ios_base::in|std::ios_base::out)}
-    {}
-    agent::~agent()
+                        cli{ioService}
     {
-        this->cli.close();
+        boost::system::error_code ec;
+
+        m_port.open(filename, ec);
+
+        if (!ec)
+        {
+            boost::asio::serial_port_base::baud_rate baud_rate1(9600);   
+            m_port.set_option(baud_rate1);
+        }
     }
+    agent::~agent(){}
 }

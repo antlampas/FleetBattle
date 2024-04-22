@@ -37,7 +37,7 @@ namespace fleetBattle
                                                                 )
                                                 );
     this->agentA = std::shared_ptr<agent>(
-                                          new agent(
+                                          std::make_shared<agent>(
                                           'A',
                                           this->mm->playerInTurn_public,
                                           mA,
@@ -45,7 +45,7 @@ namespace fleetBattle
                                           "/dev/tty0"
                                         ));
     this->agentB = std::shared_ptr<agent>(
-                                          new agent(
+                                          std::make_shared<agent>(
                                           'B',
                                           this->mm->playerInTurn_public,
                                           mB,

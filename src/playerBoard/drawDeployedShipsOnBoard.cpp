@@ -52,8 +52,8 @@ namespace fleetBattle
                     for(int i=min;i<=max;i++)
                         this->shipsLayer.at(i).at(column) = 'S';
                 }
-                return true;
             }
+            return true;
         }
         catch(coordinatesNotValid)
         {
@@ -63,6 +63,5 @@ namespace fleetBattle
         {
             throw unknownError{};
         }
-        
     }
 }
