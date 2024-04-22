@@ -8,8 +8,12 @@
 
 namespace fleetBattle
 {
-    board_t opponentBoard::getBoardStatus()
+    board_t opponentBoard::_getBoardStatus()
     {
         return this->Board;
+    }
+    board_t opponentBoard::getBoardStatus()
+    {
+        return this->_getBoardStatus();
     }
 }

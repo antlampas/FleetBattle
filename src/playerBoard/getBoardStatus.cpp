@@ -8,10 +8,14 @@
 
 namespace fleetBattle
 {
-    board_t playerBoard::getBoardStatus()
+    board_t playerBoard::_getBoardStatus()
     {
         board_t b {this->applyShipsLayer()};
         
         return b;
+    }
+    board_t playerBoard::getBoardStatus()
+    {
+        return this->_getBoardStatus();
     }
 }

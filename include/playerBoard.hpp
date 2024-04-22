@@ -35,7 +35,7 @@ namespace fleetBattle
         void                   checkShipSunk(coordinates_t);
         protected:
         virtual bool           hit(coordinates_t)                            override final;
-        virtual board_t        getBoardStatus()                              override final;
+        virtual board_t        _getBoardStatus()                              override final;
         public:
         playerBoard(deployedShips_t);
         playerBoard()                                                        = delete;

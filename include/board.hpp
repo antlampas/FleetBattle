@@ -37,7 +37,7 @@ namespace fleetBattle
         board_t Board;
         protected:
         virtual bool             hit(coordinates_t)                            = 0;
-        virtual board_t          getBoardStatus()                              = 0;
+        virtual board_t          _getBoardStatus()                             = 0;
         public:
         enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
         public:
