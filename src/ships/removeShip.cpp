@@ -8,8 +8,10 @@
 
 namespace fleetBattle
 {
-    void ships::removeShip(std::string ship)
+    bool ships::removeShip(unsigned char ship)
     {
-        this->shipsList.erase(ship);
+        this->shipsList.at(ship) = 0;
+
+        return true;
     }
 }

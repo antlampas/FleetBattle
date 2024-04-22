@@ -3,7 +3,8 @@
 get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(ships SHARED
-            ships.cpp
             addShip.cpp
+            editShip.cpp
             removeShip.cpp
+            ships.cpp
            )

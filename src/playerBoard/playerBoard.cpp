@@ -12,95 +12,19 @@ namespace fleetBattle
 {
     playerBoard::playerBoard(deployedShips_t deployedShips)
     {
-        for(auto row: {0,1,2,3,4,5,6,7,8,9})
-            for(auto column: {0,1,2,3,4,5,6,7,8,9})
-                shipsLayer.at(row).at(column) = 'U';
-        
-        for(auto ship: this->destroyedShips)
-            ship = false;
-        
-        int i = 0;
-        for(auto ship: deployedShips)
-        {
-            std::pair<decodedCoordinatesPair_t,decodedCoordinatesPair_t> decodedShipCoordinates {};
-            try
-            {
-                decodedShipCoordinates.first  = this->decodeCoordinates(ship.first);
-                decodedShipCoordinates.second = this->decodeCoordinates(ship.second);
-            }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
-            bool isOnSameRow            = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
-            bool isOnSameColumn         = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
-            bool isVerticalOrHorizontal = !(isOnSameRow && isOnSameColumn) && (isOnSameRow || isOnSameColumn);
+        if(this->checkOverlappingShips(deployedShips))
+            throw boardConstructionError{};
 
-            if(isVerticalOrHorizontal)
-            {
-                this->deployedShips.at(i) = ship;
-                i++;
-            }
-            else
-            {
-                throw shipNotValid{};
-            }
-        }
-        for(auto deployedShip: this->deployedShips)
-        {
-            int min = 0,max = 0;
-            try
-            {
-                const int& startRow    = this->decodeCoordinates(deployedShip.first).first;
-                const int& endRow      = this->decodeCoordinates(deployedShip.second).first;
-                const int& startColumn = this->decodeCoordinates(deployedShip.first).second;
-                const int& endColumn   = this->decodeCoordinates(deployedShip.second).second;
-                
-                if(startRow == endRow)
-                {
-                    const int& row = startRow;
+        if(!this->initiateShipsLayer())
+            throw boardConstructionError{};
 
-                    if(startColumn < endColumn)
-                    {
-                        min = startColumn;
-                        max = endColumn;
-                    }else{
-                        min = endColumn;
-                        max = startColumn;
-                    }
+        if(!this->initiateDestroyedShips())
+            throw boardConstructionError{};
 
-                    for(int i=min;i<=max;i++)
-                        this->shipsLayer.at(row).at(i) = 'S';
-                }
-                else if(startColumn == endColumn)
-                {
-                    const int& column = startColumn;
+        if(this->deployShips(deployedShips))
+            throw boardConstructionError{};
 
-                    if(startRow < endRow)
-                    {
-                        min = startRow;
-                        max = endRow;
-                    }else{
-                        min = endRow;
-                        max = startRow;
-                    }
-
-                    for(int i=min;i<=max;i++)
-                        this->shipsLayer.at(i).at(column) = 'S';
-                }
-            }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
-        }
+        if(this->drawDeployedShipsOnBoard())
+            throw boardConstructionError{};
     }
 }

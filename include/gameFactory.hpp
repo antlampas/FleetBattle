@@ -4,14 +4,12 @@
  *
  */
 
-#include "ships.hpp"
+#ifndef GAMEFACTORY_HPP
+#define GAMEFACTORY_HPP
 
 namespace fleetBattle
 {
-    bool ships::addShip(unsigned char position,unsigned char size)
-    {
-        this->shipsList.at(position) = size;
-        
-        return true;
-    }
+    
 }
+
+#endif

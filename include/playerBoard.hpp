@@ -22,20 +22,32 @@ namespace fleetBattle
     {
         private:
         deployedShips_t        deployedShips;
+        shipsSquaresList_t     deployedShipsMap;
         destroyedShips_t       destroyedShips;
         board_t                shipsLayer;
+        
         private:
         board_t                applyShipsLayer();
+        bool                   initiateShipsLayer();
+        bool                   checkOverlappingShips(deployedShips_t);
+        bool                   initiateDestroyedShips();
+        bool                   deployShips(deployedShips_t);
+        bool                   drawDeployedShipsOnBoard();
+        void                   checkShipSunk(coordinates_t);
+        
         protected:
         virtual bool           hit(coordinates_t)                            override final;
+        virtual board_t        _getBoardStatus()                             override final;
+        
+        public:
+        virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
+        virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
+        virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+
         public:
         playerBoard(deployedShips_t);
         playerBoard()                                                        = delete;
-        virtual board_t        getBoardStatus()                              override final;
-        virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
-        virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
-        virtual shootStatus_t  shoot(coordinates_t)                          override final;
-        virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+        board_t getBoardStatus();
     };
 }
 #endif

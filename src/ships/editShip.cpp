@@ -4,12 +4,14 @@
  *
  */
 
-#include "player.hpp"
+#include "ships.hpp"
 
 namespace fleetBattle
 {
-    squareStatus_t player::getSquareStatus(coordinates_t c)
+    bool ships::editShip(unsigned char position,unsigned char size)
     {
-        return squareStatus_t(this->ownBoard->getSquareStatus(c));
+        this->shipsList.at(position) = size;
+
+        return true;
     }
 }

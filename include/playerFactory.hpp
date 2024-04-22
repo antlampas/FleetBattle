@@ -4,12 +4,12 @@
  *
  */
 
-#include "player.hpp"
+#ifndef PLAYERFACTORY_HPP
+#define PLAYERFACTORY_HPP
 
 namespace fleetBattle
 {
-    board_t player::checkOwnBoard()
-    {
-        return this->ownBoard->getBoardStatus();
-    }
+    
 }
+
+#endif

@@ -12,8 +12,10 @@
 #include <utility>
 #include <string>
 #include <map>
+#include <iterator>
 
 #include "types.hpp"
+#include "utilities.hpp"
 #include "exceptions.hpp"
 
 #ifdef TESTBOARD
@@ -33,20 +35,21 @@ namespace fleetBattle
         */
         protected:
         board_t Board;
-        protected:
-        bool                     isCoordinatesValid(coordinates_t);
-        decodedCoordinatesPair_t decodeCoordinates(coordinates_t);
-        virtual bool             hit(coordinates_t)                            = 0; 
+        
         public:
         enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
+        
+        protected:
+        virtual bool             hit(coordinates_t)                            = 0;
+        virtual board_t          _getBoardStatus()                             = 0;
+
+        public:
+        virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
+        virtual bool             isSquareAlreadyHit(coordinates_t)             = 0; 
+        virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
+
         public:
         board();
-        virtual ~board();
-        virtual board_t          getBoardStatus()                              = 0;
-        virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
-        virtual bool             isSquareAlreadyHit(coordinates_t)             = 0;
-        virtual shootStatus_t    shoot(coordinates_t)                          = 0;
-        virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
     };
 }
 #endif

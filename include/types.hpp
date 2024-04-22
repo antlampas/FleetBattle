@@ -9,25 +9,27 @@
 
 #include <string>
 #include <array>
-#include <map>
 #include <utility>
-#include <vector>
+#include <cstdint>
 
 namespace fleetBattle
 {
-    using decodedCoordinateSingle_t = unsigned char;
-    using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>;
-    using shipSize_t                = unsigned char;
-    using shipsList_t               = std::map<std::string,unsigned char>;
-    using squareStatus_t            = char;
-    using playerInTurn_t            = char;
-    using shipsSquaresList_t        = std::array<std::array<squareStatus_t,10>,10>;
+    using coordinates_t             = std::string;                                                    //Standard-format, i.e. RowColumn format e.g. "A1", "C5"
+    using decodedCoordinateSingle_t = std::uint_fast8_t;                                              //Row OR column
+    using decodedCoordinatesPair_t  = std::pair<decodedCoordinateSingle_t,decodedCoordinateSingle_t>; //Decoded row AND column
+    using shipSize_t                = std::uint_fast8_t;
+    using shipsList_t               = std::array<unsigned char,5>;                                    //Ships types list, for a maximum of 5 different types, with 8-bit dimention
+    using squareStatus_t            = std::uint_fast8_t;
+    using playerInTurn_t            = std::uint_fast8_t;
+    using shipsSquaresList_t        = std::array<std::array<coordinates_t,5>,5>;
     using command_t                 = std::pair<std::string,std::string>;
-    using coordinates_t             = std::string;
-    using shootStatus_t             = unsigned char;
-    using board_t                   = std::array<std::array<squareStatus_t,10>,10>;
+    using shootStatus_t             = unsigned char;                                                  //Ship hit; ship missed; square already hit
+    using board_t                   = std::array<std::array<squareStatus_t,10>,10>;                   //Classic 10x10 Fleet Battle board
     using shipStatus_t              = std::array<squareStatus_t,10>;
-    using deployedShips_t           = std::array<std::pair<std::string,std::string>,5>;
+    using shipPosition_t            = std::pair<std::string,std::string>;
+    using deployedShips_t           = std::array<shipPosition_t,5>;                                   //A maximum of 5 ships; a pair of coordinates: beginning and end of the ship
     using destroyedShips_t          = std::array<bool,5>;
+
+    enum shootReturnStatus_t {HIT='s',MISSED='w',ALREADYHIT='H'};
 }
 #endif

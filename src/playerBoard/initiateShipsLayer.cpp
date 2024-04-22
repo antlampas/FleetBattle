@@ -8,14 +8,11 @@
 
 namespace fleetBattle
 {
-    board_t playerBoard::_getBoardStatus()
+    bool playerBoard::initiateShipsLayer()
     {
-        board_t b {this->applyShipsLayer()};
-        
-        return b;
-    }
-    board_t playerBoard::getBoardStatus()
-    {
-        return this->_getBoardStatus();
+        for(auto row: {0,1,2,3,4,5,6,7,8,9})
+            for(auto column: {0,1,2,3,4,5,6,7,8,9})
+                this->shipsLayer.at(row).at(column) = 'U';
+        return true;
     }
 }

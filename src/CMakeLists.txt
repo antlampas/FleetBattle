@@ -10,7 +10,8 @@ add_subdirectory(player player)
 add_subdirectory(game game)
 add_subdirectory(matchMaster matchMaster)
 add_subdirectory(agent agent)
+add_subdirectory(utilities utilities)
 
 add_executable(fleetBattle main.cpp)
 
-target_link_libraries(fleetBattle PUBLIC ships board playerBoard opponentBoard player matchMaster game agent)
+target_link_libraries(fleetBattle PUBLIC ships board playerBoard opponentBoard player matchMaster game agent utilities)

@@ -21,14 +21,15 @@ namespace fleetBattle
     {
         protected:
         virtual bool           hit(coordinates_t)                            override final;
+        virtual board_t        _getBoardStatus()                             override final;
         public:
         opponentBoard();
-        virtual board_t        getBoardStatus()                              override final;
         virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
+        virtual bool           isSquareAlreadyHit(coordinates_t)             override final; 
         virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
-        /* Not implemented and do not implement! */
-        virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
-        virtual shootStatus_t  shoot(coordinates_t)                          override final;
+
+        public:
+        board_t getBoardStatus();
     };
 }
 #endif

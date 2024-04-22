@@ -3,17 +3,13 @@
  * FALP Fleet Battle © 2024 by Antlampas is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/
  *
  */
- 
-#include "opponentBoard.hpp"
+
+#include "player.hpp"
 
 namespace fleetBattle
 {
-    board_t opponentBoard::_getBoardStatus()
+    squareStatus_t player::getOwnBoardSquareStatus(coordinates_t c)
     {
-        return this->Board;
-    }
-    board_t opponentBoard::getBoardStatus()
-    {
-        return this->_getBoardStatus();
+        return squareStatus_t(this->ownBoard->getSquareStatus(c));
     }
 }

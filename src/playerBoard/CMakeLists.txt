@@ -4,11 +4,16 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 
 add_library(playerBoard SHARED
             applyShipsLayer.cpp
+            checkOverlappingShips.cpp
+            checkShipSunk.cpp
+            deployShips.cpp
+            drawDeployedShipsOnBoard.cpp
             getBoardStatus.cpp
             getSquareStatus.cpp
             hit.cpp
+            initiateDestroyedShips.cpp
+            initiateShipsLayer.cpp
             isSquareAlreadyHit.cpp
             playerBoard.cpp
-            shoot.cpp
             setSquareStatus.cpp
            )

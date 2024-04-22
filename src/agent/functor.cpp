@@ -12,11 +12,14 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        this->cli << "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
-        std::this_thread::sleep_for(1ms);
+        std::string output = std::string("Player ") + std::string(this->player) + std::string(" running on thread ") + std::string(std::this_thread::get_id()) + std::string(std::endl);
+
+        boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while(true)
         {
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
             this->standalone = true;
 
@@ -24,17 +27,19 @@ namespace fleetBattle
 
             {
                 std::unique_lock<std::mutex> lock(*(this->mutex));
-                this->cli << this->player << ": " << "waiting for your turn...";
+                output = std::string(this->player) + std::string(": ") + std::string("waiting for your turn...");
+                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
             }
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
             std::unique_lock<std::mutex> lock(*(this->mutex));
 
             if(this->playerInTurn == this->player)
             {   
                 this->command->first = this->command->second = "";
                 
-                this->cli << std::endl << "Player " << this->player << std::endl << "Command: ";
-                std::getline(this->cli,cmd);
+                output = std::string(std::endl) + std::string("Player ") + std::string(this->player) + std::string(std::endl) + std::string("Command: ");
+                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
+                std::getline(*this->cli,cmd);
                 
                 auto pos = cmd.find(' ');
 
@@ -52,9 +57,9 @@ namespace fleetBattle
                     break;
                 }
             }
-            std::this_thread::sleep_for(1ms);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
-        std::this_thread::sleep_for(1ms);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         return true;
     }
 }

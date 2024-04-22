@@ -4,14 +4,12 @@
  *
  */
 
-#include "ships.hpp"
+#ifndef BOARDFACTORY_HPP
+#define BOARDFACTORY_HPP
 
 namespace fleetBattle
 {
-    bool ships::addShip(unsigned char position,unsigned char size)
-    {
-        this->shipsList.at(position) = size;
-        
-        return true;
-    }
+    
 }
+
+#endif

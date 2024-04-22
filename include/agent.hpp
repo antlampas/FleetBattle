@@ -13,8 +13,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
-
-using namespace std::chrono_literals;
+#include <boost/asio.hpp>
 
 #include "types.hpp"
 
@@ -23,12 +22,13 @@ using namespace std::chrono_literals;
     class agent final
     {
         private:
-        bool                            standalone;
-        playerInTurn_t                  player;
-        const playerInTurn_t&           playerInTurn;
-        std::shared_ptr<std::mutex>     mutex;
-        std::shared_ptr<command_t>      command;
-        std::fstream                    cli;
+        bool                                      standalone;
+        playerInTurn_t                            player;
+        const playerInTurn_t&                     playerInTurn;
+        std::shared_ptr<std::mutex>               mutex;
+        std::shared_ptr<command_t>                command;
+        std::shared_ptr<boost::asio::io_service>  ioService;
+        std::shared_ptr<boost::asio::serial_port> cli;
 
         public:
         agent(  playerInTurn_t,
