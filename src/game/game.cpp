@@ -36,20 +36,22 @@ namespace fleetBattle
                                                                   'A'
                                                                 )
                                                 );
-    this->agentA = std::move(new agent(
-                                        'A',
-                                        this->mm->playerInTurn_public,
-                                        mA,
-                                        commandPtr,
-                                        "/dev/tty0"
-                                      ));
-    this->agentB = std::move(new agent(
-                                        'B',
-                                        this->mm->playerInTurn_public,
-                                        mB,
-                                        commandPtr,
-                                        "/dev/tty2"
-                                      ));
+    this->agentA = std::shared_ptr<agent>(
+                                          new agent(
+                                          'A',
+                                          this->mm->playerInTurn_public,
+                                          mA,
+                                          commandPtr,
+                                          "/dev/tty0"
+                                        ));
+    this->agentB = std::shared_ptr<agent>(
+                                          new agent(
+                                          'B',
+                                          this->mm->playerInTurn_public,
+                                          mB,
+                                          commandPtr,
+                                          "/dev/tty2"
+                                        ));
 }
   game::~game(){}
 }
