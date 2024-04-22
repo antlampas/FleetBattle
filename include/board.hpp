@@ -35,17 +35,21 @@ namespace fleetBattle
         */
         protected:
         board_t Board;
+        
+        public:
+        enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
+        
         protected:
         virtual bool             hit(coordinates_t)                            = 0;
         virtual board_t          _getBoardStatus()                             = 0;
+
         public:
-        enum shootReturnCodes    {HIT,MISSED,SQUARE_ALREADY_HIT};
-        public:
-        board();
-        virtual ~board();
         virtual squareStatus_t   getSquareStatus(coordinates_t)                = 0;
         virtual bool             isSquareAlreadyHit(coordinates_t)             = 0; 
         virtual squareStatus_t   setSquareStatus(coordinates_t,squareStatus_t) = 0;
+
+        public:
+        board();
     };
 }
 #endif

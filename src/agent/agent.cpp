@@ -12,15 +12,16 @@ namespace fleetBattle
                     const playerInTurn_t&                  pit,
                     std::shared_ptr<std::mutex>            mtx,
                     std::shared_ptr<command_t>             cmd,
-                    std::string                            filename)    :   standalone{false},
-                                                                            playerInTurn{pit},
-                                                                            mutex{mtx},
-                                                                            command{cmd},
-                                                                            player{p},
-                                                                            cli{filename,cli.in|cli.out}
+                    std::string                            filename
+                )   :   standalone{false},
+                        playerInTurn{pit},
+                        mutex{mtx},
+                        command{cmd},
+                        player{p},
+                        cli{new std::fstream(filename,std::ios_base::in|std::ios_base::out)}
     {}
     agent::~agent()
     {
-        this->cli.close();
+        this->cli->close();
     }
 }

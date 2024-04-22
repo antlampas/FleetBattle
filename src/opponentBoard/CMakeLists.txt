@@ -6,6 +6,7 @@ add_library(opponentBoard SHARED
             opponentBoard.cpp
             getBoardStatus.cpp
             getSquareStatus.cpp
+            isSquareAlreadyHit.cpp
             setSquareStatus.cpp
             hit.cpp
            )

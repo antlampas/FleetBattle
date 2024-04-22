@@ -12,6 +12,7 @@
 #include "board.hpp"
 #include "matchMaster.hpp"
 #include "player.hpp"
+#include "agent.hpp"
 
 #ifdef TESTGAME
 #define private public

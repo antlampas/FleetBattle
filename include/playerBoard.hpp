@@ -25,6 +25,7 @@ namespace fleetBattle
         shipsSquaresList_t     deployedShipsMap;
         destroyedShips_t       destroyedShips;
         board_t                shipsLayer;
+        
         private:
         board_t                applyShipsLayer();
         bool                   initiateShipsLayer();
@@ -33,15 +34,19 @@ namespace fleetBattle
         bool                   deployShips(deployedShips_t);
         bool                   drawDeployedShipsOnBoard();
         void                   checkShipSunk(coordinates_t);
+        
         protected:
         virtual bool           hit(coordinates_t)                            override final;
         virtual board_t        _getBoardStatus()                             override final;
+        
         public:
-        playerBoard(deployedShips_t);
-        playerBoard()                                                        = delete;
         virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
         virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
         virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+
+        public:
+        playerBoard(deployedShips_t);
+        playerBoard()                                                        = delete;
         board_t getBoardStatus();
     };
 }
