@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    bool initiateDestroyedShips()
+    bool playerBoard::initiateDestroyedShips()
     {
         for(auto ship: this->destroyedShips)
             ship = false;

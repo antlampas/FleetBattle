@@ -8,6 +8,4 @@ add_library(opponentBoard SHARED
             getSquareStatus.cpp
             setSquareStatus.cpp
             hit.cpp
-            isSquareAlreadyHit.cpp
-            shoot.cpp
            )
