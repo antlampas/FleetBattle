@@ -5,6 +5,8 @@ get_directory_property(MYDEFS COMPILE_DEFINITIONS)
 add_library(utilities SHARED
             decodeCoordinates.cpp
             isCoordinatesValid.cpp
+            isCrossingShipsOverlapping.cpp
+            isInlineShipsOverlapping.cpp
             isShipHorizontal.cpp
             isShipOverlapping.cpp
             isShipVertical.cpp

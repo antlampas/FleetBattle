@@ -23,8 +23,8 @@ namespace fleetBattle
             throw coordinatesNotValid{};
         }
 
-        bool isOnSameRow    = (decodedShipCoordinates.first.first  == decodedShipCoordinates.second.first);
-        bool isOnSameColumn = (decodedShipCoordinates.first.second == decodedShipCoordinates.second.second);
+        bool isOnSameRow    = (decodedCoordinates1.first  == decodedCoordinates2.first);
+        bool isOnSameColumn = (decodedCoordinates1.second == decodedCoordinates2.second);
         
         return (!isOnSameRow && isOnSameColumn);
     }
