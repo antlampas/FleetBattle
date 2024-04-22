@@ -35,13 +35,14 @@ namespace fleetBattle
         void                   checkShipSunk(coordinates_t);
         protected:
         virtual bool           hit(coordinates_t)                            override final;
-        virtual board_t        _getBoardStatus()                              override final;
+        virtual board_t        _getBoardStatus()                             override final;
         public:
         playerBoard(deployedShips_t);
         playerBoard()                                                        = delete;
         virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
         virtual bool           isSquareAlreadyHit(coordinates_t)             override final;
-        squareStatus_t         setSquareStatus(coordinates_t,squareStatus_t);
+        virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
+        board_t getBoardStatus();
     };
 }
 #endif
