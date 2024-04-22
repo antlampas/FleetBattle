@@ -14,8 +14,8 @@ namespace fleetBattle
         
         return b;
     }
-    board_t playerBoard::getBoardStatus()
+/*     board_t playerBoard::getBoardStatus()
     {
         return this->_getBoardStatus();
-    }
+    } */
 }

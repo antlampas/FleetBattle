@@ -28,7 +28,7 @@ namespace fleetBattle
         virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
 
         public:
-        board_t getBoardStatus() = 0;
+        board_t getBoardStatus();
     };
 }
 #endif
