@@ -12,7 +12,7 @@ namespace fleetBattle
     {
         try
         {
-            decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+            decodedCoordinatesPair_t coordinates {decodeCoordinates(c)};
 
             if(this->shipsLayer.at(coordinates.first).at(coordinates.second) == 'S')
                 return true;

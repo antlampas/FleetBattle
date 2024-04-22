@@ -14,7 +14,7 @@ namespace fleetBattle
     {
         try
         {
-            decodedCoordinatesPair_t coordinates {this->decodeCoordinates(c)};
+            decodedCoordinatesPair_t coordinates {decodeCoordinates(c)};
             if(coordinates != std::pair<unsigned char,unsigned char>(-1,-1))
             {
                 std::regex alreadyHit {"[ws]"};

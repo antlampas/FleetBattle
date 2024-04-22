@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    bool drawDeployedShipsOnBoard()
+    bool playerBoard::drawDeployedShipsOnBoard()
     {
         for(auto deployedShip: this->deployedShips)
         {
