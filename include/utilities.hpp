@@ -7,6 +7,9 @@
 #ifndef UTILITIES_HPP
 #define UTILITIES_HPP
 
+#include "types.hpp"
+#include "exceptions.hpp"
+
 namespace fleetBattle
 {
     bool                     isCoordinatesValid(coordinates_t);

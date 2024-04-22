@@ -29,19 +29,23 @@ namespace fleetBattle
             firstHorizontal  = false;
             firstVertical    = false;
         }
-        else if(isShipHorizontal(a))
+        else if(isShipHorizontal(a) && isShipVertical(b))
         {
             bothHorizontal   = false;
             bothVertical     = false;
             firstHorizontal  = true;
             firstVertical    = false;
         }
-        else
+        else if(isShipVertical(a) && isShipHorizontal(b))
         {
             bothHorizontal   = false;
             bothVertical     = false;
             firstHorizontal  = false;
             firstVertical    = true;
+        }
+        else
+        {
+            throw shipNotValid{};
         }
 
         if(bothHorizontal)
@@ -51,7 +55,7 @@ namespace fleetBattle
             decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
             decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
 
-            return isInlineShipsOverlapping(a1,a2,b1,b2);
+            return isInlineShipsOverlapping(a1.second,a2.second,b1.second,b2.second);
         }
         else if(bothVertical)
         {
@@ -60,12 +64,7 @@ namespace fleetBattle
             decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
             decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
 
-            decodedCoordinatesPair_t invA1 {a1.second,a1.first};
-            decodedCoordinatesPair_t invA2 {a2.second,a2.first};
-            decodedCoordinatesPair_t invB1 {b1.second,b1.first};
-            decodedCoordinatesPair_t invB2 {b2.second,b2.first};
-
-            return isInlineShipsOverlapping(invA1,invA2,invB1,invB2);
+            return isInlineShipsOverlapping(a1.first,a2.first,b1.first,b2.first);
         }
         else if(firstHorizontal)
         {
@@ -85,7 +84,9 @@ namespace fleetBattle
 
             return isCrossingShipsOverlapping(b1,b2,a1,a2);
         }
-
-        throw unknownError{};
+        else
+        {
+            throw unknownError{};
+        }
     }
 }
