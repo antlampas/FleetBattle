@@ -18,7 +18,7 @@ namespace fleetBattle
                         mutex{mtx},
                         command{cmd},
                         player{p},
-                        ioService{std::make_shared<boost::asio::io_service>()}
+                        ioService{std::make_shared<boost::asio::io_service>()},
                         cli{std::make_shared<boost::asio::serial_port>(ioService)}
     {
         boost::system::error_code ec;
