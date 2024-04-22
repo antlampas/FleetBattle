@@ -22,13 +22,13 @@
     class agent final
     {
         private:
-        bool                            standalone;
-        playerInTurn_t                  player;
-        const playerInTurn_t&           playerInTurn;
-        std::shared_ptr<std::mutex>     mutex;
-        std::shared_ptr<command_t>      command;
-        boost::asio::io_service         ioService;
-        boost::asio::serial_port        cli;
+        bool                                      standalone;
+        playerInTurn_t                            player;
+        const playerInTurn_t&                     playerInTurn;
+        std::shared_ptr<std::mutex>               mutex;
+        std::shared_ptr<command_t>                command;
+        std::shared_ptr<boost::asio::io_service>  ioService;
+        std::shared_ptr<boost::asio::serial_port> cli;
 
         public:
         agent(  playerInTurn_t,
