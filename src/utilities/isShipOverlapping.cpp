@@ -48,45 +48,30 @@ namespace fleetBattle
             throw shipNotValid{};
         }
 
-        if(bothHorizontal)
-        {
-            decodedCoordinatesPair_t a1 = decodeCoordinates(a.first);
-            decodedCoordinatesPair_t a2 = decodeCoordinates(a.second);
-            decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
-            decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
+        decodedCoordinatesPair_t a1 = decodeCoordinates(a.first);
+        decodedCoordinatesPair_t a2 = decodeCoordinates(a.second);
+        decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
+        decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
 
+        if(bothHorizontal && (a1.first == b1.first))
+        {
             return isInlineShipsOverlapping(a1.second,a2.second,b1.second,b2.second);
         }
-        else if(bothVertical)
+        else if(bothVertical && (a1.second == b1.second))
         {
-            decodedCoordinatesPair_t a1 = decodeCoordinates(a.first);
-            decodedCoordinatesPair_t a2 = decodeCoordinates(a.second);
-            decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
-            decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
-
             return isInlineShipsOverlapping(a1.first,a2.first,b1.first,b2.first);
         }
         else if(firstHorizontal)
         {
-            decodedCoordinatesPair_t a1 = decodeCoordinates(a.first);
-            decodedCoordinatesPair_t a2 = decodeCoordinates(a.second);
-            decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
-            decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
-
             return isCrossingShipsOverlapping(a1,a2,b1,b2);
         }
         else if(firstVertical)
         {
-            decodedCoordinatesPair_t a1 = decodeCoordinates(a.first);
-            decodedCoordinatesPair_t a2 = decodeCoordinates(a.second);
-            decodedCoordinatesPair_t b1 = decodeCoordinates(b.first);
-            decodedCoordinatesPair_t b2 = decodeCoordinates(b.second);
-
             return isCrossingShipsOverlapping(b1,b2,a1,a2);
         }
         else
         {
-            throw unknownError{};
+            return false;
         }
     }
 }
