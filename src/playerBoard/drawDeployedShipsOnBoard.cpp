@@ -54,14 +54,15 @@ namespace fleetBattle
                 }
                 return true;
             }
-            catch(coordinatesNotValid)
-            {
-                throw;
-            }
-            catch(...)
-            {
-                throw unknownError{};
-            }
         }
+        catch(coordinatesNotValid)
+        {
+            throw;
+        }
+        catch(...)
+        {
+            throw unknownError{};
+        }
+        
     }
 }
