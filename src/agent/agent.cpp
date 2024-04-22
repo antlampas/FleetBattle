@@ -23,12 +23,12 @@ namespace fleetBattle
     {
         boost::system::error_code ec;
 
-        m_port.open(filename, ec);
+        this->cli->open(filename, ec);
 
         if (!ec)
         {
             boost::asio::serial_port_base::baud_rate baud_rate1(9600);   
-            m_port.set_option(baud_rate1);
+            this->cli->set_option(baud_rate1);
         }
     }
     agent::~agent(){}
