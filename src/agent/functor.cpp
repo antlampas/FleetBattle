@@ -12,7 +12,7 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        *this->cli << "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
+        this->cli << "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while(true)
         {
@@ -24,7 +24,7 @@ namespace fleetBattle
 
             {
                 std::unique_lock<std::mutex> lock(*(this->mutex));
-                *this->cli << this->player << ": " << "waiting for your turn...";
+                this->cli << this->player << ": " << "waiting for your turn...";
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
             std::unique_lock<std::mutex> lock(*(this->mutex));
@@ -33,8 +33,8 @@ namespace fleetBattle
             {   
                 this->command->first = this->command->second = "";
                 
-                *this->cli << std::endl << "Player " << this->player << std::endl << "Command: ";
-                std::getline(*this->cli,cmd);
+                this->cli << std::endl << "Player " << this->player << std::endl << "Command: ";
+                std::getline(this->cli,cmd);
                 
                 auto pos = cmd.find(' ');
 

@@ -22,6 +22,6 @@ namespace fleetBattle
     {}
     agent::~agent()
     {
-        this->cli->close();
+        this->cli.close();
     }
 }

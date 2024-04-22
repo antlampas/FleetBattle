@@ -26,7 +26,7 @@
         const playerInTurn_t&           playerInTurn;
         std::shared_ptr<std::mutex>     mutex;
         std::shared_ptr<command_t>      command;
-        std::shared_ptr<std::fstream>   cli;
+        std::fstream                    cli;
 
         public:
         agent(  playerInTurn_t,
