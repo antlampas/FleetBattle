@@ -31,14 +31,14 @@ namespace fleetBattle
                                                         )
                                             };
     this->mm      = std::shared_ptr<matchMaster>{
-                                                  new matchMaster (
-                                                                    this->playerA,
-                                                                    this->playerB,
-                                                                    mA,
-                                                                    mB,
-                                                                    commandPtr,
-                                                                    'A'
-                                                                  )
+                                                  new matchMaster(
+                                                                  this->playerA,
+                                                                  this->playerB,
+                                                                  mA,
+                                                                  mB,
+                                                                  commandPtr,
+                                                                  'A'
+                                                                )
                                                   };
     this->agentA = std::move(new agent(
                                         'A',
