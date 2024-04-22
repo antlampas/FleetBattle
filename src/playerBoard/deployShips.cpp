@@ -8,13 +8,13 @@
 
 namespace fleetBattle
 {
-    bool deployShips(deployedShips_t deployedShips)
+    bool playerBoard::deployShips(deployedShips_t deployedShips)
     {
         int i = 0;
         for(auto ship: deployedShips)
         {
-            bool isVertical             {isShipVertical(ship)}
-            bool isHorizontal           {isShipHorizontal(ship)}
+            bool isVertical             {isShipVertical(ship)};
+            bool isHorizontal           {isShipHorizontal(ship)};
             bool isVerticalOrHorizontal {(isVertical || isHorizontal) && !(isVertical && isHorizontal)};
 
             if(isVerticalOrHorizontal)
@@ -30,16 +30,16 @@ namespace fleetBattle
             {
                 if(isVertical)
                 {
-                    for(auto row=deployedShip.first.at(1),int j=0;row<=deployedShip.second.at(1);row++,j++)
+                    for(struct {char row;int j;} s ={deployedShip.first.at(1),0};s.row<=deployedShip.second.at(1);s.row++,s.j++)
                     {
-                        this->deployedShipsMap.at(i).at(j) = std::string(deployedShip.first.at(0)+row);
+                        this->deployedShipsMap.at(i).at(s.j) = std::string(deployedShip.first.at(0),1).append(s.row,1);
                     }
                 }
                 else if(isHorizontal)
                 {
-                    for(auto column=deployedShip.first.at(0),int j=0;column<=deployedShip.second.at(0);column++,j++)
+                    for(struct {char column;int j;} s = {deployedShip.first.at(0),0};s.column<=deployedShip.second.at(0);s.column++,s.j++)
                     {
-                        this->deployedShipsMap.at(i).at(j) = std::string(column+deployedShip.first.at(1));
+                        this->deployedShipsMap.at(i).at(s.j) = std::string(s.column,1).append(deployedShip.first.at(1),1);
                     }
                 }
             }
