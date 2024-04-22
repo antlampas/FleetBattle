@@ -14,23 +14,23 @@ namespace fleetBattle
               deployedShips_t deployedA,
               deployedShips_t deployedB)
   {
-    this->playerA = std::shared_ptr<player> {
+    this->playerA = std::shared_ptr<player>(
                                               new player(
                                                           std::shared_ptr<playerBoard>   { new playerBoard(deployedA) },
                                                           std::shared_ptr<opponentBoard> { new opponentBoard()        },
                                                           commandPtr,
                                                           mA
                                                         )
-                                            };
-    this->playerB = std::shared_ptr<player> {
+                                            );
+    this->playerB = std::shared_ptr<player>(
                                               new player(
                                                           std::shared_ptr<playerBoard>   { new playerBoard(deployedB) },
                                                           std::shared_ptr<opponentBoard> { new opponentBoard() },
                                                           commandPtr,
                                                           mB
                                                         )
-                                            };
-    this->mm      = std::shared_ptr<matchMaster>{
+                                            );
+    this->mm      = std::shared_ptr<matchMaster>(
                                                   new matchMaster(
                                                                   this->playerA,
                                                                   this->playerB,
@@ -39,7 +39,7 @@ namespace fleetBattle
                                                                   commandPtr,
                                                                   'A'
                                                                 )
-                                                  };
+                                                );
     this->agentA = std::move(new agent(
                                         'A',
                                         this->mm->playerInTurn_public,
