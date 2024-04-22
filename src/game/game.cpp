@@ -42,7 +42,7 @@ namespace fleetBattle
                                           this->mm->playerInTurn_public,
                                           mA,
                                           commandPtr,
-                                          "/dev/tty3"
+                                          "/dev/ttyS0"
                                         ));
     this->agentB = std::shared_ptr<agent>(
                                           std::make_shared<agent>(
@@ -50,7 +50,7 @@ namespace fleetBattle
                                           this->mm->playerInTurn_public,
                                           mB,
                                           commandPtr,
-                                          "/dev/tty2"
+                                          "/dev/ttyS1"
                                         ));
 }
   game::~game(){}
