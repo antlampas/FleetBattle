@@ -12,7 +12,10 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        *this->cli << "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
+        std::string output = "Player " << this->player << " running on thread " << std::this_thread::get_id() << std::endl;
+
+        boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
+
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while(true)
         {
@@ -24,7 +27,8 @@ namespace fleetBattle
 
             {
                 std::unique_lock<std::mutex> lock(*(this->mutex));
-                *this->cli << this->player << ": " << "waiting for your turn...";
+                output = std::string(this->player) + std::string(": ") + std::string("waiting for your turn...");
+                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
             std::unique_lock<std::mutex> lock(*(this->mutex));
@@ -33,7 +37,8 @@ namespace fleetBattle
             {   
                 this->command->first = this->command->second = "";
                 
-                *this->cli << std::endl << "Player " << this->player << std::endl << "Command: ";
+                output = std::string(std::endl) + std::string("Player ") + std::string(this->player) + std::string(std::endl) + std::string("Command: ");
+                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
                 std::getline(*this->cli,cmd);
                 
                 auto pos = cmd.find(' ');
