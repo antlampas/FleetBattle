@@ -36,7 +36,7 @@ namespace fleetBattle
         public:
         player()                                 = delete;
         player( std::shared_ptr<playerBoard>,
-                std::shared_ptr<opponentBoard>,
+                std::shared_ptr<opponentBoard>
               );
         board_t        getOwnBoard();
         board_t        getOpponentBoard();

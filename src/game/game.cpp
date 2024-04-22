@@ -34,10 +34,6 @@ namespace fleetBattle
                                                     new matchMaster {
                                                                       this->playerA,
                                                                       this->playerB,
-                                                                      this->playerA->ownBoard,
-                                                                      this->playerA->otherBoard,
-                                                                      this->playerB->ownBoard,
-                                                                      this->playerB->otherBoard,
                                                                       mA,
                                                                       mB,
                                                                       commandPtr,

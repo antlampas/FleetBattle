@@ -8,10 +8,16 @@
 
 namespace fleetBattle
 {
-    shootStatus_t player::shoot(coordinates_t coordinates)
+    shootStatus_t player::shoot(coordinates_t c)
     {
-        shootStatus_t status {this->ownBoard->shoot(coordinates)};
-        
-        return status;
+        if(!this->ownBoard->isSquareAlreadyHit(c))
+        {
+            if(this->ownBoard->getSquareStatus(c) == 'S')
+                return this->ownBoard->setSquareStatus(c,shootReturnStatus_t::HIT);
+            else
+                return this->ownBoard->setSquareStatus(c,shootReturnStatus_t::MISSED);
+        }
+        else
+            return shootReturnStatus_t::ALREADYHIT;
     }
 }

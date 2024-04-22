@@ -8,7 +8,7 @@
 
 namespace fleetBattle
 {
-    squareStatus_t player::setOtherBoardSquareStatus(coordinates_t,squareStatus_t)
+    squareStatus_t player::setOtherBoardSquareStatus(coordinates_t c,squareStatus_t s)
     {
         this->otherBoard->setSquareStatus(c,s);
 
