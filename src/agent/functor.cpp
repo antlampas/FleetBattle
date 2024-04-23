@@ -39,7 +39,7 @@ namespace fleetBattle
             {   
                 this->command->first = this->command->second = "";
                 
-                output = std::string(std::endl,1) + std::string("Player ") + std::string(this->player,1) + std::string(std::endl,1) + std::string("Command: ");
+                output = std::string("\n") + std::string("Player ") + std::string(this->player,1) + std::string("\n") + std::string("Command: ");
                 boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
                 boost::asio::read(*this->cli,input,boost::asio::transfer_at_least(0), error);
                 cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
