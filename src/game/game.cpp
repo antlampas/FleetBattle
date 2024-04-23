@@ -17,14 +17,14 @@ namespace fleetBattle
   {
     this->playerA = std::make_shared<player>(
                                               player(
-                                                      std::shared_ptr<playerBoard>(   new playerBoard(deployedA)),
-                                                      std::shared_ptr<opponentBoard>( new opponentBoard())
+                                                      std::make_shared<playerBoard>(playerBoard(deployedA)),
+                                                      std::make_shared<opponentBoard>(opponentBoard())
                                                     )
                                             );
     this->playerB = std::make_shared<player>(
                                               player(
-                                                    std::shared_ptr<playerBoard>(   new playerBoard(deployedB) ),
-                                                    std::shared_ptr<opponentBoard>( new opponentBoard() )
+                                                    std::make_shared<playerBoard>(playerBoard(deployedB) ),
+                                                    std::make_shared<opponentBoard>(opponentBoard() )
                                                   )
                                             );
     this->mm      = std::make_shared<matchMaster> (
