@@ -40,6 +40,7 @@ namespace fleetBattle
                         if(square==deployedShip.end())
                             this->destroyedShips.at(i) = true;
                 }
+                
                 return;
             }
         i++;

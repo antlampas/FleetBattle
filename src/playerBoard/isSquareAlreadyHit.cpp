@@ -20,9 +20,13 @@ namespace fleetBattle
                 std::regex alreadyHit {"[ws]"};
                 board_t b {this->applyShipsLayer()};
                 if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
+                {
                     return true;
+                }
                 else
+                {
                     return false;
+                }
             }
             return false;
         }

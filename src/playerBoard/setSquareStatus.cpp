@@ -12,9 +12,7 @@ namespace fleetBattle
         try
         {
             decodedCoordinatesPair_t coordinates { decodeCoordinates(c) };
-
             this->Board.at(coordinates.first).at(coordinates.second) = s;
-
             return s;
         }
         catch(coordinatesNotValid)

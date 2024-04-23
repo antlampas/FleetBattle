@@ -12,6 +12,10 @@
 #include "board.hpp"
 #include "ships.hpp"
 
+#include <iterator>
+
+#include <iostream>
+
 #ifdef TESTPLAYERBOARD
 #define private public
 #endif

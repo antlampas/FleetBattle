@@ -26,7 +26,6 @@ namespace fleetBattle
                                                     std::make_shared<opponentBoard>(opponentBoard() )
                                                   )
                                             );
-                                            }
     this->mm      = std::make_shared<matchMaster> (
                                                     matchMaster(
                                                                   this->playerA,
@@ -51,7 +50,6 @@ namespace fleetBattle
                                             commandPtr,
                                             "/dev/ttyS1"
                                           );
-    
 }
   game::~game(){}
 }

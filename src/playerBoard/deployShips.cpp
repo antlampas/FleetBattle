@@ -25,7 +25,6 @@ namespace fleetBattle
             {
                 throw shipNotValid{};
             }
-
             for(auto deployedShip: this->deployedShips)
             {
                 if(isVertical)

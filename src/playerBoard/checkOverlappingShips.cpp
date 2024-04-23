@@ -10,12 +10,15 @@ namespace fleetBattle
 {
     bool playerBoard::checkOverlappingShips(deployedShips_t deployedShips)
     {
-        for(auto firstShip = deployedShips.begin();firstShip != std::prev(deployedShips.end());std::advance(firstShip))
+        auto last = std::prev(deployedShips.end());
+        for(auto firstShip = deployedShips.begin();firstShip != last;std::next(firstShip))
         {
-            for(auto secondShip = std::next(firstShip);firstShip != deployedShips.end();std::advance(secondShip))
+            for(auto secondShip = std::next(firstShip);firstShip != deployedShips.end();std::next(secondShip))
             {
                 if(isShipOverlapping(*firstShip,*secondShip))
+                {
                     return true;
+                }
             }
         }
         return false;

@@ -16,9 +16,11 @@ namespace fleetBattle
             if(coordinates != std::pair<unsigned char,unsigned char>(-1,-1))
             {
                 board_t b {this->applyShipsLayer()};
-
+                
                 return b.at(coordinates.first).at(coordinates.second);
             }
+            
+            return 'U';
         }
         catch(coordinatesNotValid& e)
         {
@@ -28,8 +30,5 @@ namespace fleetBattle
         {
             throw unknownError{};
         }
-
-
-        return 'U';
     }
 }
