@@ -15,8 +15,6 @@ namespace fleetBattle
         boost::asio::streambuf input {};
         boost::system::error_code error;
 
-        boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()));
-
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while(true)
         {
