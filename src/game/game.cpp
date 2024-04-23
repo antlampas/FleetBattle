@@ -5,6 +5,7 @@
  */
 
 #include "game.hpp"
+#include <iostream>
 
 namespace fleetBattle
 {
@@ -14,20 +15,20 @@ namespace fleetBattle
               deployedShips_t deployedA,
               deployedShips_t deployedB)
   {
-    this->playerA = std::shared_ptr<player>(
-                                              new player(
-                                                          std::shared_ptr<playerBoard>(   new playerBoard(deployedA)),
-                                                          std::shared_ptr<opponentBoard>( new opponentBoard())
-                                                        )
+    this->playerA = std::make_shared<player>(
+                                              player(
+                                                      std::shared_ptr<playerBoard>(   new playerBoard(deployedA)),
+                                                      std::shared_ptr<opponentBoard>( new opponentBoard())
+                                                    )
                                             );
-    this->playerB = std::shared_ptr<player>(
-                                              new player(
-                                                          std::shared_ptr<playerBoard>(   new playerBoard(deployedB) ),
-                                                          std::shared_ptr<opponentBoard>( new opponentBoard() )
-                                                        )
+    this->playerB = std::make_shared<player>(
+                                              player(
+                                                    std::shared_ptr<playerBoard>(   new playerBoard(deployedB) ),
+                                                    std::shared_ptr<opponentBoard>( new opponentBoard() )
+                                                  )
                                             );
-    this->mm      = std::shared_ptr<matchMaster>(
-                                                  new matchMaster(
+    this->mm      = std::make_shared<matchMaster> (
+                                                    matchMaster(
                                                                   this->playerA,
                                                                   this->playerB,
                                                                   mA,
@@ -35,23 +36,21 @@ namespace fleetBattle
                                                                   commandPtr,
                                                                   'A'
                                                                 )
-                                                );
-    this->agentA = std::shared_ptr<agent>(
-                                          std::make_shared<agent>(
-                                          'A',
-                                          this->mm->playerInTurn_public,
-                                          mA,
-                                          commandPtr,
-                                          "/dev/ttyS0"
-                                        ));
-    this->agentB = std::shared_ptr<agent>(
-                                          std::make_shared<agent>(
-                                          'B',
-                                          this->mm->playerInTurn_public,
-                                          mB,
-                                          commandPtr,
-                                          "/dev/ttyS1"
-                                        ));
+                                                  );
+    this->agentA = std::make_shared<agent>(
+                                            'A',
+                                            this->mm->playerInTurn_public,
+                                            mA,
+                                            commandPtr,
+                                            "/dev/ttyS0"
+                                          );
+    this->agentB = std::make_shared<agent>(
+                                            'B',
+                                            this->mm->playerInTurn_public,
+                                            mB,
+                                            commandPtr,
+                                            "/dev/ttyS1"
+                                          );
 }
   game::~game(){}
 }
