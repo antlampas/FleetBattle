@@ -16,7 +16,7 @@ namespace fleetBattle
         boost::asio::streambuf input {};
         boost::system::error_code error;
 
-        boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()));
+        boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()));
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while(true)
@@ -30,7 +30,7 @@ namespace fleetBattle
             {
                 std::unique_lock<std::mutex> lock(*(this->mutex));
                 output = std::string(this->player) + std::string(": ") + std::string("waiting for your turn...");
-                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()),error);
+                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
             std::unique_lock<std::mutex> lock(*(this->mutex));
@@ -40,9 +40,9 @@ namespace fleetBattle
                 this->command->first = this->command->second = "";
                 
                 output = std::string(std::endl) + std::string("Player ") + std::string(this->player) + std::string(std::endl) + std::string("Command: ");
-                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()),error);
+                boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
                 boost::asio::read(*this->cli,input,boost::asio::transfer_at_least(0), error);
-                cmd = std::string(std::istreambuf_iterator<char>(&stream_buf), std::istreambuf_iterator<char>());
+                cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
                 
                 auto pos = cmd.find(' ');
 
