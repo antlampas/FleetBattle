@@ -6,7 +6,6 @@
 
 #include "agent.hpp"
 #include <chrono>
-#include <iostream>
 
 namespace fleetBattle
 {

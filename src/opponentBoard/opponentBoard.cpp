@@ -6,8 +6,6 @@
 
 #include "opponentBoard.hpp"
 
-#include <iostream>
-
 namespace fleetBattle
 {
     opponentBoard::opponentBoard(){}

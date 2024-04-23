@@ -8,7 +8,6 @@
 #define AGENT_HPP
 
 #include <memory>
-#include <iostream>
 #include <fstream>
 #include <thread>
 #include <mutex>

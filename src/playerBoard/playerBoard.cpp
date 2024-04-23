@@ -6,25 +6,29 @@
 
 #include "playerBoard.hpp"
 
-#include <iostream>
-
 namespace fleetBattle
 {
     playerBoard::playerBoard(deployedShips_t deployedShips)
     {
         if(this->checkOverlappingShips(deployedShips))
+        {
             throw boardConstructionError{};
-
+        }
         if(!this->initiateShipsLayer())
+        {
             throw boardConstructionError{};
-
+        }
         if(!this->initiateDestroyedShips())
+        {
             throw boardConstructionError{};
-
+        }
         if(this->deployShips(deployedShips))
+        {
             throw boardConstructionError{};
-
+        }
         if(this->drawDeployedShipsOnBoard())
+        {
             throw boardConstructionError{};
+        }
     }
 }
