@@ -12,7 +12,7 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        std::string output {std::string("Player ") + std::string(this->player,1) + std::string(" running on thread ") + std::string(std::this_thread::get_id()) + std::string(std::endl,1)};
+        std::string output {};
         boost::asio::streambuf input {};
         boost::system::error_code error;
 
