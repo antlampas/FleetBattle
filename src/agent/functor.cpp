@@ -12,7 +12,7 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        std::string output {std::string("Player ") + std::string(this->player,1) + std::string(" running on thread ") + std::string(std::this_thread::get_id(),1) + std::string(std::endl,1)};
+        std::string output {std::string("Player ") + std::string(this->player,1) + std::string(" running on thread ") + std::string(std::this_thread::get_id()) + std::string(std::endl,1)};
         boost::asio::streambuf input {};
         boost::system::error_code error;
 
@@ -41,7 +41,7 @@ namespace fleetBattle
                 
                 output = std::string(std::endl) + std::string("Player ") + std::string(this->player) + std::string(std::endl) + std::string("Command: ");
                 boost::asio::write(*this->cli,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(data.size()),error);
-                boost::asio::read(*this->cli,input,boost::asio::transfer_at_least(0), error)
+                boost::asio::read(*this->cli,input,boost::asio::transfer_at_least(0), error);
                 cmd = std::string(std::istreambuf_iterator<char>(&stream_buf), std::istreambuf_iterator<char>());
                 
                 auto pos = cmd.find(' ');
