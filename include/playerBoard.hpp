@@ -13,8 +13,8 @@
 #include "ships.hpp"
 
 #include <iterator>
-
 #include <iostream>
+#include <spdlog/spdlog.h>
 
 #ifdef TESTPLAYERBOARD
 #define private public

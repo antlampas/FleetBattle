@@ -19,7 +19,7 @@ namespace fleetBattle
                         command{cmd},
                         player{p},
                         ioService{std::make_shared<boost::asio::io_service>()},
-                        cli{std::make_shared<boost::asio::serial_port>(*ioService)}
+                        cli{std::make_shared<boost::asio::serial_port>(*this->ioService,filename)}
     {
         boost::system::error_code ec;
 
@@ -31,5 +31,9 @@ namespace fleetBattle
             this->cli->set_option(baud_rate1);
         }
     }
-    agent::~agent(){}
+    agent::~agent()
+    {
+        if(this->cli->is_open())
+            this->cli->close();
+    }
 }

@@ -11,6 +11,8 @@
 #include "exceptions.hpp"
 #include "board.hpp"
 
+#include <spdlog/spdlog.h>
+
 #ifdef TESTOPPONENTBOARD
 #define private public
 #endif

@@ -7,13 +7,14 @@
 #ifndef SHIPS_HPP
 #define SHIPS_HPP
 
+#include "types.hpp"
+#include "exceptions.hpp"
+
 #include <string>
 #include <vector>
 #include <map>
 #include <utility>
-
-#include "types.hpp"
-#include "exceptions.hpp"
+#include <spdlog/spdlog.h>
 
 #ifdef TESTSHIPS
 #define private public

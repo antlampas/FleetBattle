@@ -14,6 +14,8 @@
 #include "player.hpp"
 #include "agent.hpp"
 
+#include <spdlog/spdlog.h>
+
 #ifdef TESTGAME
 #define private public
 #endif

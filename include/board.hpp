@@ -7,16 +7,17 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include "types.hpp"
+#include "utilities.hpp"
+#include "exceptions.hpp"
+
 #include <array>
 #include <vector>
 #include <utility>
 #include <string>
 #include <map>
 #include <iterator>
-
-#include "types.hpp"
-#include "utilities.hpp"
-#include "exceptions.hpp"
+#include <spdlog/spdlog.h>
 
 #ifdef TESTBOARD
 #define private public

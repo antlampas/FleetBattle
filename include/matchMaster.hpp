@@ -7,17 +7,18 @@
 #ifndef MATCHMASTER_HPP
 #define MATCHMASTER_HPP
 
-#include <memory>
-#include <future>
-#include <thread>
-#include <mutex>
-#include <chrono>
-
 #include "types.hpp"
 #include "exceptions.hpp"
 #include "player.hpp"
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
+
+#include <memory>
+#include <future>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <spdlog/spdlog.h>
 
 #ifdef TESTMATCHMASTER
 #define private public
