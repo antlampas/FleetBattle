@@ -17,7 +17,7 @@
 #include <string>
 #include <map>
 #include <iterator>
-#include <spdlog/spdlog.h>
+
 
 #ifdef TESTBOARD
 #define private public

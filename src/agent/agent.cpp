@@ -12,28 +12,18 @@ namespace fleetBattle
                     const playerInTurn_t&       pit,
                     std::shared_ptr<std::mutex> mtx,
                     std::shared_ptr<command_t>  cmd,
-                    std::string                 filename
+                    int                         port
                 )   :   standalone{false},
                         playerInTurn{pit},
                         mutex{mtx},
                         command{cmd},
                         player{p},
-                        ioService{std::make_shared<boost::asio::io_service>()},
-                        cli{std::make_shared<boost::asio::serial_port>(*this->ioService,filename)}
+                        ioContext{std::make_shared<boost::asio::io_service>()},
+                        socket{std::make_shared<boost::asio::ip::tcp::socket>(*this->ioContext)},
+                        cli{std::make_shared<boost::asio::ip::tcp::acceptor>(*this->ioContext,boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))}
     {
-        boost::system::error_code ec;
-
-        this->cli->open(filename, ec);
-
-        if (!ec)
-        {
-            boost::asio::serial_port_base::baud_rate baud_rate1(9600);   
-            this->cli->set_option(baud_rate1);
-        }
+        this->cli->accept(*this->socket);
     }
     agent::~agent()
-    {
-        if(this->cli->is_open())
-            this->cli->close();
-    }
+    {}
 }

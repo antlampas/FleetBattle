@@ -41,14 +41,14 @@ namespace fleetBattle
                                             this->mm->playerInTurn_public,
                                             mA,
                                             commandPtr,
-                                            "/dev/ttyS0"
+                                            1024
                                           );
     this->agentB = std::make_shared<agent>(
                                             'B',
                                             this->mm->playerInTurn_public,
                                             mB,
                                             commandPtr,
-                                            "/dev/ttyS1"
+                                            1025
                                           );
 }
   game::~game(){}

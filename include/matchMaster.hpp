@@ -18,7 +18,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
-#include <spdlog/spdlog.h>
+
 
 #ifdef TESTMATCHMASTER
 #define private public

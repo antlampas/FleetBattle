@@ -14,7 +14,7 @@
 #include <vector>
 #include <map>
 #include <utility>
-#include <spdlog/spdlog.h>
+
 
 #ifdef TESTSHIPS
 #define private public
