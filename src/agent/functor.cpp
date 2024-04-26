@@ -19,8 +19,6 @@ namespace fleetBattle
         
         while(true)
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
             this->standalone = true;
 
             output = std::string(this->player,1) + std::string(": ") + std::string("waiting for your turn...");
@@ -56,9 +54,7 @@ namespace fleetBattle
                 }
                 lock.unlock();
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         return true;
     }
 }
