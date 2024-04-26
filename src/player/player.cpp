@@ -8,9 +8,9 @@
 
 namespace fleetBattle
 {
-    player::player( std::shared_ptr<playerBoard>   pb,
-                    std::shared_ptr<opponentBoard> ob
-                ) : ownBoard(pb),
-                    otherBoard(ob)
-    {}
+    player::player(std::shared_ptr<playerBoard> pb,std::shared_ptr<opponentBoard> ob)
+    {
+        this->ownBoard   = pb;
+        this->otherBoard = ob;
+    }
 }

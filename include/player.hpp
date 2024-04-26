@@ -32,10 +32,8 @@ namespace fleetBattle
         std::shared_ptr<opponentBoard> otherBoard;
         
         public:
-        player()                                 = delete;
-        player( std::shared_ptr<playerBoard>,
-                std::shared_ptr<opponentBoard>
-              );
+        player() = delete;
+        player(std::shared_ptr<playerBoard>,std::shared_ptr<opponentBoard>);
         board_t        getOwnBoard();
         board_t        getOpponentBoard();
         squareStatus_t setOwnBoardSquareStatus(coordinates_t,squareStatus_t);

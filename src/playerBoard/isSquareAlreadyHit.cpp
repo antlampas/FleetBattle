@@ -8,35 +8,32 @@
 
 #include <regex>
 
+#include <iostream>
+
 namespace fleetBattle
 {
     bool playerBoard::isSquareAlreadyHit(coordinates_t c)
     {
-        try
+        std::cout << "a" << std::endl;
+        decodedCoordinatesPair_t coordinates {decodeCoordinates(c)};
+        std::cout << "b" << std::endl;
+        if(coordinates != std::pair<unsigned char,unsigned char>(-1,-1))
         {
-            decodedCoordinatesPair_t coordinates {decodeCoordinates(c)};
-            if(coordinates != std::pair<unsigned char,unsigned char>(-1,-1))
+            std::cout << "c" << std::endl;
+            std::regex alreadyHit {"[ws]"};
+            board_t b {this->applyShipsLayer()};
+            std::cout << "d" << std::endl;
+            if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
             {
-                std::regex alreadyHit {"[ws]"};
-                board_t b {this->applyShipsLayer()};
-                if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                std::cout << "e" << std::endl;
+                return true;
             }
-            return false;
+            else
+            {
+                std::cout << "f" << std::endl;
+                return false;
+            }
         }
-        catch(coordinatesNotValid& e)
-        {
-            throw e;
-        }
-        catch(...)
-        {
-            throw unknownError{};
-        }
+        return false;
     }
 }

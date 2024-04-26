@@ -6,6 +6,8 @@
 
 #include "playerBoard.hpp"
 
+
+
 namespace fleetBattle
 {
     playerBoard::playerBoard(deployedShips_t deployedShips)
@@ -22,11 +24,11 @@ namespace fleetBattle
         {
             throw boardConstructionError{};
         }
-        if(this->deployShips(deployedShips))
+        if(!this->deployShips(deployedShips))
         {
             throw boardConstructionError{};
         }
-        if(this->drawDeployedShipsOnBoard())
+        if(!this->drawDeployedShipsOnBoard())
         {
             throw boardConstructionError{};
         }

@@ -13,17 +13,15 @@ namespace fleetBattle
                     std::shared_ptr<std::mutex> mtx,
                     std::shared_ptr<command_t>  cmd,
                     int                         port
-                )   :   standalone{false},
-                        playerInTurn{pit},
-                        mutex{mtx},
-                        command{cmd},
-                        player{p},
-                        ioContext{std::make_shared<boost::asio::io_service>()},
-                        socket{std::make_shared<boost::asio::ip::tcp::socket>(*this->ioContext)},
-                        cli{std::make_shared<boost::asio::ip::tcp::acceptor>(*this->ioContext,boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))}
-    {
-        this->cli->accept(*this->socket);
-    }
+                )   :   standalone   {false},
+                        playerInTurn {pit},
+                        mutex        {mtx},
+                        command      {cmd},
+                        player       {p},
+                        ioContext    {std::make_shared<boost::asio::io_service>()},
+                        socket       {std::make_shared<boost::asio::ip::tcp::socket>(*this->ioContext)},
+                        cli          {std::make_shared<boost::asio::ip::tcp::acceptor>(*this->ioContext,boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))}
+    {}
     agent::~agent()
     {}
 }

@@ -14,15 +14,14 @@ namespace fleetBattle
         std::string output {};
         boost::asio::streambuf input {};
         boost::system::error_code error;
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        
+        this->cli->accept(*this->socket);
+        
         while(true)
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
             this->standalone = true;
-
-            std::string cmd;
 
             {
                 std::unique_lock<std::mutex> lock(*(this->mutex));
@@ -38,9 +37,11 @@ namespace fleetBattle
                 
                 output = std::string("\n") + std::string("Player ") + std::string(this->player,1) + std::string("\n") + std::string("Command: ");
                 boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
-                boost::asio::read(*this->socket,input,boost::asio::transfer_at_least(0), error);
-                cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
+                boost::asio::read(*this->socket,input,boost::asio::transfer_at_least(1), error);
+                std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
                 
+                cmd.erase(cmd.size()-1);
+
                 auto pos = cmd.find(' ');
 
                 if(pos != cmd.npos)
@@ -51,6 +52,7 @@ namespace fleetBattle
                 else
                 {
                     this->command->first  = cmd;
+                    boost::asio::write(*this->socket,boost::asio::buffer(this->command->first.c_str(),this->command->first.size()),boost::asio::transfer_at_least(output.size()),error);
                 }
                 if((this->command->first == "exit") || (this->command->first == "quit"))
                 {
