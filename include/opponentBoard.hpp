@@ -25,7 +25,7 @@ namespace fleetBattle
         virtual bool           hit(coordinates_t)                            override final;
         virtual board_t        _getBoardStatus()                             override final;
         public:
-        //opponentBoard();
+        opponentBoard();
         virtual squareStatus_t getSquareStatus(coordinates_t)                override final;
         virtual bool           isSquareAlreadyHit(coordinates_t)             override final; 
         virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
