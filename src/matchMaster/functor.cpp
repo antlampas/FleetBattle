@@ -22,7 +22,7 @@ namespace fleetBattle
             if(this->playerInTurn == 'A')
             {
                 lockA.unlock();
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
                 lockA.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
@@ -48,7 +48,7 @@ namespace fleetBattle
             else if(this->playerInTurn == 'B')
             {
                 lockB.unlock();
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
                 lockB.lock();
                 
                 if(this->command->first == "shoot" && this->command->second != "")
