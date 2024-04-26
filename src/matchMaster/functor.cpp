@@ -31,8 +31,7 @@ namespace fleetBattle
                     {
                         this->playerA->setOtherBoardSquareStatus(this->command->second,status);
                     }
-                    else
-                        continue;
+                    else continue;
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
                 {
@@ -43,8 +42,8 @@ namespace fleetBattle
                     std::this_thread::sleep_for(std::chrono::milliseconds(1));
                     continue;
                 }
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 this->playerInTurn = 'B';
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
             }
             else if(this->playerInTurn == 'B')
             {
@@ -57,8 +56,7 @@ namespace fleetBattle
                     squareStatus_t status = this->playerA->shoot(this->command->second);
                     if(status!=shootReturnStatus_t::ALREADYHIT)
                         this->playerB->setOtherBoardSquareStatus(this->command->second,status);
-                    else
-                        continue;
+                    else continue;
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
                 {
@@ -69,8 +67,8 @@ namespace fleetBattle
                     std::this_thread::sleep_for(std::chrono::milliseconds(1));
                     continue;
                 }
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 this->playerInTurn = 'A';
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
             }
             else
             {
