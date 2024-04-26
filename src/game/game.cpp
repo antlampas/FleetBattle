@@ -15,8 +15,8 @@ namespace fleetBattle
               deployedShips_t deployedB
             )
   {
-    this->playerA = std::make_shared<player>(std::move(std::make_shared<playerBoard>(deployedA)),std::move(std::make_shared<opponentBoard>()));
-    this->playerB = std::make_shared<player>(std::move(std::make_shared<playerBoard>(deployedB)),std::move(std::make_shared<opponentBoard>()));
+    this->playerA = std::make_shared<player>(std::make_shared<playerBoard>(deployedA),std::move(std::make_shared<opponentBoard>()));
+    this->playerB = std::make_shared<player>(std::make_shared<playerBoard>(deployedB),std::move(std::make_shared<opponentBoard>()));
     this->mm      = std::make_shared<matchMaster>(this->playerA,this->playerB,mA,mB,commandPtr,'A');
     this->agentA  = std::make_shared<agent>('A',this->mm->playerInTurn_public,mA,commandPtr,1024);
     this->agentB  = std::make_shared<agent>('B',this->mm->playerInTurn_public,mB,commandPtr,1025);
