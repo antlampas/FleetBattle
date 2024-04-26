@@ -16,9 +16,9 @@ namespace fleetBattle
        std::packaged_task<bool()> agentA(*this->agentA);
        std::packaged_task<bool()> agentB(*this->agentB);
 
-       std::thread matchThread(std::move(match));
-       std::thread agentAThread(std::move(agentA));
-       std::thread agentBThread(std::move(agentB));
+       std::thread matchThread(match);
+       std::thread agentAThread(agentA);
+       std::thread agentBThread(agentB);
 
        matchThread.join();
        agentAThread.join();
