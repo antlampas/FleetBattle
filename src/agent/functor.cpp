@@ -25,7 +25,7 @@ namespace fleetBattle
             boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
             std::unique_lock<std::mutex> lock(*(this->mutex));
 
-            if(this->playerInTurn == this->player)
+            if(*this->playerInTurn == this->player)
             {   
                 this->command->first = this->command->second = "";
                 
@@ -52,7 +52,6 @@ namespace fleetBattle
                 {
                     break;
                 }
-                lock.unlock();
             }
         }
         return true;

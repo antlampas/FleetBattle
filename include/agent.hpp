@@ -24,7 +24,7 @@ namespace fleetBattle
        private:
        bool                                            standalone;
        playerInTurn_t                                  player;
-       std::shared_ptr<const playerInTurn_t&>          playerInTurn;
+       std::shared_ptr<const playerInTurn_t>           playerInTurn;
        std::shared_ptr<std::mutex>                     mutex;
        std::shared_ptr<command_t>                      command;
        std::shared_ptr<boost::asio::io_service>        ioContext;
@@ -33,7 +33,7 @@ namespace fleetBattle
 
        public:
        agent(  playerInTurn_t,
-               const playerInTurn_t&,
+               std::shared_ptr<const playerInTurn_t>,
                std::shared_ptr<std::mutex>,
                std::shared_ptr<command_t>,
                int

@@ -18,8 +18,8 @@ namespace fleetBattle
     this->playerA = std::make_shared<player>(std::make_shared<playerBoard>(deployedA),std::make_shared<opponentBoard>());
     this->playerB = std::make_shared<player>(std::make_shared<playerBoard>(deployedB),std::make_shared<opponentBoard>());
     this->mm      = std::make_shared<matchMaster>(this->playerA,this->playerB,mA,mB,commandPtr,'A');
-    this->agentA  = std::make_shared<agent>('A',std::make_shared<const playerInTurn_t&>(this->mm->playerInTurn_public),mA,commandPtr,1024);
-    this->agentB  = std::make_shared<agent>('B',std::make_shared<const playerInTurn_t&>(this->mm->playerInTurn_public),mB,commandPtr,1025);
+    this->agentA  = std::make_shared<agent>('A',std::make_shared<const playerInTurn_t>(this->mm->playerInTurn_public),mA,commandPtr,1024);
+    this->agentB  = std::make_shared<agent>('B',std::make_shared<const playerInTurn_t>(this->mm->playerInTurn_public),mB,commandPtr,1025);
   }
   game::~game(){}
 }
