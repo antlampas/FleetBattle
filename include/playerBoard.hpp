@@ -49,7 +49,7 @@ namespace fleetBattle
         virtual squareStatus_t setSquareStatus(coordinates_t,squareStatus_t) override final;
 
         public:
-        playerBoard() = delete;
+        playerBoard()                 = delete;
         playerBoard(deployedShips_t);
         board_t getBoardStatus();
     };
