@@ -8,11 +8,11 @@
 
 namespace fleetBattle
 {
-    agent::agent(   playerInTurn_t              p,
-                    const playerInTurn_t&       pit,
-                    std::shared_ptr<std::mutex> mtx,
-                    std::shared_ptr<command_t>  cmd,
-                    int                         port
+    agent::agent(   playerInTurn_t                         p,
+                    std::shared_ptr<const playerInTurn_t&> pit,
+                    std::shared_ptr<std::mutex>            mtx,
+                    std::shared_ptr<command_t>             cmd,
+                    int                                    port
                 )   :   standalone   {false},
                         playerInTurn {pit},
                         mutex        {mtx},
