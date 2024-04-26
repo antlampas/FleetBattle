@@ -8,8 +8,6 @@
 
 #include <cstdlib>
 
-#include <iostream>
-
 namespace fleetBattle
 {
     bool matchMaster::operator()()
@@ -28,21 +26,17 @@ namespace fleetBattle
                 lockA.lock();
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
-                    std::cout << "A" << std::endl;
                     squareStatus_t status = this->playerB->shoot(this->command->second);
-                    std::cout << "B" << std::endl;
                     if(status!=shootReturnStatus_t::ALREADYHIT)
                     {
-                        std::cout << "C" << std::endl;
                         this->playerA->setOtherBoardSquareStatus(this->command->second,status);
-                        std::cout << "D" << std::endl;
                     }
                     else
                         continue;
                 }
                 else if(this->command->first == "exit" || this->command->first == "quit")
                 {
-                    break;
+                    std::exit(0);
                 }
                 else
                 {
