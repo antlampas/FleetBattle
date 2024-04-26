@@ -12,8 +12,8 @@ namespace fleetBattle
     {   
         if(pb && ob)
         {
-            this->ownBoard   = pb;
-            this->otherBoard = ob;
+            this->ownBoard   = std::move(pb);
+            this->otherBoard = std::move(ob);
         }
         else
         {
