@@ -6,8 +6,6 @@
 
 #include "playerBoard.hpp"
 
-
-
 namespace fleetBattle
 {
     bool playerBoard::deployShips(deployedShips_t deployedShips)
