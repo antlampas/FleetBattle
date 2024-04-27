@@ -20,7 +20,7 @@ namespace fleetBattle
     using shipSize_t                = std::uint_fast8_t;
     using shipsList_t               = std::array<unsigned char,5>;                                    //Ships types list, for a maximum of 5 different types, with 8-bit dimention
     using squareStatus_t            = std::uint_fast8_t;
-    using playerInTurn_t            = std::uint_fast8_t;
+    using playerInTurn_t            = unsigned char;
     using shipsSquaresList_t        = std::array<std::array<coordinates_t,5>,5>;
     using command_t                 = std::pair<std::string,std::string>;
     using shootStatus_t             = unsigned char;                                                  //Ship hit; ship missed; square already hit

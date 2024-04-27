@@ -21,7 +21,7 @@ namespace fleetBattle
         {
             this->standalone = true;
 
-            output = std::string(this->player,1) + std::string(": ") + std::string("waiting for your turn...");
+            output = std::string(this->player,1) + std::string(": ") + std::string("waiting for your turn...\n");
             boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
             std::unique_lock<std::mutex> lock(*(this->mutex));
 
