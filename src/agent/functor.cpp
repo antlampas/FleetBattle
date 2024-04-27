@@ -21,7 +21,7 @@ namespace fleetBattle
         {
             this->standalone = true;
 
-            output = std::string(this->player,1) + std::string(": ") + std::string("waiting for your turn...\n");
+            output = std::string(1,this->player) + std::string(": waiting for your turn...\n");
             boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
             std::unique_lock<std::mutex> lock(*(this->mutex));
 
@@ -29,7 +29,7 @@ namespace fleetBattle
             {   
                 this->command->first = this->command->second = "";
                 
-                output = std::string("\n") + std::string("Player ") + std::string(this->player,1) + std::string("\n") + std::string("Command: ");
+                output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");
                 boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
                 boost::asio::read(*this->socket,input,boost::asio::transfer_at_least(1), error);
                 std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());

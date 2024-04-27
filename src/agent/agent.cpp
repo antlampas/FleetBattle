@@ -6,6 +6,8 @@
 
 #include "agent.hpp"
 
+#include <iostream>
+
 namespace fleetBattle
 {
     agent::agent(   playerInTurn_t                         p,
