@@ -20,9 +20,9 @@ namespace fleetBattle
                         mutex        {mtx},
                         command      {cmd},
                         player       {p},
-                        ioContext    {std::make_shared<boost::asio::io_service>()},
-                        socket       {std::make_shared<boost::asio::ip::tcp::socket>(*this->ioContext)},
-                        cli          {std::make_shared<boost::asio::ip::tcp::acceptor>(*this->ioContext,boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))}
+                        ioContext    {std::make_shared<asio::io_service>()},
+                        socket       {std::make_shared<asio::ip::tcp::socket>(*this->ioContext)},
+                        cli          {std::make_shared<asio::ip::tcp::acceptor>(*this->ioContext,asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port))}
     {}
     agent::~agent()
     {}

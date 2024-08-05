@@ -14,8 +14,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
-#include <boost/asio.hpp>
-
+#include <asio.hpp>
 
 namespace fleetBattle
 {
@@ -27,9 +26,9 @@ namespace fleetBattle
        std::shared_ptr<const playerInTurn_t>           playerInTurn;
        std::shared_ptr<std::mutex>                     mutex;
        std::shared_ptr<command_t>                      command;
-       std::shared_ptr<boost::asio::io_service>        ioContext;
-       std::shared_ptr<boost::asio::ip::tcp::socket>   socket;
-       std::shared_ptr<boost::asio::ip::tcp::acceptor> cli;
+       std::shared_ptr<asio::io_service>               ioContext;
+       std::shared_ptr<asio::ip::tcp::socket>          socket;
+       std::shared_ptr<asio::ip::tcp::acceptor>        cli;
 
        public:
        agent(  playerInTurn_t,

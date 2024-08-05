@@ -12,8 +12,8 @@ namespace fleetBattle
     bool agent::operator()()
     {
         std::string output {};
-        boost::asio::streambuf input {};
-        boost::system::error_code error;
+        asio::streambuf input {};
+        asio::error_code error;
         
         this->cli->accept(*this->socket);
         
@@ -22,7 +22,7 @@ namespace fleetBattle
             this->standalone = true;
 
             output = std::string(1,this->player) + std::string(": waiting for your turn...\n");
-            boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
+            asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             std::lock_guard<std::mutex> lock(*(this->mutex));
 
             if(*this->playerInTurn == this->player)
@@ -30,8 +30,8 @@ namespace fleetBattle
                 this->command->first = this->command->second = "";
                 
                 output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");
-                boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
-                boost::asio::read(*this->socket,input,boost::asio::transfer_at_least(1), error);
+                asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
+                asio::read(*this->socket,input,asio::transfer_at_least(1), error);
                 std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
                 
                 cmd.erase(cmd.size()-1);
@@ -46,7 +46,7 @@ namespace fleetBattle
                 else
                 {
                     this->command->first  = cmd;
-                    boost::asio::write(*this->socket,boost::asio::buffer(this->command->first.c_str(),this->command->first.size()),boost::asio::transfer_at_least(output.size()),error);
+                    asio::write(*this->socket,asio::buffer(this->command->first.c_str(),this->command->first.size()),asio::transfer_at_least(output.size()),error);
                 }
                 if((this->command->first == "exit") || (this->command->first == "quit"))
                 {
