@@ -24,7 +24,11 @@ namespace fleetBattle
             output = std::string(1,this->player) + std::string(": waiting for your turn...\n");
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
 
-            std::lock_guard<std::mutex> lock(*this->mutex);
+            while(*this->playerInTurn != this->player)
+            {
+                std::lock_guard<std::mutex> lock(*this->mutex);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
             
             if(*this->playerInTurn == this->player)
             {   
@@ -32,6 +36,7 @@ namespace fleetBattle
                 
                 output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");
                 asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 asio::read(*this->socket,input,asio::transfer_at_least(1), error);
                 std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
 
