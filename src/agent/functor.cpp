@@ -17,14 +17,15 @@ namespace fleetBattle
         
         this->cli->accept(*this->socket);
         
+        this->standalone = true;
+        
         while(true)
         {
-            this->standalone = true;
-
             output = std::string(1,this->player) + std::string(": waiting for your turn...\n");
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
-            std::lock_guard<std::mutex> lock(*(this->mutex));
 
+            std::lock_guard<std::mutex> lock(*this->mutex);
+            
             if(*this->playerInTurn == this->player)
             {   
                 this->command->first = this->command->second = "";
@@ -33,9 +34,9 @@ namespace fleetBattle
                 asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
                 asio::read(*this->socket,input,asio::transfer_at_least(1), error);
                 std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
-                
-                cmd.erase(cmd.size()-1);
 
+                cmd.erase(cmd.size()-1);
+                
                 auto pos = cmd.find(' ');
 
                 if(pos != cmd.npos)
@@ -53,6 +54,7 @@ namespace fleetBattle
                     break;
                 }
             }
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
         return true;
     }

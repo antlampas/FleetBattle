@@ -7,6 +7,7 @@
 #include "game.hpp"
 
 #include <functional>
+#include <chrono>
 
 namespace fleetBattle
 {
@@ -17,7 +18,9 @@ namespace fleetBattle
        std::packaged_task<bool()> agentB(*this->agentB);
 
        std::thread matchThread(std::move(match));
+       std::this_thread::sleep_for(std::chrono::milliseconds(100));
        std::thread agentAThread(std::move(agentA));
+       std::this_thread::sleep_for(std::chrono::milliseconds(100));
        std::thread agentBThread(std::move(agentB));
 
        matchThread.join();

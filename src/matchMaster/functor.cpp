@@ -14,17 +14,13 @@ namespace fleetBattle
 {
     bool matchMaster::operator()()
     {
-        std::unique_lock<std::mutex> lockA(*this->mutexA);
-        std::unique_lock<std::mutex> lockB(*this->mutexB);
-
         while(true)
         {
-            std::cout << this->playerInTurn << std::endl;
             if(this->playerInTurn == 'A')
             {
-                lockA.unlock();
-                std::this_thread::sleep_for(std::chrono::milliseconds(100));
-                lockA.lock();
+                std::lock_guard<std::mutex> lockA(*this->mutexA);
+
+                if(this->command->first != "") std::cerr << this->command->first << " " << this->command->second << std::endl;
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerB->shoot(this->command->second);
@@ -49,20 +45,19 @@ namespace fleetBattle
                 {
                     this->command->first  = "";
                     this->command->second = "";
-                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
                     continue;
                 }
                 this->command->first  = "";
                 this->command->second = "";
                 this->playerInTurn = 'B';
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
             else if(this->playerInTurn == 'B')
             {
-                lockB.unlock();
-                std::this_thread::sleep_for(std::chrono::milliseconds(100));
-                lockB.lock();
-                
+                std::lock_guard<std::mutex> lockB(*this->mutexB);
+
+                if(this->command->first != "") std::cerr << this->command->first << " " << this->command->second << std::endl;
                 if(this->command->first == "shoot" && this->command->second != "")
                 {
                     squareStatus_t status = this->playerA->shoot(this->command->second);
@@ -87,13 +82,13 @@ namespace fleetBattle
                 {
                     this->command->first  = "";
                     this->command->second = "";
-                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
                     continue;
                 }
                 this->command->first  = "";
                 this->command->second = "";
                 this->playerInTurn = 'A';
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
             else
             {
@@ -101,7 +96,7 @@ namespace fleetBattle
                 this->command->second = "";
                 this->playerInTurn = 'A';
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
 
         return true;
