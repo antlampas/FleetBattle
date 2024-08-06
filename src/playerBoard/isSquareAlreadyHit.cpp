@@ -20,9 +20,7 @@ namespace fleetBattle
             std::regex alreadyHit {"[ws]"};
             board_t b {this->applyShipsLayer()};
             
-            std::cerr << std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit) << std::endl;
-            
-            return std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit)
+            return std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit);
         }
         return false;
     }
