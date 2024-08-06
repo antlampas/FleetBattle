@@ -8,6 +8,8 @@
 
 #include <regex>
 
+#include <iostream>
+
 namespace fleetBattle
 {
     bool playerBoard::isSquareAlreadyHit(coordinates_t c)
@@ -17,14 +19,10 @@ namespace fleetBattle
         {
             std::regex alreadyHit {"[ws]"};
             board_t b {this->applyShipsLayer()};
-            if(std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            
+            std::cerr << std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit) << std::endl;
+            
+            return std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit)
         }
         return false;
     }
