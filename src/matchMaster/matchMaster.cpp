@@ -6,6 +6,8 @@
 
 #include "matchMaster.hpp"
 
+#include <functional>
+
 namespace fleetBattle
 {
     matchMaster::matchMaster(   std::shared_ptr<player>        pA,
@@ -19,7 +21,6 @@ namespace fleetBattle
                                 command(cA),
                                 playerInTurn(p),
                                 mutexA(mA),
-                                mutexB(mB),
-                                playerInTurn_public(playerInTurn)
+                                mutexB(mB)
     {}
 }

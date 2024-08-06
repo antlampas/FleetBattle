@@ -17,10 +17,12 @@ namespace fleetBattle
         decodedCoordinatesPair_t coordinates {decodeCoordinates(c)};
         if(coordinates != std::pair<unsigned char,unsigned char>(-1,-1))
         {
-            std::regex alreadyHit {"[ws]"};
-            board_t b {this->applyShipsLayer()};
-            
-            return std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHit);
+            std::regex alreadyHitRegex {"[ws]"};
+            board_t b {this->getBoardStatus()};
+
+            bool alreadyHit = std::regex_match(std::string(1,b.at(coordinates.first).at(coordinates.second)),alreadyHitRegex);
+
+            return alreadyHit;
         }
         return false;
     }

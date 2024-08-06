@@ -12,7 +12,7 @@ namespace fleetBattle
 {
     shootStatus_t player::shoot(coordinates_t c)
     {
-        if(!(this->ownBoard->isSquareAlreadyHit(c)))
+        if(!this->ownBoard->isSquareAlreadyHit(c))
         {
             if(this->ownBoard->getSquareStatus(c) == 'S')
             {
