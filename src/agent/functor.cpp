@@ -7,6 +7,8 @@
 #include "agent.hpp"
 #include <chrono>
 
+#include <iostream>
+
 namespace fleetBattle
 {
     bool agent::operator()()
@@ -18,8 +20,9 @@ namespace fleetBattle
         this->cli->accept(*this->socket);
         
         this->standalone = true;
-        
-        std::shared_lock lock(this->serviceMutex);
+
+        std::shared_lock lock(*this->serviceMutex);
+
 
         while(true)
         {
@@ -33,11 +36,11 @@ namespace fleetBattle
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
-            
-            std::lock_guard<std::mutex> lock(*this->mutex);
 
             if(playerInTurn == this->player)
             {
+                std::lock_guard<std::mutex> lock(*this->mutex);
+
                 this->command->first = this->command->second = "";
                 
                 output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");

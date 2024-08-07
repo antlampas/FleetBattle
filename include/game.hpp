@@ -25,6 +25,8 @@ namespace fleetBattle
     class game final
     {
         private:
+        std::shared_mutex            serviceMutex;
+        std::string                  serviceChannel;
         std::shared_ptr<player>      playerA;
         std::shared_ptr<player>      playerB;
         std::shared_ptr<agent>       agentA;
