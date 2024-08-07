@@ -23,8 +23,6 @@ namespace fleetBattle
 
         this->standalone = true;
 
-        std::shared_lock lock(*this->serviceMutex);
-
         while(true)
         {
             std::string incomingMessage = *this->serviceChannel;
@@ -40,11 +38,11 @@ namespace fleetBattle
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            
+            std::cerr << "Agent: " << playerInTurn << std::endl;
 
             if(playerInTurn == this->player)
             {
-                std::lock_guard<std::mutex> lock(*this->mutex);
-
                 this->command->first = this->command->second = "";
                 
                 output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");

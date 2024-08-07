@@ -14,10 +14,10 @@ namespace fleetBattle
 {
     bool matchMaster::operator()()
     {
-        std::shared_lock lock(*this->serviceMutex);
-
         while(true)
         {
+            std::cerr << "MatchMaster: " << *this->serviceChannel;
+
             if(this->playerInTurn == 'A')
             {
                 *this->serviceChannel = 'A';

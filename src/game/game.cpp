@@ -10,9 +10,7 @@
 namespace fleetBattle
 {
   game::game( std::shared_ptr<command_t>         commandPtr,
-              std::shared_ptr<std::mutex>        mA,
-              std::shared_ptr<std::mutex>        mB,
-              std::shared_ptr<std::shared_mutex> serviceMutex,
+
               std::shared_ptr<std::string>       serviceChannel,
               deployedShips_t                    deployedA,
               deployedShips_t                    deployedB
@@ -26,25 +24,18 @@ namespace fleetBattle
                                             );
     this->mm      = std::make_shared<matchMaster>(this->playerA,
                                                   this->playerB,
-                                                  mA,
-                                                  mB,
-                                                  serviceMutex,
                                                   commandPtr,
                                                   serviceChannel,
                                                   'A'
                                                   );
     this->agentA  = std::make_shared<agent>('A',
                                             std::make_shared<matchMaster>(*this->mm),
-                                            mA,
-                                            serviceMutex,
                                             commandPtr,
                                             serviceChannel,
                                             1024
                                             );
     this->agentB  = std::make_shared<agent>('B',
                                             std::make_shared<matchMaster>(*this->mm),
-                                            mB,
-                                            serviceMutex,
                                             commandPtr,
                                             serviceChannel,
                                             1025
