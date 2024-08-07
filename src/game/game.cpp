@@ -28,25 +28,25 @@ namespace fleetBattle
                                                   this->playerB,
                                                   mA,
                                                   mB,
-                                                  std::make_shared<std::shared_mutex> serviceMutex,
+                                                  std::make_shared<std::shared_mutex>(serviceMutex),
                                                   commandPtr,
-                                                  std::make_shared<std::string> serviceChannel,
+                                                  std::make_shared<std::string>(serviceChannel),
                                                   'A'
                                                   );
     this->agentA  = std::make_shared<agent>('A',
                                             std::make_shared<matchMaster>(*this->mm),
                                             mA,
-                                            std::make_shared<std::shared_mutex> serviceMutex,
+                                            std::make_shared<std::shared_mutex>(serviceMutex),
                                             commandPtr,
-                                            std::make_shared<std::string> serviceChannel,
+                                            std::make_shared<std::string>(serviceChannel),
                                             1024
                                             );
     this->agentB  = std::make_shared<agent>('B',
                                             std::make_shared<matchMaster>(*this->mm),
                                             mB,
-                                            std::make_shared<std::shared_mutex> serviceMutex,
+                                            std::make_shared<std::shared_mutex>(serviceMutex),
                                             commandPtr,
-                                            std::make_shared<std::string> serviceChannel,
+                                            std::make_shared<std::string>(serviceChannel),
                                             1025
                                             );
   }
