@@ -36,7 +36,7 @@ namespace fleetBattle
         game(   std::shared_ptr<command_t>,
                 std::shared_ptr<std::mutex>,
                 std::shared_ptr<std::mutex>,
-                std::shared_mutex&,
+                std::shared_mutex,
                 std::shared_ptr<std::string>,
                 deployedShips_t,
                 deployedShips_t
