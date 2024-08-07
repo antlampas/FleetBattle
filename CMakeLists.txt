@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-project("Fleet Battle" VERSION "${VERSION}" DESCRIPTION "Yet another chess implementation for excercise purposes" HOMEPAGE_URL "https://github.com/antlampas/Chess" LANGUAGES "CXX")
+project("Fleet Battle" VERSION "${VERSION}" DESCRIPTION "Yet another fleet battle implementation for excercise purposes" HOMEPAGE_URL "https://github.com/antlampas/FleetBattle" LANGUAGES "CXX")
 
 set(CMAKE_CXX_STANDARD 20)
 
