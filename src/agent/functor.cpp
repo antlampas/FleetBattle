@@ -39,7 +39,7 @@ namespace fleetBattle
             output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + std::string(1,playerInTurn) + "\n");
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
             if(playerInTurn == this->player)
             {
@@ -72,7 +72,7 @@ namespace fleetBattle
                     break;
                 }
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(80));
+            std::this_thread::sleep_for(std::chrono::milliseconds(70));
         }
         return true;
     }
