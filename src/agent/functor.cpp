@@ -24,7 +24,7 @@ namespace fleetBattle
         while(true)
         {
             unsigned char playerInTurn = 'A';
-            std::string incomingMessage = *this->serviceChannel;
+            std::string incomingMessage = this->serviceChannel;
             
             if(incomingMessage.size()-1 == 1)
             playerInTurn = incomingMessage.at(0);
