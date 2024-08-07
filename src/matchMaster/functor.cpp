@@ -20,7 +20,7 @@ namespace fleetBattle
         {
             if(this->playerInTurn == 'A')
             {
-                this->serviceChannel = 'A';
+                *this->serviceChannel = 'A';
 
                 std::lock_guard<std::mutex> lockA(*this->mutexA);
 
