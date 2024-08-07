@@ -9,11 +9,13 @@
 
 namespace fleetBattle
 {
-  game::game( std::shared_ptr<command_t> commandPtr,
-              std::shared_ptr<std::mutex> mA,
-              std::shared_ptr<std::mutex> mB,
-              deployedShips_t deployedA,
-              deployedShips_t deployedB
+  game::game( std::shared_ptr<command_t>   commandPtr,
+              std::shared_ptr<std::mutex>  mA,
+              std::shared_ptr<std::mutex>  mB,
+              std::shared_mutex&           serviceMutex,
+              std::shared_ptr<std::string> serviceChannel,
+              deployedShips_t              deployedA,
+              deployedShips_t              deployedB
             )
   {
     this->playerA = std::make_shared<player>( std::make_shared<playerBoard>(deployedA),
@@ -26,25 +28,25 @@ namespace fleetBattle
                                                   this->playerB,
                                                   mA,
                                                   mB,
-                                                  std::make_shared<std::shared_mutex>(this->serviceMutex),
+                                                  serviceMutex,
                                                   commandPtr,
-                                                  std::make_shared<std::string>(this->serviceChannel),
+                                                  serviceChannel,
                                                   'A'
                                                   );
     this->agentA  = std::make_shared<agent>('A',
                                             std::make_shared<matchMaster>(*this->mm),
                                             mA,
-                                            std::make_shared<std::shared_mutex>(this->serviceMutex),
+                                            serviceMutex,
                                             commandPtr,
-                                            std::make_shared<std::string>(this->serviceChannel),
+                                            serviceChannel,
                                             1024
                                             );
     this->agentB  = std::make_shared<agent>('B',
                                             std::make_shared<matchMaster>(*this->mm),
                                             mB,
-                                            std::make_shared<std::shared_mutex>(this->serviceMutex),
+                                            serviceMutex,
                                             commandPtr,
-                                            std::make_shared<std::string>(this->serviceChannel),
+                                            serviceChannel,
                                             1025
                                             );
   }

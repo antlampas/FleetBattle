@@ -14,7 +14,7 @@ namespace fleetBattle
 {
     bool matchMaster::operator()()
     {
-        std::unique_lock lock(*this->serviceMutex);
+        std::unique_lock lock(this->serviceMutex);
 
         while(true)
         {
