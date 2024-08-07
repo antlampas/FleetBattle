@@ -22,7 +22,7 @@ namespace fleetBattle
             {
                 *this->serviceChannel = 'A';
 
-                std::lock_guard<std::mutex> lockA(*this->mutexA);
+//                std::lock_guard<std::mutex> lockA(*this->mutexA);
 
                 if(this->command->first == "shoot")
                 {
@@ -51,7 +51,7 @@ namespace fleetBattle
             {
                 *this->serviceChannel = 'B';
 
-                std::lock_guard<std::mutex> lockB(*this->mutexB);
+//                std::lock_guard<std::mutex> lockB(*this->mutexB);
 
                 if(this->command->first == "shoot")
                 {
