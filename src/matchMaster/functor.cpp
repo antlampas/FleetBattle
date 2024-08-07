@@ -14,11 +14,15 @@ namespace fleetBattle
 {
     bool matchMaster::operator()()
     {
+        std::unique_lock lock(this->serviceMutex);
+
         while(true)
         {
             if(this->playerInTurn == 'A')
             {
-                //std::lock_guard<std::mutex> lockA(*this->mutexA);
+                this->serviceChannel = 'A';
+
+                std::lock_guard<std::mutex> lockA(*this->mutexA);
 
                 if(this->command->first == "shoot")
                 {
@@ -45,7 +49,9 @@ namespace fleetBattle
             }
             else if(this->playerInTurn == 'B')
             {
-                //std::lock_guard<std::mutex> lockB(*this->mutexB);
+                this->serviceChannel = 'B';
+
+                std::lock_guard<std::mutex> lockB(*this->mutexB);
 
                 if(this->command->first == "shoot")
                 {

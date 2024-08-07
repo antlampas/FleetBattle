@@ -17,6 +17,7 @@
 #include <future>
 #include <thread>
 #include <mutex>
+#include <shared_mutex>
 #include <chrono>
 
 
@@ -36,6 +37,7 @@ namespace fleetBattle
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
         std::shared_ptr<std::mutex>                  mutexB;
+        std::shared_ptr<std::shared_mutex>           serviceMutex;
         std::shared_ptr<std::string>                 serviceChannel;
 
         private:
@@ -47,7 +49,9 @@ namespace fleetBattle
                     std::shared_ptr<player>,
                     std::shared_ptr<std::mutex>,
                     std::shared_ptr<std::mutex>,
+                    std::shared_ptr<std::shared_mutex>,
                     std::shared_ptr<command_t>,
+                    std::shared_ptr<std::string>,
                     playerInTurn_t
                     );
         bool operator()();

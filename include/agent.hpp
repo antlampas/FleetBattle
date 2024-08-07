@@ -14,6 +14,7 @@
 #include <fstream>
 #include <thread>
 #include <mutex>
+#include <shared_mutex>
 #include <chrono>
 #include <asio.hpp>
 
@@ -26,6 +27,7 @@ namespace fleetBattle
        playerInTurn_t                                  player;
        std::shared_ptr<matchMaster>                    mm;
        std::shared_ptr<std::mutex>                     mutex;
+       std::shared_ptr<std::shared_mutex>              serviceMutex;
        std::shared_ptr<command_t>                      command;
        std::shared_ptr<asio::io_service>               ioContext;
        std::shared_ptr<asio::ip::tcp::socket>          socket;
@@ -36,7 +38,9 @@ namespace fleetBattle
        agent(  playerInTurn_t,
                std::shared_ptr<matchMaster>,
                std::shared_ptr<std::mutex>,
+               std::shared_ptr<std::shared_mutex>,
                std::shared_ptr<command_t>,
+               std::shared_ptr<std::string>,
                int
            );
        ~agent();

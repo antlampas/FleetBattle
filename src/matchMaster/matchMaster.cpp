@@ -10,15 +10,19 @@
 
 namespace fleetBattle
 {
-    matchMaster::matchMaster(   std::shared_ptr<player>        pA,
-                                std::shared_ptr<player>        pB,
-                                std::shared_ptr<std::mutex>    mA,
-                                std::shared_ptr<std::mutex>    mB,
-                                std::shared_ptr<command_t>     cA,
-                                playerInTurn_t                 p
+    matchMaster::matchMaster(   std::shared_ptr<player>            pA,
+                                std::shared_ptr<player>            pB,
+                                std::shared_ptr<std::mutex>        mA,
+                                std::shared_ptr<std::mutex>        mB,
+                                std::shared_ptr<std::shared_mutex> sm,
+                                std::shared_ptr<command_t>         cA,
+                                std::shared_ptr<std::string>       sc,
+                                playerInTurn_t                     p
                             ) : playerA(pA),
                                 playerB(pB),
                                 command(cA),
+                                serviceMutex(sm),
+                                serviceChannel(sc),
                                 playerInTurn(p),
                                 mutexA(mA),
                                 mutexB(mB)
