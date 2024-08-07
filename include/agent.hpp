@@ -27,7 +27,7 @@ namespace fleetBattle
        playerInTurn_t                                  player;
        std::shared_ptr<matchMaster>                    mm;
        std::shared_ptr<std::mutex>                     mutex;
-       std::shared_mutex                               serviceMutex;
+       std::shared_mutex&                              serviceMutex;
        std::shared_ptr<command_t>                      command;
        std::shared_ptr<asio::io_service>               ioContext;
        std::shared_ptr<asio::ip::tcp::socket>          socket;

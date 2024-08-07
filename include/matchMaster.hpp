@@ -37,7 +37,7 @@ namespace fleetBattle
         playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
         std::shared_ptr<std::mutex>                  mutexB;
-        std::shared_mutex                            serviceMutex;
+        std::shared_mutex&                           serviceMutex;
         std::shared_ptr<std::string>                 serviceChannel;
 
         private:

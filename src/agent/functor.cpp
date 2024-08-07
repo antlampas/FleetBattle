@@ -19,7 +19,7 @@ namespace fleetBattle
         
         this->standalone = true;
         
-        std::shared_lock lock(*this->serviceMutex);
+        std::shared_lock lock(this->serviceMutex);
 
         while(true)
         {
