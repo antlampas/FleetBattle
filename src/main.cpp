@@ -13,7 +13,7 @@ int main(int argc,char** argv)
     std::shared_ptr<std::mutex>             mutexA         { std::make_shared<std::mutex>()             };
     std::shared_ptr<std::mutex>             mutexB         { std::make_shared<std::mutex>()             };
     std::shared_ptr<std::mutex>             mutexCmd       { std::make_shared<std::mutex>()             };
-    std::shared_mutex                       serviceMutex;
+    std::shared_ptr<std::shared_mutex>      serviceMutex   { std::make_shared<std::shared_mutex>()      };
     std::shared_ptr<std::string>            serviceChannel { std::make_shared<std::string>()            };
 
     fleetBattle::deployedShips_t deployedShipsA {std::make_pair("a1","a2"),std::make_pair("b1","b2"),std::make_pair("c1","c3"),std::make_pair("d1","d4"),std::make_pair("e1","e5")};

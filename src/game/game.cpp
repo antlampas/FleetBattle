@@ -9,13 +9,13 @@
 
 namespace fleetBattle
 {
-  game::game( std::shared_ptr<command_t>   commandPtr,
-              std::shared_ptr<std::mutex>  mA,
-              std::shared_ptr<std::mutex>  mB,
-              std::shared_mutex            serviceMutex,
-              std::shared_ptr<std::string> serviceChannel,
-              deployedShips_t              deployedA,
-              deployedShips_t              deployedB
+  game::game( std::shared_ptr<command_t>         commandPtr,
+              std::shared_ptr<std::mutex>        mA,
+              std::shared_ptr<std::mutex>        mB,
+              std::shared_ptr<std::shared_mutex> serviceMutex,
+              std::shared_ptr<std::string>       serviceChannel,
+              deployedShips_t                    deployedA,
+              deployedShips_t                    deployedB
             )
   {
     this->playerA = std::make_shared<player>( std::make_shared<playerBoard>(deployedA),

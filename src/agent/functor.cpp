@@ -16,14 +16,13 @@ namespace fleetBattle
         std::string output {};
         asio::streambuf input {};
         asio::error_code error;
-        
+
         this->cli->accept(*this->socket);
-        
+
         this->standalone = true;
 
-        std::shared_lock lock(this->serviceMutex);
-
-
+        std::shared_lock lock(*this->serviceMutex);
+        
         while(true)
         {
             unsigned char playerInTurn = 'A';
