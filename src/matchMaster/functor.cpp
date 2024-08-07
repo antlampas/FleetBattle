@@ -32,7 +32,8 @@ namespace fleetBattle
                     }
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
-                        this->playerInTurn = 'B';
+                        this->playerInTurn    = 'B';
+                        *this->serviceChannel = "B";
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}
@@ -41,14 +42,9 @@ namespace fleetBattle
                 {
                     std::exit(0);
                 }
-                this->command->first  = "";
-                this->command->second = "";
-                std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
             else if(this->playerInTurn == 'B')
             {
-                *this->serviceChannel = 'B';
-
                 if(this->command->first == "shoot")
                 {
                     squareStatus_t status = this->playerA->shoot(this->command->second);
@@ -59,7 +55,8 @@ namespace fleetBattle
                     }
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
-                        this->playerInTurn = 'A';
+                        *this->serviceChannel = 'A';
+                        this->playerInTurn    = "A";
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}
@@ -68,10 +65,10 @@ namespace fleetBattle
                 {
                     std::exit(0);
                 }
-                this->command->first  = "";
-                this->command->second = "";
-                std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
+            this->command->first  = "";
+            this->command->second = "";
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
 
         return true;
