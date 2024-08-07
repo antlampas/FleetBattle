@@ -23,14 +23,20 @@ namespace fleetBattle
 
         while(true)
         {
-            output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + std::string(1,*this->serviceChannel) + "\n");
+            unsigned char playerInTurn = '';
+            std::string incomingMessage = *this->serviceChannel;
+            
+            if(incomingMessage.lenght()-1 == 1)
+            playerInTurn = incomingMessage.at(0);
+
+            output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + playerInTurn + "\n");
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
             
             std::lock_guard<std::mutex> lock(*this->mutex);
 
-            if(*this->serviceChannel == this->player)
+            if(playerInTurn == this->player)
             {
                 this->command->first = this->command->second = "";
                 
