@@ -30,6 +30,7 @@ namespace fleetBattle
        std::shared_ptr<asio::io_service>               ioContext;
        std::shared_ptr<asio::ip::tcp::socket>          socket;
        std::shared_ptr<asio::ip::tcp::acceptor>        cli;
+       std::shared_ptr<std::string>                    serviceChannel;
 
        public:
        agent(  playerInTurn_t,

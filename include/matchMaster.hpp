@@ -33,15 +33,13 @@ namespace fleetBattle
         std::shared_ptr<player>                      playerA;
         std::shared_ptr<player>                      playerB;
         std::shared_ptr<command_t>                   command;
-        //playerInTurn_t                               playerInTurn;
+        playerInTurn_t                               playerInTurn;
         std::shared_ptr<std::mutex>                  mutexA;
         std::shared_ptr<std::mutex>                  mutexB;
+        std::shared_ptr<std::string>                 serviceChannel;
 
         private:
         bool isShipSunk();
-
-        public:
-        playerInTurn_t                               playerInTurn;
 
         public:
         matchMaster() = delete;
