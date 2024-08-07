@@ -55,8 +55,8 @@ namespace fleetBattle
                     }
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
-                        *this->serviceChannel = 'A';
-                        this->playerInTurn    = "A";
+                        this->playerInTurn    = 'A';
+                        *this->serviceChannel = "A";
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}
