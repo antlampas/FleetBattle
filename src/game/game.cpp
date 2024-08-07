@@ -29,7 +29,7 @@ namespace fleetBattle
                                                   mA,
                                                   mB,
                                                   //std::make_shared<std::shared_mutex>(serviceMutex),
-                                                  &serviceMutex,
+                                                  serviceMutex,
                                                   commandPtr,
                                                   std::make_shared<std::string>(serviceChannel),
                                                   'A'
@@ -38,7 +38,7 @@ namespace fleetBattle
                                             std::make_shared<matchMaster>(*this->mm),
                                             mA,
                                             //std::make_shared<std::shared_mutex>(serviceMutex),
-                                            &serviceMutex,
+                                            serviceMutex,
                                             commandPtr,
                                             std::make_shared<std::string>(serviceChannel),
                                             1024
@@ -47,7 +47,7 @@ namespace fleetBattle
                                             std::make_shared<matchMaster>(*this->mm),
                                             mB,
                                             //std::make_shared<std::shared_mutex>(serviceMutex),
-                                            &serviceMutex,
+                                            serviceMutex,
                                             commandPtr,
                                             std::make_shared<std::string>(serviceChannel),
                                             1025

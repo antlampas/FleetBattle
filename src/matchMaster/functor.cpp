@@ -49,7 +49,7 @@ namespace fleetBattle
             }
             else if(this->playerInTurn == 'B')
             {
-                this->serviceChannel = 'B';
+                *this->serviceChannel = 'B';
 
                 std::lock_guard<std::mutex> lockB(*this->mutexB);
 
