@@ -45,7 +45,6 @@ namespace fleetBattle
         matchMaster() = delete;
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,
-                    std::shared_ptr<command_t>,
                     std::shared_ptr<asio::io_context>,
                     playerInTurn_t
                     );

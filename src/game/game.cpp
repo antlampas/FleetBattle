@@ -9,7 +9,7 @@
 
 namespace fleetBattle
 {
-  game::game( std::shared_ptr<command_t>         commandPtr,
+  game::game(
               std::shared_ptr<asio::io_context>  mmContext,
               std::shared_ptr<asio::io_context>  agentContext,
               deployedShips_t                    deployedA,
@@ -23,33 +23,14 @@ namespace fleetBattle
                                               std::make_shared<opponentBoard>()
                                             );
 
-
-/*     this->mm      = std::make_shared<matchMaster>(this->playerA,
-                                                  this->playerB,
-                                                  commandPtr,
-                                                  mmContext,
-                                                  'A'
-                                                  );
-    this->agentA  = std::make_shared<agent>('A',
-                                            commandPtr,
-                                            agentContext,
-                                            1024
-                                            );
-    this->agentB  = std::make_shared<agent>('B',
-                                            commandPtr,
-                                            agentContext,
-                                            1025
-                                            ); */
-
-
     std::packaged_task<std::shared_ptr<matchMaster>()> makeMM([&](){
-      return std::make_shared<matchMaster>(this->playerA,this->playerB,commandPtr,mmContext,'A');
+      return std::make_shared<matchMaster>(this->playerA,this->playerB,mmContext,'A');
     });
     std::packaged_task<std::shared_ptr<agent>()> makeAgentA([&](){
-      return std::make_shared<agent>('A',commandPtr,agentContext,1024);
+      return std::make_shared<agent>('A',agentContext,1024);
     });
     std::packaged_task<std::shared_ptr<agent>()> makeAgentB([&](){
-      return std::make_shared<agent>('B',commandPtr,agentContext,1025);
+      return std::make_shared<agent>('B',agentContext,1025);
     });
 
     std::future<std::shared_ptr<matchMaster>> futureMM = makeMM.get_future();

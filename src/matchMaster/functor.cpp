@@ -8,20 +8,43 @@
 
 #include <cstdlib>
 
-#include <iostream>
+
 
 namespace fleetBattle
 {
+    void h(const asio::error_code& ec,std::size_t bytes_transferred){};
+
     bool matchMaster::operator()()
     {
         asio::error_code error;
-        
+        asio::streambuf agentInput {};
+
         while(true)
         {
+            asio::async_write(*this->socket,asio::buffer(std::string(1,this->playerInTurn)+std::string(1,'\n')),&h);
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            
+            asio::read_until(*this->socket,agentInput,"\n");
+            std::string agentInputString {std::string(std::istreambuf_iterator<char>(&agentInput), std::istreambuf_iterator<char>())};
+            
+            if(agentInputString.find("ready") >= 0)
+            {}
+
+            asio::read_until(*this->socket,agentInput,"\n");
+            agentInputString.erase(agentInputString.size()-1);
+            auto pos = agentInputString.find(' ');
+            if(pos != agentInputString.npos)
+            {
+                this->command->first  = agentInputString.substr(0,pos);
+                this->command->second = agentInputString.substr(++pos,agentInputString.npos);
+            }
+            else
+            {
+                this->command->first = agentInputString;
+            }
+
             if(this->playerInTurn == 'A')
             {
-                asio::write(*this->socket,asio::buffer(std::string("A")),asio::transfer_at_least(1),error);
-
                 if(this->command->first == "shoot")
                 {
                     squareStatus_t status = this->playerB->shoot(this->command->second);
@@ -32,8 +55,7 @@ namespace fleetBattle
                     }
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
-                        this->playerInTurn    = 'B';
-                        asio::write(*this->socket,asio::buffer(std::string("B")),asio::transfer_at_least(1),error);
+                        this->playerInTurn = 'B';
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}
@@ -45,8 +67,6 @@ namespace fleetBattle
             }
             else if(this->playerInTurn == 'B')
             {
-                asio::write(*this->socket,asio::buffer(std::string("B")),asio::transfer_at_least(1),error);
-
                 if(this->command->first == "shoot")
                 {
                     squareStatus_t status = this->playerA->shoot(this->command->second);
@@ -58,7 +78,6 @@ namespace fleetBattle
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
                         this->playerInTurn    = 'A';
-                        asio::write(*this->socket,asio::buffer(std::string("B")),asio::transfer_at_least(1),error);
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}

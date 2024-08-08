@@ -24,7 +24,6 @@ namespace fleetBattle
        private:
        bool                                     standalone;
        playerInTurn_t                           player;
-       std::shared_ptr<command_t>               command;
        std::shared_ptr<asio::io_context>        ioContext;
        std::shared_ptr<asio::ip::tcp::socket>   socket;
        std::shared_ptr<asio::ip::tcp::acceptor> cli;
@@ -32,7 +31,6 @@ namespace fleetBattle
 
        public:
        agent(  playerInTurn_t,
-               std::shared_ptr<command_t>,
                std::shared_ptr<asio::io_context>,
                int
            );

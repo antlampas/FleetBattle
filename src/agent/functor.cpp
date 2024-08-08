@@ -7,7 +7,7 @@
 #include "agent.hpp"
 #include <chrono>
 
-#include <iostream>
+
 
 namespace fleetBattle
 {
@@ -20,16 +20,12 @@ namespace fleetBattle
 
         unsigned char playerInTurn = 'A';
 
-        this->serviceChannel->connect(asio::ip::tcp::endpoint(asio::ip::tcp::v4(),2000));
-
         this->standalone = true;
 
         while(true)
         {
             asio::read_until(*this->serviceChannel,inputPlayer,"\n");
             std::string playerInTurn = std::string(std::istreambuf_iterator<char>(&inputPlayer), std::istreambuf_iterator<char>());
-            
-            std::cerr << playerInTurn << std::endl;
 
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
@@ -37,34 +33,35 @@ namespace fleetBattle
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            
-            std::cerr << "Agent: " << playerInTurn << std::endl;
 
             if(playerInTurn.at(0) == this->player)
             {
-                this->command->first = this->command->second = "";
+                std::string ready(std::string(1,this->player) + " ready\n");
+                asio::write(*this->serviceChannel,asio::buffer(ready.c_str(),ready.size()),asio::transfer_at_least(ready.size()),error);
                 
                 output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");
                 asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
                 std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 asio::read_until(*this->socket,input,"\n");
                 std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
+                
+                asio::write(*this->serviceChannel,asio::buffer(cmd.c_str(),cmd.size()),asio::transfer_at_least(cmd.size()),error);
+                asio::write(*this->socket,asio::buffer(cmd.c_str(),cmd.size()),asio::transfer_at_least(cmd.size()),error);
 
                 cmd.erase(cmd.size()-1);
-                
                 auto pos = cmd.find(' ');
 
+                std::vector<std::string> cmdVec {};
                 if(pos != cmd.npos)
                 {
-                    this->command->first  = cmd.substr(0,pos);
-                    this->command->second = cmd.substr(++pos,cmd.npos);
+                    cmdVec.push_back(cmd.substr(0,pos));
+                    cmdVec.push_back(cmd.substr(++pos,cmd.npos));
                 }
                 else
                 {
-                    this->command->first  = cmd;
-                    asio::write(*this->socket,asio::buffer(this->command->first.c_str(),this->command->first.size()),asio::transfer_at_least(output.size()),error);
+                    cmdVec.push_back(cmd);
                 }
-                if((this->command->first == "exit") || (this->command->first == "quit"))
+                if((cmdVec.at(0) == "exit") || (cmdVec.at(0) == "quit"))
                 {
                     break;
                 }
