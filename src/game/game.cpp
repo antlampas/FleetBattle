@@ -22,24 +22,50 @@ namespace fleetBattle
     this->playerB = std::make_shared<player>( std::make_shared<playerBoard>(deployedB),
                                               std::make_shared<opponentBoard>()
                                             );
-    this->mm      = std::make_shared<matchMaster>(this->playerA,
+
+
+/*     this->mm      = std::make_shared<matchMaster>(this->playerA,
                                                   this->playerB,
                                                   commandPtr,
                                                   mmContext,
                                                   'A'
                                                   );
     this->agentA  = std::make_shared<agent>('A',
-                                            this->mm,
                                             commandPtr,
                                             agentContext,
                                             1024
                                             );
     this->agentB  = std::make_shared<agent>('B',
-                                            this->mm,
                                             commandPtr,
                                             agentContext,
                                             1025
-                                            );
+                                            ); */
+
+
+    std::packaged_task<std::shared_ptr<matchMaster>()> makeMM([&](){
+      return std::make_shared<matchMaster>(this->playerA,this->playerB,commandPtr,mmContext,'A');
+    });
+    std::packaged_task<std::shared_ptr<agent>()> makeAgentA([&](){
+      return std::make_shared<agent>('A',commandPtr,agentContext,1024);
+    });
+    std::packaged_task<std::shared_ptr<agent>()> makeAgentB([&](){
+      return std::make_shared<agent>('B',commandPtr,agentContext,1025);
+    });
+
+    std::future<std::shared_ptr<matchMaster>> futureMM = makeMM.get_future();
+    std::future<std::shared_ptr<agent>> futureAgentA   = makeAgentA.get_future();
+    std::future<std::shared_ptr<agent>> futureAgentB   = makeAgentB.get_future();
+    std::thread makeMMThread(std::move(makeMM));
+    std::thread makeAgentAThread(std::move(makeAgentA));
+    std::thread makeAgentBThread(std::move(makeAgentB));
+    
+    makeMMThread.join();
+    makeAgentAThread.join();
+    makeAgentBThread.join();
+
+    this->mm = futureMM.get();
+    this->agentA = futureAgentA.get();
+    this->agentB = futureAgentB.get();
   }
   game::~game(){}
 }
