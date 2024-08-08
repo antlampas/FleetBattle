@@ -6,7 +6,7 @@
 
 #include "agent.hpp"
 
-#include <vector>
+#include <iostream>
 
 namespace fleetBattle
 {
@@ -24,7 +24,9 @@ namespace fleetBattle
                         cli            {std::make_shared<asio::ip::tcp::acceptor>(*this->ioContext,asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port))},
                         serviceChannel {std::make_shared<asio::ip::tcp::socket>(*this->ioContext)}
     {
-        this->serviceChannel->connect(asio::ip::tcp::endpoint(asio::ip::tcp::v4(),2000));
+        std::cerr << "Agent " << std::string(1,this->player) << " server starting..." << std::endl;
+        this->cli->async_accept(*this->socket);
+        std::cerr << "Agent " << std::string(1,this->player) << " server started!" << std::endl;
     }
     agent::~agent()
     {}

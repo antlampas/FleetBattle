@@ -14,7 +14,8 @@ namespace fleetBattle
 {
     bool matchMaster::operator()()
     {
-        asio::error_code error; 
+        asio::error_code error;
+        
         while(true)
         {
             if(this->playerInTurn == 'A')

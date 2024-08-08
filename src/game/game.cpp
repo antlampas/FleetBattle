@@ -10,7 +10,8 @@
 namespace fleetBattle
 {
   game::game( std::shared_ptr<command_t>         commandPtr,
-              std::shared_ptr<asio::io_context>  ioContext,
+              std::shared_ptr<asio::io_context>  mmContext,
+              std::shared_ptr<asio::io_context>  agentContext,
               deployedShips_t                    deployedA,
               deployedShips_t                    deployedB
             )
@@ -24,19 +25,19 @@ namespace fleetBattle
     this->mm      = std::make_shared<matchMaster>(this->playerA,
                                                   this->playerB,
                                                   commandPtr,
-                                                  ioContext,
+                                                  mmContext,
                                                   'A'
                                                   );
     this->agentA  = std::make_shared<agent>('A',
                                             this->mm,
                                             commandPtr,
-                                            ioContext,
+                                            agentContext,
                                             1024
                                             );
     this->agentB  = std::make_shared<agent>('B',
                                             this->mm,
                                             commandPtr,
-                                            ioContext,
+                                            agentContext,
                                             1025
                                             );
   }

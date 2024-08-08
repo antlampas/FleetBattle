@@ -23,6 +23,8 @@ namespace fleetBattle
                                 serviceChannel {std::make_shared<asio::ip::tcp::acceptor>(*this->ioContext,asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 2000))},
                                 playerInTurn   {p}
     {
-
+        std::cerr << "Match Master server starting..." << std::endl;
+        this->serviceChannel->async_accept(*this->socket);
+        std::cerr << "Match Master server started!" << std::endl;
     }
 }

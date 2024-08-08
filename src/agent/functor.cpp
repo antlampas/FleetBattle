@@ -20,18 +20,17 @@ namespace fleetBattle
 
         unsigned char playerInTurn = 'A';
 
-        this->cli->accept(*this->socket);
+        this->serviceChannel->connect(asio::ip::tcp::endpoint(asio::ip::tcp::v4(),2000));
 
         this->standalone = true;
 
         while(true)
         {
             asio::read_until(*this->serviceChannel,inputPlayer,"\n");
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
-
             std::string playerInTurn = std::string(std::istreambuf_iterator<char>(&inputPlayer), std::istreambuf_iterator<char>());
             
+            std::cerr << playerInTurn << std::endl;
+
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
             output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + playerInTurn + "\n");
