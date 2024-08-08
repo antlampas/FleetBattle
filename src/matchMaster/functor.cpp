@@ -8,8 +8,6 @@
 
 #include <cstdlib>
 
-
-
 namespace fleetBattle
 {
     void h(const asio::error_code& ec,std::size_t bytes_transferred){};

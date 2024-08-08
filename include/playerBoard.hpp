@@ -14,8 +14,6 @@
 
 #include <iterator>
 
-
-
 #ifdef TESTPLAYERBOARD
 #define private public
 #endif

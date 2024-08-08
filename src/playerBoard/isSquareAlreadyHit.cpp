@@ -8,8 +8,6 @@
 
 #include <regex>
 
-
-
 namespace fleetBattle
 {
     bool playerBoard::isSquareAlreadyHit(coordinates_t c)

@@ -14,8 +14,6 @@
 #include "player.hpp"
 #include "agent.hpp"
 
-
-
 #ifdef TESTGAME
 #define private public
 #endif

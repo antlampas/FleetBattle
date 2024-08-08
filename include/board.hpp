@@ -18,7 +18,6 @@
 #include <map>
 #include <iterator>
 
-
 #ifdef TESTBOARD
 #define private public
 #endif

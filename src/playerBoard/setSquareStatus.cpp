@@ -5,6 +5,7 @@
  */
 
 #include "playerBoard.hpp"
+
 namespace fleetBattle
 {
     squareStatus_t playerBoard::setSquareStatus(coordinates_t c,squareStatus_t s)

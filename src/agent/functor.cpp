@@ -7,8 +7,6 @@
 #include "agent.hpp"
 #include <chrono>
 
-
-
 namespace fleetBattle
 {
     bool agent::operator()()

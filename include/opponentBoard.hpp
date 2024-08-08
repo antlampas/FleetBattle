@@ -11,8 +11,6 @@
 #include "exceptions.hpp"
 #include "board.hpp"
 
-
-
 #ifdef TESTOPPONENTBOARD
 #define private public
 #endif

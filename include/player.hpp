@@ -17,7 +17,6 @@
 #include <thread>
 #include <chrono>
 
-
 #ifdef TESTPLAYER
 #define private public
 #endif

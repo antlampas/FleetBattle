@@ -6,8 +6,6 @@
 
 #include "player.hpp"
 
-
-
 namespace fleetBattle
 {
     shootStatus_t player::shoot(coordinates_t c)

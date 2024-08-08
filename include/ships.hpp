@@ -15,7 +15,6 @@
 #include <map>
 #include <utility>
 
-
 #ifdef TESTSHIPS
 #define private public
 #endif

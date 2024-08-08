@@ -10,8 +10,6 @@
 #include "types.hpp"
 #include "exceptions.hpp"
 
-
-
 namespace fleetBattle
 {
     bool                     isCoordinatesValid(coordinates_t);
