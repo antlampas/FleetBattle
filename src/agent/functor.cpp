@@ -13,9 +13,10 @@ namespace fleetBattle
 {
     bool agent::operator()()
     {
-        std::string output {};
-        asio::streambuf input {};
-        asio::error_code error;
+        std::string output          {};
+        asio::streambuf input       {};
+        asio::streambuf inputPlayer {};
+        asio::error_code            error;
 
         unsigned char playerInTurn = 'A';
 
@@ -25,23 +26,22 @@ namespace fleetBattle
 
         while(true)
         {
-            std::string incomingMessage = *this->serviceChannel;
+            asio::read_until(*this->serviceChannel,inputPlayer,"\n");
 
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            
-            if(incomingMessage.size()-1 == 1)
-                playerInTurn = incomingMessage.at(0);
+
+            std::string playerInTurn = std::string(std::istreambuf_iterator<char>(&inputPlayer), std::istreambuf_iterator<char>());
             
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
-            output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + std::string(1,playerInTurn) + "\n");
+            output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + playerInTurn + "\n");
             asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
             
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
             
             std::cerr << "Agent: " << playerInTurn << std::endl;
 
-            if(playerInTurn == this->player)
+            if(playerInTurn.at(0) == this->player)
             {
                 this->command->first = this->command->second = "";
                 

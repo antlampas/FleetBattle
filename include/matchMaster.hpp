@@ -12,12 +12,13 @@
 #include "player.hpp"
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
+#include "mt_shared_ptr.hpp"
 
 #include <memory>
 #include <future>
 #include <thread>
 #include <chrono>
-
+#include <asio.hpp>
 
 #ifdef TESTMATCHMASTER
 #define private public
@@ -33,7 +34,9 @@ namespace fleetBattle
         std::shared_ptr<player>                      playerB;
         std::shared_ptr<command_t>                   command;
         playerInTurn_t                               playerInTurn;
-        std::shared_ptr<std::string>                 serviceChannel;
+        std::shared_ptr<asio::io_context>            ioContext;
+        std::shared_ptr<asio::ip::tcp::socket>       socket;
+        std::shared_ptr<asio::ip::tcp::acceptor>     serviceChannel;
 
         private:
         bool isShipSunk();
@@ -43,7 +46,7 @@ namespace fleetBattle
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,
                     std::shared_ptr<command_t>,
-                    std::shared_ptr<std::string>,
+                    std::shared_ptr<asio::io_context>,
                     playerInTurn_t
                     );
         bool operator()();

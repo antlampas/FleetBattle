@@ -6,24 +6,26 @@
 
 #include "agent.hpp"
 
-#include <iostream>
+#include <vector>
 
 namespace fleetBattle
 {
-    agent::agent(   playerInTurn_t                     p,
-                    std::shared_ptr<matchMaster>       mm,
-                    std::shared_ptr<command_t>         cmd,
-                    std::shared_ptr<std::string>       serviceChannel,
-                    int                                port
+    agent::agent(   playerInTurn_t                    p,
+                    std::shared_ptr<matchMaster>      mm,
+                    std::shared_ptr<command_t>        cmd,
+                    std::shared_ptr<asio::io_context> ioContext,
+                    int                               port
                 )   :   standalone     {false},
                         mm             {mm},
                         command        {cmd},
-                        serviceChannel {serviceChannel},
                         player         {p},
-                        ioContext      {std::make_shared<asio::io_service>()},
+                        ioContext      {ioContext},
                         socket         {std::make_shared<asio::ip::tcp::socket>(*this->ioContext)},
-                        cli            {std::make_shared<asio::ip::tcp::acceptor>(*this->ioContext,asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port))}
-    {}
+                        cli            {std::make_shared<asio::ip::tcp::acceptor>(*this->ioContext,asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port))},
+                        serviceChannel {std::make_shared<asio::ip::tcp::socket>(*this->ioContext)}
+    {
+        this->serviceChannel->connect(asio::ip::tcp::endpoint(asio::ip::tcp::v4(),2000));
+    }
     agent::~agent()
     {}
 }

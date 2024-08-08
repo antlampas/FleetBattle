@@ -14,13 +14,12 @@ namespace fleetBattle
 {
     bool matchMaster::operator()()
     {
+        asio::error_code error; 
         while(true)
         {
-            std::cerr << "MatchMaster: " << *this->serviceChannel;
-
             if(this->playerInTurn == 'A')
             {
-                *this->serviceChannel = 'A';
+                asio::write(*this->socket,asio::buffer(std::string("A")),asio::transfer_at_least(1),error);
 
                 if(this->command->first == "shoot")
                 {
@@ -33,7 +32,7 @@ namespace fleetBattle
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
                         this->playerInTurn    = 'B';
-                        *this->serviceChannel = "B";
+                        asio::write(*this->socket,asio::buffer(std::string("B")),asio::transfer_at_least(1),error);
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}
@@ -45,6 +44,8 @@ namespace fleetBattle
             }
             else if(this->playerInTurn == 'B')
             {
+                asio::write(*this->socket,asio::buffer(std::string("B")),asio::transfer_at_least(1),error);
+
                 if(this->command->first == "shoot")
                 {
                     squareStatus_t status = this->playerA->shoot(this->command->second);
@@ -56,7 +57,7 @@ namespace fleetBattle
                     else if(status ==  shootReturnStatus_t::MISSED)
                     {
                         this->playerInTurn    = 'A';
-                        *this->serviceChannel = "A";
+                        asio::write(*this->socket,asio::buffer(std::string("B")),asio::transfer_at_least(1),error);
                     }
                     else if(status ==  shootReturnStatus_t::ALREADYHIT)
                     {}
