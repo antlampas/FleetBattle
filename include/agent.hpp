@@ -9,7 +9,6 @@
 
 #include "types.hpp"
 #include "matchMaster.hpp"
-#include "mt_shared_ptr.hpp"
 
 #include <memory>
 #include <fstream>

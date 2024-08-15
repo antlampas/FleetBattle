@@ -12,7 +12,6 @@
 #include "player.hpp"
 #include "playerBoard.hpp"
 #include "opponentBoard.hpp"
-#include "mt_shared_ptr.hpp"
 
 #include <memory>
 #include <future>
