@@ -1,10 +1,17 @@
 #include <memory>
 #include <thread>
 
-#include "types.hpp"
+#include "agent.hpp"
+#include "board.hpp"
 #include "exceptions.hpp"
 #include "game.hpp"
-#include "agent.hpp"
+#include "matchMaster.hpp"
+#include "opponentBoard.hpp"
+#include "player.hpp"
+#include "playerBoard.hpp"
+#include "ships.hpp"
+#include "types.hpp"
+#include "utilities.hpp"
 
 int main(int argc,char** argv)
 {
