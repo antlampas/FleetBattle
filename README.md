@@ -1,4 +1,5 @@
-[![Analyze and build](https://github.com/antlampas/FleetBattle/actions/workflows/analyzeAndBuild.yml/badge.svg)](https://github.com/antlampas/FleetBattle/actions/workflows/analyzeAndBuild.yml)
+![Analyze](https://github.com/antlampas/FleetBattle/actions/workflows/analyze.yml/badge.svg)
+![Build](https://github.com/antlampas/FleetBattle/actions/workflows/build.yml/badge.svg)
 
 Yet another Fleet Battle implementation as C++ and programming exercises
 
