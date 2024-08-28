@@ -15,13 +15,13 @@ add_subdirectory(utilities     utilities     )
 add_executable(fleetBattle main.cpp)
 
 target_link_libraries(fleetBattle PUBLIC
-                    agent
-                    board
-                    game
-                    matchMaster
-                    opponentBoard
-                    player
-                    playerBoard
-                    ships
-                    utilities
-                    )
+                      agent
+                      board
+                      game
+                      matchMaster
+                      opponentBoard
+                      player
+                      playerBoard
+                      ships
+                      utilities
+                     )
