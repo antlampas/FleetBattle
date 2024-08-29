@@ -36,5 +36,4 @@ FOREACH(child ${children})
   ENDIF()
 ENDFOREACH()
 
-
 add_subdirectory(src ${CMAKE_BUILD_TYPE})
