@@ -11,6 +11,17 @@ project("Fleet Battle"
         LANGUAGES "CXX"
 )
 
+include(FetchContent)
+
+FetchContent_Declare(asio-cmake
+  GIT_REPOSITORY https://github.com/kingsamchen/asio-cmake.git
+  GIT_TAG        origin/master
+)
+
+# Specify asio version
+set(ASIO_CMAKE_ASIO_TAG asio-1-30-2)
+FetchContent_MakeAvailable(asio-cmake)
+
 include_directories(include)
 
 add_subdirectory(src ${CMAKE_BUILD_TYPE})
