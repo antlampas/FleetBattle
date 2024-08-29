@@ -19,13 +19,14 @@ project("Fleet Battle"
 )
 
 include(FetchContent)
+
+include_directories(include)
+
 FetchContent_Declare(
   asiocmake
   GIT_REPOSITORY "https://github.com/OlivierLDff/asio.cmake"
   GIT_TAG        "main"
 )
 FetchContent_MakeAvailable(asiocmake)
-
-include_directories(include)
 
 add_subdirectory(src ${CMAKE_BUILD_TYPE})
