@@ -17,7 +17,7 @@
 #include <future>
 #include <thread>
 #include <chrono>
-#include "asio.hpp"
+#include "boost/asio.hpp"
 
 #ifdef TESTMATCHMASTER
 #define private public
@@ -33,9 +33,9 @@ namespace fleetBattle
         std::shared_ptr<player>                      playerB;
         std::shared_ptr<command_t>                   command;
         playerInTurn_t                               playerInTurn;
-        std::shared_ptr<asio::io_context>            ioContext;
-        std::shared_ptr<asio::ip::tcp::socket>       socket;
-        std::shared_ptr<asio::ip::tcp::acceptor>     serviceChannel;
+        std::shared_ptr<boost::asio::io_context>            ioContext;
+        std::shared_ptr<boost::asio::ip::tcp::socket>       socket;
+        std::shared_ptr<boost::asio::ip::tcp::acceptor>     serviceChannel;
 
         private:
         bool isShipSunk();
@@ -44,7 +44,7 @@ namespace fleetBattle
         matchMaster() = delete;
         matchMaster(std::shared_ptr<player>,
                     std::shared_ptr<player>,
-                    std::shared_ptr<asio::io_context>,
+                    std::shared_ptr<boost::asio::io_context>,
                     playerInTurn_t
                     );
         bool operator()();

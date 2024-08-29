@@ -10,25 +10,25 @@
 
 namespace fleetBattle
 {
-    void h(const asio::error_code& ec,std::size_t bytes_transferred){};
+    void h(const boost::system::error_code& ec,std::size_t bytes_transferred){};
 
     bool matchMaster::operator()()
     {
-        asio::error_code error;
-        asio::streambuf agentInput {};
+        boost::system::error_code error;
+        boost::asio::streambuf agentInput {};
 
         while(true)
         {
-            asio::async_write(*this->socket,asio::buffer(std::string(1,this->playerInTurn)+std::string(1,'\n')),&h);
+            boost::asio::async_write(*this->socket,boost::asio::buffer(std::string(1,this->playerInTurn)+std::string(1,'\n')),&h);
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
             
-            asio::read_until(*this->socket,agentInput,"\n");
+            boost::asio::read_until(*this->socket,agentInput,"\n");
             std::string agentInputString {std::string(std::istreambuf_iterator<char>(&agentInput), std::istreambuf_iterator<char>())};
             
             if(agentInputString.find("ready") >= 0)
             {}
 
-            asio::read_until(*this->socket,agentInput,"\n");
+            boost::asio::read_until(*this->socket,agentInput,"\n");
             agentInputString.erase(agentInputString.size()-1);
             auto pos = agentInputString.find(' ');
             if(pos != agentInputString.npos)

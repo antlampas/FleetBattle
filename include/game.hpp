@@ -32,8 +32,8 @@ namespace fleetBattle
         public:
         game() = delete;
         game(
-                std::shared_ptr<asio::io_context>,
-                std::shared_ptr<asio::io_context>,
+                std::shared_ptr<boost::asio::io_context>,
+                std::shared_ptr<boost::asio::io_context>,
                 deployedShips_t,
                 deployedShips_t
             );

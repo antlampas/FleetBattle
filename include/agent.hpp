@@ -14,7 +14,7 @@
 #include <fstream>
 #include <thread>
 #include <chrono>
-#include "asio.hpp"
+#include "boost/asio.hpp"
 
 namespace fleetBattle
 {
@@ -23,14 +23,14 @@ namespace fleetBattle
        private:
        bool                                     standalone;
        playerInTurn_t                           player;
-       std::shared_ptr<asio::io_context>        ioContext;
-       std::shared_ptr<asio::ip::tcp::socket>   socket;
-       std::shared_ptr<asio::ip::tcp::acceptor> cli;
-       std::shared_ptr<asio::ip::tcp::socket>   serviceChannel;
+       std::shared_ptr<boost::asio::io_context>        ioContext;
+       std::shared_ptr<boost::asio::ip::tcp::socket>   socket;
+       std::shared_ptr<boost::asio::ip::tcp::acceptor> cli;
+       std::shared_ptr<boost::asio::ip::tcp::socket>   serviceChannel;
 
        public:
        agent(  playerInTurn_t,
-               std::shared_ptr<asio::io_context>,
+               std::shared_ptr<boost::asio::io_context>,
                int
            );
        ~agent();

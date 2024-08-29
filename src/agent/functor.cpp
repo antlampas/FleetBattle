@@ -12,9 +12,9 @@ namespace fleetBattle
     bool agent::operator()()
     {
         std::string output          {};
-        asio::streambuf input       {};
-        asio::streambuf inputPlayer {};
-        asio::error_code            error;
+        boost::asio::streambuf input       {};
+        boost::asio::streambuf inputPlayer {};
+        boost::system::error_code            error;
 
         unsigned char playerInTurn = 'A';
 
@@ -22,29 +22,29 @@ namespace fleetBattle
 
         while(true)
         {
-            asio::read_until(*this->serviceChannel,inputPlayer,"\n");
+            boost::asio::read_until(*this->serviceChannel,inputPlayer,"\n");
             std::string playerInTurn = std::string(std::istreambuf_iterator<char>(&inputPlayer), std::istreambuf_iterator<char>());
 
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
             output = std::string(1,this->player) + std::string(": waiting for your turn...\nPlayer in turn: " + playerInTurn + "\n");
-            asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
+            boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
             
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
             if(playerInTurn.at(0) == this->player)
             {
                 std::string ready(std::string(1,this->player) + " ready\n");
-                asio::write(*this->serviceChannel,asio::buffer(ready.c_str(),ready.size()),asio::transfer_at_least(ready.size()),error);
+                boost::asio::write(*this->serviceChannel,boost::asio::buffer(ready.c_str(),ready.size()),boost::asio::transfer_at_least(ready.size()),error);
                 
                 output = std::string("\nPlayer ") + std::string(1,this->player) + std::string("\nCommand: ");
-                asio::write(*this->socket,asio::buffer(output.c_str(),output.size()),asio::transfer_at_least(output.size()),error);
+                boost::asio::write(*this->socket,boost::asio::buffer(output.c_str(),output.size()),boost::asio::transfer_at_least(output.size()),error);
                 std::this_thread::sleep_for(std::chrono::milliseconds(1));
-                asio::read_until(*this->socket,input,"\n");
+                boost::asio::read_until(*this->socket,input,"\n");
                 std::string cmd = std::string(std::istreambuf_iterator<char>(&input), std::istreambuf_iterator<char>());
                 
-                asio::write(*this->serviceChannel,asio::buffer(cmd.c_str(),cmd.size()),asio::transfer_at_least(cmd.size()),error);
-                asio::write(*this->socket,asio::buffer(cmd.c_str(),cmd.size()),asio::transfer_at_least(cmd.size()),error);
+                boost::asio::write(*this->serviceChannel,boost::asio::buffer(cmd.c_str(),cmd.size()),boost::asio::transfer_at_least(cmd.size()),error);
+                boost::asio::write(*this->socket,boost::asio::buffer(cmd.c_str(),cmd.size()),boost::asio::transfer_at_least(cmd.size()),error);
 
                 cmd.erase(cmd.size()-1);
                 auto pos = cmd.find(' ');

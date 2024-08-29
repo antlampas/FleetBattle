@@ -26,4 +26,4 @@ target_link_libraries(fleetBattle PUBLIC
                       utilities
                      )
 
-target_link_libraries(fleetBattle PRIVATE asio::asio)
+target_link_libraries(fleetBattle INTERFACE Boost::asio)

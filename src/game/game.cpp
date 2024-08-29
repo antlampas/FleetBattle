@@ -10,8 +10,8 @@
 namespace fleetBattle
 {
   game::game(
-              std::shared_ptr<asio::io_context>  mmContext,
-              std::shared_ptr<asio::io_context>  agentContext,
+              std::shared_ptr<boost::asio::io_context>  mmContext,
+              std::shared_ptr<boost::asio::io_context>  agentContext,
               deployedShips_t                    deployedA,
               deployedShips_t                    deployedB
             )

@@ -12,14 +12,14 @@ namespace fleetBattle
 {
     matchMaster::matchMaster(   std::shared_ptr<player>                  pA,
                                 std::shared_ptr<player>                  pB,
-                                std::shared_ptr<asio::io_context>        ios,
+                                std::shared_ptr<boost::asio::io_context>        ios,
                                 playerInTurn_t                           p
                             ) : playerA        {pA},
                                 playerB        {pB},
                                 command        {std::make_shared<command_t>()},
                                 ioContext      {ios},
-                                socket         {std::make_shared<asio::ip::tcp::socket>(*this->ioContext)},
-                                serviceChannel {std::make_shared<asio::ip::tcp::acceptor>(*this->ioContext,asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 2000))},
+                                socket         {std::make_shared<boost::asio::ip::tcp::socket>(*this->ioContext)},
+                                serviceChannel {std::make_shared<boost::asio::ip::tcp::acceptor>(*this->ioContext,boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), 2000))},
                                 playerInTurn   {p}
     {
         this->serviceChannel->accept(*this->socket);
