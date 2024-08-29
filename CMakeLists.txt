@@ -18,7 +18,6 @@ FetchContent_Declare(asio-cmake
   GIT_TAG        origin/master
 )
 
-# Specify asio version
 set(ASIO_CMAKE_ASIO_TAG asio-1-30-2)
 FetchContent_MakeAvailable(asio-cmake)
 
