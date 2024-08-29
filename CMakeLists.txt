@@ -4,6 +4,13 @@ cmake_minimum_required(VERSION 3.15)
 
 set(CMAKE_CXX_STANDARD 20)
 
+option(ASIO_USE_CPM "Download Asio with CPM instead of FetchContent" OFF)
+option(
+  ASIO_CPM_FETCHCONTENT_COMPAT
+  "Should asio be declared with FetchContent functions to be compatible. This doesn't not allow CPM cache to work."
+  ON
+)
+
 project("Fleet Battle"
         VERSION "${VERSION}"
         DESCRIPTION "Yet another fleet battle implementation for excercise purposes"
@@ -12,14 +19,12 @@ project("Fleet Battle"
 )
 
 include(FetchContent)
-
-FetchContent_Declare(asio-cmake
-  GIT_REPOSITORY https://github.com/kingsamchen/asio-cmake.git
-  GIT_TAG        origin/master
+FetchContent_Declare(
+  asiocmake
+  GIT_REPOSITORY "https://github.com/OlivierLDff/asio.cmake"
+  GIT_TAG        "main"
 )
-
-set(ASIO_CMAKE_ASIO_TAG asio-1-30-2)
-FetchContent_MakeAvailable(asio-cmake)
+FetchContent_MakeAvailable(asiocmake)
 
 include_directories(include)
 
